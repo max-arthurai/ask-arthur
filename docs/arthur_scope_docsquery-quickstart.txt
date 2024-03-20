@@ -1,0 +1,308 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/query-quickstart
+ Common Queries Quickstart
+Common Queries QuickstartSuggest EditsTo access information about a model's performance, drift, bias, or other enabled enrichments, write a query object and submit it with the Arthur SDK using arthur_model.query(query)
+For a general overview of this endpoint, including a more thorough description of its rules, power, and customizability, see the Fundamentals.
+In each of the following examples, let our model be a binary classifier, and let GT1 and PRED1 be the names of our model's ground truth attribute and predicted value.
+Accuracy
+This is usually the simplest way to check for classifier performance. We can fetch a model's accuracy rate by querying a select on the function accuracyRate using the typical threshold 0.5.
+Given the following query:
+PythonGT1 = 'gt_isFraud'
+PRED1 = 'pred_isFraud'
+query = {
+"select": [
+{
+"function": "accuracyRate",
+"parameters":
+{
+"threshold" : 0.5,
+"ground_truth_property" : GT1,
+"predicted_property" : PRED1
+}
+}
+]
+}
+query_result = arthur_model.query(query)
+The query_result will be:
+Python[{'accuracyRate': 0.999026947368421}]
+Accuracy by batch
+To expand the accuracy query by batch, add the batch_id property to the query's select, and add a group_by to the query using batch_id.
+Given the following query:
+PythonGT1 = 'gt_isFraud'
+PRED1 = 'pred_isFraud'
+query = {
+"select": [
+{
+"function": "accuracyRate",
+"parameters":
+{
+"threshold" : 0.5,
+"ground_truth_property" : GT1,
+"predicted_property" : PRED1
+}
+},
+{
+"property": "batch_id"
+}
+],
+"group_by": [
+{
+"property": "batch_id"
+}
+]
+}
+query_result = arthur_model.query(query)
+The query_result will be:
+Python[{'accuracyRate': 0.999704, 'batch_id': 'newbatch3'},
+{'accuracyRate': 0.999744, 'batch_id': 'newbatch0'},
+{'accuracyRate': 0.992952, 'batch_id': 'newbatch19'},
+{'accuracyRate': 0.999616, 'batch_id': 'newbatch5'},
+{'accuracyRate': 0.999144, 'batch_id': 'newbatch6'},
+...]
+Batch IDs
+Querying accuracy by batch includes the batch_id values in the query result. But to query the batch_ids on their own, only select and group_by the batch_id.
+Given the following query:
+Pythonquery = {
+"select": [
+{
+"property": "batch_id"
+}
+],
+"group_by": [
+{
+"property": "batch_id"
+}
+]
+}
+query_result = arthur_model.query(query)
+The query_result will be:
+Python[{'batch_id': 'newbatch19'},
+{'batch_id': 'newbatch18'},
+{'batch_id': 'newbatch13'},
+{'batch_id': 'newbatch12'},
+{'batch_id': 'newbatch16'},
+...]
+Accuracy (single batch)
+To query the accuracy for only one batch, add a filter to the query according to the rule batch_id == BATCHNAME
+Given the following query (for a specified batch name):
+PythonGT1 = 'gt_isFraud'
+PRED1 = 'pred_isFraud'
+BATCHNAME = "newbatch19"
+query = {
+"select": [
+{
+"function": "accuracyRate",
+"parameters":
+{
+"threshold" : 0.5,
+"ground_truth_property" : GT1,
+"predicted_property" : PRED1
+}
+},
+{
+"property": "batch_id"
+}
+],
+"group_by": [
+{
+"property": "batch_id"
+}
+],
+"filter": [
+{
+"property": "batch_id",
+"comparator": "eq",
+"value": BATCHNAME
+}
+]
+}
+query_result = arthur_model.query(query)
+The query_result will be:
+Python[{'accuracyRate': 0.992952, 'batch_id': 'newbatch19'}]
+Confusion Matrix
+A confusion matrix counts the number of true positive, true negative, false positive, and false negative classifications; knowing these values is usually more useful than just accuracy when it is time to improve your model.
+To query a confusion matrix, we use the confusionMatrix function in our query's select.
+📘For the confusionMatrix function, the ground_truth_property and predicted_property parameters are optional.
+Given the following query:
+Pythonquery = {
+"select": [
+{
+"function": "confusionMatrix",
+"parameters":
+{
+"threshold" : 0.5
+}
+}
+]
+}
+query_result = arthur_model.query(query)
+The query_result will be:
+Python[{'confusionMatrix':
+{'false_negative': 4622,
+'false_positive': 0,
+'true_negative': 4745195,
+'true_positive': 183}}]
+Confusion Matrix (single batch)
+As we did with accuracy, to get a confusion matrix for a single batch we add the property batch_id to the query's select, add a group_by using batch_id, and then add a filter according to the rule batch_id == BATCHNAME
+Given the following query (for a specified batch name):
+PythonBATCHNAME = 'newbatch19'
+query = {
+"select": [
+{
+"function": "confusionMatrix",
+"parameters":
+{
+"threshold" : 0.5
+}
+},
+{
+"property": "batch_id"
+}
+],
+"group_by": [
+{
+"property": "batch_id"
+}
+],
+"filter": [
+{
+"property": "batch_id",
+"comparator": "eq",
+"value": BATCHNAME
+}
+]
+}
+query_result = arthur_model.query(query)
+The query_result will be:
+Python[{'batch_id': 'newbatch19',
+'confusionMatrix':
+{'false_negative': 1762,
+'false_positive': 0,
+'true_negative': 248238,
+'true_positive': 0}}]
+Confusion Matrix (by group)
+Instead of querying for metrics and grouping by batch, we can group by other groupings as well. Here, we use the model's non-input attribute race so that we can compare model performance across different demographics. To do this, we add the group name race to our query's select and to its group_by
+Given the following query:
+PythonGROUP = 'race'
+query = {
+"select": [
+{
+"function": "confusionMatrix",
+"parameters": {
+"threshold" : 0.5
+}
+},
+{
+"property": GROUP
+}
+],
+"group_by": [
+{
+"property": GROUP
+}
+]
+}
+query_result = arthur_model.query(query)
+The query_result will be:
+Python[{'confusionMatrix': {'false_negative': 1162,
+'false_positive': 0,
+'true_negative': 1184707,
+'true_positive': 44},
+'race': 'hispanic'},
+{'confusionMatrix': {'false_negative': 1145,
+'false_positive': 0,
+'true_negative': 1186659,
+'true_positive': 49},
+'race': 'asian'},
+{'confusionMatrix': {'false_negative': 1137,
+'false_positive': 0,
+'true_negative': 1187500,
+'true_positive': 38},
+'race': 'black'},
+{'confusionMatrix': {'false_negative': 1178,
+'false_positive': 0,
+'true_negative': 1186329,
+'true_positive': 52},
+'race': 'white'}]
+Predictions
+Here we aren't querying any metrics - we are just accessing all the predictions that have output by the model.
+Given the following query:
+PythonPRED1 = 'pred_isFraud'
+query = {
+"select": [
+{
+"property": PRED1
+}
+]
+}
+query_result = arthur_model.query(query)
+The query_result will be:
+Python[{'pred_isFraud_1': 0.005990342859493804},
+{'pred_isFraud_1': 0.02271116879043313},
+{'pred_isFraud_1': 0.15305224676085477},
+{'pred_isFraud_1': 0},
+{'pred_isFraud_1': 0.03280797449330532},
+...]
+Predictions (average)
+To only query the average value across all these predictions (since querying all predictions and then averaging locally can be slow for production-sized query results), we only need to add the avg function to our query's select, with our predicted value PRED1 now being a parameter of avg instead of a property we directly select.
+Given the following query:
+PythonPRED1 = 'pred_isFraud'
+query = {
+"select": [
+{
+"function": "avg",
+"parameters": {
+"property": PRED1
+}
+}
+]
+}
+query_result = arthur_model.query(query)
+The query_result will be:
+Python[{'avg': 0.016030786000398464}]
+Predictions (average over time)
+To get the average predictions on each day, we add the function roundTimestamp to our select using a time_interval of day - this groups the timestamp information according to day instead of options like hour or week. Then, we add a group_by to the query using the alias (DAY) specified in the roundTimestamp function.
+Given the following query:
+PythonPRED1 = 'pred_isFraud'
+query = {
+"select": [
+{
+"function": "avg",
+"parameters": {
+"property": PRED1
+}
+},
+{
+"function": "roundTimestamp",
+"alias": "DAY",
+"parameters": {
+"property": "inference_timestamp",
+"time_interval": "day"
+}
+}
+],
+"group_by": [
+{
+"alias": "DAY"
+}
+]
+}
+query_result = arthur_model.query(query)
+The query_result will be:
+Python[{'avg': 0.016030786000359423, 'DAY': '2022-07-11T00:00:00Z'},
+{'avg': 0.018723459201003300, 'DAY': '2022-07-12T00:00:00Z'},
+{'avg': 0.014009919280009284, 'DAY': '2022-07-13T00:00:00Z'},
+{'avg': 0.016663649020394829, 'DAY': '2022-07-14T00:00:00Z'},
+{'avg': 0.017791902929210039, 'DAY': '2022-07-15T00:00:00Z'},
+...]
+Updated 3 months ago Table of Contents
+Accuracy
+Accuracy by batch
+Batch IDs
+Accuracy (single batch)
+Confusion Matrix
+Confusion Matrix (single batch)
+Confusion Matrix (by group)
+Predictions
+Predictions (average)
+Predictions (average over time)

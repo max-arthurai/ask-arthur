@@ -1,0 +1,66 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/backup-and-restore
+ Backup and Restore
+Backup and RestoreSuggest EditsWARNINGS
+🚧Only tested on AWS, as writtenThese instructions have been tested as written for an AWS deployment. If you find they do not work for your use-case, please reach out to Arthur Support before modifying them. We cannot guarantee reliable operation if these instructions are not followed exactly as written.
+🚧Ensure no network connection between backup/restore environmentsWhen restoring into a new cluster, you must ensure that the new cluster is unable to communicate with any services or data store in the old cluster.
+If you took a backup on cluster Apple, and performed a restore into cluster Banana, cluster Banana must point to its own RDS Instance, ClickHouse Database, and Kafka Store (note: it is ok if clusters share the S3 bucket).
+To ensure this, you must re-configure via the Admin Interface when restoring into a new cluster. Failure to do this WILL CAUSE DATA CORRUPTION on both clusters that is unrecoverable.
+🚧Backup everything at the same timeIf you are either manually taking a backup or scheduling a backup, you MUST take a backup of the full platform. You CANNOT use a ClickHouse snapshot taken at midnight with an RDS snapshot taken at 0400 AM (or any other time). All backup operations must be performed at the same time, and when restoring, the data you are using must all belong to the same backup operation. This is to ensure data consistency across the different data stores. IGNORING THIS WILL CAUSE DATA CORRUPTION.
+Overview
+The overall backup and restore process for the Arthur Platform is as follows:
+Backing up the Arthur platform
+Take a backup of ClickHouse Data
+Take a backup of Kubernetes Deployment State and Persistent Volumes
+Enrichments infrastructure
+Model Servers
+Data Pipeline Services
+Enrichment / Delete Enrichment Workflows
+Kafka Deployment State and EBS Volumes (using EBS Snapshots)
+Take a backup of RDS Postgres
+Restore the Arthur platform
+Restore RDS Postgres
+Update configuration and install the platform
+Restore ClickHouse Data
+Restore the Kafka Deployment State and Persistent Volumes
+Restore Enrichments infrastructure
+Restore Workflows
+Smoke Tests and Validation
+Overview - clickhouse-backup
+The Arthur Platform stores inference data, data built from the enrichments pipeline, reference and ground truth data in ClickHouse. ClickHouse is an open-source OLAP Database which enables SQL-like query execution, replication, sharding and many additional features.
+To backup ClickHouse, the Arthur Platform uses a tool called clickhouse-backup. clickhouse-backup is a sidecar-container included on the ClickHouse pods and is responsible for taking backups, performing restores, and coordinating with remote storage (in this case S3) to store and retrieve backups. clickhouse-backup uses built-in functionality of ClickHouse to take backups and perform restores.
+Overview - Velero
+The Arthur Platform uses Velero, which is an industry-standard, battle-tested tool for backing up Kubernetes Resources including Persistent Volumes.
+Arthur uses Velero to backup necessary namespaced Kubernetes resources, as well as the EBS Volume Snapshot backups for each PersistentVolumes claimed by the StatefulSets (eg: via PVCs).
+Backup data (not including EBS Volume Snapshots) is stored in an S3 bucket which is accessible via a ServiceAccount that is provisioned for the Backup and Restore agent. Backups and Restores are managed by Velero using Kubernetes Custom Resource Definitions (CRDs), which are consumed by the Velero Backup Controller.
+Velero has a feature which also allows backups to be scheduled, using a cron-like configuration. It also provides ServiceMonitors which expose metrics via Prometheus, so that operators can monitor backup and restore status and set up alerts for when backup or restore operations fail.
+Overview - Arthur (Argo)Workflows
+The Arthur Platform uses Argo Workflows as a workflow orchestration engine for running certain jobs. Argo installs a handful of Custom Resource Definitions (CRDs) which enable the Argo Workflow services to schedule, execute and update these jobs.
+Workflows are dynamically managed, meaning that their definitions are not stored in the Arthur installer script. The Backup and Restore operation accounts for this by treating restoration of Workflows on a case-by-case basis, as follows:
+Enrichments and Delete Enrichments workflows
+These workflows are created to stand-up and tear-down infrastructure necessary for processing enrichments data (eg: kafka topics, pods which manage the data pipeline for enrichments, etc.)
+These workflows are idempotent and safe to recover
+Therefore, these workflows are backed up and restored just like any other Kubernetes Resource during the backup stage
+Batch workflows
+These workflows are created to manage batch jobs, which are used by clients when uploading large data files to models (inferences and/or ground truths).
+These workflows are sometimes safe to recover
+Therefore, these workflows are restored selectively based on what state they were in when the backup was taken
+Workflows for which Arthur received all the data from the client are resumed by manually re-submitting them (this is done via an Administrative HTTP endpoint that needs to be invoked manually)
+Workflows for which Arthur did not receive all the data from the client will need to be re-submitted. Operators restoring the cluster will need to reach out to affected clients to communicate that their batch workflows should be re-submitted.
+Reference and Cron Workflows
+Reference Workflows are created for monitoring the upload of reference datasets to S3
+Reference datasets that were in-flight during a backup will need to be re-uploaded via the SDK.
+Cron Workflows are scheduled workflows which perform some regular processing (eg: triggering alerts for non-batch inferences)
+Cron Workflows are meant to be run on a regular schedule. It is safe to wait for the next workflow to be triggered, and therefore, these workflows are not backed up nor restored.
+Overview - S3
+The Arthur Platform uses AWS S3 object storage for storing inference data, reference data, as well as data and trained models for the enrichments pipeline.
+Arthur recommends enabling Cross-Region Replication on the AWS S3 buckets, so that objects are available in the rare event of an AWS region outage.
+The Arthur Backup solution does not manage consistency with the S3 bucket and other backup data.
+The data in S3 is only used in conjunction with data that is stored in Postgres (eg: model definitions), so it's ok if there's data in S3 that isn't represented in Postgres.
+Therefore, the S3 bucket for a cluster will always reflect the most up-to-date state, regardless of when a backup was taken.Updated 3 months ago Table of Contents
+WARNINGS
+Overview
+Overview - clickhouse-backup
+Overview - Velero
+Overview - Arthur (Argo)Workflows
+Overview - S3

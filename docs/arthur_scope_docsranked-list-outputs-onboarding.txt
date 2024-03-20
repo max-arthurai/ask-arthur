@@ -1,0 +1,83 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/ranked-list-outputs-onboarding
+ Ranked List Outputs Onboarding
+Ranked List Outputs OnboardingSuggest EditsThis page walks through the basics of setting up a recommender system model (ranked list output) and onboarding it to Arthur Scope to monitor performance. The inputs to a recommender system model could be time series inputs or more traditional tabular inputs.
+Getting Started
+The first step is to import functions from the arthurai package and establish a connection with Arthur Scope.
+Python# Arthur imports
+from arthurai import ArthurAI
+from arthurai.common.constants import InputType, OutputType, Stage
+arthur = ArthurAI(url="https://app.arthur.ai",
+login="<YOUR_USERNAME_OR_EMAIL>")
+Registering a Recommender System Model
+Each recommender system model is created with a name and with output_type = OutputType.RankedList. Here, we register a recommender model:
+Pythonarthur_model = arthur.model(name="RecSysQuickstart",
+input_type=InputType.Tabular,
+model_type=OutputType.RankedList)
+Formatting Reference/Inference Data
+Column names can contain only alphanumeric and underscore characters.
+Ranked list data can be uploaded to Arthur either in a DataFrame or a JSON file. Typically, a JSON file is a more natural formatting for ranked list data. For a recommender system model recommending a loan policy, the reference data might look like this:
+JSON{
+"reference_data": {
+"id": "6euQxGJai11qr0gENGgvgh",
+"account_id": "8klQSGJil78qr4gLJKklsy",
+"recommendations": [
+{
+"label": "Loan Policy 3",
+"item_id": "64NWp2MbJXd7oHg7XmXCIa",
+"score": 90
+},
+{
+"label": "Loan Policy 1",
+"item_id": "0CoZWIVqaHHGArYRTJD1V5",
+"score": 83
+},
+],
+"gt": [
+"0CoZWIVqaHHGArYRTJD1V5", // ids of relevant recommendations
+"72EAUBslQ047R3j9dxMCf4",
+]
+},
+... // more inferences here
+}
+Data Requirements
+The list of ranked list items should be sorted in rank order, such that the highest ranked item is first.
+Each ranked list output model in Arthur can have max 1000 total unique recommended items in its reference dataset.
+Each ranked list output model can have max 100 recommendations per inference/ground truth.
+If the label or score metadata field in a ranked list item is specified for one inference, it must be specified for all of them.
+Reviewing the Model Schema
+Before you register your model with Arthur by calling arthur_model.save(), you can call arthur_model.review() on the model schema to check that your data was parsed correctly in your call to arthur_model.build().
+For a recommender system model, the model schema should look like this:
+Python		 name
+stage
+value_type
+categorical
+is_unique
+0
+ranked_list_pred_attr PREDICTED_VALUE
+RANKED_LIST
+False
+False
+1
+ground_truth
+GROUND_TRUTH
+ARRAY(STRING)
+False
+False
+...
+2
+non_input_1
+NON_INPUT_DATA
+FLOAT
+False
+False
+...
+Finishing Onboarding
+Once you have finished formatting your reference data and your model schema looks correct using arthur_model.review(), you are finished registering your model and its attributes - so you are ready to complete onboarding your model.
+See this guide for further details on how to save your model, send inferences, and get performance results from Arthur. These steps are the same for recommender system models as for models of any InputType and OutputType .Updated about 2 months ago Table of Contents
+Getting Started
+Registering a Recommender System Model
+Formatting Reference/Inference Data
+Data Requirements
+Reviewing the Model Schema
+Finishing Onboarding

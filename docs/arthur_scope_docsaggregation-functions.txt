@@ -1,0 +1,1143 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/aggregation-functions
+ Aggregation Functions
+Aggregation FunctionsSuggest EditsFor an explanation of nested functions, see the Composing Functions guide
+Mathematical Functions
+Average
+Take the average of a property.
+Query Request:
+JSON{
+"select": [
+{
+"function": "avg",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"property": "<attribute_name> [string or nested]"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": "<avg_value> [float]"
+}
+]
+}
+Sample Request:
+JSON{
+"select": [
+{
+"function": "avg",
+"alias": "avgAge",
+"parameters": {
+"property": "age"
+}
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"avgAge": 55.45
+}
+]
+}
+back to top
+Average of Absolute Values
+Take the average of absolute values of a property.
+Query Request:
+JSON{
+"select": [
+{
+"function": "avgAbs",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"property": "<attribute_name> [string or nested]"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": "<avg_abs_value> [float]"
+}
+]
+}
+Sample Request:
+JSON{
+"select": [
+{
+"function": "avgAbs",
+"alias": "avgafloat",
+"parameters": {
+"property": "afloat"
+}
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"avgafloat": 55.45
+}
+]
+}
+back to top
+Max
+Take the max of a property.
+Query Request:
+JSON{
+"select": [
+{
+"function": "max",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"property": "<attribute_name> [string or nested]"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": "<max_value> [float]"
+}
+]
+}
+Sample Request:
+JSON{
+"select": [
+{
+"function": "max",
+"alias": "maxAge",
+"parameters": {
+"property": "age"
+}
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"maxAge": 55.45
+}
+]
+}
+back to top
+Min
+Take the min of a property.
+Query Request:
+JSON{
+"select": [
+{
+"function": "min",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"property": "<attribute_name> [string or nested]"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": "<min_value> [float]"
+}
+]
+}
+Sample Request:
+JSON{
+"select": [
+{
+"function": "min",
+"alias": "minAge",
+"parameters": {
+"property": "age"
+}
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"minAge": 17
+}
+]
+}
+back to top
+Sum
+Take the sum of a property.
+Query Request:
+JSON{
+"select": [
+{
+"function": "sum",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"property": "<attribute_name> [string or nested]"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": "<sum_value> [float]"
+}
+]
+}
+Sample Request:
+JSON{
+"select": [
+{
+"function": "sum",
+"alias": "sumAge",
+"parameters": {
+"property": "age"
+}
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"sumAge": 1745
+}
+]
+}
+back to top
+Variance
+Take the variance of a property.
+Query Request:
+JSON{
+"select": [
+{
+"function": "variance",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"property": "<attribute_name> [string or nested]"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": "<variance> [float]"
+}
+]
+}
+Sample Request:
+JSON{
+"select": [
+{
+"function": "variance",
+"alias": "varAge",
+"parameters": {
+"property": "age"
+}
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"varAge": 10.234
+}
+]
+}
+back to top
+Standard Deviation
+Take the standard deviation of a property.
+Query Request:
+JSON{
+"select": [
+{
+"function": "stdDev",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"property": "<attribute_name> [string or nested]"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": "<stdDev> [float]"
+}
+]
+}
+Sample Request:
+JSON{
+"select": [
+{
+"function": "stdDev",
+"alias": "stdDevAge",
+"parameters": {
+"property": "age"
+}
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"stdDevAge": 3.199
+}
+]
+}
+back to top
+Count
+Count
+Count a property.
+Query Request:
+JSON{
+"select": [
+{
+"function": "count",
+"alias": "<alias_name> [optional string]"
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": "<count> [int]"
+}
+]
+}
+Sample Request:
+JSON{
+"select": [
+{
+"function": "count"
+}
+],
+"filter": [
+{
+"property": "income",
+"comparator": "lt",
+"value": 90000
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"count": 5432
+}
+]
+}
+back to top
+Count If
+Conditionally count a property.
+Query Request:
+JSON{
+"select": [
+{
+"function": "countIf",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"property": "<attribute_name> [string or nested]",
+"comparator": "<comparator> [string]",
+"value": "<string or number to compare with property>"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": "<count> [int]"
+}
+]
+}
+See Endpoint Overview for a list of valid comparators.
+Sample Request:
+JSON{
+"select": [
+{
+"function": "countIf",
+"alias": "michigan_count",
+"parameters": {
+"property": "state",
+"comparator": "eq",
+"value": "michigan"
+}
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"michigan_count": 5432
+}
+]
+}
+back to top
+Categories Count
+Count the number of categories of a property. To be used for discrete features.
+Query Request:
+JSON{
+"select": [
+{
+"function": "categoriesCount",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"property": "<attribute_name> [string]"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": "<categories_count> [int]"
+}
+]
+}
+Sample Request:
+JSON{
+"select": [
+{
+"function": "categoriesCount",
+"alias": "categoriesCountZipcode",
+"parameters": {
+"property": "zipcode"
+}
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"categoriesCountZipcode": 732
+}
+]
+}
+back to top
+Rate
+Calculates the rate of a condition on a column.
+Query Request:
+JSON{
+"select": [
+{
+"function": "rate",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"property": "<attribute_name> [string or nested]",
+"comparator": "<comparator> [string]",
+"value": "<string or number to compare with property>"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": "<rate_value> [float]"
+}
+]
+}
+See Endpoint Overview for a list of valid comparators.
+Sample Request: Calculate the positive predictive rate, with predictions classified as positive when pos_class above .5 (standard definition of positive predictive rate).
+JSON{
+"select": [
+{
+"function": "rate",
+"alias": "pos_rate",
+"parameters": {
+"property": "pos_class",
+"comparator": "gt",
+"value": 0.5
+}
+}
+]
+}
+Response:
+JSON{
+"query_result": [
+{
+"pos_rate": "0.1"
+}
+]
+}
+back to top
+Distributions
+Distribution
+Return the distribution of a column with a specified number of bins.
+You may specify one of either num_bins or bin_thresholds.
+For num_bins,, if there is not enough data, fewer than the specified number of bins will be returned.
+For bin_thresholds, there will be a bucket below your lowest bin and a bucket above your highest bin, i.e. n+1 buckets when supplied n thresholds.
+Query Request with num_bins:
+JSON{
+"select": [
+{
+"function": "distribution",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"property": "<attribute_name> [string or nested]",
+"num_bins": "<number_of_bins> [int]"
+}
+}
+]
+}
+Query Request with bin_thresholds:
+JSON{
+"select": [
+{
+"function": "distribution",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"property": "<attribute_name> [string or nested]",
+"bin_thresholds": "<list_of_floats> [List[int]]"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": [
+{
+"lower": "<bin_lower_bound> [float]",
+"upper": "<bin_upper_bound> [float]",
+"count": "<bin_count> [float]"
+}
+]
+}
+]
+}
+Lower bounds are inclusive while upper bounds are exclusive, so a bucket response like this:
+JSON{
+"lower": 30,
+"upper": 50,
+"count": "<bin_count> [float]"
+}
+would include values such as 30, 40, or 49.999, but not 50.
+Sample Request with num_bins:
+JSON{
+"select": [
+{
+"function": "distribution",
+"parameters": {
+"property": "FICO_predicted",
+"num_bins": 50
+}
+}
+]
+}
+Sample Response with num_bins:
+JSON{
+"query_result": [
+{
+"distribution": [
+{
+"lower": 500,
+"upper": 600,
+"count": 1000
+},
+{
+"lower": 600,
+"upper": 700,
+"count": 5000
+},
+{
+"lower": 700,
+"upper": 800,
+"count": 2000
+},
+{
+"lower": 800,
+"upper": 850,
+"count": 550
+}
+]
+}
+]
+}
+Sample Request with bin_thresholds:
+JSON{
+"select": [
+{
+"function": "distribution",
+"parameters": {
+"property": "FICO_predicted",
+"bin_thresholds": [600, 700]
+}
+}
+]
+}
+Sample Response with bin_thresholds:
+JSON{
+"query_result": [
+{
+"distribution": [
+{
+"upper": 600,
+"count": 1000
+},
+{
+"lower": 600,
+"upper": 700,
+"count": 5000
+},
+{
+"lower": 700,
+"count": 2550
+}
+]
+}
+]
+}
+back to top
+Quantile
+Get the quantile of a column at the specified point. The level parameter between 0 and 1 specifies the cut point, with 0.5 representing the median, 0.9 the 90th percentile, and so on.
+Query Request:
+JSON{
+"select": [
+{
+"function": "quantile",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"property": "<attribute_name> [string or nested]",
+"level": "<quantile level> [float (0.0, 1.0)]"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": "<quantile> [constant]"
+}
+]
+}
+Sample Request:
+JSON{
+"select": [
+{
+"function": "quantile",
+"alias": "medianAge",
+"parameters": {
+"property": "age",
+"level": "0.5"
+}
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"medianAge": 47
+}
+]
+}
+Decile
+Get the decile of a property.
+Query Request:
+JSON{
+"select": [
+{
+"function": "deciles",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"property": "<attribute_name> [string or nested]"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": {
+"max": "<max_value> [number]",
+"min": "<min_value> [number]",
+"q1": "<first decile> [number]",
+"q2": "<second decile> [number]",
+"q3": "<third decile> [number]",
+"q4": "<fourth decile> [number]",
+"q5": "<fifth decile> [number]",
+"q6": "<sixth decile> [number]",
+"q7": "<seventh decile> [number]",
+"q8": "<eighth decile> [number]",
+"q9": "<ninth decile> [number]",
+}
+}
+]
+}
+Sample Request:
+JSON{
+"select": [
+{
+"function": "deciles",
+"alias": "likelihoodDeciles",
+"parameters": {
+"property": "likelihood"
+}
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"likelihoodDeciles": {
+"max": 0.9427181028155817,
+"min": 0.04451819608908539,
+"q1": 0.5422967935750383,
+"q2": 0.6379949435686291,
+"q3": 0.7381396364893235,
+"q4": 0.802484647469614,
+"q5": 0.8282093987794898,
+"q6": 0.8474456853909271,
+"q7": 0.8662622658358209,
+"q8": 0.884452391809424,
+"q9": 0.901106156817971
+}
+}
+]
+}
+back to top
+Arg Values
+Arg Max
+Take the value of a property at which a different property as at its maximum.
+Query Request:
+JSON{
+"select": [
+{
+"function": "argMax",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"argument": "<attribute_name> [string or nested]",
+"value": "<attribute_name> [string or nested]"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": "<arg_max_value> [constant]"
+}
+]
+}
+Sample Request:
+JSON{
+"select": [
+{
+"function": "argMax",
+"alias": "mostExpensiveZipCode",
+"parameters": {
+"argument": "zipCode",
+"value": "homePrice"
+}
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"mostExpensiveZipCode": 94027
+}
+]
+}
+back to top
+Arg Min
+Take the value of a property at which a different property as at its minimum.
+Query Request:
+JSON{
+"select": [
+{
+"function": "argMin",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"argument": "<attribute_name> [string or nested]",
+"value": "<attribute_name> [string or nested]"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": "<arg_min_value> [constant]"
+}
+]
+}
+Sample Request:
+JSON{
+"select": [
+{
+"function": "argMin",
+"alias": "leastExpensiveZipCode",
+"parameters": {
+"argument": "zipCode",
+"value": "homePrice"
+}
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"leastExpensiveZipCode": 46953
+}
+]
+}
+back to top
+Any If
+Returns the selected property for any row which matches the provided condition. A common use case for this function is querying data with unique identifiers (as described in this guide Grouped Inference Queries).
+Query Request:
+JSON{
+"select": [
+{
+"function": "anyIf",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"property": "<attribute_name> [string or nested]",
+"comparator": "<comparator> [string]",
+"value": "<string or number to compare with property>",
+"result": "<attribute_name> [string or nested]"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": "<result> [constant]"
+}
+]
+}
+See Endpoint Overview for a list of valid comparators.
+Sample Request:
+JSON{
+"select": [
+{
+"function": "anyIf",
+"alias": "some_michigan_price",
+"parameters": {
+"property": "state",
+"comparator": "eq",
+"value": "michigan",
+"result": "homePrice"
+}
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"some_michigan_price": 459312
+}
+]
+}
+back to top
+Regional Feature Importance
+Returns the regional importance score for a particular attribute. This is the average of the absolute value of the explainability value for all the inferences. This is only available if Explainability has been enabled for the model.
+Query Request:
+JSON{
+"select": [
+{
+"function": "regionalFeatureImportance",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"attribute_name": "<pipeline_input_attribute_name> [string]",
+"predicted_attribute_name": "<predicted_attribute_name> [string]",
+"explanation_algorithm": "[limeshap]"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<function_name/alias_name>": "<feature_importance_value> [float]"
+}
+]
+}
+Sample Request:
+JSON{
+"select": [
+{
+"function": "regionalFeatureImportance",
+"parameters": {
+"attribute_name": "AGE",
+"predicted_attribute_name": "prediction_0",
+"explanation_algorithm": "lime"
+}
+}
+],
+"filter": [
+{
+"property": "inference_timestamp",
+"comparator": "gte",
+"value": "2020-12-01T10:00:00Z"
+},
+{
+"property": "inference_timestamp",
+"comparator": "lt",
+"value": "2020-12-22T11:00:00Z"
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"AGE": 0.001406118694451489
+}
+]
+}
+back to top
+Regional Feature Importances
+Returns the regional importance scores for all of the pipeline input attributes. This is the average of the absolute value of the explainability value for all the inferences for each pipeline input attribute. This is only available if Explainability has been enabled for the model.
+Query Request:
+JSON{
+"select": [
+{
+"function": "regionalFeatureImportances",
+"alias": "<alias_name> [optional string]",
+"parameters": {
+"predicted_attribute_name": "<predicted_attribute_name> [string]",
+"explanation_algorithm": "[limeshap]"
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"<attribute_name>": "<feature_importance_value> [float]",
+"<attribute_name>": "<feature_importance_value> [float]",
+"<attribute_name>": "<feature_importance_value> [float]",
+"<attribute_name>": "<feature_importance_value> [float]",
+"<attribute_name>": "<feature_importance_value> [float]"
+}
+]
+}
+Sample Request:
+JSON{
+"select": [
+{
+"function": "regionalFeatureImportances",
+"parameters": {
+"predicted_attribute_name": "prediction_0",
+"explanation_algorithm": "lime"
+}
+}
+],
+"filter": [
+{
+"property": "inference_timestamp",
+"comparator": "gte",
+"value": "2020-12-01T10:00:00Z"
+},
+{
+"property": "inference_timestamp",
+"comparator": "lt",
+"value": "2020-12-22T11:00:00Z"
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"explainer_attribute": "PAY_0",
+"regionalFeatureImportance": 0.055036517803945396
+},
+{
+"explainer_attribute": "PAY_2",
+"regionalFeatureImportance": 0.026880464089676884
+},
+{
+"explainer_attribute": "PAY_3",
+"regionalFeatureImportance": 0.024027941129616155
+},
+{
+"explainer_attribute": "LIMIT_BAL",
+"regionalFeatureImportance": 0.022367882999425544
+},
+{
+"explainer_attribute": "PAY_AMT2",
+"regionalFeatureImportance": 0.019145911247181836
+},
+{
+"explainer_attribute": "PAY_AMT1",
+"regionalFeatureImportance": 0.019052984358794038
+},
+{
+"explainer_attribute": "PAY_AMT3",
+"regionalFeatureImportance": 0.012942233755875516
+},
+{
+"explainer_attribute": "PAY_5",
+"regionalFeatureImportance": 0.011911442095349226
+},
+{
+"explainer_attribute": "PAY_4",
+"regionalFeatureImportance": 0.010464962507962139
+},
+{
+"explainer_attribute": "PAY_6",
+"regionalFeatureImportance": 0.00891260261770653
+},
+{
+"explainer_attribute": "BILL_AMT4",
+"regionalFeatureImportance": 0.007211523900878019
+},
+{
+"explainer_attribute": "BILL_AMT5",
+"regionalFeatureImportance": 0.006279087267628024
+},
+{
+"explainer_attribute": "BILL_AMT1",
+"regionalFeatureImportance": 0.006221344024007549
+},
+{
+"explainer_attribute": "PAY_AMT4",
+"regionalFeatureImportance": 0.005310133724715099
+},
+{
+"explainer_attribute": "PAY_AMT6",
+"regionalFeatureImportance": 0.004135643379284112
+},
+{
+"explainer_attribute": "MARRIAGE",
+"regionalFeatureImportance": 0.004089899824740581
+},
+{
+"explainer_attribute": "EDUCATION",
+"regionalFeatureImportance": 0.003931984513777395
+},
+{
+"explainer_attribute": "PAY_AMT5",
+"regionalFeatureImportance": 0.0033734464617669853
+},
+{
+"explainer_attribute": "SEX",
+"regionalFeatureImportance": 0.0029222783744727687
+},
+{
+"explainer_attribute": "BILL_AMT6",
+"regionalFeatureImportance": 0.002707692309829875
+},
+{
+"explainer_attribute": "BILL_AMT2",
+"regionalFeatureImportance": 0.001955133839877692
+},
+{
+"explainer_attribute": "BILL_AMT3",
+"regionalFeatureImportance": 0.001779632159224476
+},
+{
+"explainer_attribute": "AGE",
+"regionalFeatureImportance": 0.001406118694451494
+}
+]
+}
+rankedItemMaxK
+Returns the maximum position of a specified ranked list item across all ranked list data for a model. Maximum position in this case refers to the largest index the item sits at in a ranked list array, not the highest ranking. If the specified item is not in any array, the function will return None. For use with ranked list type attributes only. The property name should have the _item_id suffix appended to it.
+Query Request:
+JSON{
+"select": [
+{
+"function": "rankedItemMaxK",
+"parameters": {
+"property": <ranked_list_attr_name>_item_id,
+"item_filter": <item_identifier>
+}
+}
+]
+}
+Query Response:
+JSON{
+"query_result": [
+{
+"rankedItemMaxK": <maxK>
+}
+]
+}
+Sample Request:
+JSON{
+"select": [
+{
+"function": "rankedItemMaxK",
+"parameters": {
+"property": "recommendations_item_id",
+"item_filter": "item1"
+}
+}
+]
+}
+Sample Response:
+JSON{
+"query_result": [
+{
+"rankedItemMaxK": 4
+}
+]
+}
+back to topUpdated about 2 months ago Table of Contents
+Mathematical Functions
+Average
+Average of Absolute Values
+Max
+Min
+Sum
+Variance
+Standard Deviation
+Count
+Count
+Count If
+Categories Count
+Rate
+Distributions
+Distribution
+Quantile
+Decile
+Arg Values
+Arg Max
+Arg Min
+Any If
+Regional Feature Importance
+Regional Feature Importances
+rankedItemMaxK

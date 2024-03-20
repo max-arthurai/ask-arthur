@@ -1,0 +1,42 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/generative-llm
+ Token Sequence (LLM)
+Token Sequence (LLM)Suggest EditsGenerative text model outputs are computer-generated text that mimics human language patterns and structures based on patterns learned from a large dataset. In Arthur, these models are listed under the Token Sequence model type.
+Some common examples of Generative Text models are:
+Headline summarization
+Question and Answering (chatbots)
+Formatted Data in Arthur
+Depending on how you built your generative model and what you are looking to track, there are different types of data that you can track in the platform.
+Attribute (User Text Input)Output (Text Output)Output Likelihood (Token Likelihood) (Optional)Non Input Attribute (numeric or categorical)Dulce est desipere in locoActa, non verba[{"Acta": 0.7, ",": 0.3, "non": 0.8, "verba": 0.34}]Political TopicSi vis amari amaCastigat ridendo mores[{"Cast": 0.56, "igat": 0.4, "ridendo": 0.24, "mores": 0.67}]Entertainment Topic
+Predict Function and Mapping
+Teams need to specify the relationship between the prediction and ground truth columns to help set up their Arthur model's environment to calculate default performance metrics. Here is an example of what that might look like:
+Registering Predict / GT mapping## Registering columns
+arthur_model.build_token_sequence_model(
+input_column="user_input",
+output_text_column="output_text"
+## optional for model types with token likelihood
+output_likelihood_column="token_likelihoods"
+)
+Available Metrics
+When onboarding Token Sequence models, you have a number of default metrics available to you within the UI. You can learn more about each specific metric in the metrics section of the documentation.
+Out-of-the-Box Metrics
+The following metrics are automatically available in the UI (out-of-the-box) when teams onboard a Token Sequence model. Find out more about how to use these metrics in the
+Performance Metrics section. For metric definitions, check out the Glossary.
+MetricMetric TypeAverage Token LikelihoodPerformanceLikelihood StabilityPerformanceAverage Sequence LengthPerformanceInference CountIngestion
+Drift Metrics
+In the platform, drift metrics are calculated compared to a reference dataset. So, once a reference dataset is onboarded for your model, these metrics are available out of the box for comparison. Find out more about these metrics in the Drift and Anomaly section.
+Some things of note: For unstructured data types (like text and image), feature drift is calculated for non-input attributes. Additionally, generative text models create text input and output that can be tracked with multivariate drift.
+PSIFeature DriftKL DivergenceFeature DriftJS DivergenceFeature DriftHellinger DistanceFeature DriftHypothesis TestFeature DriftMultivariate Drift for Prompts (Text Input)Multivariate DriftMultivariate Drift for Predictions (Text Output)Multivariate Drift
+Note: Teams can evaluate drift for inference data at different intervals with our Python SDK and query service (for example, data coming into the model now compared to a month ago).
+User-Defined Metrics
+Whether your team uses a different performance metric, wants to track defined data segments, or needs logical functions to create a metric for external stakeholders (like product or business metrics). Learn more about creating metrics with data in Arthur in the User-Defined Metrics section.
+Available Enrichments
+The following enrichments can be enabled for this model type:
+Anomaly DetectionHot SpotsExplainabilityBias MitigationXUpdated 3 months ago Table of Contents
+Formatted Data in Arthur
+Predict Function and Mapping
+Available Metrics
+Out-of-the-Box Metrics
+Drift Metrics
+User-Defined Metrics
+Available Enrichments

@@ -1,0 +1,159 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/generative-text
+ Generative Text
+Generative TextSuggest EditsThis page discusses the basics of setting up a generative text model and onboarding it to Arthur Scope to monitor generative performance.
+Getting Started
+The first step is to import functions from the arthurai package and establish a connection with Arthur.
+Python# Arthur imports
+from arthurai import ArthurAI
+from arthurai.common.constants import InputType, OutputType, Stage
+arthur = ArthurAI(url="https://app.arthur.ai",
+login="<YOUR_USERNAME_OR_EMAIL>")
+Preparing Data for Arthur
+Arthur Scope does not need your model object itself to monitor performance - only predictions are required
+All you need to monitor your model with Arthur is to upload the predictions your model makes. Here's how to format
+predictions for common generative text model schemas.
+Use the Arthur data type TOKENS for tokenized input and output texts. Arthur expects a list of strings as below for
+tokenized data.
+Python[
+{
+"input_text": "this is the raw input to my model",
+"input_tokens": ["this", "is", "the", "raw", "input", "to", "my", "model"],
+"output_text": "this is model generated text",
+"output_tokens": ["this", "is", "model", "generated", "text"]
+}
+]
+Use the Arthur data type TOKEN_LIKELIHOODS for generated outputs of tokens and their likelihoods. Arthur expects this data type to be formatted as an array of maps from token strings to float likelihoods. Each array index should correspond to one token in the generated sequence. If supplying both TOKENS and TOKEN_LIKELIHOODS for predicted values, the two arrays must be equal in length.
+Python[
+{
+"input_text": "this is the raw input to my model",
+"input_tokens": ["this", "is", "the", "raw", "input", "to", "my", "model"],
+"output_text": "this is model generated text",
+"output_tokens": ["this", "is", "model", "generated", "text"],
+"output_probs": [
+{"this": 0.4, "the": 0.5, "a": 0.1},
+{"is": 0.8, "could": 0.1, "may": 0.1},
+{"model": 0.33, "human": 0.33, "robot": 0.33},
+{"generated": 0.9, "written": 0.03, "dreamt": 0.07},
+{"text": 0.7, "rant": 0.2, "story": 0.1}
+]
+}
+]
+Arthur supports maps of up to 5 token - float key pairs.
+The Arthur SDK provides helper functions for mapping OpenAI response objects or log tensor arrays to Arthur format.
+See the SDK reference for more guidance on usage.
+Registering a Generative Text Model
+Each generative text model is created with a name and with output_type = OutputType.TokenSequence. We also need to specify an input type, which in this case will be InputType.NLP for a text to text model. Here, we register a token sequence model with NLP input specifying a text_delimiter of NOT_WORD:
+Pythonarthur_nlp_model = arthur.model(name="NLPQuickstart",
+input_type=InputType.NLP,
+model_type=OutputType.TokenSequence,
+text_delimiter=TextDelimiter.NOT_WORD)
+Arthur uses the text delimiter to tokenize model input texts and generated texts and track derived insights like sequence length. You can also register your own pre-tokenized values with Arthur for more complex tokenizers. If the registered model uses a custom tokenizer, this is the recommended process outlined in the below section on building a generative text model.
+Below, we show different ways of building a generative text model that depends on which attributes you want to monitor for your model.
+Building a Generative Text Model
+To build a generative text model in the Arthur SDK, use the build_token_sequence_model method on the Arthur Model.
+Here we add one attribute for the input text and one attribute for the model output or generated text.
+Both of these attributes will have the UNSTRUCTURED_TEXT value type in the ArthurModel after calling this method - this means that this data is saved as a string in each inference.
+You should build your model this way if you will only monitor its input and output text and not monitor any of its token processing or likelihood scores.
+Pythonarthur_nlp_model.build_token_sequence_model(input_column='input_text',
+output_text_column='generated_text')
+Registering Pre-tokenized Text
+Optionally, token sequence models also support adding token information. In the below example, the tokenized input text is specified in theinput_token_column and the final tokens selected for the generated output are specified in theoutput_token_column.
+This method builds a model with four attributes to monitor for your generative text model.
+While the text attributes will still have the UNSTRUCTURED_TEXT value type, the token attributes will have the TOKENS value type means that these attributes are represented as a list of tokens for each inference.
+You should build your model this way if you are going to monitor the inferences in their tokenized form as well as in their text form - this may help distinguish performance behaviors due to the base model from performance behaviors due to the tokenization.
+Pythonarthur_nlp_model.build_token_sequence_model(input_column='input_text',
+output_text_column='generated_text',
+input_token_column='input_tokens',
+output_token_column='output_tokens')
+Registering Tokens With Likelihoods
+You can attach likelihoods to the generated tokens by specifying the output_likelihood_column:
+Pythonarthur_nlp_model.build_token_sequence_model(input_column='input_text',
+output_text_column='generated_text',
+input_token_column='input_tokens',
+output_token_column='output_tokens',
+output_likelihood_column='output_probs')
+It is not required to specify both a output_token_column and an output_likelihood_column-
+if only the output_likelihood_column is specified, greedy decoding will be assumed.
+Registering a Ground Truth Sequence
+Lastly, adding a ground truth sequence to the model is optional. Ground truth has the same tokenization support as model input and output texts.
+Pythonarthur_nlp_model.build_token_sequence_model(input_column='input_text',
+output_text_column='generated_text',
+ground_truth_text_column='ground_truth_text')
+Adding Inference Metadata
+We now have a model schema with input, predicted value, and ground truth data defined. Additionally, we can add non-input data attributes to track other information associated with each inference but not necessarily part of the model pipeline.
+For generative text models, tracking production signals as performance feedback is often of interest. Here,
+we add one continuous attribute and one boolean attribute to measure the success of our model for a use case.
+Pythonarthur_nlp_model.add_attribute(name='edit_duration', value_type=ValueType.Float, stage=Stage.NonInputData)
+arthur_nlp_model.add_attribute(name='accepted_by_user', value_type=ValueType.Boolean, stage=Stage.NonInputData)
+Reviewing the Model Schema
+Before you register your model with Arthur by calling arthur_model.save()you can call arthur_model.review() the model schema to check that it is correct.
+For a TokenSequence model with NLP input, the model schema should look similar to this:
+Python
+name
+stage
+value_type
+categorical
+is_unique
+0
+text_attr
+PIPELINE_INPUT
+UNSTRUCTURED_TEXT
+False
+True
+1
+pred_value
+PREDICTED_VALUE
+UNSTRUCTURED_TEXT
+False
+False
+...
+2
+pred_tokens
+PREDICTED_VALUE
+TOKEN_LIKELIHOODS
+False
+False
+3
+non_input_1
+NON_INPUT_DATA
+FLOAT
+False
+False
+...
+Finishing Onboarding
+Once you have finished formatting your reference data and your model schema looks correct use thearthur_model.review(), you are finished registering your model and its attributes, ready to complete onboarding your model.
+To finish onboarding your TokenSequence model, the following steps apply, which is the same for NLP models as it is for models of any InputType and OutputType:
+finishing_onboarding.md
+Sending Inferences
+Since we've already formatted the data, we can use the send_inferences method of the SDK to upload the inferences to Arthur. This functionality is also available directly through the API.
+Pythonarthur_nlp_model.send_inferences([
+{
+"input_text": "this is the raw input to my model",
+"input_tokens": ["this", "is", "the", "raw", "input", "to", "my", "model"],
+"output_text": "this is model generated text",
+"output_tokens": ["this", "is", "model", "generated", "text"],
+"output_probs": [
+{"this": 0.4, "the": 0.5, "a": 0.1},
+{"is": 0.8, "could": 0.1, "may": 0.1},
+{"model": 0.33, "human": 0.33, "robot": 0.33},
+{"generated": 0.9, "written": 0.03, "dreamt": 0.07},
+{"text": 0.7, "rant": 0.2, "story": 0.1}
+]
+}
+])
+Arthur supports maps of up to 5 token - float key pairs.
+The Arthur SDK provides a helper function to map tensor arrays into an Arthur format.
+See the SDK reference for more guidance on usage
+Enrichments
+For an overview of configuring enrichments for NLP models, see the {doc}/user-guide/walkthroughs/enrichments guide.
+Explainability is not currently supported for TokenSequence models, but anomaly detection will be enabled by default.Updated 3 months ago Table of Contents
+Getting Started
+Preparing Data for Arthur
+Registering a Generative Text Model
+Building a Generative Text Model
+Adding Inference Metadata
+Reviewing the Model Schema
+Finishing Onboarding
+Sending Inferences
+Enrichments

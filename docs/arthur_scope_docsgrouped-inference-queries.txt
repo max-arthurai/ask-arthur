@@ -1,0 +1,327 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/grouped-inference-queries
+ Grouped Inference Queries
+Grouped Inference QueriesSuggest EditsInitial analyses that treat inferences as independent of one another can provide tremendous value. But over time, models often make multiple predictions about the same real-world entities. No matter what you're predicting, it can be helpful to compare the inputs and outputs of your model on an entity-by-entity basis.
+For example, let's say that your model makes predictions about whether customers will make a purchase in the next 30 days. You might have the following attributes:
+customer_id: a non-input attribute
+will_purchase_pred: the prediction attribute: whether a customer will make a purchase in the next 30 days
+will_purchase_gt: the ground truth attribute: whether a customer actually did make a purchase within 30 days
+recent_purchase_count: an input attribute with the total number of purchases the customer made in the last 90 days
+newsletter_subscriber: an input attribute depicting whether the customer subscribes to the deals newsletter
+Your model might be run on the full universe of Customer IDs at some regular interval. With Arthur's powerful Query API, you can follow inferences for each Customer ID through time and answer questions like:
+How does recent_purchase_count tend to change for each customer, from the first to last time inference is conducted?
+What is the per-customer variance of recent_purchase_count across time?
+How many customers changed their newsletter subscription status, from one month ago to today?
+What is the distribution of the lifetimes of Customer IDs?
+Example Queries
+We'll walk through some example queries for these entity-by-entity comparisons, exploring the sample case outlined above.
+Per-Customer Variance
+We can look at how consistent recent_purchase_count is for each customer across time. We'll compute the variance in recent_purchase_count for each customer across all their inferences, and then roll those individual variances up into a distribution.
+JSON{
+"select": [
+{
+"function": "distribution",
+"alias": "recent_purchase_count_variance_distribution",
+"parameters": {
+"property": {
+"nested_function": {
+"function": "variance",
+"parameters": {
+"property": "recent_purchase_count"
+}
+}
+},
+"num_bins": 20
+}
+}
+],
+"subquery": {
+"select": [
+{
+"property": "recent_purchase_count"
+},
+{
+"property": "customer_id"
+}
+],
+"group_by": [
+{
+"property": "customer_id"
+}
+]
+}
+}
+Change Across Batches
+If our model is a batch model, we might want to compare the values for each customer between two difference batches. We'll again look at the distribution of change in the recent_purchase_count, but this time look at the difference for each customer between two specific batches.
+JSON{
+"select": [
+{
+"function": "distribution",
+"alias": "recent_purchase_count_difference_distribution",
+"parameters": {
+"property": {
+"nested_function": {
+"function": "subtract",
+"parameters": {
+"left": "batch1_recent_purchase_count",
+"right": "batch2_recent_purchase_count"
+}
+}
+},
+"num_bins": 20
+}
+}
+],
+"subquery": {
+"select": [
+{
+"property": "customer_id"
+},
+{
+"property": "batch1_recent_purchase_count"
+},
+{
+"property": "batch2_recent_purchase_count"
+}
+],
+"subquery": {
+"select": [
+{
+"property": "customer_id"
+},
+{
+"function": "anyIf",
+"parameters": {
+"result": "recent_purchase_count",
+"property": "batch_id",
+"comparator": "eq",
+"value": "batch1"
+},
+"alias": "batch1_recent_purchase_count"
+},
+{
+"function": "anyIf",
+"parameters": {
+"result": "recent_purchase_count",
+"property": "batch_id",
+"comparator": "eq",
+"value": "batch2"
+},
+"alias": "batch2_recent_purchase_count"
+}
+],
+"group_by": [
+{
+"property": "customer_id"
+}
+]
+},
+"where": [
+{
+"property": "batch1_recent_purchase_count",
+"comparator": "NotNull"
+},
+{
+"property": "batch2_recent_purchase_count",
+"comparator": "NotNull"
+}
+]
+}
+}
+Change Across First to Last Inference Per Customer
+We can again compare the difference between two absolute points, but instead of comparing fixed batches compute it for the earliest and latest inference for each customer:
+JSON{
+"select": [
+{
+"function": "distribution",
+"alias": "recent_purchase_count_difference_distribution",
+"parameters": {
+"property": {
+"nested_function": {
+"function": "subtract",
+"parameters": {
+"left": "newest_recent_purchase_count",
+"right": "oldest_recent_purchase_count"
+}
+}
+},
+"num_bins": 20
+}
+}
+],
+"subquery": {
+"select": [
+{
+"property": "customer_id"
+},
+{
+"function": "argMax",
+"parameters": {
+"argument": "inference_timestamp",
+"value": "recent_purchase_count"
+},
+"alias": "newest_recent_purchase_count"
+},
+{
+"function": "argMin",
+"parameters": {
+"argument": "inference_timestamp",
+"value": "recent_purchase_count"
+},
+"alias": "oldest_recent_purchase_count"
+}
+],
+"group_by": [
+{
+"property": "customer_id"
+}
+]
+}
+}
+Change in Categorical Variables
+We can also look at change in categorical variables on an entity-by-entity basis. Let's look at the distribution of customers who remained subscribed, remained unsubscribed, newly subscribed, or newly unsubscribed from one batch to the next.
+JSON{
+"select": [
+{
+"alias": "batch1_not_subscribed",
+"function": "equals",
+"parameters": {
+"left": "batch1_newsletter_subscriber",
+"right": 0
+}
+},
+{
+"alias": "batch1_is_subscribed",
+"function": "equals",
+"parameters": {
+"left": "batch1_newsletter_subscriber",
+"right": 1
+}
+},
+{
+"alias": "batch2_not_subscribed",
+"function": "equals",
+"parameters": {
+"left": "batch2_newsletter_subscriber",
+"right": 0
+}
+},
+{
+"alias": "batch2_is_subscribed",
+"function": "equals",
+"parameters": {
+"left": "batch2_newsletter_subscriber",
+"right": 1
+}
+},
+{
+"alias": "stayed_unsubscribed_count",
+"function": "and",
+"parameters": {
+"left": {
+"alias_ref": "batch1_not_subscribed"
+},
+"right": {
+"alias_ref": "batch2_not_subscribed"
+}
+}
+},
+{
+"alias": "did_subscribe_count",
+"function": "and",
+"parameters": {
+"left": {
+"alias_ref": "batch1_not_subscribed"
+},
+"right": {
+"alias_ref": "batch2_is_subscribed"
+}
+}
+},
+{
+"alias": "stayed_subscribed_count",
+"function": "and",
+"parameters": {
+"left": {
+"alias_ref": "batch1_is_subscribed"
+},
+"right": {
+"alias_ref": "batch2_is_subscribed"
+}
+}
+},
+{
+"alias": "did_unsubscribe_count",
+"function": "and",
+"parameters": {
+"left": {
+"alias_ref": "batch1_is_subscribed"
+},
+"right": {
+"alias_ref": "batch2_not_subscribed"
+}
+}
+}
+],
+"subquery": {
+"select": [
+{
+"property": "customer_id"
+},
+{
+"property": "batch1_newsletter_subscriber"
+},
+{
+"property": "batch2_newsletter_subscriber"
+}
+],
+"subquery": {
+"select": [
+{
+"property": "customer_id"
+},
+{
+"function": "anyIf",
+"parameters": {
+"result": "newsletter_subscriber",
+"property": "batch_id",
+"comparator": "eq",
+"value": "batch1"
+},
+"alias": "batch1_newsletter_subscriber"
+},
+{
+"function": "anyIf",
+"parameters": {
+"result": "newsletter_subscriber",
+"property": "batch_id",
+"comparator": "eq",
+"value": "batch2"
+},
+"alias": "batch2_newsletter_subscriber"
+}
+],
+"group_by": [
+{
+"property": "customer_id"
+}
+]
+},
+"where": [
+{
+"property": "batch1_newsletter_subscriber",
+"comparator": "NotNull"
+},
+{
+"property": "batch2_newsletter_subscriber",
+"comparator": "NotNull"
+}
+]
+}
+}
+Updated 3 months ago Table of Contents
+Example Queries
+Per-Customer Variance
+Change Across Batches
+Change Across First to Last Inference Per Customer
+Change in Categorical Variables

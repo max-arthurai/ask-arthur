@@ -1,0 +1,9 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/upgrading
+ Upgrading
+UpgradingSuggest EditsArthur's platform installer leverages an open-source solution called Kubernetes Off-The-Shelf (KOTS).
+Please refer to the below links for upgrading the platform components.
+Upgrading the platform application
+Upgrading the Admin Console
+Upgrading the embedded Kubernetes cluster for VM install
+Updated 3 months ago

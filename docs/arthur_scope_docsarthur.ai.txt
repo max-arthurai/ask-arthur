@@ -1,0 +1,221 @@
+Content type: arthur_scope_docs
+Source: https://sdk.docs.arthur.ai
+ Arthur SDK Reference documentation
+Contents
+Menu
+Expand
+Light mode
+Dark mode
+Auto light/dark mode
+Hide navigation sidebar
+Hide table of contents sidebar
+Toggle site navigation sidebar
+Arthur SDK Reference
+documentation
+Toggle Light / Dark / Auto color theme
+Toggle table of contents sidebar
+Arthur Docs
+SDK Home
+Permissions by Function
+arthuraiToggle child pages in navigation
+arthurai.clientToggle child pages in navigation
+arthurai.client.apiv3
+arthurai.client.authToggle child pages in navigation
+arthurai.client.auth.AuthRefresher
+arthurai.client.clientToggle child pages in navigation
+arthurai.client.client.new_requests_client
+arthurai.client.client.ArthurAI
+arthurai.client.helperToggle child pages in navigation
+arthurai.client.helper.construct_url
+arthurai.client.helper.get_arthur_internal_user_org
+arthurai.client.helper.get_auth_info
+arthurai.client.helper.get_current_org
+arthurai.client.helper.user_login
+arthurai.client.httpToggle child pages in navigation
+arthurai.client.http.arthurToggle child pages in navigation
+arthurai.client.http.arthur.ArthurHTTPClient
+arthurai.client.http.baseToggle child pages in navigation
+arthurai.client.http.base.AbstractHTTPClient
+arthurai.client.http.requestsToggle child pages in navigation
+arthurai.client.http.requests.HTTPClient
+arthurai.client.validationToggle child pages in navigation
+arthurai.client.validation.validate_multistatus_response_and_get_failures
+arthurai.client.validation.validate_response_status
+arthurai.commonToggle child pages in navigation
+arthurai.common.constantsToggle child pages in navigation
+arthurai.common.constants.AccuracyMetric
+arthurai.common.constants.Enrichment
+arthurai.common.constants.EnrichmentStatus
+arthurai.common.constants.ImageContentType
+arthurai.common.constants.ImageResponseType
+arthurai.common.constants.InferenceType
+arthurai.common.constants.InputType
+arthurai.common.constants.ListableStrEnum
+arthurai.common.constants.ModelStatus
+arthurai.common.constants.OutputType
+arthurai.common.constants.Role
+arthurai.common.constants.Stage
+arthurai.common.constants.TextDelimiter
+arthurai.common.constants.TimestampInferenceType
+arthurai.common.constants.ValueType
+arthurai.common.exceptionsToggle child pages in navigation
+arthurai.common.exceptions.arthur_excepted
+arthurai.common.logToggle child pages in navigation
+arthurai.common.log.disable_debug_logging
+arthurai.common.log.enable_debug_logging
+arthurai.common.log.initialize_logging
+arthurai.common.log.InfoFilter
+arthurai.coreToggle child pages in navigation
+arthurai.core.alertsToggle child pages in navigation
+arthurai.core.alerts.validate_parameters_for_alert
+arthurai.core.alerts.Alert
+arthurai.core.alerts.AlertRule
+arthurai.core.alerts.AlertRuleBound
+arthurai.core.alerts.AlertRuleSeverity
+arthurai.core.alerts.AlertStatus
+arthurai.core.alerts.Metric
+arthurai.core.alerts.MetricType
+arthurai.core.attributesToggle child pages in navigation
+arthurai.core.attributes.get_attribute_order_stage
+arthurai.core.attributes.ArthurAttribute
+arthurai.core.attributes.AttributeBin
+arthurai.core.attributes.AttributeCategory
+arthurai.core.auth_infoToggle child pages in navigation
+arthurai.core.auth_info.AuthInfo
+arthurai.core.baseToggle child pages in navigation
+arthurai.core.base.ArthurBaseJsonDataclass
+arthurai.core.biasToggle child pages in navigation
+arthurai.core.bias.bias_metricsToggle child pages in navigation
+arthurai.core.bias.bias_metrics.BiasMetrics
+arthurai.core.bias.bias_wrapperToggle child pages in navigation
+arthurai.core.bias.bias_wrapper.ArthurBiasWrapper
+arthurai.core.bias.threshold_mitigationToggle child pages in navigation
+arthurai.core.bias.threshold_mitigation.Curves
+arthurai.core.bias.threshold_mitigation.ThresholdMitigation
+arthurai.core.data_serviceToggle child pages in navigation
+arthurai.core.data_service.DatasetService
+arthurai.core.data_service.ImageZipper
+arthurai.core.dataset_validation_utilsToggle child pages in navigation
+arthurai.core.dataset_validation_utils.ensure_obj_matches_attr_value_type
+arthurai.core.dataset_validation_utils.get_first_elem_if_valid_list
+arthurai.core.dataset_validation_utils.obj_value_type_mismatch_err
+arthurai.core.dataset_validation_utils.valid_rec_obj
+arthurai.core.dataset_validation_utils.validate_attr_names
+arthurai.core.dataset_validation_utils.validate_series_data_type
+arthurai.core.dataset_validation_utils.validate_token_likelihoods_type
+arthurai.core.decoratorsToggle child pages in navigation
+arthurai.core.decorators.log_prediction
+arthurai.core.enrichment_status_waiterToggle child pages in navigation
+arthurai.core.enrichment_status_waiter.await_enrichments_ready
+arthurai.core.enrichment_status_waiter.EnrichmentStatusWaiter
+arthurai.core.enrichment_status_waiter.StatusForEnrichment
+arthurai.core.inferencesToggle child pages in navigation
+arthurai.core.inferences.add_inference_metadata_to_dataframe
+arthurai.core.inferences.add_predictions_or_ground_truth
+arthurai.core.inferences.nest_inference_and_ground_truth_data
+arthurai.core.inferences.nest_reference_data
+arthurai.core.inferences.parse_stage_attributes
+arthurai.core.model_status_waiterToggle child pages in navigation
+arthurai.core.model_status_waiter.ModelStatusWaiter
+arthurai.core.model_utilsToggle child pages in navigation
+arthurai.core.model_utils.check_attr_is_bias
+arthurai.core.model_utils.check_has_bias_attrs
+arthurai.core.model_utils.get_positive_predicted_class
+arthurai.core.model_utils.tensors_to_arthur_inference
+arthurai.core.modelsToggle child pages in navigation
+arthurai.core.models.ArthurModel
+arthurai.core.models.ArthurModelGroup
+arthurai.core.models.ExplainabilityParameters
+arthurai.core.status_waiterToggle child pages in navigation
+arthurai.core.status_waiter.StatusWaiter
+arthurai.core.utilToggle child pages in navigation
+arthurai.core.util.can_cast
+arthurai.core.util.dataframe_like_to_list_of_dicts
+arthurai.core.util.intersection_is_non_empty
+arthurai.core.util.is_bool_like
+arthurai.core.util.is_date_like
+arthurai.core.util.is_float_like
+arthurai.core.util.is_int_like
+arthurai.core.util.is_list_like
+arthurai.core.util.is_str_like
+arthurai.core.util.is_valid_datetime_obj
+arthurai.core.util.retrieve_json_files
+arthurai.core.util.retrieve_parquet_files
+arthurai.core.util.series_to_df
+arthurai.core.util.standardize_pd_obj
+arthurai.core.util.update_column_in_list_of_dicts
+arthurai.core.util.NumpyEncoder
+arthurai.core.vizToggle child pages in navigation
+arthurai.core.viz.style
+arthurai.core.viz.utilsToggle child pages in navigation
+arthurai.core.viz.utils.get_pred_and_gt_attrs
+arthurai.core.viz.utils.savgol_filter
+arthurai.core.viz.visualizerToggle child pages in navigation
+arthurai.core.viz.visualizer.DataVisualizer
+arthurai.datasetsToggle child pages in navigation
+arthurai.datasets.arthur_exampleToggle child pages in navigation
+arthurai.datasets.arthur_example.ArthurExample
+arthurai.datasets.arthur_example.ArthurExampleSchema
+arthurai.datasets.downloadToggle child pages in navigation
+arthurai.datasets.download.download_from_s3
+arthurai.datasets.download.get_file_keys_in_s3_folder
+arthurai.datasets.download.load_downloaded_file
+arthurai.datasets.download.ArthurDatasetSource
+arthurai.datasets.download.ArthurExampleDownloader
+arthurai.explainabilityToggle child pages in navigation
+arthurai.explainability.arthur_explainerToggle child pages in navigation
+arthurai.explainability.arthur_explainer.ArthurExplainer
+arthurai.explainability.arthur_explainer.EmptyLimeExplanation
+arthurai.explainability.explanation_packagerToggle child pages in navigation
+arthurai.explainability.explanation_packager.ExplanationPackager
+arthurai.explainability.validationToggle child pages in navigation
+arthurai.explainability.validation.validate_predicted_attribute_order_matches_dataframe
+arthurai.explainability.validation.validate_predicted_attribute_order_matches_remote
+arthurai.utilToggle child pages in navigation
+arthurai.util.format_time_series_attr_timestamps
+arthurai.util.format_timestamp
+arthurai.util.format_timestamps
+arthurai.util.generate_timestamps
+arthurai.util.is_valid_datetime_string
+arthurai.util.normal_random_ints_fixed_sum
+arthurai.util.value_type_to_python_type
+arthurai.version
+Back to top
+Toggle Light / Dark / Auto color theme
+Toggle table of contents sidebar
+Arthur SDK Python API Reference#
+This page contains the complete Python API reference for Arthur’s SDK. For guides and concepts, see
+our main docs.
+Essentials#
+There are a few touch points that are most commonly needed in the SDK. These are:
+The ArthurAI client to create a connection to Arthur
+Its ArthurAI.model() method to create a new (empty) model
+Its ArthurAI.get_model() to fetch an existing model already registered with Arthur
+The ArthurModel class (returned by both of the above methods) to interact with a particular model
+Its ArthurModel.build() method to construct a new model from a DataFrame
+Its ArthurModel.save() method to register a model with the Arthur platform
+Contents#
+Arthur Docs
+SDK Home
+Permissions by Function
+arthurai
+arthurai.client
+arthurai.common
+arthurai.core
+arthurai.datasets
+arthurai.explainability
+arthurai.util
+arthurai.version
+Indices#
+Index
+Module Index
+Next
+Permissions by Function
+Copyright © 2022, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+Arthur SDK Python API Reference
+Essentials
+Contents
+Indices

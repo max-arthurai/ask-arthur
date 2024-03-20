@@ -1,0 +1,80 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/enabling-enrichments
+ Enabling Enrichments
+Enabling EnrichmentsSuggest EditsAs discussed in detail in the Enrichments section above, many teams require more than standard inference logging monitoring. For this reason, Arthur provides Enrichments.
+Functions within Enrichment Enablement
+There are three main functionalities for toggling enrichments on and off within Arthur. These are:
+Getting the current configuration of the enrichment: understand whether or not the enrichment is enabled / disabled. This can be validated in a notebook environment (as shown in the below examples) or within the Arthur UI for the model under details.
+Enable the enrichment: functionality to turn the enrichment on. This is not currently available in the UI and must be done with the Python SDK or an API call.
+Disable the enrichment: functionality to turn the enrichment off. This is not currently available in the UI and must be done with the Python SDK or an API call.
+Anomaly Detection
+Anomaly detection allows users to go beyond univariate drift analysis and look at complex interactions between features that may cause drift. To learn more in detail about anomaly detection, please refer to its doc's section here:
+Enable Anomaly Detection
+Anomaly detection is the only enrichment automatically enabled within Arthur, as long as your model has a reference dataset attached to it.
+Python## Using the Arthur Python SDK
+# view current configuration
+arthur_model.get_enrichment(Enrichment.AnomalyDetection)
+# enable
+arthur_model.update_enrichment(Enrichment.AnomalyDetection, True, {})
+# disable
+arthur_model.update_enrichment(Enrichment.AnomalyDetection, False, {})
+Explainability
+One of the most commonly enabled enrichments is explainability. Explainability allows teams to build trust with valuable insights into how models make decisions. It allows teams to understand why predictions are being made and evaluate how changes to model input change predictions.
+You can learn more about how to use our explainability capabilities here, but
+Model Asset Requirements
+Arthur can automatically calculate explanations (feature importances) for every prediction your model makes. To make this possible, we package up your model in a way that allows us to call it'spredict function, which allows us to calculate explanations. We require a few things from your end:
+A Python script that wraps your model's predict function
+For Image models, a second function, load_image is also required.
+A directory containing the above file, along with any serialized model files, and other supporting code
+A requirements.txt with the dependencies to support the above
+More detailed explanations about the model assets required here.
+PythonEntrypoint FileExample Requirements.txt## enabling explainability
+arthur_model.enable_explainability(
+df=X_train.head(50),
+project_directory="/path/to/model_folder/",
+requirements_file="requirements.txt",
+user_predict_function_import_path="model_entrypoint",
+ignore_dirs=["folder_to_ignore"] # optionally exclude directories within the project folder from being bundled with predict function
+)
+## Common examples per model type can be found in the model input/output pages
+# example_entrypoint.py
+sk_model = joblib.load("./serialized_model.pkl")
+def predict(x):
+return sk_model.predict_proba(x)
+boto3>=1.0
+numpy>=1.0
+pandas>=1.0
+scikit-learn>=0.23.0
+Find more information about troubleshooting explainability here.
+Hot Spots
+Hot spots help teams automatically surface rule-based segments of your data for underperformance. Learn more about how in the hot spots section of the documentation here.
+Enable Hot Spots
+Since Hot Spots rely only on inference data, no additional configuration is needed to enable them within the platform.
+Python# view current configuration
+arthur_model.get_enrichment(Enrichment.Hotspots)
+# enable
+arthur_model.update_enrichment(Enrichment.Hotspots, True, {})
+# disable
+arthur_model.update_enrichment(Enrichment.Hotspots, False, {})
+Bias Mitigation
+As a reminder about a few of bias mitigation's "only's" that affect enrichment enablement.
+Bias Mitigation is only available for binary classification models
+It can only be enabled if at least one model attribute is marked as monitor_for_bias=True
+So by default, any binary classifier that you want to enable bias mitigation for will automatically train a mitigation model for all attributes marked as monitor_for_bias=True.
+Enable Bias Mitigation
+Default Bias Mitigation (all marked attributes)Bias Mitigation for a Specific Attribute# view current configuration
+arthur_model.get_enrichment(Enrichment.BiasMitigation)
+# enable
+arthur_model.update_enrichment(Enrichment.BiasMitigation, True, {})
+# or
+arthur_model.enable_bias_mitigation()
+Updated 3 months ago What’s NextSending InferencesAssets Required For ExplainabilityTroubleshooting ExplainabilityTable of Contents
+Functions within Enrichment Enablement
+Anomaly Detection
+Enable Anomaly Detection
+Explainability
+Model Asset Requirements
+Hot Spots
+Enable Hot Spots
+Bias Mitigation
+Enable Bias Mitigation

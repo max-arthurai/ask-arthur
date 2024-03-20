@@ -1,0 +1,196 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/sagemaker-data-capture
+ SageMaker
+SageMakerUsing SageMaker Data CaptureSuggest EditsModels deployed with AWS SageMaker can be configured to automatically push their real-time inferences to Arthur Scope by utilizing SageMaker Data Capture. This guide walks through setting up that integration and utilizing a Lambda function to send Data Capture to log files to be ingested by the Arthur platform.
+Prerequisites
+The model for which inferences are being ingested has already been onboarded onto Arthur.
+The SageMaker model schema matches that of its Arthur model counterpart.
+SageMaker Configuration
+AWS SageMaker offers two features that enable this Arthur integration: Real-time endpoints & Data Capture. Endpoints are APIs that expose a trained model. Users can use the API to retrieve predictions from the hosted model in the endpoint. Data Capture is a feature that logs the inputs and outputs of each prediction from the hosted model endpoints.
+To enable Data Capture in a way that accurately logs all input and output data needed for the Arthur integration, a configuration must be passed in when deploying an endpoint (see below).
+Configuring Data Capture through the SageMaker SDK
+An extended description of the following configuration can be found in the "SageMaker Python SDK" tab of the SageMaker Data Capture documentation.
+Pythonfrom sagemaker.model import Model
+from sagemaker.model_monitor import DataCaptureConfig
+s3_capture_upload_path = f"s3://{bucket-name}/{model-specific-path}/datacapture"
+model = Model( ... )
+data_capture_config = DataCaptureConfig(
+enable_capture=True,
+sampling_percentage=100,
+destination_s3_uri=s3_capture_upload_path,
+capture_options=['REQUEST','RESPONSE'],
+)
+model.deploy(
+data_capture_config=data_capture_config,
+...
+)
+This integration requires that DataCaptureConfig be set such that:
+capture_options includes both REQUEST and RESPONSE to record model inputs and outputs for each inference
+sampling_percentage is set to 100to comprehensively ingest all new inferences
+enable_capture is set to True
+Configuring Data Capture through the SageMaker API
+Users can also call the CreateEndpoint API to create a real-time endpoint via the API. To ensure that this endpoint is deployed with Data Capture enabled, it must receive an EndpointConfigName that matches an EndpointConfig created using the CreateEndpointConfig API with the following specifications:
+{
+...,
+"DataCaptureConfig": {
+"CaptureContentTypeHeader": {
+"CsvContentTypes": [ "string" ],
+"JsonContentTypes": [ "string" ]
+},
+"CaptureOptions": [
+{
+"CaptureMode": "Input"
+},
+{
+"CaptureMode": "Output"
+}
+],
+"DestinationS3Uri": "string",
+"EnableCapture": true,
+"InitialSamplingPercentage": 100,
+"KmsKeyId": "string"
+},
+"EndpointConfigName": "string",
+...
+}
+This integration requires that DataCaptureConfig be set such that:
+CaptureContentTypeHeader be specified to an Arthur-supported content type (see section below). If no CsvContentTypes or JsonContentTypes are specified, SageMaker will by default base64 encode when capturing the data. This content type is currently not supported by the Arthur platform.
+CaptureOptions be set to both the Input and Output Capture Modes.
+EnableCapture be set to true.
+InitialSamplingPercentage be set to 100.
+Supported Data Formats
+AWS SageMaker algorithms can accept and produce numerous MIME types for the HTTP payloads used in retrieving predictions from endpoint-hosted models. The MIME type utilized in an endpoint invocation also corresponds to the format of the Data Captured inference.
+The Arthur platform supports the following MIME types/data formats for those types:
+MIME Type: text/csv
+37,Self-emp-not-inc,227253,Preschool,1,Married-civ-spouse,Sales,Husband,White,Male,0,0,30,Mexico\n24,Private,211129,Bachelors,13,Never-married,Exec-managerial,Other-relative,White,Female,0,0,60,United-States\n
+Each inference is represented as an ordered row of comma-separate values, where each value represents a feature in the inference
+These features must be specified in the same order as their counterparts in the corresponding Arthur Model
+If multiple inferences are included in a single call to invoke_endpoint, each inference is separated by \n
+MIME Type: application/json
+Arthur currently supports two unique JSON formats, described with examples below.
+Option 1: Column-Ordered List of Feature-Values
+JSON{
+"instances": [
+{
+"features": [1.5, 16, "testStringA", false]
+},
+{
+"features": [2.0, 12, "testStringB", true]
+}
+]
+}
+Each inference is represented as a new object inside a JSON array
+The upper-level key mapping to this inference array is named one of the following: instances, predictions
+Each object within this JSON array is a key mapping to an ordered array of features
+The second level key mapping to this feature array is named one of the following: features, probabilities
+Option 2: Feature-Name Keys to Values Map
+JSON{
+"predictions": [
+{
+"closest_cluster": 5,
+"distance_to_cluster": 36.5
+},
+{
+"closest_cluster": 2,
+"distance_to_cluster": 90.3
+}
+]
+}
+Each inference is represented as an object inside a JSON array
+The upper-level key mapping to this inference array is named one of the following: instances, predictions
+Each object within this JSON array has keys representing feature names mapping to their corresponding feature values.
+The names of these features cannot be any one of the following: instances, predictions, features, probabilities
+Specifying Partner Inference ID on Arthur-Ingested Data Capture Inferences
+The Arthur platform enforces that each uploaded inference has a Partner Inference ID, which is a unique identifier used as the matching mechanism for joining ground truth data. Arthur's SageMaker integration populates the Arthur Inference ID from two possible sources in SageMaker. The default is to use SageMaker's EventID, which is a random ID auto-generated by SageMaker for each request. SageMaker's EventID is captured in the eventMetadata/eventId field of the data capture output files. As another option, SageMaker allows Invoke-Endpoint API callees to specify an InferenceId (or inference-id) to a call when using the API, SDK function, or CLI to invoke an endpoint. When InferenceId is specified, SageMaker appends an eventMetadata/inferenceId field to the Data Capture event. Both approaches generate a single eventId or inferenceId for each call to Invoke-Endpoint. If an InferenceId is specified, Arthur will use it as the Arthur Partner Inference ID. Otherwise, it will default to the SageMaker EventId.
+One tricky part about SageMaker's Invoke-Endpoint API it allows requesting multiple inferences in a single Invoke-Endpoint API call. In this case, the SageMaker EventId or callee-specified InferenceId would be shared by all inferences in the call and would not be unique. When this occurs, the Arthur integration will append an index number to either the EventId or InferenceId based on the inference order in the call to Invoke-Endpoint.
+When ingesting Data Capture inferences from SageMaker, the following table describes the partner inference ID any given inference is assigned on the Arthur platform.
+SageMaker Invoke Call
+Without Inference ID provided in Invoke Endpoint
+With Inference ID provided in Invoke Endpoint
+Single Inference in Invoke Endpoint
+EventId
+InferenceId
+Multiple Inferences in Invoke Endpoint
+EventId_{index_within_invoke_endpoint_call}
+InferenceId_{index_within_invoke_endpoint_call}
+InferenceId and EventId refer to the Inference ID and Event ID, respectively, provided when calling Invoke Endpoint either through the API or boto3 SDK.
+index_within_invoke_endpoint_call refers to the index of the specific inference within a group of multiple/mini-batch inferences sent through the Invoke-Endpoint call.
+For example, for an Invoke-Endpoint call including CSV data 1,2,3,4\n5,6,7,8\n and Inference ID abcdefg-12345, the inference containing the features 1,2,3,4 would have a partner inference ID of abcdefg-12345_0 on the Arthur platform and the inference containing the features 5,6,7,8 would have a partner inference ID of abcdefg-12345_1.
+(s3_batch_ingestion)=
+AWS Lambda Setup
+This section provides an example of a single-Lambda-per-Arthur-model setup. The following code is meant to serve as an example and can be implemented in a variety of ways that fit your organization's tech stack.
+This build sets up an S3 object creation Lambda trigger to run the function whenever SageMaker writes a file to the bucket. This sample code will then pull the file and upload it to Arthur. In its current form, the code assumes that all S3 object notifications will be for the single model for the configured ARTHUR_MODEL_ID. See the following sections for the configurations required to use the lambda.
+Lambda Function Configurations
+To create the Lambda function, go to the AWS Lambda Console, click "Create function" and select "Use a Blueprint", then search for and select s3-get-object-python.
+Then ensure you select or create an Execution Role with access to your Data Capture upload bucket(s).
+Finally, ensure the following configurations are set and create the function:
+Timeout: 15 min 0 sec (must be set after Lambda function creation in the "Configuration" / "General configuration" tab)
+Environment Variables
+ARTHUR_HOST: The host URL for your Arthur deployment (or https://app.arthur.ai/ for SaaS customers)
+ARTHUR_MODEL_ID: The ID assigned to the Arthur model to accept the new inferences
+ARTHUR_ACCESS_TOKEN: An access token for the Arthur platform
+This can be replaced by the retrieval of this token at Lambda runtime
+The token must, at the very least, provide raw_data write access
+Lambda Function Trigger
+Source: S3
+Bucket: Your Data Capture configured S3 bucket
+Event: All object create events
+Prefix: Path to your model's specific Data Capture output directory
+Suffix: .jsonl
+AWS S3 Trigger Overlap Error
+AWS prevents multiple S3 triggers from applying to the same subset(s) of files. Therefore, be careful in specifying your Prefix / Suffix and the files they indicate. For example, in the following setup of S3 triggers, AWS would raise errors because of overlap with .jsonl files in /modelA/datacapture (triggers A + C) as well as overlap with .tar.gz files in /modelA (triggers B + C):
+Trigger A: (Prefix: s3://bucket/modelA/datacapture) (Suffix: .jsonl)
+Trigger B: (Prefix: s3://bucket/modelA) (Suffix: .tar.gz)
+Trigger C: (Prefix: s3://bucket/modelA) (Suffix: Unspecified)
+In the above cases, AWS will still successfully create the Lambda but will then raise the following error at the top of their UI:
+Your Lambda function "lambda-function-name" was successfully created, but an error occurred when creating the trigger: Configuration is ambiguously defined. Cannot have overlapping suffixes in two rules if the prefixes are overlapping for the same event type.
+Lambda Code
+Pythonimport urllib.parse
+import boto3
+import os
+import requests
+s3 = boto3.client('s3')
+ARTHUR_MODEL_ID = os.environ["ARTHUR_MODEL_ID"]
+# 12345678-1234-1234-1234-1234567890ab
+ARTHUR_HOST = os.environ["ARTHUR_HOST"]
+# https://app.arthur.ai/
+if ARTHUR_HOST[-1] != '/':
+ARTHUR_HOST += '/'
+# Ensure trailing slash exists
+# TODO BY USER
+# FILL IN CODE TO RETRIEVE AN ARTHUR API KEY
+ARTHUR_ACCESS_TOKEN = os.environ["ARTHUR_ACCESS_TOKEN"]
+ARTHUR_ENDPOINT = f"api/v3/models/{ARTHUR_MODEL_ID}/inferences/integrations/sagemaker_data_capture"
+def lambda_handler(event, context):
+# Get the object from the event
+bucket = event['Records'][0]['s3']['bucket']['name']
+key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
+try:
+s3_object = s3.get_object(Bucket=bucket, Key=key)
+datacapture_body = s3_object.get('Body')
+request_url = urllib.parse.urljoin(ARTHUR_HOST, ARTHUR_ENDPOINT)
+print(f"Request: POST {request_url}")
+response = requests.post(
+request_url,
+files={'inference_data': ('smdatacapture.jsonl', datacapture_body, s3_object['ContentType'])},
+headers={'Authorization': ARTHUR_ACCESS_TOKEN}
+)
+print(f"Response: {response.content}")
+except Exception as e:
+print(e)
+print('Error getting object {} from bucket {}. '
+'Make sure they exist and your bucket is in the same region as this function.'.format(key, bucket))
+raise e
+Summary
+With your SageMaker endpoint deployed (with Data Capture configured) and a Lambda function ready for S3 updates, you can send requests to your SageMaker endpoint to generate predictions. The predictions will be logged as files in S3 by Data Capture, and the lambda function will upload the inferences to Arthur, where you can see them in the dashboard.Updated 3 months ago Table of Contents
+Prerequisites
+SageMaker Configuration
+Configuring Data Capture through the SageMaker SDK
+Configuring Data Capture through the SageMaker API
+Supported Data Formats
+Specifying Partner Inference ID on Arthur-Ingested Data Capture Inferences
+AWS Lambda Setup
+Lambda Function Configurations
+Lambda Function Trigger
+Lambda Code
+Summary

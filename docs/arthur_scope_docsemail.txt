@@ -1,0 +1,20 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/email
+ Email
+EmailSuggest EditsOne of the most popular alert notification techniques is through email. This notification technique can easily be set up in the organization or model-level UI.
+Organization Level
+They are typically used when teams want to manage organization-wide email alert notification access over multiple models quickly. Teams can go into the organization's setting page and configure which users will receive email alerts for each model that has alerts enabled.
+Model Level
+If you do not want to look at alerts at an organizational level, you can also set up email alerts per model within an individual model's Alerts tab. Here you can navigate to manage the alert rules of the model. Within this management center, you can select and edit the notification channels for this model. This is where emails are entered and saved for users that wish to receive alerts.
+Resulting Alert
+After configuring your alert email settings, teams are ready to receive alerts for these models to their designated emails.
+An example of an email alert notification sent by Arthur
+Configuring Email Alert Notifications on SSO
+For users in SSO environments to subscribe other users up to email alerts notifications, configure your email domain whitelist through the KOTS admin console to be able to send email alert notifications.
+In the KOTS Admin console, check “Show Other Advanced Options” navigate to the “Other Advanced Options” section
+Under "Other Advanced Options," set a comma-separated list of domains in the “Email Domain Whitelist” field.
+An example of the Email Domain Whitelist within the Admin ConsoleUpdated 3 months ago Table of Contents
+Organization Level
+Model Level
+Resulting Alert
+Configuring Email Alert Notifications on SSO

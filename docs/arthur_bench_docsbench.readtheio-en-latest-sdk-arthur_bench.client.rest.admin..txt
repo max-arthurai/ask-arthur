@@ -1,0 +1,172 @@
+Content type: arthur_bench_docs
+Source: https://bench.readthedocs.io/en/latest/sdk/arthur_bench.client.rest.admin.html
+ arthur_bench.client.rest.admin - bench documentation
+arthur_bench.client.rest.admin#
+Submodules#
+class arthur_bench.client.rest.admin.client.ArthurAdminClient(http_client: HTTPClient)#
+Bases: object
+A Python client to interact with the Arthur Admin API
+authenticate() → AuthenticationInfo#
+Returns authentication info for the calling, token-bearing user
+get_current_user() → UserResponse#
+Returns the currently authenticated user
+login(json_body: LoginRequest) → Tuple[User, RequestsCookieJar]#
+If the login attempt is successful, the user will be returned in the response
+body and an HttpOnly, set-cookie “Authorization” header will be returned
+that contains a JWT to be used in subsequent requests to the API in either
+the “Authorization” or cookie header
+Parameters:
+json_body –
+class arthur_bench.client.rest.admin.models.AuthenticationInfo(*, organization_ids: List[str], issuer: str, external_user_id: str  None = None, internal_user_id: str  None = None, service_account_id: str  None = None, username: str, first_name: str, last_name: str, email: str, roles: List[str])#
+Bases: BaseModel
+email: str#
+The email of the Arthur authenticated user or the email of the external IDP user ifthe IDP is configured with that claim. For Arthur service accounts, this will be
+empty.
+external_user_id: str  None#
+An identifier for an external-IdP token bearer. Populated if this user’s token came
+from an IDP and the IDP configuration specified an oidc.CustomClaimNames that mapped
+UserID to a claim.
+first_name: str#
+The first name of the Arthur authenticated user, or the first name claim if the
+external IDP is configured with one.
+internal_user_id: str  None#
+An identifier for an Arthur-internal user. Populated for Arthur-authenticated users
+with user tokens.
+issuer: str#
+The identifier of the IDP managing this user.
+last_name: str#
+The last name of the Arthur authenticated user, or the last name claim if the
+external IDP is configured with one.
+organization_ids: List[str]#
+A list of organization IDs.
+roles: List[str]#
+The list of roles that this user has. For Arthur tokens, there will always be onerole in this array; however, there can be more than one for external providers.
+service_account_id: str  None#
+An identifier for an Arthur service account. Populated for Arthur-authenticated
+service account tokens.
+username: str#
+Either the Arthur username or the username specified by an external IDP. This will
+be set to arthur.ServiceAccountName for service account tokens.
+class arthur_bench.client.rest.admin.models.LoginRequest(*, login: str, password: str)#
+Bases: BaseModel
+login: str#
+either an email or a username
+password: str#
+class arthur_bench.client.rest.admin.models.User(*, id: str, first_name: str  None = None, last_name: str  None = None, email: str, username: str  None = None, roles: List[str]  None = None, alert_notifications_enabled: bool  None = None, show_intro_sequence: bool  None = None, help_mode_enabled: bool  None = None, created_at: datetime  None = None)#
+Bases: BaseModel
+alert_notifications_enabled: bool  None#
+Whether or not the user will receive email notifications when alerts are triggered,
+defaults to ‘false’
+created_at: datetime  None#
+UTC timestamp of when the user was created
+email: str#
+The user’s email
+first_name: str  None#
+The user’s first name
+help_mode_enabled: bool  None#
+Used by the Arthur dashboard to determine whether or not to show dashboard tooltips
+id: str#
+the unique id of the user
+last_name: str  None#
+The user’s last name
+roles: List[str]  None#
+The user’s roles in the current organization.
+show_intro_sequence: bool  None#
+Used by the Arthur dashboard to determine whether or not to show the user an intro
+sequence upon login
+username: str  None#
+The username the user can use to login
+class arthur_bench.client.rest.admin.models.UserContext(*, name: str  None = None, id: str  None = None)#
+Bases: BaseModel
+id: str  None#
+UUID of the context.
+name: str  None#
+Name of the context.
+class arthur_bench.client.rest.admin.models.UserResponse(*, id: str  None = None, organization_id: str, organization_name: str  None = None, first_name: str  None = None, last_name: str  None = None, email: str  None = None, username: str  None = None, roles: List[str]  None = None, alert_notifications_enabled: bool  None = None, show_intro_sequence: bool  None = None, help_mode_enabled: bool  None = None, plan: str  None = None, created_at: datetime  None = None, contexts: List[UserContext]  None = None)#
+Bases: BaseModel
+Represents an application user, if the client is using a service token then onlyorganization_id and roles will be populated in the object
+alert_notifications_enabled: bool  None#
+Whether or not the user will receive email notifications when alerts are triggered,defaults to ‘false’
+contexts: List[UserContext]  None#
+Contexts that the user has permissions in.
+created_at: datetime  None#
+UTC timestamp of when the user was created
+email: str  None#
+The user’s email
+first_name: str  None#
+The user’s first name
+help_mode_enabled: bool  None#
+Used by the Arthur dashboard to determine whether or not to show dashboard tooltips
+id: str  None#
+the unique id of the user
+last_name: str  None#
+The user’s last name
+organization_id: str#
+The ID of the users current context
+organization_name: str  None#
+The name of the users current context
+plan: str  None#
+string representation of what plan the org of the returned user is associated with(ie. self-service or paidSaas)
+roles: List[str]  None#
+The user’s roles
+show_intro_sequence: bool  None#
+used by the Arthur dashboard to determine whether the user should be shown the introsequence upon login
+username: str  None#
+The username the user can use to login
+Next
+arthur_bench.client.rest.bench
+Previous
+arthur_bench.client.rest
+Copyright © 2023, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+arthur_bench.client.rest.admin
+Submodules
+ArthurAdminClient
+ArthurAdminClient.authenticate()
+ArthurAdminClient.get_current_user()
+ArthurAdminClient.login()
+AuthenticationInfo
+AuthenticationInfo.email
+AuthenticationInfo.external_user_id
+AuthenticationInfo.first_name
+AuthenticationInfo.internal_user_id
+AuthenticationInfo.issuer
+AuthenticationInfo.last_name
+AuthenticationInfo.organization_ids
+AuthenticationInfo.roles
+AuthenticationInfo.service_account_id
+AuthenticationInfo.username
+LoginRequest
+LoginRequest.login
+LoginRequest.password
+User
+User.alert_notifications_enabled
+User.created_at
+User.email
+User.first_name
+User.help_mode_enabled
+User.id
+User.last_name
+User.roles
+User.show_intro_sequence
+User.username
+UserContext
+UserContext.id
+UserContext.name
+UserResponse
+UserResponse.alert_notifications_enabled
+UserResponse.contexts
+UserResponse.created_at
+UserResponse.email
+UserResponse.first_name
+UserResponse.help_mode_enabled
+UserResponse.id
+UserResponse.last_name
+UserResponse.organization_id
+UserResponse.organization_name
+UserResponse.plan
+UserResponse.roles
+UserResponse.show_intro_sequence
+UserResponse.username

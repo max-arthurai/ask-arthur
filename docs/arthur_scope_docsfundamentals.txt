@@ -1,0 +1,335 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/fundamentals
+ Fundamentals
+FundamentalsUnderstanding the Basics of Arthur Query EndpointsSuggest EditsArthur models are queried using a SQL-like wrapper, so a working query's endpoints expect a body that contains the following keys:
+select (required)
+from (optional)
+subquery (optional)
+filter (optional)
+group_by (optional)
+order_by (optional)
+This page is going to go through these endpoints one-by-one to explain what is happening, as well as practice querying some standard information about our model.
+Select
+The select statement of our query allows us to choose what we want to grab out of our database. Typically, when we are grabbing information about our model, we would want to grab one of the "regular" properties within the Arthur database. These properties include:
+all of the model's attributes
+inference_timestamp
+received_timestamp
+inference_id
+partner_inference_id
+ground_truth_timestamp (if ground truth is included)
+batch_id (if batch model)
+Similar to SQL, you can also select all of these attributes at once using the * string
+We can practice running the following query to select inference_id
+Pythonquery = {
+"select": [
+{
+"property": "inference_id"}
+]
+}
+response = arthur_model.query(query)
+response
+response[{'inference_id': '509f34eb-19ae-4a18-b454-6517fed4e76b'},
+{'inference_id': '3392ac21-3cf9-48ad-9e07-e0343b76cc50'},]
+We can see that this grabbed all of the inference ids from the inference dataset. It is important to note that the inference dataset is the default dataset to select from. If we wanted to grab more than one parameter at once in the query, we could do the following:
+Pythonquery = {
+"select": [
+{
+"property": "inference_id"},
+{
+"property": "inference_timestamp"}
+]
+}
+response = arthur_model.query(query)
+response[{'inference_id': '509f34eb-19ae-4a18-b454-6517fed4e76b',
+'inference_timestamp': '2022-11-10T15:22:14.959Z'},
+{'inference_id': '3392ac21-3cf9-48ad-9e07-e0343b76cc50',
+'inference_timestamp': '2022-11-10T15:23:14.959Z'},]
+📘Transformations in Select FunctionsTeams often ask about running transformations in select functions, such as addition, subtraction, or "OR" and "AND" statements. More informationn about creating logic can be found in the Transformation Functions page.
+Unique Model Types
+Object Detection
+Computer Vision models with an Output Type of Object Detection have some special fields you can use when querying. Bounding boxes are sent using the following form: [class_id, confidence, top_left_x, top_left_y, width, height]. While the fields aren't named when sending data, you can access these nested fields when querying.
+Here we can see:
+Pythonquery = {
+"select": [
+{"property": "inference_id"},
+{"property": "objects_detected"}
+]
+}
+arthur_model.query(query)
+response
+Or, to grab each value within the bounding box individually:
+Pythonquery = {
+"select": [
+{"property": "inference_id" },
+{"property": "objects_detected.class_id" }
+]
+}
+arthur_model.query(query)
+response[{'inference_id': '509f34eb-19ae-4a18-b454-6517fed4e76b',
+'class_id': '0'},
+{'inference_id': '3392ac21-3cf9-48ad-9e07-e0343b76cc50',
+'class_id': '1'},]
+Generative Text with Token Likelihoods
+TokenLikelihoods attributes yield two queryable columns for that attribute with suffixes “_tokens” and “_likelihoods” appended to the attribute's name. For example, a model with a TokenLikelihoods attribute named summary_token_probs yields two queryable columns: summary_token_probs_tokens and summary_token_probs_likelihoods which represent an array of the selected tokens and an array of their corresponding likelihoods.
+Pythonquery =
+{"select": [
+{"property": "summary_token_probs_tokens"},
+{"property": "summary_token_probs_likelihoods"}
+]}
+response[{ "summary_token_probs_likelihoods": [
+0.3758265972137451,
+0.6563436985015869,
+0.32000941038131714,
+0.5629857182502747],
+"summary_token_probs_tokens": [
+"this",
+"is",
+"a",
+"summary"] }]
+Property Types
+There are two property types within Arthur.
+"regular" properties - listed above. These are properties available for any table queried.
+"enriched" properties - you must specify these by name to include them in the response and use the from value enriched:
+anomaly_score
+lime_importance
+shap_importance
+We'll learn more about querying from different datasets next.
+From
+In the example above, we could pull data from the inference dataset. The inference dataset is the dataset that is most often queried and therefore set as the default. However, it is only one of the datasets from where we can pull data. All of our sources include:
+inference - The latest raw inference data sent to the platform. This is the default.
+enriched - Every value from the inference data, with additional fields for anomaly scores and explanations. This data has some insert latency compared to the raw table.
+reference - The reference data set uploaded for the model.
+We will talk about the enriched dataset later. So, we can practice pulling an attribute from our reference dataset below
+Pythonquery = {
+"select": [
+{
+"property": "age"}
+]
+, "from": "reference"
+}
+response = arthur_model.query(query)
+response[{'age': 23},
+{'age': 48}]
+Filter
+The next feature we can add to queries within Arthur is filters. These allow us to specify a subset of data we are interested in from a database and grab only them. This filter command works similarly to where in traditional SQL query queries. We create this specification by using comparators to create rules within the data.
+Available Comparators in Arthur
+Numerical Comparison
+eq - Filters where the property field equals the value field.
+ne - Filters where the property field is not equal to the value field.
+lt - Filters where the property field is less than the value field. Only valid for number values.
+gt - Filters where the property field is greater than the value field. Only valid for number values.
+lte - Filters where the property field is less than or equal to the value field. Only valid for number values.
+gte - Filters where the property field is greater than or equal to the value field. Only valid for number values.
+Examplequery = {
+"select": [
+{
+"property": "*"
+}
+],
+"filter": [
+{
+"property": "inference_id",
+"comparator": "eq",
+"value": "509f34eb-19ae-4a18-b454-6517fed4e76b"
+}
+]
+}
+response[{'inference_id': '509f34eb-19ae-4a18-b454-6517fed4e76b'},
+{'age': '22'},
+{"inference_timestamp":"2020-07-22T10:01:23Z"},
+{"attr1":"something}]
+The numerical comparators can also be used to investigate
+Pythonquery = {
+"select": [
+{ "property": "*" },
+{"property": "anomaly_score"}
+],
+"from": "enriched",
+"filter": [
+{"property": "inference_timestamp",
+"comparator": "gte",
+"value": "2020-07-22T10:00:00Z" },
+{ "property": "inference_timestamp",
+"comparator": "lt",
+"value": "2020-07-22T11:00:00Z"
+}
+]
+}
+response[{ "inference_id": "0001",
+"attr1": "something",
+"anomaly_score": 0.34,
+"inference_timestamp": "2020-07-22T10:01:23Z"
+},
+{"inference_id": "0002",
+"attr1": "something",
+"anomaly_score": 0.67,
+"inference_timestamp": "2020-07-22T10:02:55Z" } ]
+In
+in - Filters where the property field is equal to any value in a list of possible values
+This comparator is typically used in count or rate functions to identify values that are in a set list of expected values.
+Pythoncategory_list = ['no college', 'some college', 'bachelors', 'masters','phd',null]
+query= {"select":[{
+"function": "rate",
+"alias": "OldCatRate",
+"parameters": {
+"property": feature_of_interest,
+"comparator": "in",
+"value":category_list
+}
+}
+]}
+arthur_model.query(query)
+response[{"OldCatRate":0.89}]
+Like
+like - Filters where the property field is like the value field. This filter is only valid for property types of unstructured text.
+Python
+Null Values
+NotNull - Filters where the property field is not null. The value field should be empty.
+IsNull - Filters where the property field is null. The value field should be empty.
+Python## Rate of Null Values in Feature
+query = {"select": [
+{"function": "rate",
+"alias": "MarriageNullRate",
+"parameters": {
+"property": "Marriage",
+"comparator": "IsNull",
+"value":""
+}
+}
+]
+}
+response = arthur_model.query(query)
+response[{"MarriageNullRate":0.89}]
+Group By
+The group_byendpoint is used in queries to group rows based on one or more columns. It allows for data aggregation by specifying the criteria for grouping and can be used in conjunction with any of the different function types we allow in Arthur queries.
+These function types are further discussed in Querying Functions, but at a high level, they contain:
+Default Performance Metrics: All default performance metrics available within Arthur
+Transformation Functions: Functions done on the properties selected
+Aggregation Functions: Provides common data aggregation measures like average, sum, count, quantiles, etc.
+Composing Functions: This enables teams to create their own function logic
+Pythonquery = {
+"select":[
+{"function":"count",
+"alias":"count"},
+{"property":"age"}],
+"filter":[
+{"property":'income',
+"comparator":"gt",
+"value":30000}],
+"group_by":[
+{"property":"age"}],
+}
+response[{"count":2500},{"age":25}]
+Order By
+The order_by endpoint enables teams to order the outputs of their query. Within the order_by command teams will specify what property they would like to sort the output by and in which direction. The options for direction are asc and desc for ascending and descending, respectively.
+Pythonquery = {
+"select":[
+{"property":"age"},
+{"property":"income"}
+],
+"order_by": [
+{
+"property": "income",
+"direction": "desc"
+}
+}
+arthur_model.query(query)
+Subquery
+Subqueries are a powerful feature of modern SQL. The query endpoint can support subqueries via the subquery field in the request body. The format of the subquery is exactly the same as the full request body and can even support recursive subqueries! Here are some helpful examples that show how to use them.
+Concise Queries with Subqueries
+Sometimes you may have a calculation that must be aggregated in multiple ways. One option would be to repeat the calculation in each aggregation’s select, which can lead to lots of repeated JSON. Subqueries can be used to reduce duplicated expressions. In this example, we use a subquery to square the property Home_Value, then aggregate with min, max, and avg without repeating the calculation.
+query = {
+"select": [
+{
+"function": "max",
+"alias": "max",
+"parameters": {
+"property": {
+"alias_ref": "hv_squared"
+}
+}
+},
+{
+"function": "min",
+"alias": "min",
+"parameters": {
+"property": {
+"alias_ref": "hv_squared"
+}
+}
+},
+{
+"function": "avg",
+"alias": "avg",
+"parameters": {
+"property": {
+"alias_ref": "hv_squared"
+}
+}
+}
+],
+"subquery": {
+"select": [
+{
+"function": "multiply",
+"alias": "hv_squared",
+"parameters": {
+"left": "Home_Value",
+"right": "Home_Value"
+}
+}
+]
+}
+}
+response[{"avg": 33413668226.974968,
+"max": 17640000000000,
+"min": 0 }]
+Subqueries for grouping
+Subqueries can also be used to perform operations on grouped data. In this example, we get the count of the inferences in each batch in the subquery, then average those counts.
+Python{
+"select": [
+{
+"function": "avg",
+"alias": "avg_count",
+"parameters": {
+"property": {
+"alias_ref": "batch_count"
+}
+}
+},
+{
+"function": "count",
+"alias": "total_batches"
+}
+],
+"subquery": {
+"select": [
+{
+"function": "count",
+"alias": "batch_count"
+},
+{
+"property": "batch_id"
+}
+],
+"group_by": [
+{
+"property": "batch_id"
+}
+]
+}
+}
+response[{"avg_count": 5930.2558139534885,
+"total_batches": 86}]
+Updated 3 months ago Table of Contents
+Select
+Unique Model Types
+Property Types
+From
+Filter
+Available Comparators in Arthur
+Group By
+Order By
+Subquery
+Concise Queries with Subqueries
+Subqueries for grouping

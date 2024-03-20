@@ -1,0 +1,33 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/online-kubernetes-cluster-k8s-install
+ Online Kubernetes Cluster (K8s) Install
+Online Kubernetes Cluster (K8s) InstallSuggest EditsMake sure your K8s cluster is ready for Arthur platform installation by following the Kubernetes Preparation guide.
+Download Installation Files
+Go to the download portal using the URL and the password provided by Arthur.
+Click the "Download license" button to download your license in the YAML file.
+Setup for Installation
+Make sure you're in the correct kubectl environment context before running the installer.
+Install the KOTS kubectl extension on your local machine:
+Shellcurl https://kots.io/install  bash
+Start Installation
+Run the Admin Console installer and login on to your browser at localhost:8800 via the provided port forwarding tunnel:
+Shellkubectl kots install arthur
+For Namespace-Scoped Installs, follow this {doc}guide <k8s_install_namespace_scoped>.
+When you need to re-create the tunnel to Admin Console, run:
+Shellkubectl kots admin-console --namespace <your_name_space>
+Upload your license file.
+On the following screen, click on the link to install Arthur from the Internet.
+Configure Arthur.
+Review the preflight checks to make sure that your machine meets the minimum requirements before you proceed with the installation.
+Verify Installation
+Monitor the admin console dashboard for the application status to become Ready.
+To see the progress of the deployment, monitor the deployment status with thekubectl CLI:
+Shellkubectl get deployment,statefulset,pod -n <yournamespace>
+If anything is showing Pending, it is likely you need to add more/bigger nodes to your cluster.
+Customize Installation
+Configure graphs on Admin Console by clicking on the Configure graphs button and providing your Prometheus endpoint (e.g.,http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090).Updated 3 months ago Table of Contents
+Download Installation Files
+Setup for Installation
+Start Installation
+Verify Installation
+Customize Installation

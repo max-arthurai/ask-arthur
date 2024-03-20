@@ -1,0 +1,20 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/time-series
+ Time Series
+Time SeriesSuggest EditsTime Series input models are a type of machine learning model that operates on time series data, or data which measures a certain value over time, such as credit card balance over time. These models can perform tasks such as predictions or recommendations based on past patterns.
+Formatted Data in Arthur
+Time Series input models require the following data formatting:
+JSON[
+{
+"timestamp": "2023-10-05T00:00:00Z",
+"value": 1
+},
+{
+"timestamp": "2023-10-06T00:00:00Z",
+"value": 4
+}
+]
+Arthur requires that all times will be present in a given series according to a regular interval (eg. one value each day).
+There is an upper bound of 500 timestamps in a single time series inference.
+Arthur supports sending time series data in JSON files or DataFrames.Updated about 2 months ago Table of Contents
+Formatted Data in Arthur

@@ -1,0 +1,83 @@
+Content type: arthur_bench_docs
+Source: https://bench.readthedocs.io/en/latest/sdk/arthur_bench.client.rest.bench.html
+ arthur_bench.client.rest.bench - bench documentation
+arthur_bench.client.rest.bench#
+Submodules#
+class arthur_bench.client.rest.bench.client.ArthurBenchClient(http_client: HTTPClient)#
+Bases: BenchClient
+A Python client to interact with the Arthur Bench API
+create_new_test_run(test_suite_id: str, json_body: CreateRunRequest) → CreateRunResponse#
+Creates a new test run with model version / associated metadata
+Parameters:
+test_suite_id –
+json_body –
+create_test_suite(json_body: TestSuiteRequest) → PaginatedTestSuite#
+Creates a new test suite from reference data using specified scoring_method for
+scoring
+Parameters:
+json_body –
+delete_test_run(test_suite_id: str, test_run_id: str)#
+Deletes a test run
+Is idempotent.
+Parameters:
+test_suite_id –
+test_run_id –
+delete_test_suite(test_suite_id: str)#
+Deletes test suite
+Is idempotent.
+Parameters:
+test_suite_id –
+get_runs_for_test_suite(test_suite_id: str, sort: CommonSortEnum  TestRunSortEnum = CommonSortEnum.CREATED_AT_ASC, page: int = 1, page_size: int = 5) → PaginatedRuns#
+Get runs for a particular test suite (identified by test_suite_id)
+Parameters:
+test_suite_id –
+sort –
+get_summary_statistics(test_suite_id: str, run_ids: list[str]  None = None, page: int = 1, page_size: int = 5) → TestSuiteSummary#
+Get paginated summary statistics of a test suite
+Defaults to page size of 5.
+Parameters:
+test_suite_id –
+run_id –
+page –
+page_size –
+get_test_run(test_suite_id: str, test_run_id: str, page: int = 1, page_size: int = 5, sort: TestCaseSortEnum  None = TestCaseSortEnum.SCORE_ASC) → PaginatedRun#
+Get a test run with input, output, and reference data
+Parameters:
+test_suite_id –
+test_run_id –
+page –
+page_size –
+sort – sort key to sort the retrieved results
+get_test_suite(test_suite_id: str, page: int = 1, page_size: int = 5) → PaginatedTestSuite#
+Get reference data for an existing test suite
+Parameters:
+test_suite_id –
+get_test_suites(name: str  None = None, sort: CommonSortEnum  TestSuiteSortEnum = TestSuiteSortEnum.LAST_RUNTIME_ASC, scoring_method: List[str]  None = None, page: int = 1, page_size: int = 5) → PaginatedTestSuites#
+Gets test suites
+Sort by latest run by default.
+If name query parameter is provided, filter on test suite name.
+param name:
+param sort:
+param scoring_method:
+score_hallucination(json_body: HallucinationScoreRequest) → HallucinationScoreResponse#
+Next
+arthur_bench.exceptions
+Previous
+arthur_bench.client.rest.admin
+Copyright © 2023, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+arthur_bench.client.rest.bench
+Submodules
+ArthurBenchClient
+ArthurBenchClient.create_new_test_run()
+ArthurBenchClient.create_test_suite()
+ArthurBenchClient.delete_test_run()
+ArthurBenchClient.delete_test_suite()
+ArthurBenchClient.get_runs_for_test_suite()
+ArthurBenchClient.get_summary_statistics()
+ArthurBenchClient.get_test_run()
+ArthurBenchClient.get_test_suite()
+ArthurBenchClient.get_test_suites()
+ArthurBenchClient.score_hallucination()

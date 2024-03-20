@@ -1,0 +1,69 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/ranked-list-output-onboarding
+ Time Series Onboarding
+Time Series OnboardingSuggest EditsThis page walks through the basics of setting up a time series input model and onboarding it to Arthur Scope to monitor performance.
+Getting Started
+The first step is to import functions from the arthurai package and establish a connection with Arthur Scope.
+Python# Arthur imports
+from arthurai import ArthurAI
+from arthurai.common.constants import InputType, OutputType, Stage
+arthur = ArthurAI(url="https://app.arthur.ai",
+login="<YOUR_USERNAME_OR_EMAIL>")
+Registering a Time Series Model
+Each time series model is created with a name and with input_type = InputType.TimeSeries. Here, we register a time series model:
+Pythonarthur_model = arthur.model(name="RecSysQuickstart",
+input_type=InputType.TimeSeries,
+model_type=OutputType.RankedList)
+Formatting Reference/Inference Data
+Column names can contain only alphanumeric and underscore characters.
+Time series data can be uploaded to Arthur either in a DataFrame or a JSON file. Typically, a JSON file is a more natural formatting for time series data. For a time series model tracking credit card balance over time as input, the reference data might look like this:
+JSON{
+"reference_data": {
+"credit_card_balance": [
+{
+"timestamp": "2023-10-05T00:00:00Z",
+"value": 3004.18
+},
+{
+"timestamp": "2023-10-06T00:00:00Z",
+"value": 150.19
+}
+],
+"id": "6euQxGJai11qr0gENGgvgh",
+"account_id": "8klQSGJil78qr4gLJKklsy"
+},
+... // more inferences here
+}
+Data Requirements
+Arthur requires that all times will be present in a given series according to a regular interval (eg. one value each day).
+There is an upper bound of 500 timestamps in a single time series inference.
+Reviewing the Model Schema
+Before you register your model with Arthur by calling arthur_model.save(), you can call arthur_model.review() on the model schema to check that your data was parsed correctly in your call to arthur_model.build().
+For a time series model, the model schema should look like this:
+Python		 name
+stage
+value_type
+categorical
+is_unique
+0
+time_series_attr
+PIPELINE_INPUT
+TIME_SERIES
+False
+True
+1
+non_input_1
+NON_INPUT_DATA
+FLOAT
+False
+False
+...
+Finishing Onboarding
+Once you have finished formatting your reference data and your model schema looks correct using arthur_model.review(), you are finished registering your model and its attributes - so you are ready to complete onboarding your model.
+See this guide for further details on how to save your model, send inferences, and get performance results from Arthur. These steps are the same for time series models as for models of any InputType and OutputType .Updated about 2 months ago Table of Contents
+Getting Started
+Registering a Time Series Model
+Formatting Reference/Inference Data
+Data Requirements
+Reviewing the Model Schema
+Finishing Onboarding

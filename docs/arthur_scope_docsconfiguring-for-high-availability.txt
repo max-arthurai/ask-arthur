@@ -1,0 +1,39 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/configuring-for-high-availability
+ Configuring for High Availability
+Configuring for High AvailabilitySuggest EditsIntroduction
+The Arthur Platform is built to run in a High Availability configuration, ensuring that the application can function
+in the event of a Data Center outage, hardware outages, or other similar infrastructure issues.
+In order to take advantage of this, there are a few requirements in how your infrastructure is setup:
+Installing across 3 Availability Zones
+Specifying the correct Instance Types
+Configuring the cluster for Auto-scaling
+Notes about this document
+{note}Note that this document is written using AWS terminology, as this is one of the environments/infrastructure that Arthur uses
+internally for our environments. However, these setup steps should work across various cloud providers using similar features.
+{note}Note that this document is written with the pre-requisite that you are installing Arthur in a High Availability configuration.
+At the minimum, this means that there should be 3 instances across which Arthur is deployed.
+Installing across 3 Availability Zones
+In order to ensure continuous operation during an Availability Zone (AZ) outage, Arthur must be installed on a cluster
+that has 3 Availability Zones. This ensures that in the event of one AZ outage that the rest of the components can still
+operate.
+To do this in AWS, create 3 separate Auto-Scaling Groups (ASGs) - one for each AZ. You can configure which AZ an ASG provisions
+instances into when you create the ASG.
+When Arthur deploys, the stateful services (eg: databases, messaging queues, etc.) will be balanced across the 3 AZs automatically using
+kubernetes pod anti-affinity rules (pods will not schedule onto nodes where there already exists another pod that is of the same component).
+Specifying the correct Instance Types
+Generally speaking, the best way to ensure you have deployed the correct Instance Types is to monitor resource utilization across the cluster
+to determine when your services are hitting resource limits.
+When initially configuring a cluster for Arthur, we recommend 3 nodes, where each node has at least 16 vCPUs and 64G of RAM (eg: an m5a.4xlarge instance type).
+This is a good starting point for a general-purpose cluster that will grow with your production usage.
+Configuring the cluster for Auto-scaling
+Arthur's stateless components horizontally auto-scale, but in order to take the maximum advantage of this, you will need to configure and install
+an additional component that performs node autoscaling (eg: adding more instances).
+AWS specifies how to setup cluster autoscaling in their documentation.
+Generally speaking, it involves setting up an IAM role and granting permissions to autoscale the cluster, and then installing a third-party component
+to perform the autoscaling (eg: cluster-autoscalerUpdated 3 months ago Table of Contents
+Introduction
+Notes about this document
+Installing across 3 Availability Zones
+Specifying the correct Instance Types
+Configuring the cluster for Auto-scaling

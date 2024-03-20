@@ -1,0 +1,22 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/administration
+ Administration
+AdministrationSuggest EditsBy default, the installer creates a new organization, "My Organization," for convenience. You can also create new organizations using the API with the superadmin user. Full instructions for creating new users and organizations can be found Organizations and Users.
+To access the UI for the default organization dashboard, visit thehttps://your_arthur_domain from your Web browser. Login with admin username and SuperSecret password. Make sure to change the password as soon as possible.
+Refer to the Quickstart guide to start onboarding your models.
+Admin Console
+The Admin Console can be made available via the ingress controller on port 443 by creating a subdomain DNS record that starts with admin. (e.g., admin.arthur.mydomain.com). This eliminates the port 8800 egress requirement for VM installation on the firewall.
+We recommend that you rotate your Admin Console password often. You can reset the password using this command:
+Shellkubectl kots reset-password -n <namespace>
+Update Admin password for Embedded Postgres
+The 'Postgres' admin user manages the embedded Postgres database. If you would like to update the password for this admin user, you can execute the following commands on the primary database pod:
+Shellkubectl exec -it database-master-0 -- psql -U postgres
+Password for user postgres: <type_current_secret>
+psql (11.13)
+Type "help" for help.
+postgres=# ALTER ROLE postgres WITH PASSWORD '<insert_new_secret>';
+postgres=# \q
+$
+Updated 3 months ago Table of Contents
+Admin Console
+Update Admin password for Embedded Postgres

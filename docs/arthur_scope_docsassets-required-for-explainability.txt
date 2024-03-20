@@ -1,0 +1,140 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/assets-required-for-explainability
+ Assets Required For Explainability
+Assets Required For ExplainabilitySuggest EditsArthur can automatically calculate explanations (feature importances) for every prediction your model makes. To make this possible, we package up your model in a way that allows us to call it's predict function, which allows us to calculate explanations. We require a few things from your end:
+A Python script that wraps your models predict function
+For Image models, a second function, load_image is also required (see CV Explainability).
+A directory containing the above file, along with any serialized model files, and other supporting code
+A requirements.txt with the dependencies to support the above
+This guide will set everything up and then use the SDK to enable explainability.
+Setting up Project Directory
+Project Structure
+Here is an example of what your project directory might look like.
+-- model_folder/
+
+-- data/
+
+
+-- training_data.csv
+
+
+-- testing_data.csv
+
+-- requirements.txt
+
+-- model_entrypoint.py
+
+-- utils.py
+
+-- serialized_model.pkl
+Requirements File
+Your project requirements and dependencies can be stored in any format you like, such as the typical requirements.txt file, or another form of dependency management.
+This should contain all packages your model and predict function need to run.
+📘You do not need to include the arthurai package in this requirements file. We supply that
+# example_requirements.txt
+pandas==0.24.2
+numpy==1.16.4
+scikit-learn==0.21.3
+torch==1.3.1
+torchvision==0.4.2
+It is advised to pin the specific versions your model requires. If no version is pinned, we will use the latest version. This can cause issues if the latest version is incompatible with the version used to build your model.
+Prediction Function
+We need to be able to send new inferences to your model to get predictions and generate explanations. For us to have access to your model, you need to create an entrypoint file that defines a predict() method.
+The exact name of the file isn't strict, so long as you specify the correct name when you enable explainability (see below). The only thing that does matter is that this file implements a predict() method. In most cases, if you have a previously trained model, this predict() method will likely just invoke the prediction from your trained model.
+Python# example_entrypoint.py
+sk_model = joblib.load("./serialized_model.pkl")
+def predict(x):
+return sk_model.predict_proba(x)
+This predict method can be as simple or complicated as you need, so long as you can go from raw input data to a model output prediction.
+Specifically, in the case of a binary classifier, we expect a 2-d array where the first column indicates probability_0 for each input, and the second column indicates probability_1 for each input. In the case of a multiclass classifier with n possible labels, we expect an n-d array where column i corresponds to the predicted probability that each input belongs to class i.
+Preprocessing for Prediction
+Commonly, a fair amount of feature processing and transformation will need to happen before invoking your actual model.predict(). This might include normalizations, rescaling, one-hot encoding, embedding, etc. Whatever those transformations are, you can make them a part of this predict() method. Alternatively, you can wrap all those transformations into a helper function.
+Python# example_entrypoint.py
+from utils import pipeline_transformations
+sk_model = joblib.load("./serialized_model.pkl")
+def predict(x):
+return sk_model.predict_proba(pipeline_transformations(x))
+Enabling Explainability
+Enabling explainability can be done using the SDK function arthur_model.enable_explainability, which takes as input a sample of your model's data (to train the explainer), and which takes as input the files that contain your model's predict function and necessary environment.
+Pythonarthur_model.enable_explainability(
+df=X_train.head(50),
+project_directory="/path/to/model_folder/",
+requirements_file="requirements.txt",
+user_predict_function_import_path="model_entrypoint",
+ignore_dirs=["folder_to_ignore"] # optionally exclude directories within the project folder from being bundled with predict function
+)
+The above provides a simple example. For a list of all configuration options and details around them, see the explainability section in Enabling Enrichments.
+Notes about the above example:
+joblib is a Python library allowing you to reconstruct your model from a serialized pickle file.
+X_train is your trained model data frame.
+user_predict_function_import_path is the Python path to import the entry point file as if you imported it into the Python program running enable_explainability.
+Configuration Requirements
+When going from disabled to enabled, you will need to include the required configuration settings. Once the explainability enrichment has been enabled, you can update the non-required configuration settings without re-supplying the required fields.
+You must not pass in any config settings when disabling the explainability enrichment.
+Configuration
+SettingRequiredDescriptiondfXThe dataframe passed to the explainer. It should be similar to, or a subset of, the training data. Typically small, ~50-100 rows.project_directoryXThe path to the directory containing your predict function, requirements file, model file, and any other resources needed to support the predict function.user_predict_function_import_pathXThe name of the file containing the predict function. Do not include .py extension. Used to import the predict function.requirements_fileXThe name of the file containing pip requirements for the predict function.python_versionXThe Python version to use when executing the predict function. This is automatically set to the current Python version when usingmodel.enable_explainability().sdk_versionXThe arthurai version used to make the enable request. This is automatically set to the currently installed SDK version when using themodel.enable_explainability().explanation_algoThe explanation algorithm to use. Valid options are 'lime' or 'shap'. The default value of 'lime'.explanation_nsamplesThe number of perturbed samples used to generate the explanation. The result will be calculated more quickly for a smaller number of samples but may be less robust. It is recommended to use at least 100 samples. The default value of 2000.inference_consumer_score_percentThe number between 0.0 and 1.0 sets the percent of inferences for which to compute an explanation score. Only applicable when streaming_explainability_enabled is set to true. The default value of 1.0 (all inferences explained).streaming_explainability_enabledIf true, every inference will have an explanation generated for it. If false, explanations are available on-demand only.ignore_dirsList of paths to directories within project_directory that will not be bundled and included with the predict function. Use to prevent including irrelevant code or files in larger directories.
+CV Explainability
+📘Explainability is currently available as an enrichment for classification, multi-labeling, and regression CV models, but not object detection CV models.
+In your model_entrypoint.py for Multiclass Image models, in addition to the predict() function, there is a second function which is required: load_image(). This function should take in a string, which is a path to an image file. The function should return the image in a numpy array. Any image processing, such as converting to greyscale, should also happen in this function. This is because Lime (the explanation algorithm used behind the scenes) will create variations of this array to generate explanations. However, any transformation resulting in a non-numpy array should happen in the predict function, such as converting to a Tensor.
+No image resizing is required. As part of onboarding an image model, pixel_height and pixel_width are set as metadata on the model. When ingesting, Arthur will automatically resize the image to the configured size and pass this resized image path to the load_image function.
+Below is a full example file for an Image model, with both load_image and predict defined.
+Imports and class definitions are omitted for brevity.
+Python# example_entrypoint.py
+import ...
+class MedNet(nn.Module):
+...
+# load model using custom user defined class
+net = MedNet()
+path = pathlib.Path(__file__).parent.absolute()
+net.load_state_dict(torch.load(f'{path}/pretrained_model'))
+# helper function for transforming image
+def quantize(np_array):
+return np_array + (np.random.random(np_array.shape) / 256)
+def load_image(image_path):
+"""Takes in single image path, and returns single image in format predict expects
+"""
+return quantize(np.array(Image.open(image_path).convert('RGB')) / 256)
+def predict(images_in):
+"""Takes in numpy array of images, and returns predictions in numpy array.
+Can handle both single image in `numpy` array, or multiple images.
+"""
+batch_size, pixdim1, pixdim2, channels = images_in.shape
+raw_tensor = torch.from_numpy(images_in)
+processed_images = torch.reshape(raw_tensor, (batch_size, channels, pixdim1, pixdim2)).float()
+net.eval()
+with torch.no_grad():
+return net(processed_images).numpy()
+👍Note on Enabling Explainability for CV ModelsExplainability for CV, at least for CV models, should be configured with 4 CPUs and 4 GB RAM (default 1) to avoid long explanation times (which could break the UI). It’s done per model when enabling explainability in the notebook.
+This enabling explainability configuration can be seen here:
+Pythonarthur_model.enable_explainability(
+project_directory=project_dir,
+user_predict_function_import_path='entrypoint',
+streaming_explainability_enabled=False,
+requirements_file="requirements.txt",
+explanation_algo='lime',
+explanation_nsamples=2000,
+model_server_num_cpu="4",
+model_server_memory="4Gi"
+)
+NLP Explainability
+Enabling explainability for NLP models follows the same process for Tabular models
+📘An important choice for NLP explainability is the text_demiliter parameter, since this delimiter determines how tokens will be perturbed when generating explanations.
+Here is an example entrypoint.py file which loads our NLP model and defines a predict function that the explainer will use:
+Pythonmodel_path = os.path.join(os.path.dirname(__file__), "model.pkl")
+model = joblib.load(model_path)
+def predict(fvs):
+# our model expects a list of strings, no nesting
+# if we receive nested lists, unnest them
+if not isinstance(fvs[0], str):
+fvs = [fv[0] for fv in fvs]
+return model.predict_proba(fvs)
+Updated 3 months ago Table of Contents
+Setting up Project Directory
+Project Structure
+Requirements File
+Prediction Function
+Preprocessing for Prediction
+Enabling Explainability
+Configuration Requirements
+CV Explainability
+NLP Explainability
