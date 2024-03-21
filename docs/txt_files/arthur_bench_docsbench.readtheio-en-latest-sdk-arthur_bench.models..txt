@@ -1,0 +1,410 @@
+Content type: arthur_bench_docs
+Source: https://bench.readthedocs.io/en/latest/sdk/arthur_bench.models.html
+ arthur_bench.models - bench documentation
+arthur_bench.models#
+Submodules#
+class arthur_bench.models.models.CategoricalHistogramItem(*, count: int, category: Category)#
+Bases: BaseModel
+category: Category#
+count: int#
+class arthur_bench.models.models.Category(*, name: str, description: str  None = None)#
+Bases: BaseModel
+description: str  None#
+name: str#
+class arthur_bench.models.models.CommonSortEnum(value, names=None, *, module=None, qualname=None, type=None, start=1, boundary=None)#
+Bases: str, Enum
+CREATED_AT_ASC = 'created_at'#
+CREATED_AT_DESC = '-created_at'#
+NAME_ASC = 'name'#
+NAME_DESC = '-name'#
+class arthur_bench.models.models.CreateRunRequest(*, name: str, test_case_outputs: List[TestCaseOutput], description: str  None = None, model_name: str  None = None, foundation_model: str  None = None, prompt_template: str  None = None, model_version: str  None = None)#
+Bases: BaseModel
+class Config#
+Bases: object
+allow_population_by_field_name = True#
+classmethod consistent_categories(v)#
+description: str  None#
+Optional description of the run
+foundation_model: str  None#
+Optional foundation model name identifiying the pretrained model used to generate
+outputs
+model_name: str  None#
+Optional model name identifying the model used to generate outputs
+model_version: str  None#
+Optional model version identifying the version of the model used to generate outputs
+name: str#
+Name identifier of the run
+prompt_template: str  None#
+Optional prompt template name identifying the global prompt used to generate outputs
+test_cases: List[TestCaseOutput]#
+List of outputs and scores for all cases in the test suite
+class arthur_bench.models.models.CreateRunResponse(*, id: UUID)#
+Bases: BaseModel
+id: UUID#
+class arthur_bench.models.models.HistogramItem(*, count: int, low: float, high: float)#
+Bases: BaseModel
+Boundaries and count for a single bucket of a run histogram
+count: int#
+high: float#
+low: float#
+class arthur_bench.models.models.PaginatedRun(*, id: UUID, name: str, test_suite_id: UUID, test_case_runs: List[RunResult], updated_at: datetime, created_at: datetime, page: int  None = None, page_size: int  None = None, total_pages: int  None = None, total_count: int  None = None)#
+Bases: BaseModel
+Paginated list of prompts, reference outputs, model outputs, and scores for a
+particular run.
+class Config#
+Bases: object
+allow_population_by_field_name = True#
+created_at: datetime#
+id: UUID#
+name: str#
+page: int  None#
+page_size: int  None#
+test_cases: List[RunResult]#
+test_suite_id: UUID#
+total_count: int  None#
+total_pages: int  None#
+updated_at: datetime#
+class arthur_bench.models.models.PaginatedRuns(*, test_runs: List[TestRunMetadata], page: int, page_size: int, total_pages: int, total_count: int)#
+Bases: BaseModel
+Paginated list of runs for a test suite.
+page: int#
+page_size: int#
+test_runs: List[TestRunMetadata]#
+total_count: int#
+total_pages: int#
+class arthur_bench.models.models.PaginatedTestSuite(*, id: UUID, name: str, scoring_method: ScoringMethod, test_cases: List[TestCaseResponse], created_at: datetime, updated_at: datetime, description: str  None = None, last_run_time: datetime  None = None, num_runs: int = 0, page: int  None = None, page_size: int  None = None, total_pages: int  None = None, total_count: int  None = None)#
+Bases: BaseModel
+Test suite and optional page information
+created_at: datetime#
+description: str  None#
+id: UUID#
+last_run_time: datetime  None#
+name: str#
+num_runs: int#
+page: int  None#
+page_size: int  None#
+scoring_method: ScoringMethod#
+test_cases: List[TestCaseResponse]#
+total_count: int  None#
+total_pages: int  None#
+updated_at: datetime#
+class arthur_bench.models.models.PaginatedTestSuites(*, test_suites: List[TestSuiteMetadata], page: int, page_size: int, total_pages: int, total_count: int)#
+Bases: BaseModel
+Paginated list of test suites.
+page: int#
+page_size: int#
+test_suites: List[TestSuiteMetadata]#
+total_count: int#
+total_pages: int#
+class arthur_bench.models.models.RunResult(*, id: UUID, output: str, score: float, input: str  None = None, reference_output: str  None = None, score_result: ScoreResult)#
+Bases: BaseModel
+id: UUID#
+input: str  None#
+output: str#
+reference_output: str  None#
+score: float#
+score_result: ScoreResult#
+classmethod score_result_backwards_compatible(values)#
+class arthur_bench.models.models.ScoreResult(*, score: float  None = None, category: Category  None = None)#
+Bases: BaseModel
+category: Category  None#
+classmethod contains_score(values)#
+score: float  None#
+class arthur_bench.models.models.ScorerOutputType(value, names=None, *, module=None, qualname=None, type=None, start=1, boundary=None)#
+Bases: str, Enum
+Indicates the output type of the scorer
+Categorical = 'categorical'#
+Continuous = 'continuous'#
+class arthur_bench.models.models.ScoringMethod(*, name: str, type: ScoringMethodType, config: dict = {}, output_type: ScorerOutputType = ScorerOutputType.Continuous, categories: List[Category]  None = None)#
+Bases: BaseModel
+Scoring method configuration
+categories: List[Category]  None#
+Valid categories returned by the scorer. Only valid if categories is True.
+config: dict#
+Configuration as used by the scorer to_dict and from_dict methods
+name: str#
+Name of the scorer
+output_type: ScorerOutputType#
+Whether the scoring method returns categorical scores
+classmethod scoring_method_categorical_defined(values)#
+type: ScoringMethodType#
+Whether the scoring method was bench default or custom implementation
+class arthur_bench.models.models.ScoringMethodType(value, names=None, *, module=None, qualname=None, type=None, start=1, boundary=None)#
+Bases: str, Enum
+Indicates whether the scoring method was provided by the package or a custom
+implementation
+BuiltIn = 'built_in'#
+Custom = 'custom'#
+class arthur_bench.models.models.SummaryItem(*, id: UUID, name: str, avg_score: float, histogram: List[HistogramItem  CategoricalHistogramItem])#
+Bases: BaseModel
+Aggregate statistics for a single run: average score and score distribution
+avg_score: float#
+classmethod either_continuous_or_categorical(v)#
+Validate that the items in the histogram list are all
+containing low/high floats or are all containing a category
+histogram: List[HistogramItem  CategoricalHistogramItem]#
+id: UUID#
+name: str#
+class arthur_bench.models.models.TestCaseOutput(*, id: UUID, output: str, score: float  None = None, score_result: ScoreResult)#
+Bases: BaseModel
+A generated output, score pair
+id: UUID#
+Optional unique identifier for this test case of the suite and run
+output: str#
+Generated output for test case
+score: float  None#
+Score assigned to output. This field is decprecated, used score_result instead
+score_result: ScoreResult#
+Score information about output. Contains float score and / or category description
+classmethod score_result_backwards_compatible(values)#
+class arthur_bench.models.models.TestCaseRequest(*, input: str, reference_output: str  None = None)#
+Bases: BaseModel
+An input, reference output pair.
+input: str#
+Input to the test case. Does not include the prompt template.
+reference_output: str  None#
+Reference or “Golden” output for the given input.
+class arthur_bench.models.models.TestCaseResponse(*, id: UUID, input: str, reference_output: str  None = None)#
+Bases: BaseModel
+id: UUID#
+input: str#
+Input to the test case. Does not include the prompt template.
+reference_output: str  None#
+Reference or “Golden” output for the given input.
+class arthur_bench.models.models.TestCaseSortEnum(value, names=None, *, module=None, qualname=None, type=None, start=1, boundary=None)#
+Bases: str, Enum
+SCORE_ASC = 'score'#
+SCORE_DESC = '-score'#
+class arthur_bench.models.models.TestRunMetadata(*, id: UUID, name: str, created_at: datetime, updated_at: datetime, avg_score: float  None = None, model_version: str  None = None, prompt_template: str  None = None)#
+Bases: BaseModel
+avg_score: float  None#
+created_at: datetime#
+id: UUID#
+model_version: str  None#
+name: str#
+prompt_template: str  None#
+updated_at: datetime#
+class arthur_bench.models.models.TestRunSortEnum(value, names=None, *, module=None, qualname=None, type=None, start=1, boundary=None)#
+Bases: str, Enum
+AVG_SCORE_ASC = 'avg_score'#
+AVG_SCORE_DESC = '-avg_score'#
+class arthur_bench.models.models.TestSuiteMetadata(*, id: UUID, name: str, scoring_method: ScoringMethod, last_run_time: datetime  None = None, description: str  None = None, created_at: datetime  None = None, updated_at: datetime  None = None)#
+Bases: BaseModel
+created_at: datetime  None#
+description: str  None#
+id: UUID#
+last_run_time: datetime  None#
+name: str#
+scoring_method: ScoringMethod#
+updated_at: datetime  None#
+class arthur_bench.models.models.TestSuiteRequest(*, name: str, description: str  None = None, scoring_method: ScoringMethod, test_cases: ConstrainedListValue[TestCaseRequest])#
+Bases: BaseModel
+Test case data and metadata for the test suite.
+description: str  None#
+Optional description of the test suite
+name: str#
+Name of the test suite
+classmethod null_reference_outputs_all_or_none(v)#
+Validate that all or none of test case reference outputs are null
+scoring_method: ScoringMethod#
+Scoring configuration to use as criteria for the test suite
+classmethod scoring_method_backwards_compatible(v)#
+test_cases: List[TestCaseRequest]#
+List of input texts and optional reference outputs to consistently score
+model generations against
+class arthur_bench.models.models.TestSuiteSortEnum(value, names=None, *, module=None, qualname=None, type=None, start=1, boundary=None)#
+Bases: str, Enum
+LAST_RUNTIME_ASC = 'last_run_time'#
+LAST_RUNTIME_DESC = '-last_run_time'#
+class arthur_bench.models.models.TestSuiteSummary(*, summary: List[SummaryItem], page: int, page_size: int, total_pages: int, total_count: int, num_test_cases: int, categorical: bool = False)#
+Bases: BaseModel
+Aggregate descriptions of runs of a test suite.
+Provides averages and score distributions
+categorical: bool#
+num_test_cases: int#
+page: int#
+page_size: int#
+summary: List[SummaryItem]#
+total_count: int#
+total_pages: int#
+class arthur_bench.models.scoring.HallucinationScoreRequest(*, response: str, context: str)#
+Bases: BaseModel
+Request for hallucination classification
+context: str#
+Context with which to determine if the model generated response is supported
+response: str#
+Model generated response
+class arthur_bench.models.scoring.HallucinationScoreResponse(*, hallucination: bool, reason: str)#
+Bases: BaseModel
+Hallucination classification
+hallucination: bool#
+True if hallucination, false otherwise
+reason: str#
+Justification for the hallucination classification
+Next
+arthur_bench.run
+Previous
+arthur_bench.exceptions
+Copyright © 2023, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+arthur_bench.models
+Submodules
+CategoricalHistogramItem
+CategoricalHistogramItem.category
+CategoricalHistogramItem.count
+Category
+Category.description
+Category.name
+CommonSortEnum
+CommonSortEnum.CREATED_AT_ASC
+CommonSortEnum.CREATED_AT_DESC
+CommonSortEnum.NAME_ASC
+CommonSortEnum.NAME_DESC
+CreateRunRequest
+CreateRunRequest.Config
+CreateRunRequest.Config.allow_population_by_field_name
+CreateRunRequest.consistent_categories()
+CreateRunRequest.description
+CreateRunRequest.foundation_model
+CreateRunRequest.model_name
+CreateRunRequest.model_version
+CreateRunRequest.name
+CreateRunRequest.prompt_template
+CreateRunRequest.test_cases
+CreateRunResponse
+CreateRunResponse.id
+HistogramItem
+HistogramItem.count
+HistogramItem.high
+HistogramItem.low
+PaginatedRun
+PaginatedRun.Config
+PaginatedRun.Config.allow_population_by_field_name
+PaginatedRun.created_at
+PaginatedRun.id
+PaginatedRun.name
+PaginatedRun.page
+PaginatedRun.page_size
+PaginatedRun.test_cases
+PaginatedRun.test_suite_id
+PaginatedRun.total_count
+PaginatedRun.total_pages
+PaginatedRun.updated_at
+PaginatedRuns
+PaginatedRuns.page
+PaginatedRuns.page_size
+PaginatedRuns.test_runs
+PaginatedRuns.total_count
+PaginatedRuns.total_pages
+PaginatedTestSuite
+PaginatedTestSuite.created_at
+PaginatedTestSuite.description
+PaginatedTestSuite.id
+PaginatedTestSuite.last_run_time
+PaginatedTestSuite.name
+PaginatedTestSuite.num_runs
+PaginatedTestSuite.page
+PaginatedTestSuite.page_size
+PaginatedTestSuite.scoring_method
+PaginatedTestSuite.test_cases
+PaginatedTestSuite.total_count
+PaginatedTestSuite.total_pages
+PaginatedTestSuite.updated_at
+PaginatedTestSuites
+PaginatedTestSuites.page
+PaginatedTestSuites.page_size
+PaginatedTestSuites.test_suites
+PaginatedTestSuites.total_count
+PaginatedTestSuites.total_pages
+RunResult
+RunResult.id
+RunResult.input
+RunResult.output
+RunResult.reference_output
+RunResult.score
+RunResult.score_result
+RunResult.score_result_backwards_compatible()
+ScoreResult
+ScoreResult.category
+ScoreResult.contains_score()
+ScoreResult.score
+ScorerOutputType
+ScorerOutputType.Categorical
+ScorerOutputType.Continuous
+ScoringMethod
+ScoringMethod.categories
+ScoringMethod.config
+ScoringMethod.name
+ScoringMethod.output_type
+ScoringMethod.scoring_method_categorical_defined()
+ScoringMethod.type
+ScoringMethodType
+ScoringMethodType.BuiltIn
+ScoringMethodType.Custom
+SummaryItem
+SummaryItem.avg_score
+SummaryItem.either_continuous_or_categorical()
+SummaryItem.histogram
+SummaryItem.id
+SummaryItem.name
+TestCaseOutput
+TestCaseOutput.id
+TestCaseOutput.output
+TestCaseOutput.score
+TestCaseOutput.score_result
+TestCaseOutput.score_result_backwards_compatible()
+TestCaseRequest
+TestCaseRequest.input
+TestCaseRequest.reference_output
+TestCaseResponse
+TestCaseResponse.id
+TestCaseResponse.input
+TestCaseResponse.reference_output
+TestCaseSortEnum
+TestCaseSortEnum.SCORE_ASC
+TestCaseSortEnum.SCORE_DESC
+TestRunMetadata
+TestRunMetadata.avg_score
+TestRunMetadata.created_at
+TestRunMetadata.id
+TestRunMetadata.model_version
+TestRunMetadata.name
+TestRunMetadata.prompt_template
+TestRunMetadata.updated_at
+TestRunSortEnum
+TestRunSortEnum.AVG_SCORE_ASC
+TestRunSortEnum.AVG_SCORE_DESC
+TestSuiteMetadata
+TestSuiteMetadata.created_at
+TestSuiteMetadata.description
+TestSuiteMetadata.id
+TestSuiteMetadata.last_run_time
+TestSuiteMetadata.name
+TestSuiteMetadata.scoring_method
+TestSuiteMetadata.updated_at
+TestSuiteRequest
+TestSuiteRequest.description
+TestSuiteRequest.name
+TestSuiteRequest.null_reference_outputs_all_or_none()
+TestSuiteRequest.scoring_method
+TestSuiteRequest.scoring_method_backwards_compatible()
+TestSuiteRequest.test_cases
+TestSuiteSortEnum
+TestSuiteSortEnum.LAST_RUNTIME_ASC
+TestSuiteSortEnum.LAST_RUNTIME_DESC
+TestSuiteSummary
+TestSuiteSummary.categorical
+TestSuiteSummary.num_test_cases
+TestSuiteSummary.page
+TestSuiteSummary.page_size
+TestSuiteSummary.summary
+TestSuiteSummary.total_count
+TestSuiteSummary.total_pages
+HallucinationScoreRequest
+HallucinationScoreRequest.context
+HallucinationScoreRequest.response
+HallucinationScoreResponse
+HallucinationScoreResponse.hallucination
+HallucinationScoreResponse.reason

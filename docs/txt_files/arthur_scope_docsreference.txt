@@ -1,0 +1,46 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/reference
+ Creating a Connection to Arthur
+Jump to ContentProduct DocumentationAPI and Python SDK ReferenceRelease Notesv3.6.0v3.7.0v3.8.0v3.9.0v3.10.0v3.11.0v3.12.0Schedule a DemoSchedule a DemoMoon (Dark Mode)Sun (Light Mode)v3.12.0Product DocumentationAPI and Python SDK ReferenceRelease NotesSearchLoading…JUMP TOIntroductionCreating a Connection to ArthurArthur API ReferenceArthur SDK ClientArthur SDK DocumentationtionTest Explainability LocallyPowered by JUMP TOIntroductionCreating a Connection to ArthurArthur API ReferenceArthur SDK ClientArthur SDK DocumentationtionTest Explainability LocallyPowered by Creating a Connection to ArthurThis page will help you get started with Arthur API.There are a few ways to create a connection to Arthur.
+Creating an API Key
+To access the Arthur platform outside of Arthur, you specify your access rights. One way to do that is through an API key. To get an API key from Arthur, users need to go into the Settings of their Organizational dashboard. From there, they need to click on the API Keys Tab and click the Create API Key button.
+📘API Key == Header in API ExamplesWhen using the API example structure in this documentation, you should place your API key in the header section of the call you are trying to build.
+Connecting to a Specific Arthur Model within the SDK
+After connecting to your Arthur instance, whether you are using the API or Arthur Python SDK, it is common for teams to want to connect to a specific Arthur model. There are two ways to identify a specific model within Arthur, shown below:
+Partner Model ID: The Partner Model ID is an ID given to the model by the customer team/user that onboarded the model. This can be found in the UI under the Details section of your model.
+Arthur Model ID: The Arthur Model ID is a unique ID given to the model by the Arthur platform. This can be found in your Arthur instance in the URL of your model.
+Connecting to the Python SDK
+The Arthur Python SDK, discussed in more detail here, is one of the most common ways teams interact with the Arthur platform in a notebook environment.
+Connect to Platform
+When connecting to the Arthur platform with the SDK, there are two
+API KeyUsername Passwordimport arthurai as ArthurAI
+arthur = ArthurAI(url="https://app.arthur.ai",
+login="<YOUR_USERNAME_OR_EMAIL>",
+password = "<YOUR_PASSWORD>")
+import arthurai as ArthurAI
+arthur = ArthurAI(url="YOUR_ORGANIZAIONS_ARTHUR_URL",
+login="username", password = "password")
+Specifying Organization ID
+If you log in with your Username and Password and are a member of multiple organizations within Arthur, you must specify which organization you want to connect to within the notebook. This can be done by adding the organization_id to your connection.
+Pythonimport arthurai as ArthurAI
+connection = ArthurAI(url="YOUR_ORGANIZAIONS_ARTHUR_URL",
+login="username", password = "password", organization_id = "org_id")
+You should contact your system administrator if you are unsure what your organization ID is. You can also see a list of all possible organization IDs you have access to in a notebook by running this Python script:
+Pythonconnection = ArthurAI(url="YOUR_ORGANIZAIONS_ARTHUR_URL",
+login="username", password = "password", verify_ssl=False)
+import requests
+headers = {
+'Content-Type': 'application/json',
+'Authorization': connection.client.session.headers['Authorization']
+}
+session = requests.Session()
+response = session.get("https://<YOUR_ORGANIZATIONS_URL>/api/v3/organizations?page_size=1000000", headers = headers,verify=False)
+print(response.json())
+Connect to Specific Arthur Model
+Either of these can be used to connect to Arthur with this code:
+Python## Using Partner Model ID
+arthur_model = connection.get_model(place_partner_id, id_type="partner_model_id")
+## Using Arthur Model ID
+arthur_model = connection.get_model(place_model_id, id_type="id")
+Connecting to the API
+To connect to the API, users have the same permissions as above.

@@ -1,0 +1,921 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/config-template
+ Config Template
+Config TemplateSuggest EditsThe Configuration template for Arthur version 3.4.0 is below:
+YAMLapiVersion: kots.io/v1beta1
+kind: ConfigValues
+metadata:
+creationTimestamp: null
+name: arthur
+spec:
+values:
+IAM_permission_type:
+default: access_keys
+advanced_cache_options:
+default: "0"
+advanced_messaging_connect_cpu_limits:
+default: "2"
+advanced_messaging_connect_cpu_limits_not_validate: {}
+advanced_messaging_connect_cpu_requests:
+default: "1"
+advanced_messaging_connect_cpu_requests_not_validate: {}
+advanced_messaging_connect_heap_options:
+default: -Xms1g -Xmx3g
+advanced_messaging_connect_memory_limits:
+default: 4Gi
+advanced_messaging_connect_memory_limits_not_validate: {}
+advanced_messaging_connect_memory_requests:
+default: 2Gi
+advanced_messaging_connect_memory_requests_not_validate: {}
+advanced_olap_options:
+default: "0"
+advanced_other:
+default: "0"
+value: "1"
+alert_service_update_rule_metrics:
+default: "0"
+api_token_ttl:
+default: "24"
+arthur_user_id:
+default: "1000"
+audit_log_event_bridge_bus_name: {}
+audit_log_event_bridge_bus_region: {}
+audit_log_event_bridge_detail_type:
+default: events.arthur.ai
+audit_log_event_bridge_source:
+default: arthur-audit-log
+audit_log_sink_destination:
+default: none
+batch_workflow_parallelism:
+default: "120"
+beta_ui:
+default: "0"
+beta_ui_alternate_site:
+default: "0"
+beta_ui_hostname: {}
+bootstrap_job_backoff_limit:
+default: "100"
+bootstrap_job_ttl:
+default: "86400"
+cache_cpu_limits: {}
+cache_cpu_limits_not_validate: {}
+cache_cpu_requests: {}
+cache_cpu_requests_not_validate: {}
+cache_memory_limits: {}
+cache_memory_limits_not_validate: {}
+cache_memory_requests: {}
+cache_memory_requests_not_validate: {}
+cache_password:
+default: SuperSecret
+value: VwC3tnE9cpzObSxIhTx9U/34Ky+mA6p8veb9bCk+iqcAEaOarGzGEFf7ozoGxO3m05QY5YTuIx3ezMI694TUX0gj7RHSyHoK
+cache_replicas:
+default: "0"
+cicd_credentials:
+default: "0"
+cluster_nodes:
+# Only Relevant for "fixed" cluster sizes.
+Enter the number of nodes in the cluster. This number cannot be decreased from the current value unless it's greater than `6`.
+default: "1"
+value: "3"
+config_job_and_workflow_retention:
+default: "0"
+database_admin_password:
+default: SuperSecret
+value: VwC3tnE9cpzObSxIhTx9U/34Ky+mA6p8veb9bCk+iqcAEaOarGzGEFf7ozoGxO3m05QY5YTuIx3ezMI694TUX0gj7RHSyHoK
+database_hostname:
+# Leave the default configuration to use the embedded database. If you would like to use an external Postgres instance, provide the hostname here and follow this guide: https://docs.arthur.ai/platform-management/installation/externalize_postgres.html.
+default: database-primary
+database_password:
+default: SuperSecret
+value: VwC3tnE9cpzObSxIhTx9U/34Ky+mA6p8veb9bCk+iqcAEaOarGzGEFf7ozoGxO3m05QY5YTuIx3ezMI694TUX0gj7RHSyHoK
+database_port:
+value: "5432"
+database_ssl_mode:
+# This option allows you to enable SSL communication between services and the postgres database.
+See https://www.postgresql.org/docs/10/libpq-ssl.html for full descriptions of each option.
+By default, the postgres database has ssl disabled.
+default: disable
+database_username:
+default: arthurai
+default_messaging_partition_count:
+default: "3"
+value: "1"
+disable_ssl_redirect_on_ingress:
+default: "0"
+email_selection:
+default: none
+enable_audit_log:
+default: "0"
+enable_olap_backup:
+default: '"0"'
+enable_olap_backup_user:
+default: "0"
+enable_password_rotation_cache:
+default: "0"
+enable_password_rotation_olap:
+default: "0"
+existing_database_primary_pvc: {}
+existing_or_vm:
+default: existing_cluster
+fixed_or_autoscale:
+# The `fixed` mode is recommended for clusters with a fixed number of nodes. The `autoscale` mode is used for clusters that can autoscale and automatically expand their node count.
+value: fixed
+full_name_override:
+default: arthurai
+global_identity_provider:
+default: none
+global_model_limit_Count:
+default: "500"
+global_model_limits:
+default: "0"
+global_workflow_parallelism:
+default: "150"
+http_proxy: {} # Relevant if you are using Explainability and your organization is behind a proxy server.
+If PIP and/or Conda need to route through the proxy server to pull down public packages this will set the environment variable HTTP_PROXY to the supplied value. Ex. http://sysproxy.my-company.com:port
+http_proxy_user: {}
+https_proxy: {}
+https_proxy_user: {}
+ingestion_service_cpu_limits: {}
+ingestion_service_cpu_limits_not_validate: {}
+ingestion_service_cpu_requests: {}
+ingestion_service_cpu_requests_not_validate: {}
+ingestion_service_memory_limits: {}
+ingestion_service_memory_limits_not_validate: {}
+ingestion_service_memory_requests: {}
+ingestion_service_memory_requests_not_validate: {}
+ingress_ambassador_enabled:
+default: "false"
+ingress_class:
+default: nginx
+ingress_hostname:
+value: arthur.mydomain.ai
+ingress_namespace_label_key:
+value: name
+ingress_namespace_label_value:
+value: ingress-system
+ingress_nginx_additional_hostname:
+value: ""
+irsa_annotations: {}
+irsa_annotations_user:
+default: 
+eks.amazonaws.com/role-arn: arn:aws:iam::111122223333:role/my-role
+k8_storageclass:
+# Provide Kubernetes StorageClass profile. Use 'gp2' for Amazon EKS, 'default' if you're using embedded Kubernetes provided by the installer
+value: default
+kafka_ecosystem_common_replication_calc:
+default: "1"
+max_arthur_replicas:
+default: "1"
+max_messaging_partition_count:
+default: "3"
+max_model_server_replicas:
+default: "2"
+messaging_cpu_limit:
+default: "1"
+messaging_heap:
+default: -Xmx2G -Xms1G
+messaging_memory_limit_and_request:
+default: 2560Mi
+messaging_rack_aware_enabled:
+default: "0"
+messaging_rack_label:
+default: topology.kubernetes.io/zone
+messaging_replicas:
+default: "3"
+messaging_sa_create:
+default: "0"
+messaging_sa_fullnameoverride: {}
+messaging_zookeeper_timeout:
+default: "20000"
+meta_replicas:
+default: "0"
+metric_service_update_default_metrics:
+default: "0"
+min_arthur_replicas:
+default: "1"
+model_servers_always_on:
+# For use with what-if and on-demand explainability. See https://docs.arthur.ai/user-guide/explainability.html
+If set to "true", then on-demand and what-if explanations are available, but uses additional cluster resources, 1 CPU and 1 GB memory per model with explainability enabled. If set to "false", on-demand and what-if explanations are unavailable, but less cluster usage when there is no data being sent. Regardless of the setting here, streaming explainability will be available if enabled. This only effects what-if and on-demand explanations.
+default: "true"
+network_policy_enabled:
+default: "0"
+no_proxy: {} # Relevant if you are using Explainability and your organization is behind a proxy server.
+If PIP and/or Conda need to route through the proxy server to pull down public packages this will set the environment variable NO_PROXY to the supplied value. Ex. localhost,127.0.0.1,.my-company.com
+no_proxy_user: {}
+number_of_olap_backups_to_keep:
+default: "7"
+oidc_identity_provider_config_yaml: {}
+oidc_identity_provider_config_yaml_user: {}
+olap_backup_s3_bucket:
+default: arthurai
+olap_backup_s3_bucket_region:
+default: us-east-1
+olap_backup_s3_endpoint:
+default: s3.us-east-1.amazonaws.com
+olap_backup_s3_path:
+default: olap_backups
+olap_backup_service_account:
+default: arthurai-arthurai
+olap_cpu_limits: {}
+olap_cpu_limits_not_validate: {}
+olap_cpu_requests:
+default: 1000m
+olap_cpu_requests_not_validate: {}
+olap_database_operator_password:
+# The OLAP database is installed along with a Kubernetes Operator to manage it.
+This operator needs credentials to access the database.
+We recommend overwriting the default password below.
+default: 5ugYLDJ2uLhRdEgz5t
+value: ch/0gntnboTNbQpxmzx4GuPCRnjqSNwTpOT6FwgQ9q4iY7CHiQLeFQ3snnZgxYnFt4gSyInce3KhYiMR7eebBtGbe5sIuY/aBPAySrSjExfO+1VYPBp176bP+zQ=
+olap_database_user_password:
+# Password used internally in our application to query the olap database, currently only supports alpha-numeric characters.
+default: eQ3iBo8UGh5zqJKQWuEEySrR
+value: ch/0gntnboTNbQppnGJgGvCjSmPlS/l8orO+UggQ/rstcryCj2r/GRXR8UNr+u3plPIj+uLMdXGGFiRtko6pTsClBoQkoeLXqDVr1jeqsThCZI/bTfovlA==
+olap_memory_limits: {}
+olap_memory_limits_not_validate: {}
+olap_memory_requests:
+default: 1Gi
+olap_memory_requests_not_validate: {}
+olap_node_label_key: {}
+olap_node_label_value: {}
+olap_replicas:
+default: "1"
+olap_zookeeper_cpu_limits: {}
+olap_zookeeper_cpu_limits_not_validate: {}
+olap_zookeeper_cpu_requests:
+default: 500m
+olap_zookeeper_cpu_requests_not_validate: {}
+olap_zookeeper_heap_options:
+default: -Xms4G -Xmx4G
+olap_zookeeper_memory_limits: {}
+olap_zookeeper_memory_limits_not_validate: {}
+olap_zookeeper_memory_requests:
+default: 1Gi
+olap_zookeeper_memory_requests_not_validate: {}
+password_rotation_cron_schedule:
+default: 0 0 1 */6 *
+pending_batch_workflows_limit:
+default: "100"
+prometheus_host:
+# Leave the default configuration if you're using the embedded K8s. Provide your Prometheus hostname if you're running your own K8s.
+default: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local
+prometheus_labels:
+# If your prometheus installation requires labels to identify ServiceMonitors and PrometheusRules, add them here. They should be in yaml format just as you would specify inside the "metadata.labels" block. Do not indent.
+default: 
+prometheus: monitor
+app: prometheus
+prometheus_namespace:
+default: monitoring
+prometheus_port:
+# Leave the default configuration if you're using the embedded K8s. Provide your Prometheus hostname if you're running your own K8s.
+default: "9090"
+pypi_registry_conda: {} # This is set as a channel in the '.condarc' file. Do not include 'https://' prefix (e.g. repository.arthur.ai/repository/conda-proxy/main).
+pypi_registry_conda_user: {}
+pypi_registry_index: {} # This maps to the 'index key' in the 'pip.conf' file. Do not include 'https://' prefix (e.g repository.arthur.ai/repository/pypi-virtual/pypi).
+pypi_registry_index_url: {} # This maps to the 'index-url' key in the 'pip.conf' file. Do not include 'https://' prefix (e.g. repository.arthur.ai/repository/pypi-virtual/simple).
+pypi_registry_index_url_user: {}
+pypi_registry_index_user: {}
+pypi_registry_password:
+default: bO4Mxhdaevso/029YtUgz98Wk7qPcxEpa1P/uVqG4cy4UY1B3+YN5Q==
+value: VwC3tnE9cpzObSxIhTx9U/34Ky+mA6p8veb9bCk+iqcAEaOarGzGEFf7ozoGxO3m05QY5YTuIx3ezMI694TUX0gj7RHSyHoK
+pypi_registry_password_user:
+value: VwC3tnE9cpzObSxIhTx9U/34Ky+mA6p8veb9bCk+iqcAEaOarGzGEFf7ozoGxO3m05QY5YTuIx3ezMI694TUX0gj7RHSyHoK
+pypi_registry_username: {}
+pypi_registry_username_user: {}
+raw_anaconda_config: {}
+raw_anaconda_config_user: {}
+raw_pypi_config: {}
+raw_pypi_config_user: {}
+rbac_privileges:
+# Change to "cluster_scope" to install CRDs too
+default: namespace_scope
+run_as_root:
+default: "0"
+value: "0"
+s3_access_key_id:
+default: access_key
+value: VwC3tnE9cpzObSxIhTx9U/34Ky+mA6p8veb9bCk+iqcAEaOarGzGEFf7ozoGxO3m05QY5YTuIx3ezMI694TUX0gj7RHSyHoK
+s3_access_key_id_user:
+default: access_key
+value: VwC3tnE9cpzObSxIhTx9U/34Ky+mA6p8veb9bCk+iqcAEaOarGzGEFf7ozoGxO3m05QY5YTuIx3ezMI694TUX0gj7RHSyHoK
+s3_bucket:
+default: arthurai
+s3_bucket_user:
+default: arthurai
+s3_region:
+default: us-east-1
+s3_region_user:
+default: us-east-1
+s3_secret_access_key:
+default: secret_key
+value: VwC3tnE9cpzObSxIhTx9U/34Ky+mA6p8veb9bCk+iqcAEaOarGzGEFf7ozoGxO3m05QY5YTuIx3ezMI694TUX0gj7RHSyHoK
+s3_secret_access_key_user:
+default: secret_key
+value: VwC3tnE9cpzObSxIhTx9U/34Ky+mA6p8veb9bCk+iqcAEaOarGzGEFf7ozoGxO3m05QY5YTuIx3ezMI694TUX0gj7RHSyHoK
+s3_url:
+default: http://minio:9000
+s3_url_user:
+default: http://minio:9000
+saml_identity_provider_config_yaml: {}
+saml_identity_provider_config_yaml_user: {}
+secondary_token_validation_key:
+value: Aj3ziCI/YcnTT3QR3WAtMNDNEzzqTa8W9iJCoHjNFMteiO6lrcnUKw==
+ses_region: {}
+ses_role: {}
+show_advanced_arthur_microservice_options:
+default: "0"
+show_advanced_messaging:
+default: "0"
+value: "1"
+show_hidden_variables:
+default: "0"
+value: "0"
+show_token_signing_and_validation_options:
+default: "0"
+signing_cert: {}
+signing_cert_user: {}
+signing_private_key: {}
+signing_private_key_user: {}
+single_or_ha:
+# The `single` configuration is a minimal deployment suitable for non-production environments. For production deployment, select `ha`.
+value: single
+smtp_from: {} # Provide the email address to send alerts from (e.g. [email protected])
+smtp_host: {} # Provide the address of the SMTP server (e.g. smtp.arthur.ai)
+smtp_password:
+value: VwC3tnE9cpzObSxIhTx9U/34Ky+mA6p8veb9bCk+iqcAEaOarGzGEFf7ozoGxO3m05QY5YTuIx3ezMI694TUX0gj7RHSyHoK
+smtp_port: {}
+smtp_user: {}
+superadmin_email:
+default: [email protected]
+superadmin_firstname:
+default: Super
+superadmin_lastname:
+default: Admin
+superadmin_password:
+default: SuperSecret
+value: VwC3tnE9cpzObSxIhTx9U/34Ky+mA6p8veb9bCk+iqcAEaOarGzGEFf7ozoGxO3m05QY5YTuIx3ezMI694TUX0gj7RHSyHoK
+superadmin_username:
+value: superadmin
+token_signing_primary_key:
+value: YSDFzjg5I83KMBJ+wHQmU/ejDQ7tTthIpaDcCRM+iqcDTofiul7DZzTblFkb0e2U0+UJ74TuIx28oGnxPM+pkmKlc1yx2uvj
+use_external_blob_storage:
+# Select "Yes" if and only if you are supplying your own S3 compatible storage, otherwise select "No" to use the embedded blob storage.
+default: "no"
+use_external_postgres:
+default: "no"
+use_raw_python_repository_configs:
+# The PyPi registry section is only relevant when using the explainability enrichment (https://docs.arthur.ai/user-guide/enrichments.html#explainability).
+# Provide your private PyPi registry if you have an airgapped enrivonment or your model requirements file includes packages only hosted in a private repository.
+# Leaving this section blank will cause the public PyPi to be used. If the public PyPi is inaccessible from the cluster, the explainability feature will not work.
+default: "no"
+use_smtp:
+default: "0"
+workflow_ttl_seconds:
+default: "3600"
+workflow_ttl_seconds_after_success:
+default: "60"
+status: {}
+Do note that these parameters are sorted alphabetically. Unfortunately, this is how the 'packager' software we use for our installer outputs the list of parameters. In reality, these parameters should be grouped based on their purpose.
+Most of these parameters can be commented, unless you are advised by Arthur Support to configure them. It's also important to point out that all 'default' values will be ignored by the installer.
+For reference, this is the same configuration template, grouped by topic, and with only the most necessary parameters uncommented:
+YAMLapiVersion: kots.io/v1beta1
+kind: ConfigValues
+metadata:
+creationTimestamp: null
+name: arthur
+spec:
+values:
+###############################################################################
+# Install privileges.
+# Change to "namespace_scope" for restricted permissions.
+###############################################################################
+# Values: namespace_scope, cluster_scope
+rbac_privileges:
+value: cluster_scope
+###############################################################################
+# Ingress
+###############################################################################
+ingress_hostname:
+value: arthur.mlops.company.com
+ingress_nginx_additional_hostname:
+value: "a1788baaec5c4473aa4ec3bf4ef81bb5.XXXXXXXXXX.us-east-1.elb.amazonaws.com"
+ingress_class:
+# Values: "nginx", "ambassador"
+value: nginx
+ingress_ambassador_enabled:
+value: "false"
+ingress_namespace_label_key:
+value: name
+ingress_namespace_label_value:
+value: ingress-system
+disable_ssl_redirect_on_ingress:
+value: "0"
+# Ingress for new UI
+beta_ui:
+value: "1"
+beta_ui_alternate_site:
+value: "1"
+beta_ui_hostname:
+value: "arthur.mlops.company.com"
+###############################################################################
+# Installation Type
+###############################################################################
+# The `single` configuration is a minimal deployment suitable for non-production environments.
+# For production deployment, select `ha`.
+single_or_ha:
+value: ha
+# The `fixed` mode is recommended for clusters with a fixed number of nodes. The `autoscale` mode is used for
+# clusters that can autoscale and automatically expand their node count.
+# 'autoscale' will assume a minimum of 6 nodes, do not set for 'autoscale' for clusters with < 6 nodes
+fixed_or_autoscale:
+value: fixed
+# Only Relevant for "fixed" cluster sizes.
+Enter the number of nodes in the cluster. This number
+# cannot be decreased from the current value unless it's greater than `6`.
+cluster_nodes:
+value: "3"
+# Provide Kubernetes StorageClass profile. Use 'gp2' or 'gp3' for Amazon EKS, 'default' if you're using
+# embedded Kubernetes provided by the installer
+k8_storageclass:
+value: gp3
+# Network Policy
+network_policy_enabled:
+value: "0"
+###############################################################################
+# Security and Authentication
+###############################################################################
+run_as_root:
+value: "0"
+arthur_user_id:
+value: "1000"
+# Single Sigh On
+# Values: "none", "oidc", "saml"
+global_identity_provider:
+value: none
+oidc_identity_provider_config_yaml: {}
+oidc_identity_provider_config_yaml_user: {}
+saml_identity_provider_config_yaml: {}
+saml_identity_provider_config_yaml_user: {}
+# IAM Integration - Values: "access_keys", "IRSA", "IAM Node Roles"
+IAM_permission_type:
+value: "IRSA"
+irsa_annotations:
+value: 
+eks.amazonaws.com/role-arn: arn:aws:iam::123456789012:role/arthur-eks-role
+irsa_annotations_user:
+value: 
+eks.amazonaws.com/role-arn: arn:aws:iam::123456789012:role/arthur-eks-role
+# SSL / Token Signature
+show_token_signing_and_validation_options:
+value: "0"
+signing_cert: {}
+signing_cert_user: {}
+signing_private_key: {}
+signing_private_key_user: {}
+# token_signing_primary_key:
+#
+value: YSDFzjg5I83KMBJ+wHQmU/ejDQ7tTthIpaDcCRM+iqcDTofiul7DZzTblFkb0e2U0+UJ74TuIx28oGnxPM+pkmKlc1yx2uvj
+# secondary_token_validation_key:
+#
+value: Aj3ziCI/YcnTT3QR3WAtMNDNEzzqTa8W9iJCoHjNFMteiO6lrcnUKw==
+# api_token_ttl:
+#
+value: "24"
+###############################################################################
+# S3 Integration
+###############################################################################
+# Select "Yes" if and only if you are supplying your own S3 compatible storage,
+# otherwise select "No" to use the embedded blob storage.
+use_external_blob_storage:
+value: "yes"
+s3_access_key_id: {}
+s3_access_key_id_user: {}
+s3_secret_access_key: {}
+s3_secret_access_key_user: {}
+s3_url: {}
+s3_url_user: {}
+s3_bucket:
+value: arthur-s3-eks
+s3_bucket_user:
+value: arthur-s3-eks
+s3_region:
+value: us-east-1
+s3_region_user:
+value: us-east-1
+###############################################################################
+# Superadmin Configuration
+###############################################################################
+superadmin_email:
+value: [email protected]
+superadmin_firstname:
+value: Super
+superadmin_lastname:
+value: Admin
+superadmin_password:
+value: Password1234
+superadmin_username:
+value: superadmin
+###############################################################################
+# SMTP Configuration
+###############################################################################
+# Values: "ses", "smtp", "none"
+email_selection:
+value: none
+use_smtp:
+value: "0"
+# Provide the email address to send alerts from (e.g. [email protected])
+smtp_from: {}
+# Provide the address of the SMTP server (e.g. smtp.arthur.ai)
+smtp_host: {}
+smtp_password:
+value: VwC3tnE9cpzObSxIhTx9U/34Ky+mA6p8veb9bCk+iqcAEaOarGzGEFf7ozoGxO3m05QY5YTuIx3ezMI694TUX0gj7RHSyHoK
+smtp_port: {}
+smtp_user: {}
+# SES Configuration
+ses_region: {}
+ses_role: {}
+###############################################################################
+# Prometheus Integration
+###############################################################################
+# Leave the default configuration if you're using the embedded K8s.
+# Provide your Prometheus hostname if you're running your own K8s.
+prometheus_host:
+value: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local
+# If your prometheus installation requires labels to identify ServiceMonitors and PrometheusRules,
+# add them here. They should be in yaml format just as you would specify inside the "metadata.labels" block.
+# Do not indent.
+prometheus_labels:
+value: 
+prometheus: monitor
+app: prometheus
+prometheus_namespace:
+value: monitoring
+# Leave the default configuration if you're using the embedded K8s.
+# Provide your Prometheus hostname if you're running your own K8s.
+prometheus_port:
+value: "9090"
+###############################################################################
+# Private Python Registry
+###############################################################################
+use_raw_python_repository_configs:
+# The PyPi registry section is only relevant when using the explainability enrichment
+# (https://docs.arthur.ai/user-guide/enrichments.html#explainability).
+# Provide your private PyPi registry if you have an airgapped enrivonment or your model requirements file
+# includes packages only hosted in a private repository.
+# Leaving this section blank will cause the public PyPi to be used. If the public PyPi is inaccessible from the
+# cluster, the explainability feature will not work.
+value: "no"
+# This is set as a channel in the '.condarc' file. Do not include 'https://' prefix
+# (e.g. repository.arthur.ai/repository/conda-proxy/main).
+pypi_registry_conda: {}
+pypi_registry_conda_user: {}
+# This maps to the 'index key' in the 'pip.conf' file. Do not include 'https://' prefix
+# (e.g repository.arthur.ai/repository/pypi-virtual/pypi).
+pypi_registry_index: {}
+# This maps to the 'index-url' key in the 'pip.conf' file. Do not include 'https://' prefix
+# (e.g. repository.arthur.ai/repository/pypi-virtual/simple).
+pypi_registry_index_url: {}
+pypi_registry_index_url_user: {}
+pypi_registry_index_user: {}
+pypi_registry_password:
+value: password1234
+pypi_registry_password_user:
+value: password1234
+pypi_registry_username: {}
+pypi_registry_username_user: {}
+raw_anaconda_config: {}
+raw_anaconda_config_user: {}
+raw_pypi_config: {}
+raw_pypi_config_user: {}
+# Relevant if you are using Explainability and your organization is behind a proxy server.
+# If PIP and/or Conda need to route through the proxy server to pull down public packages this will set
+# the environment variable NO_PROXY to the supplied value. Ex. localhost,127.0.0.1,.my-company.com
+no_proxy: {}
+no_proxy_user: {}
+# Relevant if you are using Explainability and your organization is behind a proxy server.
+# If PIP and/or Conda need to route through the proxy server to pull down public packages this will
+# set the environment variable HTTP_PROXY to the supplied value. Ex. http://sysproxy.my-company.com:port
+http_proxy: {}
+http_proxy_user: {}
+https_proxy: {}
+https_proxy_user: {}
+###############################################################################
+# Postgres Integration
+###############################################################################
+use_external_postgres:
+value: "yes"
+database_admin_password:
+value: password_for_RDS_admin_user
+database_hostname:
+# Leave the default configuration to use the embedded database. If you would like to use an external
+# Postgres instance, provide the hostname here and follow this guide:
+# https://docs.arthur.ai/platform-management/installation/externalize_postgres.html.
+value: arthur-db.cluster-xptowtzabcd.us-east-1.rds.amazonaws.com
+database_username:
+value: arthurai
+database_password:
+value: password_for_RDS_arthurai_user
+database_port:
+value: "5432"
+database_ssl_mode:
+# This option allows you to enable SSL communication between services and the postgres database.
+# See https://www.postgresql.org/docs/10/libpq-ssl.html for full descriptions of each option.
+# By default, the postgres database has ssl disabled.
+value: disable
+existing_database_primary_pvc: {}
+#
+meta_replicas:
+#
+value: "0"
+###############################################################################
+# OLAP DB Settings
+###############################################################################
+# OLAP Password
+olap_database_operator_password:
+# The OLAP database is installed along with a Kubernetes Operator to manage it.
+# This operator needs credentials to access the database.
+We recommend overwriting the default password below.
+value: gntnboTNbQpxmzx4GuPCRnjqSNwTpOT6FwgQ9q4iY7CHiQLeFQ3snnZgxYnFt4gSyInce3KhYiMR7eebBtGbe5sIuY
+olap_database_user_password:
+# Password used internally in our application to query the olap database,
+# currently only supports alpha-numeric characters.
+value: gntnboTNbQpxmzx4GuPCRnjqSNwTpOT6FwgQ9q4iY7CHiQLeFQ3snnZgxYnFt4gSyInce3KhYiMR7eebBtGbe5sIuY
+# enable_password_rotation_olap:
+#
+value: "0"
+# password_rotation_cron_schedule:
+#
+value: 0 0 1 */6 *
+# # OLAP Backup
+# enable_olap_backup:
+#
+value: '"0"'
+# enable_olap_backup_user:
+#
+value: "0"
+# number_of_olap_backups_to_keep:
+#
+value: "7"
+# olap_backup_s3_bucket:
+#
+value: denisd-s3-eks
+# olap_backup_s3_bucket_region:
+#
+value: us-east-1
+# olap_backup_s3_endpoint:
+#
+value: s3.us-east-1.amazonaws.com
+# olap_backup_s3_path:
+#
+value: olap_backups
+# olap_backup_service_account:
+#
+value: arthurai-arthurai
+# # OLAP Optimization
+# advanced_olap_options:
+#
+value: "0"
+# olap_cpu_limits: {}
+# olap_cpu_limits_not_validate: {}
+# olap_cpu_requests:
+#
+value: 1000m
+# olap_cpu_requests_not_validate: {}
+# olap_memory_limits: {}
+# olap_memory_limits_not_validate: {}
+# olap_memory_requests:
+#
+value: 1Gi
+# olap_memory_requests_not_validate: {}
+# olap_node_label_key: {}
+# olap_node_label_value: {}
+# olap_replicas:
+#
+value: "1"
+# olap_zookeeper_cpu_limits: {}
+# olap_zookeeper_cpu_limits_not_validate: {}
+# olap_zookeeper_cpu_requests:
+#
+value: 500m
+# olap_zookeeper_cpu_requests_not_validate: {}
+# olap_zookeeper_heap_options:
+#
+value: -Xms4G -Xmx4G
+# olap_zookeeper_memory_limits: {}
+# olap_zookeeper_memory_limits_not_validate: {}
+# olap_zookeeper_memory_requests:
+#
+value: 1Gi
+# olap_zookeeper_memory_requests_not_validate: {}
+###############################################################################
+# Cache Settings
+###############################################################################
+cache_password:
+value: VwC3tnE9cpzObSxIhTx9U/34Ky+mA6p8veb9bCk+iqcAEaOarGzGEFf7ozoGxO3m05QY5YTuIx3ezMI694TUX0gj7RHSyHoK
+# cache_replicas:
+#
+value: "0"
+# advanced_cache_options:
+#
+value: "0"
+# enable_password_rotation_cache:
+#
+value: "0"
+# # Cache Optimization
+# cache_cpu_limits: {}
+# cache_cpu_limits_not_validate: {}
+# cache_cpu_requests: {}
+# cache_cpu_requests_not_validate: {}
+# cache_memory_limits: {}
+# cache_memory_limits_not_validate: {}
+# cache_memory_requests: {}
+# cache_memory_requests_not_validate: {}
+###############################################################################
+# Kafka Optimization Settings
+###############################################################################
+# default_messaging_partition_count:
+#
+value: "1"
+# max_messaging_partition_count:
+#
+value: "3"
+# messaging_replicas:
+#
+value: "3"
+# kafka_ecosystem_common_replication_calc:
+#
+value: "1"
+# messaging_cpu_limit:
+#
+value: "1"
+# advanced_messaging_connect_cpu_limits:
+#
+value: "2"
+# advanced_messaging_connect_cpu_limits_not_validate: {}
+# advanced_messaging_connect_cpu_requests:
+#
+value: "1"
+# advanced_messaging_connect_cpu_requests_not_validate: {}
+# messaging_heap:
+#
+value: -Xmx2G -Xms1G
+# messaging_memory_limit_and_request:
+#
+value: 2560Mi
+# advanced_messaging_connect_heap_options:
+#
+value: -Xms1g -Xmx3g
+# advanced_messaging_connect_memory_limits:
+#
+value: 4Gi
+# advanced_messaging_connect_memory_limits_not_validate: {}
+# advanced_messaging_connect_memory_requests:
+#
+value: 2Gi
+# advanced_messaging_connect_memory_requests_not_validate: {}
+# messaging_rack_aware_enabled:
+#
+value: "0"
+# messaging_rack_label:
+#
+value: topology.kubernetes.io/zone
+# messaging_sa_create:
+#
+value: "0"
+# messaging_sa_fullnameoverride: {}
+# messaging_zookeeper_timeout:
+#
+value: "20000"
+###############################################################################
+# Audit Log Settings
+###############################################################################
+# enable_audit_log:
+#
+value: "0"
+# audit_log_event_bridge_bus_name: {}
+# audit_log_event_bridge_bus_region: {}
+# audit_log_event_bridge_detail_type:
+#
+value: events.arthur.ai
+# audit_log_event_bridge_source:
+#
+value: arthur-audit-log
+# audit_log_sink_destination:
+#
+value: none
+###############################################################################
+# Admin Console Settings
+###############################################################################
+# advanced_other:
+#
+value: "1"
+# show_advanced_arthur_microservice_options:
+#
+value: "0"
+# show_advanced_messaging:
+#
+value: "1"
+# show_hidden_variables:
+#
+value: "0"
+# config_job_and_workflow_retention:
+#
+value: "0"
+###############################################################################
+# Backend Performance Optimization Settings
+###############################################################################
+# Limits
+# global_model_limit_Count:
+#
+value: "500"
+# global_model_limits:
+#
+value: "0"
+# global_workflow_parallelism:
+#
+value: "150"
+# # Job Limits
+# batch_workflow_parallelism:
+#
+value: "120"
+# bootstrap_job_backoff_limit:
+#
+value: "100"
+# bootstrap_job_ttl:
+#
+value: "86400"
+# pending_batch_workflows_limit:
+#
+value: "100"
+# workflow_ttl_seconds:
+#
+value: "3600"
+# workflow_ttl_seconds_after_success:
+#
+value: "60"
+# # Ingestion Service Optimizations
+# ingestion_service_cpu_limits: {}
+# ingestion_service_cpu_limits_not_validate: {}
+# ingestion_service_cpu_requests: {}
+# ingestion_service_cpu_requests_not_validate: {}
+# ingestion_service_memory_limits: {}
+# ingestion_service_memory_limits_not_validate: {}
+# ingestion_service_memory_requests: {}
+# ingestion_service_memory_requests_not_validate: {}
+# # Explainability Optimizations
+# model_servers_always_on:
+#
+# For use with what-if and on-demand explainability. See https://docs.arthur.ai/user-guide/explainability.html
+#
+# If set to "true", then on-demand and what-if explanations are available, but uses additional cluster
+#
+# resources, 1 CPU and 1 GB memory per model with explainability enabled. If set to "false", on-demand
+#
+# and what-if explanations are unavailable, but less cluster usage when there is no data being sent.
+#
+# Regardless of the setting here, streaming explainability will be available if enabled.
+#
+# This only effects what-if and on-demand explanations.
+#
+value: "true"
+# max_model_server_replicas:
+#
+value: "2"
+# metric_service_update_default_metrics:
+#
+value: "0"
+# alert_service_update_rule_metrics:
+#
+value: "0"
+###############################################################################
+# Internal Arthur Use
+###############################################################################
+# cicd_credentials:
+#
+value: "0"
+# existing_or_vm:
+#
+value: existing_cluster
+# full_name_override:
+#
+value: arthurai
+# min_arthur_replicas:
+#
+value: "1"
+# max_arthur_replicas:
+#
+value: "1"
+status: {}
+PS: This template assumes integration with S3 and RDS database, using IRSA (IAM Roles for Service Accounts) configured.
+Most of these settings can be modified in the Admin Console UI. The Config screen will include fields for all the settings in the template:
+Some of the settings in this template can cause an installation to fail, if they are not correctly set. Some of the critical parameters are:
+YAML
+k8_storageclass:
+value: gp3
+This parameter defines the storage class that will be used to create the Persistent Volumes for the cluster. Having the wrong storage class defined here will cause the installer to fail to provision storage, which will compromise the installation. Make sure to have the correct value set before running the installer.
+YAML
+ingress_hostname:
+value: arthur.mlops.company.com
+ingress_nginx_additional_hostname:
+value: "a1788baaec5c4473aa4ec3bf4ef81bb5.XXXXXXXXXX.us-east-1.elb.amazonaws.com"
+These parameters will configure which ingress addresses Arthur will accept. By definition, Arthur will reject requests sent to addresses that are not in this list, even if they are correct (for instance, accessing Arthur through https://localhost does not work). If these hostname parameters do not match existing load balancer addresses, Arthur will be inaccessible, even once the instance is successfully installed. This can be reconfigured after installation, though it is recommended to ensure the proper value at installation time.Updated 3 months ago

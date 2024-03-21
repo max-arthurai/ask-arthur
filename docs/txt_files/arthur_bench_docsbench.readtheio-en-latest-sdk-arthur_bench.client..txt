@@ -1,0 +1,162 @@
+Content type: arthur_bench_docs
+Source: https://bench.readthedocs.io/en/latest/sdk/arthur_bench.client.html
+ arthur_bench.client - bench documentation
+arthur_bench.client#
+Subpackages#
+arthur_bench.client.auth
+Submodules
+get_arthur_internal_user_org()
+get_auth_info()
+get_current_org()
+user_login()
+AuthRefresher
+AuthRefresher.ALGORITHMS
+AuthRefresher.AUTH_KEY
+AuthRefresher.MINS_BEFORE_EXPIRY_TO_REFRESH
+AuthRefresher.refresh()
+arthur_bench.client.http
+Submodules
+construct_url()
+HTTPClient
+HTTPClient.delete()
+HTTPClient.get()
+HTTPClient.patch()
+HTTPClient.post()
+HTTPClient.put()
+HTTPClient.send()
+HTTPClient.set_path_prefix()
+validate_multistatus_response_and_get_failures()
+validate_response_status()
+arthur_bench.client.local
+Submodules
+LocalBenchClient
+LocalBenchClient.create_new_test_run()
+LocalBenchClient.create_test_suite()
+LocalBenchClient.delete_test_run()
+LocalBenchClient.delete_test_suite()
+LocalBenchClient.get_runs_for_test_suite()
+LocalBenchClient.get_summary_statistics()
+LocalBenchClient.get_test_run()
+LocalBenchClient.get_test_suite()
+LocalBenchClient.get_test_suite_by_name()
+LocalBenchClient.get_test_suites()
+PageInfo
+PageInfo.end
+PageInfo.page
+PageInfo.page_size
+PageInfo.sorted_pages
+PageInfo.start
+PageInfo.total_count
+PageInfo.total_pages
+arthur_bench.client.rest
+Subpackages
+arthur_bench.client.rest.admin
+Submodules
+arthur_bench.client.rest.bench
+Submodules
+Submodules
+ArthurClient
+Submodules#
+class arthur_bench.client.bench_client.BenchClient#
+Bases: ABC
+Base class for saving and loading bench data
+check_run_exists(suite_id: str, run_name: str) → bool#
+Check if run with given name if it exists for suite with id suite_id
+Parameters:
+client – BenchClient object for fetching test suite data
+suite_id – the id of the test suite to check run names
+run_name – the test run name to check for
+Returns:
+True if run with name is found, False otherwise
+Raises:
+ArthurInternalError – if using a client that does not support pagination
+abstract create_new_test_run(test_suite_id: str, json_body: CreateRunRequest) → CreateRunResponse#
+Create a new run for a test suite.
+Parameters:
+test_suite_id – the uuid of the test suite to log a run for
+json_body – run request containing run_metadata and scored model
+generations
+abstract create_test_suite(json_body: TestSuiteRequest) → PaginatedTestSuite#
+Create a new test suite.
+Parameters:
+json_body – test suite request object consisting of test suite metadata
+and test cases
+abstract delete_test_run(test_suite_id: str, test_run_id: str)#
+Delete a test run from a suite.
+abstract delete_test_suite(test_suite_id: str)#
+Delete a test suite. All associated runs will also be deleted
+abstract get_runs_for_test_suite(test_suite_id: str, sort: CommonSortEnum  TestRunSortEnum = CommonSortEnum.CREATED_AT_ASC, page: int = 1, page_size: int = 5) → PaginatedRuns#
+Get runs for a given test suite.
+Parameters:
+test_suite_id – the uuid of the test suite
+sort – optional sort key. possible values are ‘name’, ‘avg_score’, and ‘
+created_at’.
+use ‘-’ prefix for descending sort. defaults to ‘created_at’
+page – the page to fetch
+page_size – page size to fetch
+get_suite_if_exists(name: str) → PaginatedTestSuite  None#
+Get a full test suite with name if it exists.
+Parameters:
+client – BenchClient object for fetching test suite data
+Returns:
+complete test suite with all test cases joined,
+or None if no suite with name exists
+Raises:
+ArthurInternalError – if using a client that does not support pagination
+abstract get_summary_statistics(test_suite_id: str, run_ids: list[str]  None = None, page: int = 1, page_size: int = 5) → TestSuiteSummary#
+Fetch aggregate statistics of a test suite. Returns averages and score
+distributions for runs in test suite.
+Parameters:
+test_suite_id – uuid of the test suite
+run_id – optional run id. run will be included in response regardless of
+page information if provided
+page – the page to fetch
+page_size – page size to fetch
+abstract get_test_run(test_suite_id: str, test_run_id: str, page: int = 1, page_size: int = 5, sort: TestCaseSortEnum  None = None) → PaginatedRun#
+Get a test run by id.
+Parameters:
+test_suite_id – uuid of the test suite
+test_run_id – uuid of the test run
+page – the page to fetch, pagination refers to the test cases
+page_size – page size to fetch, pagination refers to the test cases
+sort – sort key to sort the retrieved results
+abstract get_test_suite(test_suite_id: str, page: int = 1, page_size: int = 5) → PaginatedTestSuite#
+Get a test suite by id.
+Parameters:
+test_suite_id – the uuid of the test suite to fetch
+page – the page to fetch, pagination refers to the test cases
+page_size – page size to fetch, pagination refers to the test cases
+abstract get_test_suites(name: str  None = None, sort: CommonSortEnum  TestSuiteSortEnum = TestSuiteSortEnum.LAST_RUNTIME_ASC, scoring_method: List[str]  None = None, page: int = 1, page_size: int = 5) → PaginatedTestSuites#
+Get metadata for all test suites.
+Parameters:
+name – filter test suites by name if provided
+sort – optional sort key. possible values are ‘name’, ‘last_run_time’,
+‘created_at’, use ‘-’ prefix for descending sort.
+defaults to ‘last_run_time’
+method (scoring) – optional filter on scoring method name,
+multiple names may be provided
+page – the page to fetch
+page_size – page size to fetch
+Next
+arthur_bench.client.auth
+Previous
+Python API Reference
+Copyright © 2023, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+arthur_bench.client
+Subpackages
+Submodules
+BenchClient
+BenchClient.check_run_exists()
+BenchClient.create_new_test_run()
+BenchClient.create_test_suite()
+BenchClient.delete_test_run()
+BenchClient.delete_test_suite()
+BenchClient.get_runs_for_test_suite()
+BenchClient.get_suite_if_exists()
+BenchClient.get_summary_statistics()
+BenchClient.get_test_run()
+BenchClient.get_test_suite()
+BenchClient.get_test_suites()

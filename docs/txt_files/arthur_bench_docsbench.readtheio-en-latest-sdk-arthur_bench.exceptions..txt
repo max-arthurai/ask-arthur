@@ -1,0 +1,98 @@
+Content type: arthur_bench_docs
+Source: https://bench.readthedocs.io/en/latest/sdk/arthur_bench.exceptions.html
+ arthur_bench.exceptions - bench documentation
+arthur_bench.exceptions#
+Submodules#
+exception arthur_bench.exceptions.exceptions.ArthurError#
+Bases: Exception
+Base Error for Arthur SDK. This class should not be used directly, Arthur exceptions
+should inherit from either ArthurUserError or ArthurInternalError.
+exception arthur_bench.exceptions.exceptions.ArthurInternalError#
+Bases: ArthurError
+Exception raised when user input is correct but an error occurs. Can be used
+directly but children are preferred.
+exception arthur_bench.exceptions.exceptions.ArthurUserError#
+Bases: ArthurError
+Exception raised due to incorrect user input to the Arthur SDK. Can be used directly
+but children are preferred.
+exception arthur_bench.exceptions.exceptions.ExpectedParameterNotFoundError#
+Bases: ArthurInternalError
+Exception raised when a field or property should be available from Arthur but is
+unexpectedly missing.
+exception arthur_bench.exceptions.exceptions.ForbiddenError#
+Bases: ResponseClientError
+Exception raised when a 403 Forbidden response is received from the API.
+exception arthur_bench.exceptions.exceptions.InternalTypeError#
+Bases: ArthurInternalError, TypeError
+Exception raised when a value is unexpected.
+exception arthur_bench.exceptions.exceptions.InternalValueError#
+Bases: ArthurInternalError, ValueError
+Exception raised when a value is unexpected.
+exception arthur_bench.exceptions.exceptions.MethodNotApplicableError#
+Bases: ArthurUserError
+Exception raised when the method called is not valid for the resource.
+exception arthur_bench.exceptions.exceptions.MissingParameterError#
+Bases: ArthurUserError
+Exception raised when parameters supplied to the Arthur SDK are missing.
+exception arthur_bench.exceptions.exceptions.NotFoundError#
+Bases: ResponseClientError
+Exception raised when a 404 Not Found response is received from the API.
+exception arthur_bench.exceptions.exceptions.PaymentRequiredError#
+Bases: ResponseClientError
+Exception raised when a 402 response is received from the API due to a user trying
+to access features not available in their plan.
+exception arthur_bench.exceptions.exceptions.ResponseClientError#
+Bases: ArthurUserError
+Exception raised when a 4XX response is received from the API.
+exception arthur_bench.exceptions.exceptions.ResponseRedirectError#
+Bases: ArthurInternalError
+Exception raised when a 3XX response is unexpectedly received from the API.
+exception arthur_bench.exceptions.exceptions.ResponseServerError#
+Bases: ArthurInternalError
+Exception raised when a 5XX response is received from the API.
+exception arthur_bench.exceptions.exceptions.UnauthorizedError#
+Bases: ResponseClientError
+Exception raised when a 401 Unauthorized response is received from the API.
+exception arthur_bench.exceptions.exceptions.UserTypeError#
+Bases: ArthurUserError, TypeError
+Exception raised when a user supplies an argument of the incorrect type to the
+Arthur SDK.
+exception arthur_bench.exceptions.exceptions.UserValueError#
+Bases: ArthurUserError, ValueError
+Exception raised when a user supplies an invalid value to the Arthur SDK.
+arthur_bench.exceptions.exceptions.arthur_excepted(message=None)#
+Decorator to wrap user-facing Arthur functions with exception handling that
+describes to the user whether the error is their fault or is our fault and should be
+reported.
+:param message: an optional message to prefix the error with, should describe the
+failure e.g. “failed to send
+inferences” or “an error occurred while creating the model.”
+:return: the decorator function
+Next
+arthur_bench.models
+Previous
+arthur_bench.client.rest.bench
+Copyright © 2023, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+arthur_bench.exceptions
+Submodules
+ArthurError
+ArthurInternalError
+ArthurUserError
+ExpectedParameterNotFoundError
+ForbiddenError
+InternalTypeError
+InternalValueError
+MethodNotApplicableError
+MissingParameterError
+NotFoundError
+PaymentRequiredError
+ResponseClientError
+ResponseRedirectError
+ResponseServerError
+UnauthorizedError
+UserTypeError
+UserValueError
+arthur_excepted()

@@ -1,0 +1,9 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/exporting-platform-configurations
+ Exporting Platform Configurations
+Exporting Platform ConfigurationsSuggest EditsAfter a successful installation of the Arthur platform, you can download the configuration that was used as a .yaml file by following the below steps:
+Navigate to the Admin Console and login.
+Click on the "View Files" tab.
+Go to upstream → userdata and click on config.yaml file.
+Copy the contents of that file and save it for future use (or check-in to source control).
+Updated 3 months ago

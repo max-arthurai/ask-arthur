@@ -1,4 +1,0 @@
-Content type: arthur_scope_docs
-Source: https://docs.arthur.ai/docs/installing-kubernetes
- Installing Kubernetes
-Installing KubernetesSuggest EditsThis section covers the steps required for installing Arthur on a Kubernetes cluster. There are separate steps required for online and airgapped installations. An additional set of instructions are also available for installing Arthur that’s scoped within a K8s namespace.Updated 3 months ago

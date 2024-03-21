@@ -1,0 +1,100 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/quickstart
+ Quickstart
+QuickstartSuggest EditsFrom a Python environment with the arthurai package installed, this quickstart code will:
+Make binary classification predictions on a small dataset
+Onboard the model with reference data to Arthur
+Log batches of model inference data with Arthur
+Get performance results for our model
+Imports
+The arthurai package can be pip-installed from the terminal, along with numpy and pandas:
+Bashpip install arthurai numpy pandas
+Then you can import the functionality we'll use from the arthurai package like this:
+Python# Arthur imports
+from arthurai import ArthurAI
+from arthurai.common.constants import InputType, OutputType, Stage
+from arthurai.util import generate_timestamps
+# Other libraries used in this example
+import numpy as np
+import pandas as pd
+Model Predictions
+We write out samples from a Titanic survival prediction dataset explicitly in Python,
+giving the age of each passenger, the cost of their ticket, the passenger class of their ticket, and the ground-truth label of whether they survived. Our model's outputs are given by a predict function using only the age variable. We split the data into
+reference_data for onboarding the model
+inference_data for in-production inferences the model processes
+Python# Define Titanic sample data
+titanic_data = pd.DataFrame({
+"age":[19.0,37.0,65.0,30.0,22.0,24.0,16.0,40.0,58.0,32.0],
+"fare":[8.05,29.7,7.75,7.8958,7.75,49.5042,86.5,7.8958,153.4625,7.8958],
+"passenger_class":[3,1,3,3,3,1,1,3,1,3],
+"survived":[1,0,0,0,1,1,1,0,1,0]})
+# Split into reference and inference data
+reference_data, inference_data = titanic_data[:6].copy(), titanic_data[6:].copy()
+# Predict the probability of Titanic survival as inverse percentile of age
+def predict(age):
+nearest_age_index = np.argmin(np.abs(np.sort(reference_data['age']) - age))
+return 1 - (nearest_age_index / (len(reference_data) - 1))
+# reference_data and inference_data contain the model's inputs and outputs
+reference_data['pred_survived'] = reference_data['age'].apply(predict)
+inference_data['pred_survived'] = inference_data['age'].apply(predict)
+Onboarding
+This code will only run once you enter a valid username.
+First we connect to the Arthur API and create an arthur_model with some high-level metadata: a classification model operating on tabular data with the name "TitanicQuickstart".
+Python# Connect to Arthur
+arthur = ArthurAI(url="https://app.arthur.ai",
+login="<YOUR_USERNAME_OR_EMAIL>",
+password=os.environ['ARTHUR_PASSWORD'])
+# Register the model type with Arthur
+arthur_model = arthur.model(display_name="Example: Titanic Quickstart",
+input_type=InputType.Tabular,
+output_type=OutputType.Multiclass)
+Next, we infer the model schema from thereference_data, specifying which attributes are in which {ref}stage <basic_concepts_attributes_and_stages>. Additionally, we configure extra settings for the passenger_class attribute. Then we save the model to the platform.
+Python# Map PredictedValue attribute to its corresponding GroundTruth attribute value.
+# This tells Arthur that the `pred_survived` column represents
+# the probability that the ground truth column has the value 1
+pred_to_ground_truth_map = {'pred_survived' : 1}
+# Build arthur_model schema on the reference dataset,
+# specifying which attribute represents ground truth
+# and which attributes are NonInputData.
+# Arthur will monitor NonInputData attributes even though they are not model inputs.
+arthur_model.build(reference_data,
+ground_truth_column='survived',
+pred_to_ground_truth_map=pred_to_ground_truth_map,
+non_input_columns=['fare', 'passenger_class'])
+# Configure the `passenger_class` attribute
+# 1. Turn on bias monitoring for the attribute.
+# 2. Specify that the passenger_class attribute has possible values [1, 2, 3],
+# since that information was not present in reference_data (only values 1 and 3 are present).
+arthur_model.get_attribute(name='passenger_class').set(monitor_for_bias=True,
+categories=[1,2,3])
+# onboard the model to Arthur
+arthur_model.save()
+Sending Inferences
+Here we send inferences from inference_data to Arthur. We'll oversample inference_data and use Arthur's utility function to generate some fake timestamps as though the inferences were made over the last five days.
+Python# Sample the inference dataset with predictions
+inferences = inference_data.sample(100, replace=True)
+# Generate mock timestamps over the last five days
+timestamps = generate_timestamps(len(inferences), duration='5d')
+# Send the inferences to Arthur
+arthur_model.send_inferences(inferences, inference_timestamps=timestamps)
+Inferences usually become available for analysis in seconds, but it can take up to a few minutes. You can wait until they're ready for your analysis like this:
+Python# Wait until some inferences land in Arthur
+arthur_model.await_inferences()
+Performance Results
+With our model onboarded and inferences sent, we can get performance results from Arthur. View your model in your Arthur dashboard, or use the code below to fetch the overall accuracy rate:
+Python# Query overall model accuracy
+query = {
+"select": [
+{
+"function": "accuracyRate"
+}
+]
+}
+query_result = arthur_model.query(query)
+print(query_result)
+You should see [{'accuracyRate': 0.8}] or a similar value depending on the random sampling of your inference set.Updated 3 months ago What’s NextLearn more about important terms with the Core Concepts in Arthur page, try out in-depth examples in our Arthur Github Sandbox, or start your in-depth onboarding walkthrough with the Data Preparation for Arthur page.Core Concepts in ArthurArthur Sandbox GitHub RepositoryData Preparation for ArthurTable of Contents
+Imports
+Model Predictions
+Onboarding
+Sending Inferences
+Performance Results

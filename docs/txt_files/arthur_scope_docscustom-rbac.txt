@@ -1,0 +1,99 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/custom-rbac
+ Custom RBAC
+Custom RBACSuggest EditsManaging RBAC and Organizations for SSO users
+For customers using SSO (on-prem only), Arthur can set up a fully customizable RBAC.
+Please follow the below:
+When setting up your identity provider via the YAML configuration, supply a global
+role name and set of permissions under globalRoleDefs that your identity provider will authenticate users with.
+This configuration will create the global role in the Arthur authorization system when it is applied. See the
+{ref}Creating Global Roles for Managing Organizations and RBAC Policies Guide <creating_global_roles_in_arthur_config> for
+more information.
+That global role can then create custom role mappings for each organization:
+During organization creation, including the role configuration JSON (see below, for example) in the request body when calling the organizations endpoint.
+After an organization is created, create or add custom_roles by sending the role configuration JSON (see below, for example) in the request body when calling authorization custom roles
+endpoint.
+Users logging in through your IdP must now have a valid known role in their token when accessing the Arthur
+Platform. Arthur will use this role to authenticate that the user is a member of the organization and
+determine their permissions.
+Managing Roles and Permissions
+Understanding Permissions
+A permission is a combination of a resource and an action. For example raw_data read, users write, models delete.
+For a full list of available permissions. please see Arthur Permissions by Standard Roles.
+For a directory of permissions by API endpoint, please see Arthur Permissions by Endpoint.
+Create Custom Roles
+The Create Organization Custom Roles endpoint is available for customers using SSO to operate on custom roles for each organization. A few notes:
+This endpoint only operates on permission scopes within each organization. Permissions with global scope (such as creating a new organization) cannot be granted via this endpoint, those permissions must be assigned to a role with global privileges via the Arthur IdP configuration YAML. See
+{ref}Creating Global Roles for Managing Organizations and RBAC Policies Guide <creating_global_roles_in_arthur_config> for more
+information.
+Roles can have a list of permissions to allow and/or a list of other roles to inherit permissions from.
+Role names cannot conflict with Arthur Permissions by Standard Roles
+Supplied permissions must be valid, known as Arthur permissions.
+Roles can inherit the permissions of other roles that are either Arthur Permissions by Standard Roles or roles also defined in the same organization. Unknown inherited role names will be rejected.
+Get Custom Roles
+To retrieve a list of roles defined for an organization, use: Get Organization Custom Roles. To filter on specific roles, pass a comma-separated list of role names in a roles query parameter. For example: /authorization/custom_roles?roles=role1,role2. If you wish to return all roles, simply leave out the query parameter or pass "*" as role.
+Delete Custom Roles
+To delete a role or multiple roles from an organization, use Delete Organization Custom Roles. Specify which roles to delete in the JSON request body. For example, to delete a single role:
+JSON{
+"roles": [
+"role3"
+]
+}
+To delete all roles pass "*."
+📘If you do not specify an organization_id, this will delete all custom roles you have created
+JSON{
+"roles": [
+"*"
+]
+}
+Example Role Configuration JSON
+Below is an example JSON request body that creates three roles. role1 has 3 permissions defined, role2 gets
+additional permission and then inherits the 3 permissions from role1, and role3 inherits the permissions from Arthur's
+default "Model Owner" role. For more details on the expected schema for each endpoint, see API Documentation.
+JSON{
+"roles": [
+{
+"role_name": "role1",
+"permissions": [
+{
+"resource": "metric_data",
+"action": "read"
+},
+{
+"resource": "metric_data",
+"action": "write"
+},
+{
+"resource": "tag",
+"action": "read"
+}
+]
+},
+{
+"role_name": "role2",
+"permissions": [
+{
+"resource": "user_self",
+"action": "read"
+}
+],
+"inherited_role_names": [
+"role1"
+]
+},
+{
+"role_name": "role3",
+"inherited_role_names": [
+"Model Owner"
+]
+}
+]
+}
+Updated 3 months ago Table of Contents
+Managing RBAC and Organizations for SSO users
+Managing Roles and Permissions
+Understanding Permissions
+Create Custom Roles
+Get Custom Roles
+Delete Custom Roles
+Example Role Configuration JSON

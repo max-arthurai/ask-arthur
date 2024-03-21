@@ -1,0 +1,82 @@
+Content type: arthur_bench_docs
+Source: https://bench.readthedocs.io/en/latest/sdk/arthur_bench.client.rest.html
+ arthur_bench.client.rest - bench documentation
+arthur_bench.client.rest#
+Subpackages#
+arthur_bench.client.rest.admin
+Submodules
+ArthurAdminClient
+ArthurAdminClient.authenticate()
+ArthurAdminClient.get_current_user()
+ArthurAdminClient.login()
+AuthenticationInfo
+AuthenticationInfo.email
+AuthenticationInfo.external_user_id
+AuthenticationInfo.first_name
+AuthenticationInfo.internal_user_id
+AuthenticationInfo.issuer
+AuthenticationInfo.last_name
+AuthenticationInfo.organization_ids
+AuthenticationInfo.roles
+AuthenticationInfo.service_account_id
+AuthenticationInfo.username
+LoginRequest
+LoginRequest.login
+LoginRequest.password
+User
+User.alert_notifications_enabled
+User.created_at
+User.email
+User.first_name
+User.help_mode_enabled
+User.id
+User.last_name
+User.roles
+User.show_intro_sequence
+User.username
+UserContext
+UserContext.id
+UserContext.name
+UserResponse
+UserResponse.alert_notifications_enabled
+UserResponse.contexts
+UserResponse.created_at
+UserResponse.email
+UserResponse.first_name
+UserResponse.help_mode_enabled
+UserResponse.id
+UserResponse.last_name
+UserResponse.organization_id
+UserResponse.organization_name
+UserResponse.plan
+UserResponse.roles
+UserResponse.show_intro_sequence
+UserResponse.username
+arthur_bench.client.rest.bench
+Submodules
+ArthurBenchClient
+ArthurBenchClient.create_new_test_run()
+ArthurBenchClient.create_test_suite()
+ArthurBenchClient.delete_test_run()
+ArthurBenchClient.delete_test_suite()
+ArthurBenchClient.get_runs_for_test_suite()
+ArthurBenchClient.get_summary_statistics()
+ArthurBenchClient.get_test_run()
+ArthurBenchClient.get_test_suite()
+ArthurBenchClient.get_test_suites()
+ArthurBenchClient.score_hallucination()
+Submodules#
+class arthur_bench.client.rest.client.ArthurClient(url: str  None = None, login: str  None = None, password: str  None = None, api_key: str  None = None, organization_id: str  None = None, verify_ssl: bool  None = None, allow_insecure: bool = False, offline: bool = False)#
+Bases: object
+Next
+arthur_bench.client.rest.admin
+Previous
+arthur_bench.client.local
+Copyright © 2023, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+arthur_bench.client.rest
+Subpackages
+Submodules
+ArthurClient

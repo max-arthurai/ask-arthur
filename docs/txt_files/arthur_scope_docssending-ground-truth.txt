@@ -1,0 +1,49 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/sending-ground-truth
+ Sending Ground Truth
+Sending Ground TruthSuggest EditsOne of the greatest differences between evaluating models in experimentation vs. monitoring in production is the delayed nature of responses.
+A model that predicts an action may have ground truth available immediately after prediction. One common example is models, common in the realm of advertising, used to predict whether or not a user will click on the advertisement.
+A bank using a model that predicts whether or not a customer will default on their loan in the first 6 months will not know whether or not they were correct until 6 months have passed or the customer defaults on their loan.
+In rarer cases, though more often in models of unstructured data types (like text or image), ground truth may never be collected.
+Due to these varying timelines of receiving ground truth data, many teams use Data Drift Metrics as proxies for performance when ground truth is delayed. With these techniques, however, it is still best practice to format and send in your ground truth data when available.
+Formatting Ground Truth Data
+After receiving ground truth data, matching ground truth labels with the correct inferences within Arthur is essential. To ensure this, Arthur requires two values for every inference value you would like to send ground truth for:
+Ground Truth Label: True label for that inference row
+Partner Inference ID: A unique inference identifier meant to connect inferences with how teams keep track of inferences internally
+Sending Ground Truth Data with Python SDK
+With the need to wait for ground truth, there tend to be three main workflows for teams updating their Arthur Model to receive ground truth :
+At the time of prediction: Some ML models run in systems where ground truth is provided nearly instantaneously after prediction. In these instances, it is best to include ground truth as an additional column to there.send_inferences() workflow.
+At the time of labeling: Similar to attaching send_inferences within the Python script where your model makes inferences, teams with a receiving ground truth workflow may choose to attach update_inference_ground_truths() to their Python script
+In bulk: Other teams may wait to onboard ground truth labels until a certain number of labels or time has passed. Teams that choose to send labels in bulk from a data frame may either use.update_inference_ground_truths() or send_bulk_ground_truths() for updating ground truth for more than 100k inferences at a time
+Python SDK####################################################
+# we can collect a set of folder names each corresponding to a batch run, containing one or
+#
+more Parquet or Json files with the input attributes columns, non-input attribute columns, and
+#
+prediction attribute columns as well as a "partner_inference_id" column with our unique
+#
+identifiers and an "inference_timestamp" column
+inference_batch_dirs = ...
+# then suppose we have a directory with one or more parquet or json files containing matching
+#
+"partner_inference_id"s and our ground truth attribute columns as well as a
+#
+"ground_truth_timestamp" column
+ground_truth_dir = ...
+# send the inferences to Arthur
+for batch_dir in inference_batch_dirs:
+batch_id = batch_dir.split("/")[-1]
+# use the directory name as the Batch ID
+arthur_model.send_bulk_inferences(
+directory_path=batch_dir,
+batch_id=batch_id)
+# send the ground truths to Arthur
+arthur_model.send_bulk_ground_truths(directory_path=ground_truth_dir)
+Updating Ground Truth with the API
+Ground truth can also be updated using the Arthur API using either:
+The Update Inference Ground Truths endpoint
+The Send Inference File endpoint and specifying the Ground Truth file
+Updated 2 months ago Table of Contents
+Formatting Ground Truth Data
+Sending Ground Truth Data with Python SDK
+Updating Ground Truth with the API

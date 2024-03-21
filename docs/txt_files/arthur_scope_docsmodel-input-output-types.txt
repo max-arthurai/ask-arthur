@@ -1,0 +1,14 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/model-input-output-types
+ Model Input / Output Types
+Model Input / Output TypesUnderstanding Model Schemas within Arthur ScopeSuggest EditsRole of a Model Schema in Arthur Scope
+Arthur's model schema records important properties for your model's attributes, including their value type and stage. These data types define the data that enters and exits your model.
+The InputType of a model specifies whether data enter your model as a tabular data frame, image, or raw text.
+The OutputType of a model specifies the modeling task: whether your model predicts values for a regression task, probabilities for a classification task, bounding boxes for a computer vision object-detection task, or token sequences (and their probabilities for generative tasks).
+Supported Schemas in Arthur Scope
+Arthur Scope supports several input and output types.
+The input types supported are:
+The output types supported are:
+Updated 2 months ago What’s NextQuick look at model monitoring in Arthur by typeTabularTextImageTable of Contents
+Role of a Model Schema in Arthur Scope
+Supported Schemas in Arthur Scope

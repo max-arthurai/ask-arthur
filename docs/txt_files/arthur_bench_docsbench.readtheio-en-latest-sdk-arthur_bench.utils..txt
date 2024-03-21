@@ -1,0 +1,44 @@
+Content type: arthur_bench_docs
+Source: https://bench.readthedocs.io/en/latest/sdk/arthur_bench.utils.html
+ arthur_bench.utils - bench documentation
+arthur_bench.utils#
+Submodules#
+arthur_bench.utils.loaders.get_file_extension(filepath: str  PathLike) → str#
+arthur_bench.utils.loaders.load_suite_from_csv(filepath: str  PathLike, input_column: str, reference_column: str  None = None) → List[TestCaseRequest]#
+Load test case data from csv file.
+Parameters:
+filepath – string or pathlike object pointing to csv file
+input_column – column in file containing inputs
+reference_column – column in file containing reference outputs
+arthur_bench.utils.loaders.load_suite_from_dataframe(data: DataFrame, input_column: str, reference_column: str  None = None) → List[TestCaseRequest]#
+Load test case data from a pandas dataframe.
+Parameters:
+data – dataframe where each row is a test case consisting of a column for i
+input and a column for reference
+input_column – column in dataframe containing inputs
+reference_column – column in dataframe containing reference outputs
+arthur_bench.utils.loaders.load_suite_from_json(filepath: str  PathLike) → TestSuiteRequest#
+Load a full test suite from a json file.
+Parameters:
+filepath – string or pathlike object pointing to json file containing test
+suite data
+arthur_bench.utils.loaders.load_suite_from_list(inputs: List[str], reference_outputs: List[str]  None) → List[TestCaseRequest]#
+Load test case data from lists of strings.
+Parameters:
+inputs – list of string inputs for each test case
+reference_outputs – list of string reference outputs for each input
+Next
+Contributing
+Previous
+arthur_bench.telemetry
+Copyright © 2023, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+arthur_bench.utils
+Submodules
+get_file_extension()
+load_suite_from_csv()
+load_suite_from_dataframe()
+load_suite_from_json()
+load_suite_from_list()

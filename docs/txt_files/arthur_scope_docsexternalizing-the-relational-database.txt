@@ -1,0 +1,28 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/externalizing-the-relational-database
+ Externalizing the Relational Database
+Externalizing the Relational DatabaseSuggest EditsIf desired, you can bring your own Postgres instance to use as your Arthur's relational database. Follow the steps on this page to prepare your Postgres instance.
+First, deploy your Postgres instance in your desired environment with appropriate ingress firewall configuration.
+Create databases for the Arthur platform.
+CREATE DATABASE arthurai
+CREATE DATABASE alert_service;
+CREATE DATABASE dataset_service;
+CREATE DATABASE metric_service;
+-- for stand alone instance
+CREATE USER arthurai WITH PASSWORD 'SuperSecret';
+-- for RDS instance
+CREATE ROLE arthurai WITH PASSWORD 'SuperSecret' LOGIN;
+REVOKE ALL PRIVILEGES ON DATABASE postgres FROM arthurai;
+GRANT ALL PRIVILEGES ON DATABASE arthurai TO arthurai;
+GRANT ALL PRIVILEGES ON DATABASE alert_service TO arthurai;
+GRANT ALL PRIVILEGES ON DATABASE dataset_service TO arthurai;
+GRANT ALL PRIVILEGES ON DATABASE metric_service TO arthurai;
+If you have been using the embedded database and you wish to switch to using an external Postgres, backup the embedded
+database and restore it to the new external Postgres with pg_dump and pg_restore.
+Connecting to the database using SSL/TLS
+If your postgres instance supports SSL/TLS connections, and you want to connect to your external database
+with an encrypted connection, you simply need to set Database SSL Mode in the initial configuration. By default, this
+is set to disable. However, you can enable an encrypted connection using the value require.
+{note}An externally managed Postgres instance is strongly recommended for production-grade installs.
+Updated 3 months ago Table of Contents
+Connecting to the database using SSL/TLS

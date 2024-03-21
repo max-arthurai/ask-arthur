@@ -1,0 +1,61 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/sending-inferences-1
+ Sending Inferences
+Sending InferencesSuggest EditsNow that you have registered your model successfully, you can connect your production pipeline to Arthur.
+Creating Arthur Connection
+To be able to send inference data to the platform, you will need to create a connection to not only your Arthur platform but also the model the inferences are being tracked for. Information about creating your API key and connecting to the Arthur platform/model objects can be found in the UI Guide.
+Formatting Inference Data
+The first thing you need to do to send inferences to Arthur is to format the data into a structure Arthur will understand. This will follow a similar structure to the formatting to onboard your reference dataset. However, there are some differences in added attributes to point out.
+The following attributes are formatted the exact same as your reference dataset and are required for all inferences sent.
+Model Attributes: All features the model uses to create predictions
+Model Predictions: Model predictions for each row of data
+The next two parameters are required for inference datasets. However, these are not explicitly required for teams onboarding inferences with the Arthur Python SDK.
+Inference Timestamp: Typically refers to the time of model prediction
+If the inference timestamp is not specified, the SDK will auto-populate this field with the time the inferences were logged into the Arthur platform
+Partner Inference ID: A way to match specific inferences in Arthur against your other systems and update your inferences with ground truth labels as they become available in the future. The most appropriate choice for a partner inference ID depends on your specific circumstances, but common strategies include using existing IDs and joining metadata with non-unique IDs.
+If you already have existing IDs that are unique to each inference and easily attached to future ground truth labels, you can simply use those (casting to strings if needed).
+Another common approach is constructing a partner inference ID from multiple pieces of metadata. For example, if your model makes predictions about your customers at least once daily, you might construct your partner inference IDs as {customer_id}-{date}. This would be easy to reconstruct when sending ground truth labels much later: simply look up the labels for all the customers passed to the model on a given day and append that date to their ID.
+If you don’t supply partner inference IDs, the SDK will generate them for you and return them to your send_inferences() call. These can be kept for future reference or discarded if you’ve already sent ground truth values or don’t plan to in the future.
+🚧Match Partner Inference ID with Internal Distinct IDsMany ML models in production do not receive ground truth at the time of prediction. The technique that Arthur uses to onboard ground truth later utilizes your partner inference ID. Teams that want to take advantage of metrics, unique Arthur enrichments, and popular reporting workflows that require ground truth will have to have a linkable connection between their data base and ours (through Partner Inference ID).
+Finally, the remaining information can be onboarded to Arthur but does not need to be:
+Non-Input Attributes: Specifying values for non-input attributes is not required at the time of inference, i.e., you can send inferences with Null non-input attributes
+❗️Sent Inference Data is ImmutableYou may not update non-input attribute data (or any inference data for that matter) after sending it to the Arthur platform. The only value that can be updated in Arthur is ground truth, which we will see in the next section.
+Send Inferences to Arthur
+Inferences are commonly sent to Arthur using our Python SDK but can also be sent with our API or 3rd party integrations.
+Python SDK (Quick Integration) : The most common way to log inferences is with the Python SDK. This can be done by adding our send_inferences()to your model's prediction function. Teams must connect to Arthur within their prediction script, run predictions, and send results to Arthur. However, this option would have you add latency to the speed with which your model generates inferences. For more efficient approaches, see options 2 and 3.
+Python SDK (Streaming Uploads): If you write your model's inputs and outputs to a data stream, you can add a listener to that stream to log those inferences with Arthur. For example, if you have a Kafka topic, you might add a new arthur consumer group to listen to new events and pass them to the send_inferences() method. If your inputs and predictions live in different topics or you want to add non-input data from another topic, you might use Kafka Streams to join the various topics before sending them to Arthur.
+Python SDK (Inference Upload Jobs): Another option is to read data from the rest and send it into the Arthur platform. Depending on their architecture, some teams choose a job or event-driven approach. They often have jobs that look up inferences since the last run, run a script that formats and writes the data into parquet files, and then use the Python SDK function send_bulk_inferences() to send the parquet files to the Arthur platform.
+JSON Payload Function: For model deployments that do not have a Python script to run, teams often choose to send inferences to our API through JSON payload.
+3rd Party Integration: Arthur has several integrations with third-party services, frameworks, and platforms. Check out our Integrations page to explore more potential integrations.
+Python SDKJSON PayloadInference Upload Jobs####################################################
+# New code to fetch the ArthurModel
+# connect to Arthur
+import os
+from arthurai import ArthurAI
+arthur = ArthurAI(
+url="https://app.arthur.ai",
+access_key=os.environ["ARTHUR_API_KEY"])
+# retrieve the arthur model
+arthur_model = arthur.get_model(os.environ["ARTHUR_PARTNER_MODEL_ID"], id_type='partner_model_id')
+####################################################
+# your original model prediction function
+# which can be on its own as a python script
+# or wrapped by an API like a Flask app
+def predict():
+# get data to apply model to
+inference_data = ...
+# generate inferences
+# in this example, the predictions are classification probabilities
+predictions = model.predict_proba(...)
+####################################################
+#### NEW PART OF YOUR MODEL'S PREDICTION SCRIPT
+# SEND NEW INFERENCES TO ARTHUR
+arthur_model.send_inferences(
+inference_data,
+predictions=predictions)
+####################################################
+return predictions
+Updated 3 months ago Table of Contents
+Creating Arthur Connection
+Formatting Inference Data
+Send Inferences to Arthur

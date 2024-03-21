@@ -1,0 +1,73 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/platform-readiness-for-existing-cluster-installs
+ Platform Readiness for Existing Cluster Installs
+Platform Readiness for Existing Cluster InstallsSuggest EditsThe Arthur platform can be installed on an on-prem or cloud-based pre-provisioned Kubernetes cluster, so all the data and controls adhere to existing corporate practices.
+Arthur Cluster Installs FAQs
+SysAdmin
+What kind of privileges/hardware does the SysAdmin installing the Arthur platform need?
+The SysAdmin will need a workstation with the following requirements:
+running Linux or MacOS. The KOTS CLI installer does not support Windows.
+sudo/root access. To install the KOTS CLI plugin for kubectl.
+connection to the Kubernetes cluster, using kubectl, and privileges to deploy K8s Objects at either Cluster or Namespace scope (at least).
+(recommended) access to the Internet. For downloading the installer, plugins and fetching updates.
+How can I download the artifacts required for installing the Arthur platform?
+All artifacts required for installing the Arthur platform are available on a customer-specific password-protected portal, which your sales team can give you access to. It is
+recommended that the portal is accessible from within your corporate network, since the artifacts are around mutiple GBs in size.
+Does my kubernetes cluster need access to the internet?
+The Arthur platform can be installed without Internet access, once all the required files are downloaded and available locally. However, we recommend access to the Internet from the Kubernetes cluster for an efficient install and upgrade experience. Please inform your sales team about any network restrictions and optionally, if its possible to {ref}whitelist specific URLs <requirements_for_online_installation>.
+Cloud Providers
+Which Kubernetes distributions that Arthur supports out-of-the-box?
+Arthur is architected to run on any distribution of Kubernetes, however certain commercial distributions are untested. The Arthur application is validated/tested on:
+Amazon AWS EKS
+Which cloud providers has Arthur been tested on?
+The Arthur platform has been tested on the following cloud providers:
+Amazon AWS
+What container runtimes does Arthur support?
+Containers in the Arthur Platform run on the following container runtimes:
+docker (slated to be deprecated in Kubernetes 1.24)
+containerd
+Kubernetes Server
+What version(s) of Kubernetes Server does Arthur support?
+Please refer to the requirements documentation.
+Can the Arthur platform be scoped to a dedicated namespace?
+The Arthur platform can be deployed and scoped to a specific namespace, though there are some cluster-level CustomResourceDefinitions that need to be pre-installed. See details here.
+What are the minimum resource requirements for operating the Arthur Platform?
+Optimal performance of the Arthur platform is ensured on a 6 node cluster (though test clusters can be provisioned with 3 nodes) with each node having 16 CPUs, 32GB Memory (RAM) and 1000 GB Storage with at least 3000 IOPS. However, please reach out to your sales team for a tailored configuration custom to your projected workloads.
+Is there a default StorageClass defined on the Kubernetes cluster?
+The Kubernetes cluster must have a default StorageClass defined before starting the Arthur platform installation. If a default StorageClass does not exist, adding the storageclass.kubernetes.io/is-default-class: "true" annotation to a StorageClass should remedy this requirement.
+What Ingress Controller are you planning to use to access the Arthur platform? Is it already installed?
+The Arthur platform needs to expose a couple of services so the application is accessible outside the cluster. All compatible Kubernetes Ingress controllers should work, though {ref}Nginx Ingress Controller <k8s_install_prep_install_ingress> installed in a separate namespace is recommended.
+Are there any SecurityContext requirements on the Kubernetes cluster?
+The Arthur platform is architected to leverage as few permissions as deemed necessary for optimal functioning. No container is run as root. All processes are owned by non-system users. Please reach out to your sales team if you have specific SecurityContext requirements.
+Does Arthur support running on SELinux environments?
+The Arthur platform requires SELinux to be running in permissive mode, if enabled.
+Are there any Network Policies configured on the Kubernetes cluster?
+Pods of the Arthur platform will need to communicate with each other. By default, pods can communicate with each other. Please reach out to your sales team if you have custom Network Policies configured on the Kubernetes cluster.
+How many IP addresses should be available for the Arthur Platform?
+The Arthur platform is architected to be scalable, using resources on-demand. Given the dynamic nature of the infrastructure involved, we recommend at least 128 IP address CIDR blocks attached to the relevant subnets. However, this number can increase as more models are onboarded to the platform.
+Are there any namespace-level constraints enforced on the Kubernetes cluster?
+Please let your sales team know if there are any constraints configured at the namespace-level on the Kubernetes cluster, as this will help prepare for a smooth installation experience.
+Are there any cluster-level constraints enforced on the Kubernetes cluster?
+Please let your sales team know if there are any specific cluster-level contraints configured on the Kubernetes cluster, as this will help prepare for a smooth installation experience.
+Does the Kubernetes cluster have access to a private/public container registry?
+The Kubernetes cluster on which the Arthur platform will be installed must have connectivity to a container registry. The SysAdmin performing the installation must also have Read/Write access to the same container registry.
+Does the Kubernetes cluster have access to a private/public Pypi/Conda registry?
+The Kubernetes cluster on which the Arthur platform will be installed must have connectivity to a PyPI/Conda registry, which ensures optimum utilization of the features of the platform.
+Other Considerations
+Does your enterprise have a software procurement process?
+Please keep your sales team informed of any software procurement process that maybe in place before installing new software, and potential turnaround times for such processes.
+Do you want to deploy Arthur on infrastructure that isn't mentioned above (eg: Cloud Providers, Kubernetes Distributions, etc.)?
+If so, please inform your sales team as soon as possible so we can setup an architecture review between your platform team and Arthur's platform team.
+Can any of the Arthur platform components be externalized, so its not managed by Arthur?
+The platform supports the use of AWS S3 as well as most S3 compatible systems as the Object/Blob store. The embedded metadata database can be replaced by a recent version of Postgres.
+A managed service for S3 and/or Postgres is recommended for production-grade installs.
+Can the Arthur platform be deployed on a Kubernetes cluster that is shared with other applications?
+The Arthur platform has been architected to be highly scalable and reliable. Based on usage (number of models) and load (data ingestion), pods are scaled in short periods of time to ensure efficient operation. As such, if other applications will be installed on the same Kubernetes platform, talk to your sales team about provisioning dedicated nodegroups for the cluster.
+Does the Arthur platform support different organizations/business units using the same application?
+Yes. See our guide on User and Org Management.
+Updated 3 months ago Table of Contents
+Arthur Cluster Installs FAQs
+SysAdmin
+Cloud Providers
+Kubernetes Server
+Other Considerations

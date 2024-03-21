@@ -1,0 +1,49 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/sending-historical-data
+ Sending Historical Data
+Sending Historical DataSuggest EditsAlthough optional, we've found that a useful step for teams after onboarding is to onboard historical model information to Arthur. This allows teams to immediately begin to dig into their model data and explore trends in the data, even before new sending new inferences.
+To send historical data, we will need to do the following:
+Collect Historical Data
+Format It's Timestamp Information
+Send it to your Arthur Model
+Collect Historical Data
+Now, we want to collect all the historical data and inferences our model has run on. Organizations may store this information in different tables, so you may need to query or merge information from wherever you store data. However, it is important to ensure that this information contains the following:
+All Inputs / Outputs Expected By Arthur Model Object: During model creation, we explored the format the Arthur Model Object expects to receive information. To review, the Arthur model object expects:
+All Feature Inputs to the Model
+Predicted Model Outputs
+(Optional) Ground Truth (True Label Output), if known
+(Optional) Any Non-Input Attributes logged to the model if known
+Inference TimeStamps: This is information about when the model ran the historical predictions. This is especially important to ensure that information logged into Arthur is logged in for the correct time so that you can accurately evaluate trends and/or diagnose previous issues.
+Additional Inference Identification: This is discussed further in detail in Sending Inferences, but this information includes inference identification like Partner Inference ID or Batch ID (for batch models).
+Format Timestamps
+The Arthur model object expects timestamps to be in DateTime format. Below is a quick example of how to format timestamps into the correct format, but here are some references about converting Python information into DateTime.
+Pythonimport pytz
+from datetime import datetime
+## Use Lambda Function to Convert to Date Time
+def get_timestamps(x):
+new_time = x.split('.')[0]
+return datetime.strptime(new_time, '%Y-%m-%d %H:%M:%S')
+historical_df['timestamps'] = historical_df['timestamps'].apply(lambda x: get_timestamps(x))
+Send Inferences to Arthur
+Now, we can send the inferences to Arthur. We must separate the Arthur model information from the timestamps to do this. We will see how this works below. Although we use a streaming model, we can see a commented-out example of sending historical inferences as a batch.
+Python## Send Historical Streaming Data
+hist_df = historical_df.drop(columns = ['timestamps'])
+arthur_model.send_inferences(hist_df, inference_timestamps = historical_df['timestamps'])
+When sending historical batch data, it is important to remember that you need not only to send historical timestamp information but also unique batch ids. For teams that do not have unique batch ids already stored, a common technique will be to create a unique timestamp based on the frequency that you run batches historically.
+An example below is creating unique batches based on the day. (i.e., all inferences with the same date will belong to the same batch). Changing this based on your batch frequency (i.e., if you run data every hour, etc.) is important.
+Python## Create Daily Batch Times
+historical_df['batch_id'] = historical_df['timestamps'].apply(lambda x: 'batch_'+x.strftime('%m_%d_%Y'))
+batch_df = historical_df.drop(columns = ['timestamps','batch_id'])
+## Send Historical Batch Data
+arthur_model.send_inferences(batch_df, batch_id=historical_df['batch_id'], inference_timestamps=historical_df['timestamps'])
+Key Things to Keep in Mind
+Alerts will backdate: Alerts will still trigger any alerts set up on historical data. This can be useful to evaluate when an alert may have occurred in the past. However, it may be best to make notes explore, and then mark and conclude this information in the alerts section. This way, you can gain all the information from backdated alerts but have a cleaned and operable alerting homepage for new alerts your teams will need to act on.
+UI may show just a window: The UI within Arthur is automatically set to show the last month of data. It can be easiest to go into the filter and select "all time" to ensure all your data has been sent to the platform.
+All enabled functionality should be available: You should be ready to explore your data using the Arthur UI or query service with all your data and any special enrichments you enabled during Arthur Model Object creation.
+Beyond Arthur functionalities, when evaluating your historical data, it is also important to keep in mind that:
+Your model will perform better on data it was trained on: While we encourage onboarding all the historical data you want to your model to view trends, teams often may not realize that this historical data consists of the data they used to train their more recent model. If that is the case, seeing higher performance for inferences included in your model training set is not unusual. We encourage teams to still onboard historical data to visualize trends in their feature set/performance overall, but remember to think critically when seeing high historical accuracy.
+Updated 3 months ago Table of Contents
+Collect Historical Data
+Format Timestamps
+Send Inferences to Arthur
+Key Things to Keep in Mind

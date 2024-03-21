@@ -1,0 +1,95 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/composing-functions
+ Composing Advanced Functions
+Composing Advanced FunctionsSuggest EditsTo see functions you can use with this syntax, checkout the Aggregation Functions and the Transformation Functions guides.
+Any function with a parameter with the type signature [string or nested] is able to accept the following as a value:
+a string constant that represents a property of the model
+an object of the form:
+JSON{
+"alias_ref": "string",
+"nested_function": {"...":
+"..."}
+}
+Only one of alias_ref or nested_function may be present at a time. See the following explanations of each.
+Alias References
+The alias_ref field allows specifying another selected column's alias to use as input to the function. This example uses an alias_ref to pull in another column to the add function:
+JSON{
+"select": [
+{
+"function": "abs",
+"alias": "absLoan",
+"parameters": {
+"property": "loan"
+}
+},
+{
+"function": "add",
+"alias": "plus2",
+"parameters": {
+"left": 2,
+"right": {
+"alias_ref": "absLoan"
+}
+}
+}
+]
+}
+This request returns:
+JSON{
+"query_result": [
+{
+"absLoan": 55.45,
+"plus2": 57.45
+}
+]
+}
+Nested Functions
+The nested_function field allows specifying another function definition to use as input. Here's an example of how to calculate absolute error for a regression model. In this example, we pass the nested subtract function as input to the abs function via the nested_function object for the property parameter of abs:
+JSON{
+"select": [
+{
+"function": "abs",
+"alias": "abs_error",
+"parameters": {
+"property": {
+"nested_function": {
+"function": "subtract",
+"alias": "error",
+"parameters": {
+"left": "Predicted_FICO_Score",
+"right": {
+"alias_ref": "ground_truth"
+}
+}
+}
+}
+}
+},
+{
+"property": "Predicted_FICO_Score"
+},
+{
+"property": "Consumer_Credit_Score",
+"alias": "ground_truth"
+}
+]
+}
+This query returns:
+JSON{
+"query_result": [
+{
+"Consumer_Credit_Score": 660,
+"Predicted_FICO_Score": 688.10004,
+"abs_error": 28.100040000000035
+},
+{
+"Consumer_Credit_Score": 663,
+"Predicted_FICO_Score": 681,
+"abs_error": 18
+},
+"..."
+]
+}
+📘If you use the same function multiple times in a query, you need to give each one a distinct "alias". Otherwise, the names will conflict.Updated 3 months ago Table of Contents
+Alias References
+Nested Functions

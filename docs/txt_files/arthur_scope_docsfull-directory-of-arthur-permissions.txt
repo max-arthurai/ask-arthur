@@ -1,0 +1,83 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/full-directory-of-arthur-permissions
+ Full Directory of Arthur Permissions
+Full Directory of Arthur PermissionsSuggest EditsThese can be used to specify permissions in the custom role mapping configuration JSON under "resource" and "action".
+EX:
+* "Resource"
+* "Action"
+* "Action"
+* "Action"
+Org and User Related Permissions
+organization_global
+read
+write
+organization
+read
+delete
+custom_roles
+read
+write
+delete
+system_config
+write
+user
+read
+write
+delete
+user_invite
+write
+organization_metrics
+read
+Model Related Permissions
+model
+read
+write
+delete
+tag
+read
+write
+delete
+enrichment_config
+read
+write
+metric_query
+read
+write
+delete
+raw_data
+read
+write
+ground_truth
+write
+query
+execute
+Alert Related Permissions
+alert
+read
+resolve
+notify
+insight
+read
+resolve
+alert_rule
+read
+write
+delete
+alert_notification_config
+read
+write
+delete
+alert_summary
+notify
+alert_summary_config
+read
+write
+delete
+alert_summary_subscriber
+read
+write
+delete
+Updated about 2 months ago Table of Contents
+Org and User Related Permissions
+Model Related Permissions
+Alert Related Permissions

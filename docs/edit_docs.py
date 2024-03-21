@@ -86,13 +86,14 @@ R&DTeamCareersNews / PressRequest a demoSign InSign InGet Started"""
 
 scope_string_to_remove = """Jump to ContentProduct DocumentationAPI and Python SDK ReferenceRelease Notesv3.6.0v3.7.0v3.8.0v3.9.0v3.10.0v3.11.0v3.12.0Schedule a DemoSchedule a DemoMoon (Dark Mode)Sun (Light Mode)v3.12.0Product DocumentationAPI and Python SDK ReferenceRelease NotesSearchLoading…Welcome to ArthurWelcome to Arthur Scope!Pages in the Arthur Scope PlatformExamplesArthur SDKArthur APIModel TypesModel Input / Output TypesTabularBinary ClassificationMulticlass ClassificationRegressionTextBinary ClassificationMulticlass ClassificationRegressionToken Sequence (LLM)ImageBinary ClassificationMulticlass ClassificationRegressionObject DetectionRanked List (Recommender Systems)Time SeriesCore ConceptsMetricsPerformance MetricsData Drift MetricsFairness MetricsUser-Defined MetricsAlertingManaging AlertsAlert Summary ReportsEnrichmentsAnomaly DetectionBias MitigationExplainabilityHot SpotsToken LikelihoodVersioningModel OnboardingQuickstartCV OnboardingNLP OnboardingGenerative TextRanked List Outputs OnboardingTime Series OnboardingRegistering A Model with the APIData Preparation for ArthurCreating Arthur Model ObjectRegistering Model Attributes ManuallyEnabling EnrichmentsAssets Required For ExplainabilityTroubleshooting ExplainabilitySending InferencesSending Historical DataSending Ground TruthIntegrations and ExamplesAlerting ServicesEmailPagerDutyServiceNowData PipelinesSageMakerML PlatformsLangchainSingle Sign On (SSO)OIDCSAMLSpark MLArthur Query GuideOverviewCreating QueriesFundamentalsCommon Queries QuickstartQuerying FunctionsDefault Evaluation FunctionsAggregation FunctionsTransformation FunctionsComposing Advanced FunctionsEnrichments + Data DriftQuerying Data DriftQuerying ExplainabilityAdvanced Walk ThroughsGrouped Inference QueriesResourcesArthur Scope FAQGlossaryModel Metric DefinitionsArthur AlgorithmsPlatform AdministrationWelcome to Platform AdministrationInstallation OverviewOn-Prem Deployment RequirementsPlatform Readiness for Existing Cluster InstallsVirtual Machine InstallationConfiguring for High AvailabilityExternalizing the Relational DatabaseInstalling KubernetesInstalling Arthur Pre-requisitesDeploying on Amazon AWS EKSKubernetes Cluster (K8s) Install with Namespace Scope PrivilegesOnline Kubernetes Cluster (K8s) InstallAirgap Kubernetes Cluster (K8s) InstallAirgap Kubernetes Cluster (K8s) Install with CLIPlatform Access ControlAccess ControlDefault Access ControlCustom RBACIntegrationsOngoing Platform MaintenanceWhat does ongoing maintenance look like?Audit LogAdministrationOrganizations and UsersUpgradingMonitoring Best PracticesPlatform ResourcesConfig TemplateExporting Platform ConfigurationsFull Directory of Arthur PermissionsArthur Permissions by Standard RolesArthur Permissions by EndpointBackup and RestorePre-RequisitesBacking Up the Arthur PlatformRestoring the Arthur PlatformAppendixPowered by """
 
-for file in os.listdir("docs/"):
+for file in os.listdir("docs/txt_files/"):
     filename = os.fsdecode(file)
     if filename.endswith(".txt"):
-    	print(filename)
-    	with open(f"docs/{filename}", 'r') as f:
-    		s = f.read()
-    	s = s.replace(scope_string_to_remove, '')
-    	with open(f"docs/{filename}", 'w') as f:
-    		f.write(s)
-    	print('done')
+        print(filename)
+        with open(f"docs/txt_files/{filename}", 'r') as f:
+            s = f.read()
+        s = s.replace(scope_string_to_remove, '')
+        with open(f"docs/txt_files/{filename}", 'w') as f:
+            f.write(s)
+        print('done')
+

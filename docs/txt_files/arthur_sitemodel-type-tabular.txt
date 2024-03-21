@@ -1,0 +1,5 @@
+Content type: arthur_site
+Source: https://www.arthur.ai/model-type/tabular
+ Tabular
+Monitor, measure, and improve your tabular models.Achieve better results across accuracy, explainability, and fairness.Request DemoIdentify Anomalies & Data DriftAutomatic out-of-distribution detection lets you identify where your model is likely making mistakes.Use Explainability TechniquesUse explainability techniques to identify the most important features in determining the predictions of your models.Quickly Mitigate BiasUse Arthur’s proprietary techniques, or customize with your own metrics, to reduce business risk and prevent discrimination.Learn about monitoring your tabular models with ArthurDetecting Unexpected Drift in Time Series FeaturesAkash KhannaRead MoreModel Schemas Within the MLOps EcosystemSarah OstermeierRead MoreKeep the Lights On: Making Deployed AI/ML Better for EveryoneJohn DickersonRead More
+We make AI better for everyone.Sign up for our newsletter to get the latest Arthur news!SubscribeProductShieldBenchScopeChatLLMNLPCVTabularR&DResourcesBlogGAPDocumentationcompanyTeamCareersNewsPress InquiriesARTHUR 2023 © ALL RIGHTS RESERVEDTerms of ServicePrivacy

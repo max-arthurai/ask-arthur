@@ -1,0 +1,322 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/saml
+ SAML
+SAMLSuggest Edits📘SSO configurations are only supported in on-prem Arthur installations
+This page provides a walk-through for how to configure your Arthur installation to work with a SAML compatible IdP. In order to complete this guide, you need administrator access to your IdP and access to your Arthur installation's admin console configuration. Additionally, you will either need access to the Arthur superadmin user or be able to assume a role in your IdP to give yourself RBAC management permissions in Arthur.
+This guide will walk through the following steps:
+Configure the IdP user groups and SAML assertion
+Configure the Arthur service provider URLs in the IdP
+Configure Arthur to work with your IdP
+Apply the Arthur IdP YAML configuration
+Create organization user roles to match the IdP user groups
+Test Access
+Cleaning Up
+1. Configure the IdP user groups and SAML assertion
+In order to properly map users to permissions, Arthur requires an attribute in your SAML assertion that contains
+information about the group memberships of the user. Each group in the IdP should correspond to a role in Arthur's
+{doc}custom_rbac permission system.
+This process can vary depending on your IdP, but most IdP's should have a user grouping mechanism, and a mechanism to configure attributes in the SAML assertions. For example using Okta, under the SAML application settings, admins can configure the SAML assertion attributes to include group information under SAML Settings -> Configure SAML -> Group Attribute Statements, then specifying a name for the attribute and a filter for the groups to include:
+Setting this configuration produces the following attribute in the SAML assertion (in Okta click "Preview the SAML Assertion" button to see a sample):
+XML
+<saml2:AttributeStatement>
+<saml2:Attribute Name="groups">
+<saml2:AttributeValue>Everyone</saml2:AttributeValue>
+<saml2:AttributeValue>admins</saml2:AttributeValue>
+<saml2:AttributeValue>org-1-model-owners</saml2:AttributeValue>
+</saml2:Attribute>
+</saml2:AttributeStatement>
+2. Configure the Arthur service provider URLs in the IdP
+In order for your IdP to speak to Arthur, it needs to know where to find it. Enter the following URLs in your IdP's configuration to Arthur's SAML endpoints:
+ACS URL (SSO URL): https://<HOSTNAME>/api/v3/saml/sso
+Entity ID: https://<HOSTNAME>/api/v3/saml/sso
+Start URL: https://<HOSTNAME>/
+📘If your IdP will be sending signed assertions to Arthur, you will also need to generate and upload the public key
+(certificate) Arthur will be using in your IdP. This will be the same certificate you set in the Arthur configuration
+below. Please follow your own company policies to obtain a certificate
+for Arthur. If you have no internal guidelines, then use a tool like
+ssh-keygen to
+generate them
+3. Configure Arthur to work with your IdP
+Additionally, Arthur needs to know how to handshake with your IdP. To do that, Arthur requires the following information:
+Your IdP's metadata URL or the metadata XML payload (some IdPs require it be downloaded, either is fine)
+One or more IdP administrator user groups that will be paired to global custom roles in Arthur
+(see here for a description of what these are for)
+An understanding of your SAML assertion and how to parse user information out of it
+With those three things available, it is possible to fill out Arthur's IdP configuration YAML. The next subsections explain each section of the Arthur YAML configuration, and are followed by some complete examples further down.
+Configuring the IdPs metadata URL
+Some IdP's host their metadata XML at a public URL, while others only have it available for download privately. To support either option, Arthur has two configurations that can be used:
+YAML# use this option if your IdP has a public URL for its metadata
+metadataURL: "link to IdP metadata goes here"
+# use this option if your IdP does not have a public URL and include the XML payload
+# make sure to indent the XML payload two spaces and make sure the X509Certificate lines
+# do not have more than two leading whitespaces!
+metadataXML: 
+<?xml version="1.0" encoding="UTF-8"?><md:EntityDescriptor ...>
+<md:IDPSSODescriptor>
+...
+<ds:X509Certificate>CERTIFICATE LINE 1
+CERT LINE 2
+CERT LINE 3
+CERT LINE 4
+LAST CERT LINE</ds:X509Certificate>
+</md:IDPSSODescriptor>
+</md:EntityDescriptor>
+{warning}If using the `metadataXML` configuration option, make sure to indent the entire XML payload two spaces. YAML expects
+multi-line values to be indented under the key `metadataXML`.
+{warning}Additionally, the assertion's `X509Certificate` XML attribute is a multi-line value within the XML.
+Any new lines in the certificate value need to be indented only two spaces (all the way to the left of the YAML value).
+Otherwise, the extra whitespaces introduces characters which will invalidate the certificate value.
+Configure the Arthur Global Roles
+Arthur has the ability to create roles for the cluster administrators during the configuration of the IdP. These roles are often needed by admins to configure RBAC and create organizations for other users in the system. See {ref}creating_global_roles_in_arthur_config for a deep dive on how to use global roles.
+This section of the YAML config is under the globalRoleDefs field. It accepts a list of role definitions that will be created when the configuration is applied. The names of the roles in this section must match the user groups in your IdP in order to be able to assume them in Arthur.
+YAML
+globalRoleDefs:
+# Here we can specify a list to define multiple global roles
+- name: "idp-admin" # change this name to match the cluster administrator group name in your IdP
+permissions:
+custom_roles:
+- read
+- write
+- delete
+organization_global:
+- read
+- write
+organization:
+- read
+- delete
+model:
+- read
+- write
+- delete
+Parsing the IdP SAML Assertion
+In order for Arthur to communicate with your IdP, it needs to understand the format of the SAML assertion your IdP uses. This section of the config falls under the assertionAttributes YAML field. This section is designed to be flexible to support a variety of assertion formats, so it has a lot of options. At its core, the goal is to tell Arthur how to be able to extract the following information from the assertion:
+user roles/groups
+first name
+last name
+email
+user ID
+Each field has a corresponding YAML field the defines where to find the information in the SAML assertion XML. For example:
+YAMLfirstNameAttribute:
+name: "employeeFirstName"
+This configuration tells Arthur that it can find the user's first name under the "employeeFirstName" attribute in the XML assertion. Such an assertion might look like this:
+XML
+<saml2:AttributeStatement>
+<saml2:Attribute Name="firstName">
+<saml2:AttributeValue>Ian</saml2:AttributeValue>
+</saml2:Attribute>
+</saml2:AttributeStatement>
+More examples of how to parse attributes out of the SAML assertion can be
+found below.
+Full Configuration Examples
+Here is an example of a full configuration, combining each section described above.
+YAMLversion: v1
+kind: SAML
+config:
+# if your IdP hosts its metadata, provide the URL to it here
+metadataURL: "link to IdP metadata goes here"
+# if the IdP does not host the metadata, provide the XML payload here and comment out metadataURL
+#
+metadataXML: 
+#
+<?xml version="1.0" encoding="UTF-8"?><md:EntityDescriptor ...>
+#
+<md:IDPSSODescriptor>
+#
+...
+#
+</md:IDPSSODescriptor>
+#
+</md:EntityDescriptor>
+# this section describes how Arthur will parse the SAML assertion from your IdP
+# for each required attribute, Arthur will use the "name" field to match to an XML attribute in the SAML assertion
+assertionAttributes:
+# this roleAttribute configuration will use a "groups" attribute in the XML assertion which expects the
+# roles in separate XML AttributeValues within the assertion Attribute
+roleAttribute:
+name: "groups"
+useAllAttributeValues: True
+firstNameAttribute:
+name: "employeeFirstName"
+lastNameAttribute:
+name: "employeeLastName"
+emailAttribute:
+name: "company_email"
+userIdAttribute:
+name: "companyUserID"
+globalRoleDefs:
+# Here we specify a global role for the IdP user group "idp-admin" to create and manage RBAC in Arthur
+- name: "idp-admin"
+permissions:
+custom_roles:
+- read
+- write
+- delete
+organization_global:
+- read
+- write
+organization:
+- read
+- delete
+model:
+- read
+- write
+- delete
+4. Apply the Arthur IdP YAML configuration
+Once you have your YAML configuration file ready, you need to add it to your Arthur installation. With the Arthur admin console open, navigate to the "Use a 3rd Party Global Identity Provider" section and select "SAML". This will expose a text box for you to paste the YAML config file assembled above. When pasting, make sure whitespace is preserved and the YAML document has consistent spacing (do not mix tabs and spaces). Here is a screenshot of the config section:
+{note}If your IdP enforces signed authorization requests, this config page also provides the ability to upload a
+certificate and private key for Arthur to use when making the requests. Click the "Upload a file" button for the Public
+Certificate and Private Key sections of the config to upload the appropriate files for your IdP.
+Once you have added your config files, scroll to the bottom and click "Save" to save the config. Then go to the latest version and click "Deploy" to roll out the change to the cluster.
+5. Create organization user roles to match the IdP user groups
+In order to complete this section, you will need access to the Arthur superadmin user credentials set during your install, or you will need to be able to assume the role defined in the Arthur IdP config YAML created above in the globalRoleDefs section.
+In order to use the API example linked below, you will need a Bearer token (authentication token) to include with your API request. There are a few options available to retrieve a token:
+Retrieve a SAML assertion from your IdP and exchange with Arthur - Most IdPs will have a method to retrieve a SAML assertion for users. Some companies make scripts or APIs to do so. If your IdP does not have an automated method to retrieve an assertion, use one of the other options below. Once you have an assertion, you can exchange it for an Arthur access token with the follow API call to Arthur:
+Shellcurl --location --request POST 'https://<YOUR ARTHUR HOST>/api/v3/saml/sso' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'SAMLResponse=<INSERT URL ENCODED BASE64 ASSERTION>'
+Retrieve a global role token from your browser cookies - If you sign in to Arthur as a user with a global role, the UI will not be fully functional, but it will have a valid access token in the cookies. If you navigate to your browser's developer console and then go to the Application Storage/Cookies section, you should see a cookie like Authentication. The authentication token is the value of that cookie.
+Use the /login API endpoint with the superadmin user's credentials set during the Arthur install (only available on-prem).
+Using either of those credentials, we can use the Arthur API to define roles in Arthur that match the user group names in your IdP. See the {ref}creating_organization_roles section for an example API request to create custom roles in Arthur. Importantly, the role names must uniquely match to a user group in your IdP in order for your users to be able to assume those permissions in Arthur. Therefore, the roles in Arthur must be globally unique in the entire Arthur installation.
+6. Test Access
+At this point everything should be configured correctly to sign in to Arthur via SSO. Either navigate to your IdP or the Arthur homepage to test logging in.
+7. Cleaning Up
+Once users are successfully able to log in to Arthur via the IdP, you should do the following to ensure proper security best-practices remain enforced:
+Restrict any Arthur global roles to only allow access to essential admin functions
+Set the Arthur superadmin user password securely, and either store the password in a vault, or discard the password entirely. superadmin shouldn't be used going forward.
+Set up a policy to routinely rotate the superadmin password to keep it secure
+Together, these practices will help ensure the security of your Arthur installation, and will give your IdP sole control over the platform and who is able to access it.
+Common Troubleshooting
+If after following the steps above, users are not able to log in via the IdP try some of these common troubleshooting tips:
+Does the user properly redirected to the IdP's log in screen?
+If not, there is likely a configuration error in the Arthur YAML config with the IdP metadata or the URL to access it. Another problem could be if your IdP expects Arthur to make signed requests to authenticate users. If that is the case, be sure you have correctly configured Arthur's certificate and private key as described above.
+Once the user authenticates with the IdP, are they redirected to the Arthur homepage?
+If not, there is likely a configuration error with the IdP and the URLs that it uses to communicate with Arthur. Double-check the ACS (SSO) URL is configured correctly for the Arthur installation
+at https://<HOSTNAME>/api/v3/saml/sso.
+A user can see the Arthur home page, but can't see any of the model in their organization
+If a user cannot see any of the models in their organization, it means they either don't have the necessary permissions to access models (see {doc}../../reference/permissions_by_endpoint) or they were not able to correctly assume the role in Arthur. Double-check the groups in their SAML assertion match the role names that have been configured in Arthur. A superadmin or global role user with permissions to manage RBAC can see a list of roles in the installation by using the following API call. Be sure to replace the HOST and AUTH TOKEN for your installation and user:
+Shellcurl --location 'https://<HOST>/api/v3/authorization/custom_roles' \
+--header 'Authorization: Bearer <INSERT AUTH TOKEN HERE>'
+Appendix A: More examples of SAML assertion values and how to parse them
+This section outlines some additional ways to use the assertionAttributes section of the Arthur IdP config YAML format. The below examples include sample SAML assertions, then corresponding YAML for how to parse them.
+Basic Full Example
+This example shows how to parse a user's information from a SAML assertion when each field is its own Attribute and the user's groups are each in their own AttributeValue.
+Example SAML assertion XML:
+XML
+<saml2:AttributeStatement>
+<saml:Attribute Name="employeeFirstName">
+<saml:AttributeValue>John</saml:AttributeValue>
+</saml:Attribute>
+<saml:Attribute Name="employeeLastName">
+<saml:AttributeValue>Doe</saml:AttributeValue>
+</saml:Attribute>
+<saml:Attribute Name="employeeEmail">
+<saml:AttributeValue>[email protected]</saml:AttributeValue>
+</saml:Attribute>
+<saml:Attribute Name="employeeID">
+<saml:AttributeValue>1234567890</saml:AttributeValue>
+</saml:Attribute>
+<saml:Attribute Name="userGroups">
+<saml:AttributeValue>group1</saml:AttributeValue>
+<saml:AttributeValue>group2</saml:AttributeValue>
+<saml:AttributeValue>group3</saml:AttributeValue>
+</saml:Attribute>
+</saml2:AttributeStatement>
+Corresponding settings for the Arthur IdP config YAML assertionAttributes for the user information field:
+YAML
+assertionAttributes:
+roleAttribute:
+name: "userGroups"
+useAllAttributeValues: True
+firstNameAttribute:
+name: "employeeFirstName"
+lastNameAttribute:
+name: "employeeLastName"
+emailAttribute:
+name: "employeeEmail"
+userIdAttribute:
+name: "employeeID"
+Parsing User Groups from Multiple Attribute Values
+This example shows how to parse a user's groups from a SAML assertion when each group is its own AttributeValue.
+Example SAML assertion XML:
+XML
+<saml2:AttributeStatement>
+<saml:Attribute Name="Idp_user_groups">
+<saml:AttributeValue>role1</saml:AttributeValue>
+<saml:AttributeValue>role2</saml:AttributeValue>
+<saml:AttributeValue>role3</saml:AttributeValue>
+</saml:Attribute>
+...
+</saml2:AttributeStatement>
+Corresponding settings for the Arthur IdP config YAML assertionAttributes for the roleAttribute field:
+YAML
+assertionAttributes:
+roleAttribute:
+name: "Idp_user_groups"
+useAllAttributeValues: True
+Parsing User Groups from a String Attribute Value
+This example shows how to parse a user's groups from a SAML assertion when the groups are in a single string AttributeValue.
+Example SAML assertion XML:
+XML
+<saml2:AttributeStatement>
+<saml:Attribute Name="Idp_user_groups">
+<saml:AttributeValue>role1,role2,role3</saml:AttributeValue>
+</saml:Attribute>
+...
+</saml2:AttributeStatement>
+Corresponding settings for the Arthur IdP config YAML assertionAttributes for the roleAttribute field:
+YAML
+assertionAttributes:
+roleAttribute:
+name: "Idp_user_groups"
+deliminator: ","
+Parsing Specific Fields in a Single Attribute's AttributeValue List
+This example shows how to parse a user's information from a SAML assertion when all fields are in a single assertion Attribute's list of AttributeValues.
+Example SAML assertion XML:
+XML
+<saml2:AttributeStatement>
+<saml:Attribute Name="employeeInfo">
+<saml:AttributeValue>John</saml:AttributeValue>
+<saml:AttributeValue>Doe</saml:AttributeValue>
+<saml:AttributeValue>(123) 456-7890</saml:AttributeValue>
+<saml:AttributeValue>42 Wallaby Way, Sydney</saml:AttributeValue>
+<saml:AttributeValue>[email protected]</saml:AttributeValue>
+<saml:AttributeValue>5678987654</saml:AttributeValue>
+</saml:Attribute>
+...
+</saml2:AttributeStatement>
+Corresponding settings for the Arthur IdP config YAML assertionAttributes for the user information field:
+YAML
+assertionAttributes:
+firstNameAttribute:
+name: "employeeInfo"
+index: 0
+lastNameAttribute:
+name: "employeeInfo"
+index: 1
+emailAttribute:
+name: "employeeInfo"
+index: 4
+userIdAttribute:
+name: "employeeInfo"
+index: 5
+Updated 3 months ago Table of Contents
+1. Configure the IdP user groups and SAML assertion
+2. Configure the Arthur service provider URLs in the IdP
+3. Configure Arthur to work with your IdP
+Configuring the IdPs metadata URL
+Configure the Arthur Global Roles
+Parsing the IdP SAML Assertion
+Full Configuration Examples
+4. Apply the Arthur IdP YAML configuration
+5. Create organization user roles to match the IdP user groups
+6. Test Access
+7. Cleaning Up
+Common Troubleshooting
+Does the user properly redirected to the IdP's log in screen?
+Once the user authenticates with the IdP, are they redirected to the Arthur homepage?
+A user can see the Arthur home page, but can't see any of the model in their organization
+Appendix A: More examples of SAML assertion values and how to parse them
+Basic Full Example
+Parsing User Groups from Multiple Attribute Values
+Parsing User Groups from a String Attribute Value
+Parsing Specific Fields in a Single Attribute's AttributeValue List

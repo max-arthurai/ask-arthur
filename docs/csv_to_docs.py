@@ -9,10 +9,10 @@ def process_csv(file_path):
         ctype = row['content_type']
         src = row['source']
         # file_name = ctype + src.replace("https://", "").replace("www.", "").replace("docs.", "").replace("arthur.ai/", "").replace("blog/", "").replace("bench.readthedocs.io/en/latest/", "").replace("docs/", "").replace("edit/", "").replace("sdk.", "").replace("staging.", "").replace("legacy.", "").replace("/", "-").replace("html", "") + ".txt"
-        if not os.path.exists(f"docs/{ctype}.txt"):
-            with open(f"docs/{ctype}.txt", "w") as f:
+        if not os.path.exists(f"docs/txt_files/{ctype}.txt"):
+            with open(f"docs/txt_files/{ctype}.txt", "w") as f:
                 f.write("")
-        with open(f"docs/{ctype}.txt", 'a', encoding='utf-8') as file:
+        with open(f"docs/txt_files/{ctype}.txt", 'a', encoding='utf-8') as file:
             if pd.isna(row['text']):
                 file.write("")
             else:

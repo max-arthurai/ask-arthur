@@ -1,4 +1,0 @@
-Content type: arthur_scope_docs
-Source: https://docs.arthur.ai/docs/single-sign-on
- Access Control
-Access ControlSuggest EditsArthur supports a variety of mechanisms for authentication, who a user is, and authorization, what a user can do (RBAC). By default, Arthur will use a built-in authentication and authorization system. In on-prem installations, cluster administrators can optionally configure an external Identity Provider (IdP) to control user authentication and authorization. See the sections below for an overview of Arthur Standard Access Control and Arthur SSO Access Control.Updated 3 months ago

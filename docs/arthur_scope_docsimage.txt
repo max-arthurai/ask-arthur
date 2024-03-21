@@ -1,7 +1,0 @@
-Content type: arthur_scope_docs
-Source: https://docs.arthur.ai/docs/image
- Image
-ImageSuggest EditsImage input models are a type of machine learning model that operates on image data, such as digital photographs, medical scans, and satellite imagery. These models are designed to recognize patterns and features within images and can perform tasks such as object detection, image segmentation, and image classification. Image input models can be built using a variety of techniques, including convolutional neural networks, which are specifically designed to work with image data.
-Sending Images to Arthur
-Arthur takes in the raw images as input. This means that instead of taking in images as matrixes of pixel values, we take the images in with [.gif , .jpeg , .png , .tiff] format. After sending these values to Arthur, they are stored in an AWS S3 bucket.Updated 3 months ago What’s NextBinary ClassificationTable of Contents
-Sending Images to Arthur

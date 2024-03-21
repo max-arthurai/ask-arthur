@@ -1,4 +1,0 @@
-Content type: arthur_scope_docs
-Source: https://docs.arthur.ai/docs/on-prem-deployment
- Installation Overview
-Installation OverviewSuggest EditsArthur Scope can be installed to existing Kubernetes clusters (K8s) or virtual machines (VM). For both Kubernetes and virtual machine deployments, Arthur supports two types of installation methods, online and airgapped. The online method allows fast and continuous differential upgrades. The airgapped install supports environments where the cluster has no outbound internet connectivity.Updated 3 months ago

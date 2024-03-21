@@ -1,4 +1,0 @@
-Content type: arthur_scope_docs
-Source: https://docs.arthur.ai/docs/tabular
- Tabular
-TabularSuggest EditsTabular input models are a type of machine learning model that operates on tabular data, which is data that is arranged in a table or spreadsheet format. These models are used to make predictions or classifications based on the input data, which may include features such as numerical or categorical variables. Tabular input models are commonly used in fields such as finance, healthcare, and marketing, where data is often structured in a tabular format.Updated 3 months ago

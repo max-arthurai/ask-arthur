@@ -1,0 +1,66 @@
+Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/multi-class-classification
+ Multiclass Classification
+Multiclass ClassificationSuggest EditsMulticlass classification models predict one class from more than two potential classes. In Arthur, these models fall into the category of classification and are represented by the Multiclass model type.
+Some common examples of Tabular multiclass classification are:
+What breed of dog is in this photo?
+What part of the car is damaged in this photo?
+Similar to binary classification, these models frequently output not only the predicted class but also a probability for each class predicted. The highest probability class is then the predicted output. In these cases, a threshold does not need to be provided to Arthur and it will automatically track the highest probability class as the predicted output.
+Formatted Data in Arthur
+Tabular binary classification models require three things to be specified in their schema: all predicting model attributes (or features), predicted probability of outputs, and a column for the inference's true label (or ground truth). Many teams also choose to onboard metadata for the model (i.e. any information you want to track about your inferences) as non-input attributes.
+Attribute (numeric or categorical)Attribute (numeric or categorical)Probability of Prediction AProbability of Prediction BProbability of Prediction CGround TruthNon-Input Attribute (numeric or categorical)High School Education34.5.90.05.05AMaleGraduate Degree44.1.46.14.40BFemaleGraduate Degree33.5.16.17.71CFemale
+Predict Function and Mapping
+These are some examples of common values teams need to onboard for their multi-class classification models.
+The relationship between the prediction and ground truth column must be defined to help set up your Arthur environment to calculate default performance metrics. There are 2 options for formatting this, depending on your reference dataset. Additionally, if teams wish to enable explainability, they must provide a few Assets Required For Explainability. Below is an example of the runnable predict function, which outputs a single numeric prediction.
+prediction to ground truth mappingExample Prediction Function## Option 1:
+Multiple Prediction Columns, Single Ground Truth Column
+# Map each PredictedValue attribute to its corresponding GroundTruth value.
+output_mapping_1 = {
+'pred_class_one_column':'one',
+'pred_class_two_column':'two',
+'pred_class_three_column':'three'}
+# Build Arthur Model with this Technique
+arthur_model.build(reference_data,
+ground_truth_column='ground_truth',
+pred_to_ground_truth_map=output_mapping_1
+)
+## Option 2:
+Multiple Prediction and Ground Truth Columns
+# Map each PredictedValue attribute to its corresponding GroundTruth attribute.
+output_mapping_2 = {
+'pred_class_one_column':'gt_class_one_column',
+'pred_class_two_column':'gt_class_two_column',
+'pred_class_three_column':'gt_class_three_column'}
+# Build Arthur Model with this Technique
+arthur_model.build(reference_data,
+pred_to_ground_truth_map=output_mapping_2
+)
+## Example prediction function for classification
+def predict(x):
+return model.predict_proba(x)
+Available Metrics
+When onboarding multiclass classification models, you have a number of default metrics available to you within the UI. You can learn more about each specific metric in the metrics section of the documentation.
+Out-of-the-Box Metrics
+The following metrics are automatically available in the UI (out-of-the-box) per class when teams onboard a multiclass classification model. Find out more about these metrics in the
+Performance Metrics section.
+MetricMetric TypeAccuracy RatePerformanceBalanced Accuracy RatePerformanceAUCPerformanceRecallPerformancePrecisionPerformanceSpecificity (TNR)PerformanceF1PerformanceFalse Positive RatePerformanceFalse Negative RatePerformanceInference CountIngestionInference Count by ClassIngestion
+Drift Metrics
+In the platform, drift metrics are calculated compared to a reference dataset. So, once a reference dataset is onboarded for your model, these metrics are available out of the box for comparison. Find out more about these metrics in the Drift and Anomaly section.
+Note: Teams are able to evaluate drift for inference data at different intervals with our Python SDK and query service (for example data coming into the model now, compared to a month ago).
+PSIFeature DriftKL DivergenceFeature DriftJS DivergenceFeature DriftHellinger DistanceFeature DriftHypothesis TestFeature DriftPrediction DriftPrediction DriftMultivariate DriftMultivariate Drift
+Fairness Metrics
+As further described in the Fairness Metrics section of the documentation, fairness metrics are available for any tabular Arthur attributes manually selected to monitor for bias.
+MetricMetric TypeAccuracy RateFairnessTrue Positive Rate (Equal Opportunity)FairnessTrue Negative RateFairnessFalse Positive RateFairnessFalse Negative RateFairness
+User-Defined Metrics
+Whether your team uses a different performance metric, wants to track defined segments of data, or needs logical functions to create a metric for external stakeholders (like product or business metrics). Learn more about creating metrics with data in Arthur in the User-Defined Metrics section.
+Available Enrichments
+The following enrichments can be enabled for this model type:
+Anomaly DetectionHot SpotsExplainabilityBias MitigationXXXUpdated 3 months ago Table of Contents
+Formatted Data in Arthur
+Predict Function and Mapping
+Available Metrics
+Out-of-the-Box Metrics
+Drift Metrics
+Fairness Metrics
+User-Defined Metrics
+Available Enrichments

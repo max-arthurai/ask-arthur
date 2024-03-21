@@ -1,5 +1,0 @@
-Content type: arthur_scope_docs
-Source: https://docs.arthur.ai/docs/welcome-to-platform-administration
- Welcome to Platform Administration
-Welcome to Platform AdministrationSuggest EditsThe second half of our documentation is dedicated to Platform Administration resources.
-Platform administration isUpdated 3 months ago
