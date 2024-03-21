@@ -13,14 +13,14 @@ export OPENAI_API_KEY="sk-..."
 export ANTHROPIC_API_KEY="sk-ant-..."
 ```
 
-## Run
+## Run default example
 
 Run with default settings
 ```bash
 python run.py
 ```
 
-Run with specific LLM
+Run with specific settings (can use multiple of these additional settings at once, e.g. setting --llm and --prompt at the same time)
 ```bash
 python run.py --llm="claude-3-haiku-20240307"
 ```
@@ -32,10 +32,5 @@ python run.py --prompt="What is the difference between shield and chat?"
 
 Run with DSPy framework
 ```bash
-python run.py --prompt="What is the difference between shield and chat?"
-```
-
-Putting it all together
-```bash
-python run.py --llm="claude-3-haiku-20240307" --prompt="What is the difference between shield and chat?"
+python run.py --framework="dspy"
 ```

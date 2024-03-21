@@ -18,7 +18,7 @@ class GenerateAnswer(dspy.Signature):
     """Answer questions with short factoid answers."""
     context = dspy.InputField(desc="may contain relevant facts")
     question = dspy.InputField(desc="question about Arthur AI")
-    answer = dspy.OutputField(desc="""Answer for the question about Arthur AI, often between 1 and 5 sentences.
+    answer = dspy.OutputField(desc="""Answer for the question about Arthur AI. Make this extremely dense and technical.
 May include code only if the code is in the context.""")
 
 
