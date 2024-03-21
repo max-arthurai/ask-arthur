@@ -1,55 +1,51 @@
 import chromadb
 from langchain.retrievers import EnsembleRetriever
 from langchain_anthropic import ChatAnthropic
-from langchain_community.chat_models.cohere import ChatCohere
-from langchain_community.embeddings import CohereEmbeddings, HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.llms.huggingface_pipeline import HuggingFacePipeline
 from langchain_community.retrievers import BM25Retriever
 from langchain_community.vectorstores.chroma import Chroma
 from langchain_core.language_models.chat_models import BaseLanguageModel
-from langchain_core.output_parsers import StrOutputParser as GetOutput
+from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.retrievers import BaseRetriever
-from langchain_core.runnables import RunnablePassthrough as GetInput
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langchain_core.runnables import RunnablePassthrough
+from langchain_openai import ChatOpenAI
 import pandas as pd
 
 
-def get_langchain_ensemble_retriever(name: str, k=10) -> BaseRetriever:
-    """
+def get_langchain_ensemble_retriever(args) -> BaseRetriever:
+    """Ensemble of classic retrieval and modern vector retrieval
+
+    Classic retrieval: BM25 full-document retrieval
+    Modern vector retrieval: dense-vector-embedded chunk retrieval
     https://python.langchain.com/docs/modules/data_connection/retrievers/ensemble
 
     TODO: rerank
     """
     arthur_index = pd.read_csv("docs/arthur_index_315.csv").dropna()
     bm25_retriever = BM25Retriever.from_texts(arthur_index['text'])
-    bm25_retriever.k = k
-    name = name.replace("retrievers/arthur_faiss_", "")
-    if 'text-embedding' in name:
-        embedding = OpenAIEmbeddings(model=name)
-    elif 'embed-english' in name:
-        embedding = CohereEmbeddings(model=name)
-    else:
-        embedding = HuggingFaceEmbeddings(model_name=name, model_kwargs={'trust_remote_code': True})
+    bm25_retriever.k = args.k
+    embedding = HuggingFaceEmbeddings(model_name=args.embedding, model_kwargs={'trust_remote_code': True})
+    assert args.retrieval=='chroma' # todo allow other options
     persistent_client = chromadb.PersistentClient()
     langchain_chroma = Chroma(
         client=persistent_client,
         collection_name="arthur_index",
         embedding_function=embedding,
-    ).as_retriever(search_kwargs={"k": k})
+    ).as_retriever(search_kwargs={"k": args.k})
     return EnsembleRetriever(retrievers=[bm25_retriever, langchain_chroma], weights=[0.5, 0.5])
 
 
-def get_langchain_llm(name: str) -> BaseLanguageModel:
+def get_langchain_llm(args) -> BaseLanguageModel:
     """
     https://python.langchain.com/docs/modules/data_connection/retrievers/ensemble
     """
+    name = args.llm
     if 'gpt' in name:
         return ChatOpenAI(model_name=name, max_tokens=2000, temperature=0)
     elif 'claude' in name:
         return ChatAnthropic(model_name=name, max_tokens=2000, temperature=0)
-    elif 'command' in name:
-        return ChatCohere(model_name=name, max_tokens=2000, temperature=0)
     else:
         return HuggingFacePipeline.from_model_id(
             model_id=name,
@@ -76,16 +72,13 @@ Answer: """)
 
 def get_chain(retriever, llm):
     return (
-        {"context": retriever, "question": GetInput()} | rag_template | llm | GetOutput()
+        {"context": retriever, "question": RunnablePassthrough()} | rag_template | llm | StrOutputParser()
     )
 
 
 def run(args):
-    retriever = get_langchain_ensemble_retriever(
-        name=f"retrievers/arthur_faiss_{args.embedding}",
-        k=args.k
-    )
-    llm = get_langchain_llm(args.llm)
+    retriever = get_langchain_ensemble_retriever(args)
+    llm = get_langchain_llm(args)
     chain = get_chain(retriever, llm)
     for text in chain.stream(args.prompt):
         print(text, end='', flush=True)

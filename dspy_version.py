@@ -7,7 +7,6 @@ from sentence_transformers import SentenceTransformer
 
 class GenerateSearchQuery(dspy.Signature):
     """Write a simple search query that will help answer a complex question."""
-
     context = dspy.InputField(desc="may contain relevant facts")
     question = dspy.InputField(desc="question about Arthur AI")
     queries_so_far = dspy.InputField(desc="the queries asked so afr")
@@ -17,7 +16,6 @@ Search query should help answer the question or gather related info, and be diff
 
 class GenerateAnswer(dspy.Signature):
     """Answer questions with short factoid answers."""
-
     context = dspy.InputField(desc="may contain relevant facts")
     question = dspy.InputField(desc="question about Arthur AI")
     answer = dspy.OutputField(desc="""Answer for the question about Arthur AI, often between 1 and 5 sentences.
@@ -68,19 +66,17 @@ def configure_dspy_settings(args):
     else:
         raise ValueError("use openai or anthropic dawg trust me")
 
-    if args.retrieval == "chroma-nomic":
-        nmc = SentenceTransformer(
-            model_name_or_path="nomic-ai/nomic-embed-text-v1.5",
-            trust_remote_code=True
-        )
-        nmc_embed = lambda l : [nmc.encode(x).tolist() for x in l]
-        rm = chromadb_rm.ChromadbRM(
-            collection_name="arthur_index",
-            persist_directory="chroma/chroma",
-            embedding_function=nmc_embed
-        )
-    else:
-        raise ValueError("use nomic dawg trust me")
+    assert args.retrieval == "chroma" # todo allow other options
+    nmc = SentenceTransformer(
+        model_name_or_path=args.embedding,
+        trust_remote_code=True
+    )
+    nmc_embed = lambda l : [nmc.encode(x).tolist() for x in l]
+    rm = chromadb_rm.ChromadbRM(
+        collection_name="arthur_index",
+        persist_directory="chroma/chroma",
+        embedding_function=nmc_embed
+    )
     dspy.settings.configure(lm=lm, rm=rm)
 
 

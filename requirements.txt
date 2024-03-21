@@ -1,0 +1,12 @@
+anthropic
+chromadb
+dspy
+langchain
+langchain-anthropic
+langchain-community
+langchain-core
+langchain-openai
+langchain-text-splitters
+openai
+pandas
+sentence-transformers
