@@ -9,13 +9,13 @@ class GenerateSearchQuery(dspy.Signature):
     """Write a simple search query that will help answer a complex question."""
     context = dspy.InputField(desc="may contain relevant facts")
     question = dspy.InputField(desc="question about Arthur AI")
-    queries_so_far = dspy.InputField(desc="the queries asked so afr")
+    queries_so_far = dspy.InputField(desc="the queries asked so far")
     query = dspy.OutputField(desc="""Search query for the Arthur website & documentation 
-Search query should help answer the question or gather related info, and be different from previous queries""")
+Search query should help answer the question or gather related info, and be different from the queries asked so far""")
 
 
 class GenerateAnswer(dspy.Signature):
-    """Answer questions with short factoid answers."""
+    """Dense technical answer about Arthur AI for a public customer-facing chatbot"""
     context = dspy.InputField(desc="may contain relevant facts")
     question = dspy.InputField(desc="question about Arthur AI")
     answer = dspy.OutputField(desc="""Answer for the question about Arthur AI. Make this extremely dense and technical.
@@ -23,7 +23,7 @@ May include code only if the code is in the context.""")
 
 
 class MultiHop(dspy.Module):
-    """Runs RAG with two rounds of context retrieval"""
+    """Runs RAG with multiple rounds of context retrieval"""
 
     def __init__(self, passages_per_hop=10, max_hops=3):
         super().__init__()
@@ -34,7 +34,7 @@ class MultiHop(dspy.Module):
 
     def forward(self, question, verbose=True):
         """
-        For each hop, generate a new search query and extend the context with retrieved passages
+        Generate a query and retrieve new context for each hop in self.max_hops
         Then answer the question
         """
         context = []
@@ -49,8 +49,7 @@ class MultiHop(dspy.Module):
             passages = self.retrieve(query).passages
             context = deduplicate(context + passages)
             if verbose:
-                print("!!! query:", query, "!!!")
-                print("context", context)
+                print("<query>", query, "</query>")
         answer = self.generate_answer(context=context, question=question, config=dict(max_tokens=2000)).answer
         return dspy.Prediction(context=context, answer=answer)
 
@@ -66,16 +65,18 @@ def configure_dspy_settings(args):
     else:
         raise ValueError("use openai or anthropic dawg trust me")
 
-    assert args.retrieval == "chroma" # todo allow other options
-    nmc = SentenceTransformer(
+    assert args.retrieval == "chroma"  # todo allow other options
+    embedding_model = SentenceTransformer(
         model_name_or_path=args.embedding,
         trust_remote_code=True
     )
-    nmc_embed = lambda l : [nmc.encode(x).tolist() for x in l]
+
+    def embed(texts: list[str]) -> list[list[float]]:
+        return [embedding_model.encode(x).tolist() for x in texts]
     rm = chromadb_rm.ChromadbRM(
         collection_name="arthur_index",
         persist_directory="chroma/chroma",
-        embedding_function=nmc_embed
+        embedding_function=embed
     )
     dspy.settings.configure(lm=lm, rm=rm)
 

@@ -1,12 +1,16 @@
 import chromadb
 from langchain_community.document_loaders.csv_loader import CSVLoader
-from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_text_splitters import SentenceTransformersTokenTextSplitter
+from sentence_transformers import SentenceTransformer
 
-nmc = HuggingFaceEmbeddings(
-    model_name="nomic-ai/nomic-embed-text-v1.5",
-    model_kwargs={'trust_remote_code': True}
+nomic_v15 = SentenceTransformer(
+    model_name_or_path="nomic-ai/nomic-embed-text-v1.5",
+    trust_remote_code=True
 )
+
+
+def nomic_embed(texts: list[str]) -> list[list[float]]:
+    return [nomic_v15.encode(x).tolist() for x in texts]
 
 
 def docs_from_csv(
@@ -31,7 +35,7 @@ arthur_text = [
     for x in arthur_index
 ]
 print("making embeddings of docs")
-arthur_embeddings = [nmc.embed_query(x) for x in arthur_text]
+arthur_embeddings = nomic_embed(arthur_text)
 arthur_text_metadata = [
     x['kwargs']['metadata']
     for x in arthur_index

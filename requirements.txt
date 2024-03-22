@@ -1,5 +1,6 @@
 anthropic
 chromadb
+dsp
 dspy
 langchain
 langchain-anthropic

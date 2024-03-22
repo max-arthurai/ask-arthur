@@ -27,7 +27,7 @@ def get_langchain_ensemble_retriever(args) -> BaseRetriever:
     bm25_retriever = BM25Retriever.from_texts(arthur_index['text'])
     bm25_retriever.k = args.k
     embedding = HuggingFaceEmbeddings(model_name=args.embedding, model_kwargs={'trust_remote_code': True})
-    assert args.retrieval=='chroma' # todo allow other options
+    assert args.retrieval == 'chroma'  # todo allow other options
     persistent_client = chromadb.PersistentClient()
     langchain_chroma = Chroma(
         client=persistent_client,
