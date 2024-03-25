@@ -54,20 +54,20 @@ class MultiHop(dspy.Module):
         return dspy.Prediction(context=context, answer=answer)
 
 
-def configure_dspy_settings(args):
+def configure_dspy_settings(llm_name, embedding_name, retrieval="chroma"):
     """
     Sets the LLM and retrieval config for all DSPy calls
     """
-    if "gpt" in args.llm:
-        lm = dspy.OpenAI(model=args.llm)
-    elif "claude" in args.llm:
-        lm = Claude(model=args.llm)
+    if "gpt" in llm_name:
+        lm = dspy.OpenAI(model=llm_name)
+    elif "claude" in llm_name:
+        lm = Claude(model=llm_name)
     else:
         raise ValueError("use openai or anthropic dawg trust me")
 
-    assert args.retrieval == "chroma"  # todo allow other options
+    assert retrieval == "chroma"  # todo allow other options
     embedding_model = SentenceTransformer(
-        model_name_or_path=args.embedding,
+        model_name_or_path=embedding_name,
         trust_remote_code=True
     )
 
@@ -81,8 +81,8 @@ def configure_dspy_settings(args):
     dspy.settings.configure(lm=lm, rm=rm)
 
 
-def run(args):
-    configure_dspy_settings(args)
+def run(prompt, llm_name="gpt-4-0125.preview", embedding_name="nomic-ai/nomic-embed-text-v1.5"):
+    configure_dspy_settings(llm_name, embedding_name)
     mh = MultiHop()
-    prediction = mh(question=args.prompt)
-    print("\n\n\nQuestion:", args.prompt, "\n\n Ask Arthur Answer:\n\n", prediction.answer)
+    prediction = mh(question=prompt)
+    print("\n\n\nQuestion:", prompt, "\n\n Ask Arthur Answer:\n\n", prediction.answer)

@@ -14,7 +14,7 @@ from langchain_openai import ChatOpenAI
 import pandas as pd
 
 
-def get_langchain_ensemble_retriever(args) -> BaseRetriever:
+def get_langchain_ensemble_retriever(embedding, k=3, retrieval='chroma') -> BaseRetriever:
     """Ensemble of classic retrieval and modern vector retrieval
 
     Classic retrieval: BM25 full-document retrieval
@@ -25,30 +25,29 @@ def get_langchain_ensemble_retriever(args) -> BaseRetriever:
     """
     arthur_index = pd.read_csv("docs/arthur_index_315.csv").dropna()
     bm25_retriever = BM25Retriever.from_texts(arthur_index['text'])
-    bm25_retriever.k = args.k
-    embedding = HuggingFaceEmbeddings(model_name=args.embedding, model_kwargs={'trust_remote_code': True})
-    assert args.retrieval == 'chroma'  # todo allow other options
+    bm25_retriever.k = k
+    embedding = HuggingFaceEmbeddings(model_name=embedding, model_kwargs={'trust_remote_code': True})
+    assert retrieval == 'chroma'  # todo allow other options
     persistent_client = chromadb.PersistentClient()
     langchain_chroma = Chroma(
         client=persistent_client,
         collection_name="arthur_index",
         embedding_function=embedding,
-    ).as_retriever(search_kwargs={"k": args.k})
+    ).as_retriever(search_kwargs={"k": k})
     return EnsembleRetriever(retrievers=[bm25_retriever, langchain_chroma], weights=[0.5, 0.5])
 
 
-def get_langchain_llm(args) -> BaseLanguageModel:
+def get_langchain_llm(llm_name) -> BaseLanguageModel:
     """
     https://python.langchain.com/docs/modules/data_connection/retrievers/ensemble
     """
-    name = args.llm
-    if 'gpt' in name:
-        return ChatOpenAI(model_name=name, max_tokens=2000, temperature=0)
-    elif 'claude' in name:
-        return ChatAnthropic(model_name=name, max_tokens=2000, temperature=0)
+    if 'gpt' in llm_name:
+        return ChatOpenAI(model_name=llm_name, max_tokens=2000, temperature=0)
+    elif 'claude' in llm_name:
+        return ChatAnthropic(model_name=llm_name, max_tokens=2000, temperature=0)
     else:
         return HuggingFacePipeline.from_model_id(
-            model_id=name,
+            model_id=llm_name,
             task="text-generation",
             pipeline_kwargs={"max_new_tokens": 2000, "temperature": 0},
         )
@@ -76,9 +75,8 @@ def get_chain(retriever, llm):
     )
 
 
-def run(args):
-    retriever = get_langchain_ensemble_retriever(args)
-    llm = get_langchain_llm(args)
+def run(prompt, llm_name="gpt-4-0125-preview", embedding_name="nomic-ai/nomic-embed-text-v1.5"):
+    retriever = get_langchain_ensemble_retriever(embedding_name)
+    llm = get_langchain_llm(llm_name)
     chain = get_chain(retriever, llm)
-    for text in chain.stream(args.prompt):
-        print(text, end='', flush=True)
+    return str(chain.invoke(prompt))
