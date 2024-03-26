@@ -25,7 +25,7 @@ def get_langchain_ensemble_retriever(embedding, k=3, retrieval='chroma') -> Base
     """
     arthur_index = pd.read_csv("docs/arthur_index_315.csv").dropna()
     bm25_retriever = BM25Retriever.from_texts(arthur_index['text'])
-    bm25_retriever.k = k
+    bm25_retriever.k = 1
     embedding = HuggingFaceEmbeddings(model_name=embedding, model_kwargs={'trust_remote_code': True})
     assert retrieval == 'chroma'  # todo allow other options
     persistent_client = chromadb.PersistentClient()
@@ -37,30 +37,33 @@ def get_langchain_ensemble_retriever(embedding, k=3, retrieval='chroma') -> Base
     return EnsembleRetriever(retrievers=[bm25_retriever, langchain_chroma], weights=[0.5, 0.5])
 
 
-def get_langchain_llm(llm_name) -> BaseLanguageModel:
-    """
-    https://python.langchain.com/docs/modules/data_connection/retrievers/ensemble
-    """
+def get_langchain_llm(llm_name, temperature=0.0, max_tokens=250) -> BaseLanguageModel:
     if 'gpt' in llm_name:
-        return ChatOpenAI(model_name=llm_name, max_tokens=2000, temperature=0)
+        return ChatOpenAI(model_name=llm_name, max_tokens=max_tokens, temperature=temperature)
     elif 'claude' in llm_name:
-        return ChatAnthropic(model_name=llm_name, max_tokens=2000, temperature=0)
+        return ChatAnthropic(model_name=llm_name, max_tokens=max_tokens, temperature=temperature)
     else:
         return HuggingFacePipeline.from_model_id(
             model_id=llm_name,
             task="text-generation",
-            pipeline_kwargs={"max_new_tokens": 2000, "temperature": 0},
+            pipeline_kwargs={"max_new_tokens": max_tokens, "temperature": temperature},
         )
 
 
-rag_template = ChatPromptTemplate.from_template("""
+def get_chain(retriever, llm, prompt_template):
+    return (
+        {"context": retriever, "question": RunnablePassthrough()} | prompt_template | llm | StrOutputParser()
+    )
+
+
+default_rag_template = ChatPromptTemplate.from_template("""
 You are Arthur, the AI Performance & Security Engine
 You are the chat interface for Arthur, the enterprise AI solution for monitoring, compliance, analysis, 
 and development of AI applications ranging from simple tabular classifiers all the way to advanced LLM RAG applications.
 You answer questions for users, always provide in depth explanations, and give example python code where appropriate.
 IMPORTANT: if you are responding with code, that code MUST already exist in the retrieved context.
 
-Answer the question based only on the following context:
+Answer the question BRIEFLY (1-2 sentences and/or a short list) based only on the following context:
 ===
 {context}
 ===
@@ -69,14 +72,17 @@ Question: {question}
 Answer: """)
 
 
-def get_chain(retriever, llm):
-    return (
-        {"context": retriever, "question": RunnablePassthrough()} | rag_template | llm | StrOutputParser()
-    )
-
-
-def run(prompt, llm_name="gpt-4-0125-preview", embedding_name="nomic-ai/nomic-embed-text-v1.5"):
-    retriever = get_langchain_ensemble_retriever(embedding_name)
-    llm = get_langchain_llm(llm_name)
-    chain = get_chain(retriever, llm)
+def run(
+    prompt: str,
+    rag_template: ChatPromptTemplate = default_rag_template,
+    llm_name: str = "gpt-4-0125-preview",
+    temperature: float = 0.0,
+    max_tokens: int = 250,
+    embedding_name: str = "nomic-ai/nomic-embed-text-v1.5",
+    k: int = 5
+):
+    assert rag_template.input_variables == ['context', 'question']
+    retriever = get_langchain_ensemble_retriever(embedding_name, k=k)
+    llm = get_langchain_llm(llm_name, temperature=temperature, max_tokens=max_tokens)
+    chain = get_chain(retriever, llm, rag_template)
     return str(chain.invoke(prompt))

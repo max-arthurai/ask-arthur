@@ -1,0 +1,15 @@
+question,golden_answer
+What enrichments are available in Arthur?,The enrichments available in Arthur are:\n\n- anomaly detection\n- hotspots\n- explainability\n- bias mitigation
+What model types do not allow explainability?,The model types that do not allow for explainability are Object detection & token sequence (LLM) models.
+What enrichments are available for object detection models?,The enrichments available for object detection models are:\n\n- anomaly detection
+What enrichments are available for tabular binary classification models?,The enrichments available for object detection models are:\n\n- anomaly detection\n- hotspots\n- explainability\n- bias mitigation
+Can I restore a deleted Arthur model? ,"If you delete an Arthur model you cannot restore it. You can re-register a new model with the same schema, but the history of your model’s inferences are deleted and cannot be restored."
+What are the two alert levels available in Arthur? ,The two levels of alerts available in Arthur are Warning and Critical.
+What are the additional requirements for on-prem deployment specific to the airgapped mode?,"The requirements for an airgapped on-prem deployment, in addition to the online on-prem deployment requirements, are:\n\n- An existing private container registry\n- Existing private Python registries (PyPI, Anaconda) when the model explanation feature is enabled\n- Access to your private container and Python registries"
+What artifacts do I need to enable explainability for my model? ,To enable explainability for your Arthur model you will need:\n\n- A python script that wraps your models predict function\n- your serialized model file\n- A requirements.txt with the dependencies to support the above
+Is KMS required for Arthur's backup and restore capability?,"No, but Arthur highly recommends that your EBS volumes are encrypted with KMS."
+What Bench scorers can I use for evaluating LLMs at writing summaries?,The Bench scorers that can evaluate LLMs at writing summaries are:\n\n- Summary Quality (summary_quality)\n- BERT Score (bert_score)
+What Bench scorers can I use for evaluating LLMs at answering questions?,The Bench scorers that can evaluate LLMs at answering questions are:\n\n- Exact Match (exact_match)\n- QA Correctness (qa_correctness)\n- BERT Score (bert_score)
+What Bench scorers can I use for evaluating LLMs at coding?,The Bench scorers that can evaluate LLMs at coding are:\n\n- Python Unit Testing (python_unit_testing)
+How do I view my Bench test results?,"To view your Bench test results in the local UI, run the command `bench` from the same local directory as your bench file directory"
+What is the difference between Bench test suites and test runs?,A test suite stores the input & reference output data for your testing use case along with a scorer. A test run evaluates the candidate outputs provided in the run and assigns a score to each test case.
