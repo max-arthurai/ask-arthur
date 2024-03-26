@@ -14,8 +14,8 @@ if __name__ == "__main__":
     parser.add_argument('--verbose', action='store_true')
     args = parser.parse_args()
     if args.framework == 'langchain':
-        run_langchain(args)
+        run_langchain(args.prompt, args.llm, args.embedding)
     elif args.framework == 'dspy':
-        run_dspy(args)
+        run_dspy(args.prompt, args.llm, args.embedding)
     else:
         raise ValueError(f"unrecognized framework: {str(args)}")
