@@ -1,15 +1,873 @@
-question,golden_answer
-What enrichments are available in Arthur?,The enrichments available in Arthur are:\n\n- anomaly detection\n- hotspots\n- explainability\n- bias mitigation
-What model types do not allow explainability?,The model types that do not allow for explainability are Object detection & token sequence (LLM) models.
-What enrichments are available for object detection models?,The enrichments available for object detection models are:\n\n- anomaly detection
-What enrichments are available for tabular binary classification models?,The enrichments available for object detection models are:\n\n- anomaly detection\n- hotspots\n- explainability\n- bias mitigation
-Can I restore a deleted Arthur model? ,"If you delete an Arthur model you cannot restore it. You can re-register a new model with the same schema, but the history of your model’s inferences are deleted and cannot be restored."
-What are the two alert levels available in Arthur? ,The two levels of alerts available in Arthur are Warning and Critical.
-What are the additional requirements for on-prem deployment specific to the airgapped mode?,"The requirements for an airgapped on-prem deployment, in addition to the online on-prem deployment requirements, are:\n\n- An existing private container registry\n- Existing private Python registries (PyPI, Anaconda) when the model explanation feature is enabled\n- Access to your private container and Python registries"
-What artifacts do I need to enable explainability for my model? ,To enable explainability for your Arthur model you will need:\n\n- A python script that wraps your models predict function\n- your serialized model file\n- A requirements.txt with the dependencies to support the above
-Is KMS required for Arthur's backup and restore capability?,"No, but Arthur highly recommends that your EBS volumes are encrypted with KMS."
-What Bench scorers can I use for evaluating LLMs at writing summaries?,The Bench scorers that can evaluate LLMs at writing summaries are:\n\n- Summary Quality (summary_quality)\n- BERT Score (bert_score)
-What Bench scorers can I use for evaluating LLMs at answering questions?,The Bench scorers that can evaluate LLMs at answering questions are:\n\n- Exact Match (exact_match)\n- QA Correctness (qa_correctness)\n- BERT Score (bert_score)
-What Bench scorers can I use for evaluating LLMs at coding?,The Bench scorers that can evaluate LLMs at coding are:\n\n- Python Unit Testing (python_unit_testing)
-How do I view my Bench test results?,"To view your Bench test results in the local UI, run the command `bench` from the same local directory as your bench file directory"
-What is the difference between Bench test suites and test runs?,A test suite stores the input & reference output data for your testing use case along with a scorer. A test run evaluates the candidate outputs provided in the run and assigns a score to each test case.
+question,golden_context,golden_answer
+What enrichments are available in Arthur?,"Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/what-are-enrichments
+ Enrichments
+EnrichmentsEnrich your monitoring process with state-of-the-art techniquesSuggest EditsEnrichments are additional services that the Arthur platform provides for state-of-the-art proactive model monitoring.
+Enrichments in Arthur
+Anomaly Detection: monitor and alert on incoming changes to your data distribution (compared to the reference dataset) based on complex interactions between features
+Hotspots: automatically illuminate segments of underperformance within incoming inferences
+Explainability: understand why your model is making decisions, by computing the importance of individual features from your data on your model's outcomes
+Bias Mitigation: methods for model post-processing that improve the fairness of outcomes without re-deploying your model
+Once activated, these enrichments are automatically computed on Arthur's backend, with results viewable in the online UI dashboard and queryable from Arthur's API.
+Available Enrichments By Different Model Types
+Due to the specialized nature of enrichments, they are only available for certain model types.
+Model Type	Anomaly Detection	Bias Mitigation	Explainability	Hot Spots
+Tabular Classification	X	X	X	X
+Tabular Regression	X		X	
+Text Classification	X		X	
+Text Regression	X		X	
+Text Sequence Generation (LLM)	X (on inputs)			
+CV Classification	X		X	
+CV Regression	X		X	
+CV Object Detection	X			
+Viewing Enabled Enrichments in the UI
+You are also able to view the enrichments enabled for your specific model within the Arthur UI by clicking on the details sections of the model's overview page.
+Enrichment Workflows
+As enrichments are add-ons meant to enrich standard model monitoring, they run on their own workflows within Arthur.Updated 3 months ago Table of Contents
+Enrichments in Arthur
+Available Enrichments By Different Model Types
+Viewing Enabled Enrichments in the UI
+Enrichment Workflows",The enrichments available in Arthur are:\n\n- anomaly detection\n- hotspots\n- explainability\n- bias mitigation
+What model types do not allow explainability?,"Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/what-are-enrichments
+ Enrichments
+EnrichmentsEnrich your monitoring process with state-of-the-art techniquesSuggest EditsEnrichments are additional services that the Arthur platform provides for state-of-the-art proactive model monitoring.
+Enrichments in Arthur
+Anomaly Detection: monitor and alert on incoming changes to your data distribution (compared to the reference dataset) based on complex interactions between features
+Hotspots: automatically illuminate segments of underperformance within incoming inferences
+Explainability: understand why your model is making decisions, by computing the importance of individual features from your data on your model's outcomes
+Bias Mitigation: methods for model post-processing that improve the fairness of outcomes without re-deploying your model
+Once activated, these enrichments are automatically computed on Arthur's backend, with results viewable in the online UI dashboard and queryable from Arthur's API.
+Available Enrichments By Different Model Types
+Due to the specialized nature of enrichments, they are only available for certain model types.
+Model Type	Anomaly Detection	Bias Mitigation	Explainability	Hot Spots
+Tabular Classification	X	X	X	X
+Tabular Regression	X		X	
+Text Classification	X		X	
+Text Regression	X		X	
+Text Sequence Generation (LLM)	X (on inputs)			
+CV Classification	X		X	
+CV Regression	X		X	
+CV Object Detection	X			
+Viewing Enabled Enrichments in the UI
+You are also able to view the enrichments enabled for your specific model within the Arthur UI by clicking on the details sections of the model's overview page.
+Enrichment Workflows
+As enrichments are add-ons meant to enrich standard model monitoring, they run on their own workflows within Arthur.Updated 3 months ago Table of Contents
+Enrichments in Arthur
+Available Enrichments By Different Model Types
+Viewing Enabled Enrichments in the UI
+Enrichment Workflows",The model types that do not allow for explainability are Object detection & token sequence (LLM) models.
+What enrichments are available for object detection models?,"Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/what-are-enrichments
+ Enrichments
+EnrichmentsEnrich your monitoring process with state-of-the-art techniquesSuggest EditsEnrichments are additional services that the Arthur platform provides for state-of-the-art proactive model monitoring.
+Enrichments in Arthur
+Anomaly Detection: monitor and alert on incoming changes to your data distribution (compared to the reference dataset) based on complex interactions between features
+Hotspots: automatically illuminate segments of underperformance within incoming inferences
+Explainability: understand why your model is making decisions, by computing the importance of individual features from your data on your model's outcomes
+Bias Mitigation: methods for model post-processing that improve the fairness of outcomes without re-deploying your model
+Once activated, these enrichments are automatically computed on Arthur's backend, with results viewable in the online UI dashboard and queryable from Arthur's API.
+Available Enrichments By Different Model Types
+Due to the specialized nature of enrichments, they are only available for certain model types.
+Model Type	Anomaly Detection	Bias Mitigation	Explainability	Hot Spots
+Tabular Classification	X	X	X	X
+Tabular Regression	X		X	
+Text Classification	X		X	
+Text Regression	X		X	
+Text Sequence Generation (LLM)	X (on inputs)			
+CV Classification	X		X	
+CV Regression	X		X	
+CV Object Detection	X			
+Viewing Enabled Enrichments in the UI
+You are also able to view the enrichments enabled for your specific model within the Arthur UI by clicking on the details sections of the model's overview page.
+Enrichment Workflows
+As enrichments are add-ons meant to enrich standard model monitoring, they run on their own workflows within Arthur.Updated 3 months ago Table of Contents
+Enrichments in Arthur
+Available Enrichments By Different Model Types
+Viewing Enabled Enrichments in the UI
+Enrichment Workflows",The enrichments available for object detection models are:\n\n- anomaly detection
+What enrichments are available for tabular binary classification models?,"Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/what-are-enrichments
+ Enrichments
+EnrichmentsEnrich your monitoring process with state-of-the-art techniquesSuggest EditsEnrichments are additional services that the Arthur platform provides for state-of-the-art proactive model monitoring.
+Enrichments in Arthur
+Anomaly Detection: monitor and alert on incoming changes to your data distribution (compared to the reference dataset) based on complex interactions between features
+Hotspots: automatically illuminate segments of underperformance within incoming inferences
+Explainability: understand why your model is making decisions, by computing the importance of individual features from your data on your model's outcomes
+Bias Mitigation: methods for model post-processing that improve the fairness of outcomes without re-deploying your model
+Once activated, these enrichments are automatically computed on Arthur's backend, with results viewable in the online UI dashboard and queryable from Arthur's API.
+Available Enrichments By Different Model Types
+Due to the specialized nature of enrichments, they are only available for certain model types.
+Model Type	Anomaly Detection	Bias Mitigation	Explainability	Hot Spots
+Tabular Classification	X	X	X	X
+Tabular Regression	X		X	
+Text Classification	X		X	
+Text Regression	X		X	
+Text Sequence Generation (LLM)	X (on inputs)			
+CV Classification	X		X	
+CV Regression	X		X	
+CV Object Detection	X			
+Viewing Enabled Enrichments in the UI
+You are also able to view the enrichments enabled for your specific model within the Arthur UI by clicking on the details sections of the model's overview page.
+Enrichment Workflows
+As enrichments are add-ons meant to enrich standard model monitoring, they run on their own workflows within Arthur.Updated 3 months ago Table of Contents
+Enrichments in Arthur
+Available Enrichments By Different Model Types
+Viewing Enabled Enrichments in the UI
+Enrichment Workflows",The enrichments available for object detection models are:\n\n- anomaly detection\n- hotspots\n- explainability\n- bias mitigation
+What are the two alert levels available in Arthur? ,"Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/creating-alerts
+ Alerting
+AlertingSuggest EditsAn alert is a message notifying you that something has occurred with your model. With alerts, Arthur Scope makes it easy to provide a continuous view of your model by highlighting important changes in model performance. When defining alerts in Arthur, there are a few things you need to consider:
+Alert Severity
+Two alert severities are available in Arthur; they are warning and critical.
+Teams can set their own severity for alerts. We typically recommend that teams set two different thresholds for the same value, marking the less severe as Warning and the more as Critical.
+Understanding Alert Rules
+An alert is triggered based on an alert rule, which you define using a metric and a threshold. So to create an alert in Arthur, you need to:
+Create a Metric in Arthur Scope
+A metric in Arthur is a function for evaluating model performance. These can be common functions that data scientists or ML teams are familiar with, such as accuracy or F1 Score. Or they can be functions specific to a model's use case, such as Fairness Metrics or User Defined Metrics. This means that any metric you can create in Arthur (including segmentations, filters, or logical functions) can be transformed into an alert.
+For the latter, following the proper steps to create the metric within Arthur for your specific model is important.
+This is because it must first be created for your model to alert on a metric.
+Define Threshold & Bound for Alert
+After creating your metric, it is time to decide what level of underperformance you would like to be alerted to. This numeric value is called the alert threshold. In Arthur, alert threshold values have to be manually set. Users must also define whether they want to be alerted when their function exceeds that numeric threshold. This is the upper or lower bound of the alert.
+Define Notification Timelines for Alert (For Streaming Models)
+For batch models, alerts are calculated per batch of data. However, teams that are running streaming models need to decide how often they would like alerts to be calculated and how much data. To make these decisions, they have to clarify two values:
+Lookback Period: How much data do they want to aggregate in their function? (Do they want to be alerted when the average of just one minute of data has passed the metric threshold, or do they only care if it's affected the average of a day or week).
+Alert Wait Time: How often do you want to be alerted that something is happening? This is how often they would like the alert to be calculated (and triggered if the function threshold is met).
+Creating Alerts
+Default Alerts
+Default data drift alerts for Feature and Prediction Drift are automatically created for every feature once reference and inference data are sent to Arthur. These alerts are created with dynamic threshold values specific to your reference dataset from the “data_drift” endpoint with “metric”: “Thresholds.”
+Defining Custom Alert Rules in the UI
+The UI provides a clickable walk-through guide for teams to make common performance, drift, and data-bound alerts. The common practice of alerting on segments (or filters) of your data when calculating the metric is also added as an optional step.
+See below an example of defining an accuracy alert rule for women in the UI to be alerted every hour for the last 24 hours of inferences.
+Defining Custom Alert Rules with the Python SDK
+Our predefined alerting structure is not the only way teams can create alerts. Alerts can be made for any customizable User Defined Metric teams create for their model in Arthur. Teams must first create the user-defined metric, and then they can easily set the alert from their Python SDK notebook.
+Alert Notifications
+The latest alerts in your organization are shown on the homepage of your Arthur organization. However, beyond being highlighted in the online Arthur UI, alerts can be delivered to teams via email and/or via integrations such as PagerDuty and Slack. You can learn more about setting up those integrations here.
+Alert Endpoint in the API
+The dedicated alerts endpoint is /models/{model_id}/alert_rules.Updated 3 months ago Table of Contents
+Alert Severity
+Understanding Alert Rules
+Create a Metric in Arthur Scope
+Define Threshold & Bound for Alert
+Define Notification Timelines for Alert (For Streaming Models)
+Creating Alerts
+Default Alerts
+Defining Custom Alert Rules in the UI
+Defining Custom Alert Rules with the Python SDK
+Alert Notifications
+Alert Endpoint in the API",The two levels of alerts available in Arthur are Warning and Critical.
+What are the additional requirements for on-prem deployment specific to the airgapped mode?,"Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/on-prem-deployment-requirements
+ On-Prem Deployment Requirements
+On-Prem Deployment RequirementsSuggest EditsGeneral
+A DNS hostname
+TLS private key & certificate
+SMTP server (StartTLS supported)
+The minimum compute resource requirements in this documentation is for running a few small models in a non-production environment. Your production deployment will likely use more compute resources to achieve higher availability, performance and scalability.
+Arthur’s horizontally elastic architecture allows high throughput processing in both streaming and batch. The platform's auto-scaler mechanism self-manages resource utilization in optimized and cost-effective fashion. It automatically scales up and down based on compute resource requests by the platform activities as well as the lag observed in the data pipeline queue within the limits of the allocated hardware. This works best in a cloud infrastructure with a managed Kubernetes service that enables Arthur to also auto-scale the provisioned hardware (e.g. AWS EKS, Azure ASK).
+Storage volumes used for Arthur deployment should be encrypted with a data key using industry-standard data encryption (e.g. AES-256). This applies to the mounted disk volumes as well as the externalized storage, such as the S3 object storage and the relational database if any.
+Kubernetes Install
+Kubectl-ing workstation: Linux or MacOS
+Kubernetes: 1.25 to 1.27
+Runtime: containerd or Docker
+Namespace
+Storage class
+Minimum Node Group Resource
+16 CPUs
+32 GB RAM
+Storage with at least 3000 IOPS (>100GB recommended)
+Permissions
+When Arthur platform is installed, Kubernetes RBAC resources are created to allow the Admin Console to manage the application.
+The kubectl-ing user who installs Arthur must have the wildcard privileges in the cluster.
+Refer to this documentation for the ClusterRole and ClusterRoleBinding that
+will be created for the Admin Console.
+Components
+Prometheus
+Ingress Controller (Nginx or Ambassador)
+Kubernetes Metrics Server
+Velero with Restic (Optional for managed backup and restore feature)
+For Airgapped installation only:
+An existing private container registry
+Existing private Python registries (PyPI, Anaconda) - only required for the model explanation feature
+VM Install
+Minimum Server Resource
+16 CPUs
+32 GB RAM
+Storage with at least 3000 IOPS (>100GB recommended)
+Supported Operating Systems
+The latest versions of the following Linux operating systems are supported.
+Ubuntu
+RHEL
+Please do the following before running the installer on your VM for a smoother deployment experience:
+If SELinux is enabled, set it to the permissive mode
+Make sure the VM doesn't have any container runtime pre-installed, such as Docker or containerd
+Firewall Configurations
+Ingress
+The TCP port 443 is the only entry point that Arthur exposes.
+Egress
+The platform requires access to any integrations (e.g. SMTP, IdP) as well as the components you externalize (e.g. Postgres, S3).
+For Airgap Installation
+Your private container and Python registries must be accessible.
+(requirements_for_online_installation)=
+For Online Installation
+Access to container images and deployment manifest files from the below public registries are required.
+HostExisting ClusterEmbedded ClusterDocker HubRequiredRequiredproxy.replicated.comRequiredRequiredreplicated.appRequiredRequiredk8s.kurl.shNot RequiredRequiredamazonaws.comNot RequiredRequiredUpdated about 2 months ago Table of Contents
+General
+Kubernetes Install
+Minimum Node Group Resource
+Permissions
+Components
+VM Install
+Minimum Server Resource
+Supported Operating Systems
+Firewall Configurations
+Ingress
+Egress","The requirements for an airgapped on-prem deployment, in addition to the online on-prem deployment requirements, are:\n\n- An existing private container registry\n- Existing private Python registries (PyPI, Anaconda) when the model explanation feature is enabled\n- Access to your private container and Python registries"
+What artifacts do I need to enable explainability for my model? ,"Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/assets-required-for-explainability
+ Assets Required For Explainability
+Assets Required For ExplainabilitySuggest EditsArthur can automatically calculate explanations (feature importances) for every prediction your model makes. To make this possible, we package up your model in a way that allows us to call it's predict function, which allows us to calculate explanations. We require a few things from your end:
+A Python script that wraps your models predict function
+For Image models, a second function, load_image is also required (see CV Explainability).
+A directory containing the above file, along with any serialized model files, and other supporting code
+A requirements.txt with the dependencies to support the above
+This guide will set everything up and then use the SDK to enable explainability.
+Setting up Project Directory
+Project Structure
+Here is an example of what your project directory might look like.
+-- model_folder/
+
+-- data/
+
+
+-- training_data.csv
+
+
+-- testing_data.csv
+
+-- requirements.txt
+
+-- model_entrypoint.py
+
+-- utils.py
+
+-- serialized_model.pkl
+Requirements File
+Your project requirements and dependencies can be stored in any format you like, such as the typical requirements.txt file, or another form of dependency management.
+This should contain all packages your model and predict function need to run.
+📘You do not need to include the arthurai package in this requirements file. We supply that
+# example_requirements.txt
+pandas==0.24.2
+numpy==1.16.4
+scikit-learn==0.21.3
+torch==1.3.1
+torchvision==0.4.2
+It is advised to pin the specific versions your model requires. If no version is pinned, we will use the latest version. This can cause issues if the latest version is incompatible with the version used to build your model.
+Prediction Function
+We need to be able to send new inferences to your model to get predictions and generate explanations. For us to have access to your model, you need to create an entrypoint file that defines a predict() method.
+The exact name of the file isn't strict, so long as you specify the correct name when you enable explainability (see below). The only thing that does matter is that this file implements a predict() method. In most cases, if you have a previously trained model, this predict() method will likely just invoke the prediction from your trained model.
+Python# example_entrypoint.py
+sk_model = joblib.load(""./serialized_model.pkl"")
+def predict(x):
+return sk_model.predict_proba(x)
+This predict method can be as simple or complicated as you need, so long as you can go from raw input data to a model output prediction.
+Specifically, in the case of a binary classifier, we expect a 2-d array where the first column indicates probability_0 for each input, and the second column indicates probability_1 for each input. In the case of a multiclass classifier with n possible labels, we expect an n-d array where column i corresponds to the predicted probability that each input belongs to class i.
+Preprocessing for Prediction
+Commonly, a fair amount of feature processing and transformation will need to happen before invoking your actual model.predict(). This might include normalizations, rescaling, one-hot encoding, embedding, etc. Whatever those transformations are, you can make them a part of this predict() method. Alternatively, you can wrap all those transformations into a helper function.
+Python# example_entrypoint.py
+from utils import pipeline_transformations
+sk_model = joblib.load(""./serialized_model.pkl"")
+def predict(x):
+return sk_model.predict_proba(pipeline_transformations(x))
+Enabling Explainability
+Enabling explainability can be done using the SDK function arthur_model.enable_explainability, which takes as input a sample of your model's data (to train the explainer), and which takes as input the files that contain your model's predict function and necessary environment.
+Pythonarthur_model.enable_explainability(
+df=X_train.head(50),
+project_directory=""/path/to/model_folder/"",
+requirements_file=""requirements.txt"",
+user_predict_function_import_path=""model_entrypoint"",
+ignore_dirs=[""folder_to_ignore""] # optionally exclude directories within the project folder from being bundled with predict function
+)
+The above provides a simple example. For a list of all configuration options and details around them, see the explainability section in Enabling Enrichments.
+Notes about the above example:
+joblib is a Python library allowing you to reconstruct your model from a serialized pickle file.
+X_train is your trained model data frame.
+user_predict_function_import_path is the Python path to import the entry point file as if you imported it into the Python program running enable_explainability.
+Configuration Requirements
+When going from disabled to enabled, you will need to include the required configuration settings. Once the explainability enrichment has been enabled, you can update the non-required configuration settings without re-supplying the required fields.
+You must not pass in any config settings when disabling the explainability enrichment.
+Configuration
+SettingRequiredDescriptiondfXThe dataframe passed to the explainer. It should be similar to, or a subset of, the training data. Typically small, ~50-100 rows.project_directoryXThe path to the directory containing your predict function, requirements file, model file, and any other resources needed to support the predict function.user_predict_function_import_pathXThe name of the file containing the predict function. Do not include .py extension. Used to import the predict function.requirements_fileXThe name of the file containing pip requirements for the predict function.python_versionXThe Python version to use when executing the predict function. This is automatically set to the current Python version when usingmodel.enable_explainability().sdk_versionXThe arthurai version used to make the enable request. This is automatically set to the currently installed SDK version when using themodel.enable_explainability().explanation_algoThe explanation algorithm to use. Valid options are 'lime' or 'shap'. The default value of 'lime'.explanation_nsamplesThe number of perturbed samples used to generate the explanation. The result will be calculated more quickly for a smaller number of samples but may be less robust. It is recommended to use at least 100 samples. The default value of 2000.inference_consumer_score_percentThe number between 0.0 and 1.0 sets the percent of inferences for which to compute an explanation score. Only applicable when streaming_explainability_enabled is set to true. The default value of 1.0 (all inferences explained).streaming_explainability_enabledIf true, every inference will have an explanation generated for it. If false, explanations are available on-demand only.ignore_dirsList of paths to directories within project_directory that will not be bundled and included with the predict function. Use to prevent including irrelevant code or files in larger directories.
+CV Explainability
+📘Explainability is currently available as an enrichment for classification, multi-labeling, and regression CV models, but not object detection CV models.
+In your model_entrypoint.py for Multiclass Image models, in addition to the predict() function, there is a second function which is required: load_image(). This function should take in a string, which is a path to an image file. The function should return the image in a numpy array. Any image processing, such as converting to greyscale, should also happen in this function. This is because Lime (the explanation algorithm used behind the scenes) will create variations of this array to generate explanations. However, any transformation resulting in a non-numpy array should happen in the predict function, such as converting to a Tensor.
+No image resizing is required. As part of onboarding an image model, pixel_height and pixel_width are set as metadata on the model. When ingesting, Arthur will automatically resize the image to the configured size and pass this resized image path to the load_image function.
+Below is a full example file for an Image model, with both load_image and predict defined.
+Imports and class definitions are omitted for brevity.
+Python# example_entrypoint.py
+import ...
+class MedNet(nn.Module):
+...
+# load model using custom user defined class
+net = MedNet()
+path = pathlib.Path(__file__).parent.absolute()
+net.load_state_dict(torch.load(f'{path}/pretrained_model'))
+# helper function for transforming image
+def quantize(np_array):
+return np_array + (np.random.random(np_array.shape) / 256)
+def load_image(image_path):
+""""""Takes in single image path, and returns single image in format predict expects
+""""""
+return quantize(np.array(Image.open(image_path).convert('RGB')) / 256)
+def predict(images_in):
+""""""Takes in numpy array of images, and returns predictions in numpy array.
+Can handle both single image in `numpy` array, or multiple images.
+""""""
+batch_size, pixdim1, pixdim2, channels = images_in.shape
+raw_tensor = torch.from_numpy(images_in)
+processed_images = torch.reshape(raw_tensor, (batch_size, channels, pixdim1, pixdim2)).float()
+net.eval()
+with torch.no_grad():
+return net(processed_images).numpy()
+👍Note on Enabling Explainability for CV ModelsExplainability for CV, at least for CV models, should be configured with 4 CPUs and 4 GB RAM (default 1) to avoid long explanation times (which could break the UI). It’s done per model when enabling explainability in the notebook.
+This enabling explainability configuration can be seen here:
+Pythonarthur_model.enable_explainability(
+project_directory=project_dir,
+user_predict_function_import_path='entrypoint',
+streaming_explainability_enabled=False,
+requirements_file=""requirements.txt"",
+explanation_algo='lime',
+explanation_nsamples=2000,
+model_server_num_cpu=""4"",
+model_server_memory=""4Gi""
+)
+NLP Explainability
+Enabling explainability for NLP models follows the same process for Tabular models
+📘An important choice for NLP explainability is the text_demiliter parameter, since this delimiter determines how tokens will be perturbed when generating explanations.
+Here is an example entrypoint.py file which loads our NLP model and defines a predict function that the explainer will use:
+Pythonmodel_path = os.path.join(os.path.dirname(__file__), ""model.pkl"")
+model = joblib.load(model_path)
+def predict(fvs):
+# our model expects a list of strings, no nesting
+# if we receive nested lists, unnest them
+if not isinstance(fvs[0], str):
+fvs = [fv[0] for fv in fvs]
+return model.predict_proba(fvs)
+Updated 3 months ago Table of Contents
+Setting up Project Directory
+Project Structure
+Requirements File
+Prediction Function
+Preprocessing for Prediction
+Enabling Explainability
+Configuration Requirements
+CV Explainability
+NLP Explainability",To enable explainability for your Arthur model you will need:\n\n- A python script that wraps your models predict function\n- your serialized model file\n- A requirements.txt with the dependencies to support the above
+Is KMS required for Arthur's backup and restore capability?,"Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/deploying-on-amazon-aws-eks
+ Deploying on Amazon AWS EKS
+Deploying on Amazon AWS EKSSuggest EditsThis is a guide with additional steps to help you prepare your existing Amazon Elastic Kubernetes Service (Amazon EKS) cluster for installing the Arthur platform.
+Ensure the initial steps detailed Installing Arthur Pre-requisites have already been applied to the cluster.
+Configure EKS EBS CSI driver
+As of EKS 1.23, the Amazon Elastic Block Store (Amazon EBS) Container Storage Interface (CSI) driver needs to be installed explicitly. This driver allows EKS clusters to manage the lifecycle of EBS volumes for Persistent Volumes. For more information, see Amazon Docs.
+If you are deploying Arthur on EKS 1.23+, you must follow the instructions on this page.
+Verify that the Add-On is successfully installed by navigating to AWS Console → EKS → Cluster → Add-Ons or by running helm list -A, depending on your installation method.
+Optimizing the AWS EKS StorageClass
+Once the EKS EBS CSI driver is installed, you can take advantage of the gp3 StorageClass type. This StorageClass is more cost-effective and performant
+than the previous gp2 StorageClass. Apply the below YAML definition to your cluster:
+YAML{note}
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+annotations:
+storageclass.kubernetes.io/is-default-class: ""true""
+name: gp3
+parameters:
+type: gp3
+encrypted: ""true"" # parameter ensures created AWS EBS volumes are encrypted using AWS Managed KMS Key
+kmsKeyId: <KMS Key ARN> # optional parameter ensures created AWS EBS volumes are encrypted using Customer Managed KMS Key
+provisioner: ebs.csi.aws.com
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true
+Ensure there is **_only one_** default StorageClass on the cluster. This is controlled by the `storageclass.kubernetes.io/is-default-class` annotation.
+Supported AWS Service Authentication Mechanisms
+If using AWS services with Arthur, such as S3 or SES, you will need to configure Arthur to authenticate with AWS.
+Arthur currently supports 3 authentication mechanisms:
+AWS Access Keys
+Access Keys only work with S3.
+If you want to use Access Keys, you must provision an IAM user and a set of keys.
+Via AWS IAM, you will need to grant this user read/write access to the S3 storage bucket you plan to use with Arthur.
+Selecting the Access Keys option will expand the Blob Storage section of the config page, where you will be able to enter your Access key, Secret Access key ID, and the S3 bucket.
+IRSA
+We recommend using IRSA to authenticate Arthur with AWS as it is the most secure and the only mechanism supporting SES.
+Using this methodology will require some AWS platform work in preparation for Arthur.
+You can follow these AWS docs, which will show you how to do this setup via eksctl or the AWS CLI, or you can automate this via your internal Infrastructure as Code.
+The role you create will need S3 read/write privileges on the bucket you want to use with Arthur and permissions to send email via your SES entity.
+Example snippets are as below:
+Sample IAM policies
+We provide some sample IAM policy snippets so they can be referenced easily.
+Sample IAM policy for S3 access
+{
+""Statement"": [
+{
+""Action"": [
+""s3:PutObject"",
+""s3:GetObject"",
+...
+],
+""Effect"": ""Allow"",
+""Resource"": [
+""arn:aws:s3:::<insert-s3-bucket-name>/*"",
+""arn:aws:s3:::<insert-s3-bucket-name>""
+],
+....
+},
+Sample IAM policy for SES access
+""Action"": [
+""ses:SendTemplatedEmail"",
+""ses:SendEmail"",
+""ses:SendCustomVerificationEmail"",
+""ses:SendBulkTemplatedEmail"",
+""ses:SendBulkEmail"",
+""ses:SendBounce""
+],
+""Effect"": ""Allow"",
+""Resource"": ""*"",
+""Sid"": ""sesSendEmails""
+},
+This role will also need to have a trust relationship with the OIDC provider of your EKS cluster, specifying the Arthur service accounts.
+See the linked docs above for a further explanation.
+An example snippet of this is:
+{
+""Version"": ""2012-10-17"",
+""Statement"": [
+{
+""Sid"": """",
+""Effect"": ""Allow"",
+""Principal"": {
+""Federated"": ""arn:aws:iam::123456789012:oidc-provider/oidc.eks.us-east-2.amazonaws.com/id/ABDCEF......""
+},
+""Action"": ""sts:AssumeRoleWithWebIdentity"",
+""Condition"": {
+""StringEquals"": {
+""oidc.eks.us-east-2.amazonaws.com/id/ABDCEF:sub"": [
+""system:serviceaccount:<namespace>:arthurai-<namespace>"",
+""system:serviceaccount:<namespace>:arthurai-<namespace>-helm-hook""
+]
+}
+}
+}
+]
+}
+Once this is all set up, you can pass this role to Arthur via the config page.
+This sets the role in the Arthur Service Accounts specified above, which enables Arthur's pods to authenticate with AWS via the role, and the permissions you created.
+Be sure to use the exact formatting shown below:
+Proceed to the Blob Storage section of the Arthur config page to specify the S3 bucket
+SES
+To utilize AWS SES for Arthur-generated emails, you must configure IRSA as outlined in the above section.
+Once this is done, navigate to the email configuration section of Arthur's config page.
+Select AWS SES, then enter the region in which your SES entity is configured. As outlined above, the role associated with the cluster must have permissions on this SES entity.
+If the SES entity is in the same account as your cluster, and you do not need to utilize a different role, such as for cross-account permissions, do not enter a role in the second box.
+If your SES entity is in another Arthur, account, you must set up cross-account privileges between roles.
+In the account of your SES entity (Account A), you must create an IAM role (Role A) that has sent email permissions to SES, as depicted above.
+Role A will also need to have a trust relationship with either the account that your cluster is in (Account B), the OIDC provider on your cluster as depicted above, or the IRSA role associated with your cluster.
+Additionally, the IRSA role you created above in Account B, will also need to be granted STS assume role privileges on the role you are creating in Account A.
+Once all of this is set up, enter the role in the account that contains the SES entity (Account A) that the IRSA role should assume to send emails:
+Updated 3 months ago Table of Contents
+Configure EKS EBS CSI driver
+Optimizing the AWS EKS StorageClass
+Supported AWS Service Authentication Mechanisms
+AWS Access Keys
+IRSA
+Sample IAM policies
+SES","No, but Arthur highly recommends that your EBS volumes are encrypted with KMS."
+What Bench scorers can I use for evaluating LLMs at writing summaries?,"Content type: arthur_bench_docs
+Source: https://bench.readthedocs.io/en/latest/scoring.html
+ Scoring - bench documentation
+Scoring#
+A Scorer is the criteria used to quantitatively evaluate LLM outputs. When you test LLMs with Arthur Bench, you attach a Scorer to each test suite you create - this defines how performance will be measured consistently across that test suite.
+For a walkthrough on how to extend the Scorer class to create your own scorer specialized to your data and/or use-case to use with Arthur Bench, check out the custom scoring guide
+If you would like to contribute scorers to the open source Arthur Bench repo, check out our contributing guide
+Here is a list of all the scorers available by default in Arthur Bench (listed alphabetically):
+Scorer
+Tasks
+Type
+Requirements
+BERT Score (bertscore)
+any
+Embedding-Based
+Reference Output, Candidate Output
+Exact Match (exact_match)
+any
+Lexicon-Based
+Reference Output, Candidate Output
+Hallucination (hallucination)
+any
+Prompt-Based
+Candidate Output, Context
+Hedging Language (hedging_language)
+any
+Embedding-Based
+Candidate Output
+Python Unit Testing (python_unit_testing)
+Python Generation
+Code Evaluator
+Candidate Output, Unit Tests (see the code eval guide)
+QA Correctness (qa_correctness)
+Question-Answering
+Prompt-Based
+Input, Candidate Output, Context
+Readability (readability)
+any
+Lexicon-Based
+Candidate Output
+Specificity (specificity)
+any
+Lexicon-Based
+Candidate Output
+Summary Quality (summary_quality)
+Summarization
+Prompt-Based
+Input, Reference Output, Candidate Output
+Word Count Match (word_count_match)
+any
+Lexicon-Based
+Reference Output, Candidate Output
+For better understandability we have broken down the Scorers based on the type of procedure each Scorer uses.
+Prompt-Based Scorers#
+qa_correctness#
+The QA correctness scorer evaluates the correctness of an answer, given a question and context. This scorer does not require a reference output, but does require context. Each row of the Test Run will receive a binary 0, indicating an incorrect output, or 1, indicating a correct output.
+summary_quality#
+The Summary Quality scorer evaluates a summary against its source text and a reference summary for comparison. It evaluates summaries on dimensions including relevance and syntax. Each row of the test run will receive a binary 0, indicating that the reference output was scored higher than the candidate output, or 1, indicating that the candidate output was scored higher than the reference output.
+hallucination#
+The Hallucination scorer takes a response and a context (e.g. in a RAG setting where context is used to ground an LLM’s responses) and identifies when information in the response is not substantiated by the context . The scorer breaks down the response into a list of claims and checks the claims against the context for support. This binary score is 1 if all claims are supported, and 0 otherwise.
+Embedding-Based Scorers#
+bertscore#
+BERTScore is a quantitative metric to compare the similarity of two pieces of text. Using bertscore will score each row of the test run as the bert score between the reference output and the candidate output.
+hedging_language#
+The Hedging Language scorer evaluates whether a candidate response is similar to generic hedging language used by an LLM (“As an AI language model, I don’t have personal opinions, emotions, or beliefs”). Each row of the Test Run will receive a score between 0.0 and 1.0 indicating the extent to which hedging language is detected in the response (using BERTScore similarity to the target hedging phrase). A score above 0.5 typically suggests the model output contains hedging language.
+Lexicon-Based Scorers#
+exact_match#
+The Exact Match scorer evaluates whether the candidate output exactly matches the reference output. This is case sensitive. Each row of the Test Run will receive a binary 0, indicating a non-match, or 1, indicating an exact match.
+readability#
+The Readability scorer evaluates the reading ease of the candidate output according to the Flesch Reading Ease Score. The higher the score, the easier the candidate output is to read: scores of 90-100 correlate to a 5th grade reading level, while scores less than 10 are classified as being “extremely difficult to read, and best understood by university graduates.”
+specificity#
+The Specificity scorer outputs a score of 0 to 1, where smaller values correspond to candidate outputs with more vague language while higher values correspond to candidate outputs with more precise language. Specificity is calculated through 3 heuristic approaches: identifying the presence of predefined words that indicate vagueness, determing how rare the words used are according to word frequencies calculated by popular NLP corpora, and detecting the use of proper nouns and numbers.
+word_count_match#
+For scenarios where there is a preferred output length, word_count_match calculates a corresponding score on the scale of 0 to 1. Specifically, this scorers calculates how similar the number of words in the candidate output is to the number of words in the reference output, where a score of 1.0 indicates that there are the same number of words in the candidate output as in the reference output. Scores less than 1.0 are calculated as ((len_reference-delta)/len_reference) where delta is the absolute difference in word lengths between the candidate and reference outputs. All negative computed values are truncated to 0.
+Code Evaluators#
+python_unit_testing#
+The Python Unit Testing scorer evaluates candidate solutions to coding tasks against unit tests. This scorer wraps the code_eval evaluator interface from HuggingFace. It is important to note that this function requires that solution code uses standard python libraries only.
+Next
+Guides
+Previous
+Quickstart
+Copyright © 2023, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+Scoring
+Prompt-Based Scorers
+qa_correctness
+summary_quality
+hallucination
+Embedding-Based Scorers
+bertscore
+hedging_language
+Lexicon-Based Scorers
+exact_match
+readability
+specificity
+word_count_match
+Code Evaluators
+python_unit_testing",The Bench scorers that can evaluate LLMs at writing summaries are:\n\n- Summary Quality (summary_quality)\n- BERT Score (bert_score)
+What Bench scorers can I use for evaluating LLMs at answering questions?,"Content type: arthur_bench_docs
+Source: https://bench.readthedocs.io/en/latest/scoring.html
+ Scoring - bench documentation
+Scoring#
+A Scorer is the criteria used to quantitatively evaluate LLM outputs. When you test LLMs with Arthur Bench, you attach a Scorer to each test suite you create - this defines how performance will be measured consistently across that test suite.
+For a walkthrough on how to extend the Scorer class to create your own scorer specialized to your data and/or use-case to use with Arthur Bench, check out the custom scoring guide
+If you would like to contribute scorers to the open source Arthur Bench repo, check out our contributing guide
+Here is a list of all the scorers available by default in Arthur Bench (listed alphabetically):
+Scorer
+Tasks
+Type
+Requirements
+BERT Score (bertscore)
+any
+Embedding-Based
+Reference Output, Candidate Output
+Exact Match (exact_match)
+any
+Lexicon-Based
+Reference Output, Candidate Output
+Hallucination (hallucination)
+any
+Prompt-Based
+Candidate Output, Context
+Hedging Language (hedging_language)
+any
+Embedding-Based
+Candidate Output
+Python Unit Testing (python_unit_testing)
+Python Generation
+Code Evaluator
+Candidate Output, Unit Tests (see the code eval guide)
+QA Correctness (qa_correctness)
+Question-Answering
+Prompt-Based
+Input, Candidate Output, Context
+Readability (readability)
+any
+Lexicon-Based
+Candidate Output
+Specificity (specificity)
+any
+Lexicon-Based
+Candidate Output
+Summary Quality (summary_quality)
+Summarization
+Prompt-Based
+Input, Reference Output, Candidate Output
+Word Count Match (word_count_match)
+any
+Lexicon-Based
+Reference Output, Candidate Output
+For better understandability we have broken down the Scorers based on the type of procedure each Scorer uses.
+Prompt-Based Scorers#
+qa_correctness#
+The QA correctness scorer evaluates the correctness of an answer, given a question and context. This scorer does not require a reference output, but does require context. Each row of the Test Run will receive a binary 0, indicating an incorrect output, or 1, indicating a correct output.
+summary_quality#
+The Summary Quality scorer evaluates a summary against its source text and a reference summary for comparison. It evaluates summaries on dimensions including relevance and syntax. Each row of the test run will receive a binary 0, indicating that the reference output was scored higher than the candidate output, or 1, indicating that the candidate output was scored higher than the reference output.
+hallucination#
+The Hallucination scorer takes a response and a context (e.g. in a RAG setting where context is used to ground an LLM’s responses) and identifies when information in the response is not substantiated by the context . The scorer breaks down the response into a list of claims and checks the claims against the context for support. This binary score is 1 if all claims are supported, and 0 otherwise.
+Embedding-Based Scorers#
+bertscore#
+BERTScore is a quantitative metric to compare the similarity of two pieces of text. Using bertscore will score each row of the test run as the bert score between the reference output and the candidate output.
+hedging_language#
+The Hedging Language scorer evaluates whether a candidate response is similar to generic hedging language used by an LLM (“As an AI language model, I don’t have personal opinions, emotions, or beliefs”). Each row of the Test Run will receive a score between 0.0 and 1.0 indicating the extent to which hedging language is detected in the response (using BERTScore similarity to the target hedging phrase). A score above 0.5 typically suggests the model output contains hedging language.
+Lexicon-Based Scorers#
+exact_match#
+The Exact Match scorer evaluates whether the candidate output exactly matches the reference output. This is case sensitive. Each row of the Test Run will receive a binary 0, indicating a non-match, or 1, indicating an exact match.
+readability#
+The Readability scorer evaluates the reading ease of the candidate output according to the Flesch Reading Ease Score. The higher the score, the easier the candidate output is to read: scores of 90-100 correlate to a 5th grade reading level, while scores less than 10 are classified as being “extremely difficult to read, and best understood by university graduates.”
+specificity#
+The Specificity scorer outputs a score of 0 to 1, where smaller values correspond to candidate outputs with more vague language while higher values correspond to candidate outputs with more precise language. Specificity is calculated through 3 heuristic approaches: identifying the presence of predefined words that indicate vagueness, determing how rare the words used are according to word frequencies calculated by popular NLP corpora, and detecting the use of proper nouns and numbers.
+word_count_match#
+For scenarios where there is a preferred output length, word_count_match calculates a corresponding score on the scale of 0 to 1. Specifically, this scorers calculates how similar the number of words in the candidate output is to the number of words in the reference output, where a score of 1.0 indicates that there are the same number of words in the candidate output as in the reference output. Scores less than 1.0 are calculated as ((len_reference-delta)/len_reference) where delta is the absolute difference in word lengths between the candidate and reference outputs. All negative computed values are truncated to 0.
+Code Evaluators#
+python_unit_testing#
+The Python Unit Testing scorer evaluates candidate solutions to coding tasks against unit tests. This scorer wraps the code_eval evaluator interface from HuggingFace. It is important to note that this function requires that solution code uses standard python libraries only.
+Next
+Guides
+Previous
+Quickstart
+Copyright © 2023, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+Scoring
+Prompt-Based Scorers
+qa_correctness
+summary_quality
+hallucination
+Embedding-Based Scorers
+bertscore
+hedging_language
+Lexicon-Based Scorers
+exact_match
+readability
+specificity
+word_count_match
+Code Evaluators
+python_unit_testing",The Bench scorers that can evaluate LLMs at answering questions are:\n\n- Exact Match (exact_match)\n- QA Correctness (qa_correctness)\n- BERT Score (bert_score)
+What Bench scorers can I use for evaluating LLMs at coding?,"Content type: arthur_bench_docs
+Source: https://bench.readthedocs.io/en/latest/scoring.html
+ Scoring - bench documentation
+Scoring#
+A Scorer is the criteria used to quantitatively evaluate LLM outputs. When you test LLMs with Arthur Bench, you attach a Scorer to each test suite you create - this defines how performance will be measured consistently across that test suite.
+For a walkthrough on how to extend the Scorer class to create your own scorer specialized to your data and/or use-case to use with Arthur Bench, check out the custom scoring guide
+If you would like to contribute scorers to the open source Arthur Bench repo, check out our contributing guide
+Here is a list of all the scorers available by default in Arthur Bench (listed alphabetically):
+Scorer
+Tasks
+Type
+Requirements
+BERT Score (bertscore)
+any
+Embedding-Based
+Reference Output, Candidate Output
+Exact Match (exact_match)
+any
+Lexicon-Based
+Reference Output, Candidate Output
+Hallucination (hallucination)
+any
+Prompt-Based
+Candidate Output, Context
+Hedging Language (hedging_language)
+any
+Embedding-Based
+Candidate Output
+Python Unit Testing (python_unit_testing)
+Python Generation
+Code Evaluator
+Candidate Output, Unit Tests (see the code eval guide)
+QA Correctness (qa_correctness)
+Question-Answering
+Prompt-Based
+Input, Candidate Output, Context
+Readability (readability)
+any
+Lexicon-Based
+Candidate Output
+Specificity (specificity)
+any
+Lexicon-Based
+Candidate Output
+Summary Quality (summary_quality)
+Summarization
+Prompt-Based
+Input, Reference Output, Candidate Output
+Word Count Match (word_count_match)
+any
+Lexicon-Based
+Reference Output, Candidate Output
+For better understandability we have broken down the Scorers based on the type of procedure each Scorer uses.
+Prompt-Based Scorers#
+qa_correctness#
+The QA correctness scorer evaluates the correctness of an answer, given a question and context. This scorer does not require a reference output, but does require context. Each row of the Test Run will receive a binary 0, indicating an incorrect output, or 1, indicating a correct output.
+summary_quality#
+The Summary Quality scorer evaluates a summary against its source text and a reference summary for comparison. It evaluates summaries on dimensions including relevance and syntax. Each row of the test run will receive a binary 0, indicating that the reference output was scored higher than the candidate output, or 1, indicating that the candidate output was scored higher than the reference output.
+hallucination#
+The Hallucination scorer takes a response and a context (e.g. in a RAG setting where context is used to ground an LLM’s responses) and identifies when information in the response is not substantiated by the context . The scorer breaks down the response into a list of claims and checks the claims against the context for support. This binary score is 1 if all claims are supported, and 0 otherwise.
+Embedding-Based Scorers#
+bertscore#
+BERTScore is a quantitative metric to compare the similarity of two pieces of text. Using bertscore will score each row of the test run as the bert score between the reference output and the candidate output.
+hedging_language#
+The Hedging Language scorer evaluates whether a candidate response is similar to generic hedging language used by an LLM (“As an AI language model, I don’t have personal opinions, emotions, or beliefs”). Each row of the Test Run will receive a score between 0.0 and 1.0 indicating the extent to which hedging language is detected in the response (using BERTScore similarity to the target hedging phrase). A score above 0.5 typically suggests the model output contains hedging language.
+Lexicon-Based Scorers#
+exact_match#
+The Exact Match scorer evaluates whether the candidate output exactly matches the reference output. This is case sensitive. Each row of the Test Run will receive a binary 0, indicating a non-match, or 1, indicating an exact match.
+readability#
+The Readability scorer evaluates the reading ease of the candidate output according to the Flesch Reading Ease Score. The higher the score, the easier the candidate output is to read: scores of 90-100 correlate to a 5th grade reading level, while scores less than 10 are classified as being “extremely difficult to read, and best understood by university graduates.”
+specificity#
+The Specificity scorer outputs a score of 0 to 1, where smaller values correspond to candidate outputs with more vague language while higher values correspond to candidate outputs with more precise language. Specificity is calculated through 3 heuristic approaches: identifying the presence of predefined words that indicate vagueness, determing how rare the words used are according to word frequencies calculated by popular NLP corpora, and detecting the use of proper nouns and numbers.
+word_count_match#
+For scenarios where there is a preferred output length, word_count_match calculates a corresponding score on the scale of 0 to 1. Specifically, this scorers calculates how similar the number of words in the candidate output is to the number of words in the reference output, where a score of 1.0 indicates that there are the same number of words in the candidate output as in the reference output. Scores less than 1.0 are calculated as ((len_reference-delta)/len_reference) where delta is the absolute difference in word lengths between the candidate and reference outputs. All negative computed values are truncated to 0.
+Code Evaluators#
+python_unit_testing#
+The Python Unit Testing scorer evaluates candidate solutions to coding tasks against unit tests. This scorer wraps the code_eval evaluator interface from HuggingFace. It is important to note that this function requires that solution code uses standard python libraries only.
+Next
+Guides
+Previous
+Quickstart
+Copyright © 2023, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+Scoring
+Prompt-Based Scorers
+qa_correctness
+summary_quality
+hallucination
+Embedding-Based Scorers
+bertscore
+hedging_language
+Lexicon-Based Scorers
+exact_match
+readability
+specificity
+word_count_match
+Code Evaluators
+python_unit_testing",The Bench scorers that can evaluate LLMs at coding are:\n\n- Python Unit Testing (python_unit_testing)
+How do I view my Bench test results?,"Content type: arthur_bench_docs
+Source: https://bench.readthedocs.io/en/latest/quickstart.html
+ Quickstart - bench documentation
+Quickstart#
+Make sure you have completed installation from the setup guide before moving on to this quickstart.
+Environment setup#
+The environment variable BENCH_FILE_DIR points to the local directory where your test data is saved and visualized by Arthur Bench.
+If you are running this quickstart right after completing the setup guide, then take a moment to reset BENCH_FILE_DIR to its default value, ""./bench_runs"". This will direct the bench UI to point to your new quickstart test suite instead of the examples from the setup.
+export BENCH_FILE_DIR=""./bench_runs""
+Creating your first test suite#
+Instantiate a test suite with a name, data, and scorer.
+This example creates a test suite from lists of strings directly with the exact_match scorer.
+from arthur_bench.run.testsuite import TestSuite
+suite = TestSuite(
+'bench_quickstart',
+'exact_match',
+input_text_list=[""What year was FDR elected?"", ""What is the opposite of down?""],
+reference_output_list=[""1932"", ""up""]
+)
+You can create test suites from a pandas DataFrame or from a path to a local CSV file. See the test suite creation guide to view all the ways you can create test suites.
+You can view all scorers available out of the box with bench here on our scoring page, as well as customize your own.
+Running your first test suite#
+To create a Test Run, you only need to specify the candidate responses. See the test suite creation guide to view all the ways you can run test suites.
+run = suite.run('quickstart_run', candidate_output_list=[""1932"", ""up is the opposite of down""])
+print(run)
+>>> [TestCaseOutput(output='1932', score=1.0), TestCaseOutput(output='up is the opposite of down', score=0.0)]
+You should now have logged test case results with scores of 1.0 and 0.0, respectively.
+View results in local UI#
+Now run bench from the command line to launch the local UI and explore the test results.
+bench
+Next steps#
+Now that you have set up and ran your first test suite, check out the rest of the scorers available in Arthur Bench out of the box.
+To learn more about the basic concepts around data and testing in Arthur Bench, visit our basic concepts guide.
+Next
+Scoring
+Previous
+Setup
+Copyright © 2023, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+Quickstart
+Environment setup
+Creating your first test suite
+Running your first test suite
+View results in local UI
+Next steps","To view your Bench test results in the local UI, run the command `bench` from the same local directory as your bench file directory"
+What is the difference between Bench test suites and test runs?,"Content type: arthur_bench_docs
+Source: https://bench.readthedocs.io/en/latest/concepts.html
+ Concepts - bench documentation
+Concepts#
+Data#
+Testing LLMs involves preparing the following data for your use case:
+Inputs to the LLM. Depending on the task at hand, these inputs are likely formatted to follow a prompt template.
+Reference Outputs: these are your baseline outputs, which are optional in Arthur Bench but recommended to get a comprehensive understanding of your model’s performance relative to its expected outputs. These reference outputs would likely be either ground truth responses to the inputs, or could be outputs from a baseline LLM that you are evaluating against.
+Candidate Outputs: these are the outputs from your candidate LLM that you are scoring.
+Context: contextual information used to produce the candidate output, e.g. for retrieval-augmented Question & Answering tasks.
+As an example, consider the task of Question & Answering about specific documents:
+Input: “What war was referred to in the Gettysburg Address?”
+Reference Output: American Civil War
+Candidate Output: The war referenced in the Gettysburg Address is the American Civil War
+Context: (Wikipedia) “The Gettysburg Address is a speech that U.S. President Abraham Lincoln delivered during the American Civil War at the dedication of the Soldiers’ National Cemetery, now known as Gettysburg National Cemetery, in Gettysburg, Pennsylvania on the afternoon of November 19, 1863, four and a half months after the Union armies defeated Confederate forces in the Battle of Gettysburg, the Civil War’s deadliest battle.”
+Testing#
+Test Suites#
+A Test Suite stores the input & reference output data for your testing use case along with a scorer.
+For example, for a summarization use case, your test suite could be created with:
+the documents to summarize
+baseline summaries as reference outputs to evaluate against
+the SummaryQuality scorer
+Test suites allow you to save and reuse your evaluation datasets over time with a consistent scorer to help you understand what drives changes in performance.
+To view how to create test suites from various data formats, view our creating test suites guide
+Test runs#
+When a test suite is run, its scorer evaluates the candidate outputs provided in the run and assigns a score to each test case.
+To run your test suite on candidate data, pass the data to the run() function of your test suite, along with any additional metadata you want to be logged for that run. To view the metadata you can save with your test runs, see the SDK docs
+To view how to create test runs from various data formats, visit our test suites guide
+Next
+Creating test suites
+Previous
+Guides
+Copyright © 2023, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+Concepts
+Data
+Testing
+Test Suites
+Test runs",A test suite stores the input & reference output data for your testing use case along with a scorer. A test run evaluates the candidate outputs provided in the run and assigns a score to each test case.

@@ -1,5 +1,33 @@
-,question,golden_answer,gpt-3.5-turbo-0125+sentence-transformers/all-MiniLM-L12-v2@1,gpt-3.5-turbo-0125+sentence-transformers/all-MiniLM-L12-v2@3,gpt-3.5-turbo-0125+sentence-transformers/all-MiniLM-L12-v2@5,gpt-3.5-turbo-0125+sentence-transformers/all-MiniLM-L12-v2@7,gpt-3.5-turbo-0125+nomic-ai/nomic-embed-text-v1.5@1,gpt-3.5-turbo-0125+nomic-ai/nomic-embed-text-v1.5@3,gpt-3.5-turbo-0125+nomic-ai/nomic-embed-text-v1.5@5,gpt-3.5-turbo-0125+nomic-ai/nomic-embed-text-v1.5@7,gpt-4-0125-preview+sentence-transformers/all-MiniLM-L12-v2@1,gpt-4-0125-preview+sentence-transformers/all-MiniLM-L12-v2@3,gpt-4-0125-preview+sentence-transformers/all-MiniLM-L12-v2@5,gpt-4-0125-preview+sentence-transformers/all-MiniLM-L12-v2@7,gpt-4-0125-preview+nomic-ai/nomic-embed-text-v1.5@1,gpt-4-0125-preview+nomic-ai/nomic-embed-text-v1.5@3,gpt-4-0125-preview+nomic-ai/nomic-embed-text-v1.5@5,gpt-4-0125-preview+nomic-ai/nomic-embed-text-v1.5@7,claude-3-haiku-20240307+sentence-transformers/all-MiniLM-L12-v2@1,claude-3-haiku-20240307+sentence-transformers/all-MiniLM-L12-v2@3,claude-3-haiku-20240307+sentence-transformers/all-MiniLM-L12-v2@5,claude-3-haiku-20240307+sentence-transformers/all-MiniLM-L12-v2@7,claude-3-haiku-20240307+nomic-ai/nomic-embed-text-v1.5@1,claude-3-haiku-20240307+nomic-ai/nomic-embed-text-v1.5@3,claude-3-haiku-20240307+nomic-ai/nomic-embed-text-v1.5@5,claude-3-haiku-20240307+nomic-ai/nomic-embed-text-v1.5@7,claude-3-opus-20240229+sentence-transformers/all-MiniLM-L12-v2@1,claude-3-opus-20240229+sentence-transformers/all-MiniLM-L12-v2@3,claude-3-opus-20240229+sentence-transformers/all-MiniLM-L12-v2@5,claude-3-opus-20240229+sentence-transformers/all-MiniLM-L12-v2@7,claude-3-opus-20240229+nomic-ai/nomic-embed-text-v1.5@1,claude-3-opus-20240229+nomic-ai/nomic-embed-text-v1.5@3,claude-3-opus-20240229+nomic-ai/nomic-embed-text-v1.5@5,claude-3-opus-20240229+nomic-ai/nomic-embed-text-v1.5@7
-0,What enrichments are available in Arthur?,The enrichments available in Arthur are:\n\n- anomaly detection\n- hotspots\n- explainability\n- bias mitigation,"Enrichments available in Arthur include Anomaly Detection, Bias Mitigation, and Explainability.","Enrichments available in Arthur include Anomaly Detection, Bias Mitigation, Explainability, and Hot Spots.","Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation are the enrichments available in Arthur.","Enrichments available in Arthur include Anomaly Detection, Bias Mitigation, and Explainability.","Enrichments available in Arthur include Anomaly Detection, Bias Mitigation, and Explainability.","Enrichments available in Arthur include Anomaly Detection, Bias Mitigation, and Explainability.","Enrichments available in Arthur include Anomaly Detection, Bias Mitigation, and Explainability.","Enrichments available in Arthur include Anomaly Detection, Bias Mitigation, and Explainability.","The available enrichments in Arthur are Anomaly Detection, Bias Mitigation, and Explainability.","The enrichments available in Arthur are Anomaly Detection, Bias Mitigation, and Explainability.","The enrichments available in Arthur are Anomaly Detection, Bias Mitigation, and Explainability.","The enrichments available in Arthur are Anomaly Detection, Bias Mitigation, and Explainability.","The enrichments available in Arthur are Anomaly Detection, Bias Mitigation, and Explainability.","The enrichments available in Arthur are Anomaly Detection, Bias Mitigation, and Explainability.","The enrichments available in Arthur are Anomaly Detection, Bias Mitigation, and Explainability.","The enrichments available in Arthur are Anomaly Detection, Bias Mitigation, and Explainability.","Based on the provided context, the following enrichments are available in Arthur:
+,question,golden_context,golden_answer,gpt-3.5-turbo-0125+sentence-transformers/all-MiniLM-L12-v2@1,gpt-3.5-turbo-0125+sentence-transformers/all-MiniLM-L12-v2@3,gpt-3.5-turbo-0125+sentence-transformers/all-MiniLM-L12-v2@5,gpt-3.5-turbo-0125+sentence-transformers/all-MiniLM-L12-v2@7,gpt-3.5-turbo-0125+nomic-ai/nomic-embed-text-v1.5@1,gpt-3.5-turbo-0125+nomic-ai/nomic-embed-text-v1.5@3,gpt-3.5-turbo-0125+nomic-ai/nomic-embed-text-v1.5@5,gpt-3.5-turbo-0125+nomic-ai/nomic-embed-text-v1.5@7,gpt-4-0125-preview+sentence-transformers/all-MiniLM-L12-v2@1,gpt-4-0125-preview+sentence-transformers/all-MiniLM-L12-v2@3,gpt-4-0125-preview+sentence-transformers/all-MiniLM-L12-v2@5,gpt-4-0125-preview+sentence-transformers/all-MiniLM-L12-v2@7,gpt-4-0125-preview+nomic-ai/nomic-embed-text-v1.5@1,gpt-4-0125-preview+nomic-ai/nomic-embed-text-v1.5@3,gpt-4-0125-preview+nomic-ai/nomic-embed-text-v1.5@5,gpt-4-0125-preview+nomic-ai/nomic-embed-text-v1.5@7,claude-3-haiku-20240307+sentence-transformers/all-MiniLM-L12-v2@1,claude-3-haiku-20240307+sentence-transformers/all-MiniLM-L12-v2@3,claude-3-haiku-20240307+sentence-transformers/all-MiniLM-L12-v2@5,claude-3-haiku-20240307+sentence-transformers/all-MiniLM-L12-v2@7,claude-3-haiku-20240307+nomic-ai/nomic-embed-text-v1.5@1,claude-3-haiku-20240307+nomic-ai/nomic-embed-text-v1.5@3,claude-3-haiku-20240307+nomic-ai/nomic-embed-text-v1.5@5,claude-3-haiku-20240307+nomic-ai/nomic-embed-text-v1.5@7,claude-3-opus-20240229+sentence-transformers/all-MiniLM-L12-v2@1,claude-3-opus-20240229+sentence-transformers/all-MiniLM-L12-v2@3,claude-3-opus-20240229+sentence-transformers/all-MiniLM-L12-v2@5,claude-3-opus-20240229+sentence-transformers/all-MiniLM-L12-v2@7,claude-3-opus-20240229+nomic-ai/nomic-embed-text-v1.5@1,claude-3-opus-20240229+nomic-ai/nomic-embed-text-v1.5@3,claude-3-opus-20240229+nomic-ai/nomic-embed-text-v1.5@5,claude-3-opus-20240229+nomic-ai/nomic-embed-text-v1.5@7
+0,What enrichments are available in Arthur?,"Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/what-are-enrichments
+ Enrichments
+EnrichmentsEnrich your monitoring process with state-of-the-art techniquesSuggest EditsEnrichments are additional services that the Arthur platform provides for state-of-the-art proactive model monitoring.
+Enrichments in Arthur
+Anomaly Detection: monitor and alert on incoming changes to your data distribution (compared to the reference dataset) based on complex interactions between features
+Hotspots: automatically illuminate segments of underperformance within incoming inferences
+Explainability: understand why your model is making decisions, by computing the importance of individual features from your data on your model's outcomes
+Bias Mitigation: methods for model post-processing that improve the fairness of outcomes without re-deploying your model
+Once activated, these enrichments are automatically computed on Arthur's backend, with results viewable in the online UI dashboard and queryable from Arthur's API.
+Available Enrichments By Different Model Types
+Due to the specialized nature of enrichments, they are only available for certain model types.
+Model Type	Anomaly Detection	Bias Mitigation	Explainability	Hot Spots
+Tabular Classification	X	X	X	X
+Tabular Regression	X		X	
+Text Classification	X		X	
+Text Regression	X		X	
+Text Sequence Generation (LLM)	X (on inputs)			
+CV Classification	X		X	
+CV Regression	X		X	
+CV Object Detection	X			
+Viewing Enabled Enrichments in the UI
+You are also able to view the enrichments enabled for your specific model within the Arthur UI by clicking on the details sections of the model's overview page.
+Enrichment Workflows
+As enrichments are add-ons meant to enrich standard model monitoring, they run on their own workflows within Arthur.Updated 3 months ago Table of Contents
+Enrichments in Arthur
+Available Enrichments By Different Model Types
+Viewing Enabled Enrichments in the UI
+Enrichment Workflows",The enrichments available in Arthur are:\n\n- anomaly detection\n- hotspots\n- explainability\n- bias mitigation,"Enrichments available in Arthur include Anomaly Detection, Bias Mitigation, and Explainability.","Enrichments available in Arthur include Anomaly Detection, Bias Mitigation, Explainability, and Hot Spots.","Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation are the enrichments available in Arthur.","Enrichments available in Arthur include Anomaly Detection, Bias Mitigation, and Explainability.","Enrichments available in Arthur include Anomaly Detection, Bias Mitigation, and Explainability.","Enrichments available in Arthur include Anomaly Detection, Bias Mitigation, and Explainability.","Enrichments available in Arthur include Anomaly Detection, Bias Mitigation, and Explainability.","Enrichments available in Arthur include Anomaly Detection, Bias Mitigation, and Explainability.","The available enrichments in Arthur are Anomaly Detection, Bias Mitigation, and Explainability.","The enrichments available in Arthur are Anomaly Detection, Bias Mitigation, and Explainability.","The enrichments available in Arthur are Anomaly Detection, Bias Mitigation, and Explainability.","The enrichments available in Arthur are Anomaly Detection, Bias Mitigation, and Explainability.","The enrichments available in Arthur are Anomaly Detection, Bias Mitigation, and Explainability.","The enrichments available in Arthur are Anomaly Detection, Bias Mitigation, and Explainability.","The enrichments available in Arthur are Anomaly Detection, Bias Mitigation, and Explainability.","The enrichments available in Arthur are Anomaly Detection, Bias Mitigation, and Explainability.","Based on the provided context, the following enrichments are available in Arthur:
 
 1. Anomaly Detection: Arthur can detect anomalies in your model's performance and data.
 2. Bias Mitigation: Arthur can help mitigate biases in your model's predictions.
@@ -100,8 +128,64 @@ To enable explainability specifically, you need to provide Arthur access to your
 3. Explainability
 
 To enable explainability specifically, you need to provide Arthur access to your model's predict function."
-1,What model types do not allow explainability?,The model types that do not allow for explainability are Object detection & token sequence (LLM) models.,Black box models like deep neural networks and ensemble methods such as random forests and gradient boosting machines do not allow explainability due to their complex and non-linear nature.,All model types allow explainability in Arthur.,Generative text models like Large Language Models (LLMs) do not allow for traditional model explainability due to their complexity and the nature of their outputs.,Black box models like deep neural networks and ensemble methods such as random forests and gradient boosting machines do not allow for explainability due to their complex and non-linear nature.,Some model types that do not allow explainability include black-box models such as deep neural networks and ensemble methods like random forests.,Black box models like deep neural networks and ensemble methods such as random forests and gradient boosting machines do not allow explainability due to their complex and non-linear nature.,Black box models like deep neural networks and ensemble methods such as random forests and gradient boosting machines do not allow for explainability due to their complex and non-linear nature.,Black box models like deep neural networks and ensemble methods such as random forests and gradient boosting machines do not allow explainability due to their complex and non-linear nature.,The document does not provide information on model types that do not allow explainability.,The document does not provide information on model types that do not allow explainability.,The document does not provide information on model types that do not allow explainability.,The document does not provide information on model types that do not allow explainability.,The document does not provide information on model types that do not allow explainability.,The document does not provide information on model types that do not allow explainability.,The document does not provide information on model types that do not allow explainability.,The document does not provide information on model types that do not allow explainability.,"Based on the context provided, the document does not mention any specific model types that do not allow explainability. The focus of the document is on model schemas within the MLOps ecosystem, and it does not discuss the explainability of different model types. The context does not contain information to answer this question directly.","Based on the context provided, the document does not mention any specific model types that do not allow explainability. The focus of the document is on model schemas within the MLOps ecosystem, and it does not discuss the explainability of different model types. The context does not contain information to answer this question directly.","Based on the context provided, the document does not mention any specific model types that do not allow explainability. The focus of the document is on model schemas within the MLOps ecosystem, and it does not discuss the explainability of different model types. The context does not contain information to answer the question ""What model types do not allow explainability?"".","Based on the context provided, the document does not mention any specific model types that do not allow explainability. The focus of the document is on model schemas within the MLOps ecosystem, and it does not discuss the explainability of different model types. The context does not contain information to answer the question ""What model types do not allow explainability?"".","Based on the context provided, the document does not mention any specific model types that do not allow explainability. The focus of the document is on model schemas within the MLOps ecosystem, and it does not discuss the explainability of different model types. The context does not contain information to answer the question ""What model types do not allow explainability?"".","Based on the context provided, the document does not mention any specific model types that do not allow explainability. The focus of the document is on model schemas within the MLOps ecosystem, and it does not discuss the explainability of different model types. The context does not contain information to answer the question ""What model types do not allow explainability?"".","Based on the context provided, the document does not mention any specific model types that do not allow explainability. The focus of the document is on model schemas within the MLOps ecosystem, and it does not discuss the explainability of different model types. The context does not contain information to answer the question about which model types do not allow explainability.","Based on the context provided, the document does not mention any specific model types that do not allow explainability. The focus of the document is on model schemas within the MLOps ecosystem, and it does not discuss the explainability of different model types. The context does not contain information to answer this question directly.","Based on the given context, there is no information about which specific model types do not allow explainability. The article discusses model schemas in general and provides an example for a tabular classification model, but does not go into details about explainability limitations of different model architectures.","Based on the given context, there is no information about which specific model types do not allow explainability. The article discusses model schemas in general and provides an example for a tabular classification model, but does not go into details about explainability limitations of different model architectures.","Based on the given context, there is no information about which specific model types do not allow explainability. The article discusses model schemas in general and uses a tabular classification model as an example, but does not mention anything about explainability limitations of different model types.","Based on the given context, there is no information about which specific model types do not allow explainability. The article discusses model schemas in general and provides an example for a tabular classification model, but does not go into details about explainability limitations of different model architectures.","Based on the given context, there is no information about which specific model types do not allow explainability. The article discusses model schemas in general and uses a tabular classification model as an example, but does not mention anything about explainability limitations of different model types.","Based on the given context, there is no information about which specific model types do not allow explainability. The article discusses model schemas in general and provides an example for a tabular classification model, but does not go into details about explainability limitations of different model architectures.","Based on the given context, there is no information about which specific model types do not allow explainability. The article discusses model schemas in general and uses a tabular classification model as an example, but does not mention anything about explainability limitations of different model types.","Based on the given context, there is no information about which specific model types do not allow explainability. The article discusses model schemas in general and uses a tabular classification model as an example, but does not mention anything about explainability limitations of different model types."
-2,What enrichments are available for object detection models?,The enrichments available for object detection models are:\n\n- anomaly detection,"Enrichments available for object detection models in Arthur include Anomaly Detection, Bias Mitigation, and Explainability.","The enrichments available for object detection models are:
+1,What model types do not allow explainability?,"Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/what-are-enrichments
+ Enrichments
+EnrichmentsEnrich your monitoring process with state-of-the-art techniquesSuggest EditsEnrichments are additional services that the Arthur platform provides for state-of-the-art proactive model monitoring.
+Enrichments in Arthur
+Anomaly Detection: monitor and alert on incoming changes to your data distribution (compared to the reference dataset) based on complex interactions between features
+Hotspots: automatically illuminate segments of underperformance within incoming inferences
+Explainability: understand why your model is making decisions, by computing the importance of individual features from your data on your model's outcomes
+Bias Mitigation: methods for model post-processing that improve the fairness of outcomes without re-deploying your model
+Once activated, these enrichments are automatically computed on Arthur's backend, with results viewable in the online UI dashboard and queryable from Arthur's API.
+Available Enrichments By Different Model Types
+Due to the specialized nature of enrichments, they are only available for certain model types.
+Model Type	Anomaly Detection	Bias Mitigation	Explainability	Hot Spots
+Tabular Classification	X	X	X	X
+Tabular Regression	X		X	
+Text Classification	X		X	
+Text Regression	X		X	
+Text Sequence Generation (LLM)	X (on inputs)			
+CV Classification	X		X	
+CV Regression	X		X	
+CV Object Detection	X			
+Viewing Enabled Enrichments in the UI
+You are also able to view the enrichments enabled for your specific model within the Arthur UI by clicking on the details sections of the model's overview page.
+Enrichment Workflows
+As enrichments are add-ons meant to enrich standard model monitoring, they run on their own workflows within Arthur.Updated 3 months ago Table of Contents
+Enrichments in Arthur
+Available Enrichments By Different Model Types
+Viewing Enabled Enrichments in the UI
+Enrichment Workflows",The model types that do not allow for explainability are Object detection & token sequence (LLM) models.,Black box models like deep neural networks and ensemble methods such as random forests and gradient boosting machines do not allow explainability due to their complex and non-linear nature.,All model types allow explainability in Arthur.,Generative text models like Large Language Models (LLMs) do not allow for traditional model explainability due to their complexity and the nature of their outputs.,Black box models like deep neural networks and ensemble methods such as random forests and gradient boosting machines do not allow for explainability due to their complex and non-linear nature.,Some model types that do not allow explainability include black-box models such as deep neural networks and ensemble methods like random forests.,Black box models like deep neural networks and ensemble methods such as random forests and gradient boosting machines do not allow explainability due to their complex and non-linear nature.,Black box models like deep neural networks and ensemble methods such as random forests and gradient boosting machines do not allow for explainability due to their complex and non-linear nature.,Black box models like deep neural networks and ensemble methods such as random forests and gradient boosting machines do not allow explainability due to their complex and non-linear nature.,The document does not provide information on model types that do not allow explainability.,The document does not provide information on model types that do not allow explainability.,The document does not provide information on model types that do not allow explainability.,The document does not provide information on model types that do not allow explainability.,The document does not provide information on model types that do not allow explainability.,The document does not provide information on model types that do not allow explainability.,The document does not provide information on model types that do not allow explainability.,The document does not provide information on model types that do not allow explainability.,"Based on the context provided, the document does not mention any specific model types that do not allow explainability. The focus of the document is on model schemas within the MLOps ecosystem, and it does not discuss the explainability of different model types. The context does not contain information to answer this question directly.","Based on the context provided, the document does not mention any specific model types that do not allow explainability. The focus of the document is on model schemas within the MLOps ecosystem, and it does not discuss the explainability of different model types. The context does not contain information to answer this question directly.","Based on the context provided, the document does not mention any specific model types that do not allow explainability. The focus of the document is on model schemas within the MLOps ecosystem, and it does not discuss the explainability of different model types. The context does not contain information to answer the question ""What model types do not allow explainability?"".","Based on the context provided, the document does not mention any specific model types that do not allow explainability. The focus of the document is on model schemas within the MLOps ecosystem, and it does not discuss the explainability of different model types. The context does not contain information to answer the question ""What model types do not allow explainability?"".","Based on the context provided, the document does not mention any specific model types that do not allow explainability. The focus of the document is on model schemas within the MLOps ecosystem, and it does not discuss the explainability of different model types. The context does not contain information to answer the question ""What model types do not allow explainability?"".","Based on the context provided, the document does not mention any specific model types that do not allow explainability. The focus of the document is on model schemas within the MLOps ecosystem, and it does not discuss the explainability of different model types. The context does not contain information to answer the question ""What model types do not allow explainability?"".","Based on the context provided, the document does not mention any specific model types that do not allow explainability. The focus of the document is on model schemas within the MLOps ecosystem, and it does not discuss the explainability of different model types. The context does not contain information to answer the question about which model types do not allow explainability.","Based on the context provided, the document does not mention any specific model types that do not allow explainability. The focus of the document is on model schemas within the MLOps ecosystem, and it does not discuss the explainability of different model types. The context does not contain information to answer this question directly.","Based on the given context, there is no information about which specific model types do not allow explainability. The article discusses model schemas in general and provides an example for a tabular classification model, but does not go into details about explainability limitations of different model architectures.","Based on the given context, there is no information about which specific model types do not allow explainability. The article discusses model schemas in general and provides an example for a tabular classification model, but does not go into details about explainability limitations of different model architectures.","Based on the given context, there is no information about which specific model types do not allow explainability. The article discusses model schemas in general and uses a tabular classification model as an example, but does not mention anything about explainability limitations of different model types.","Based on the given context, there is no information about which specific model types do not allow explainability. The article discusses model schemas in general and provides an example for a tabular classification model, but does not go into details about explainability limitations of different model architectures.","Based on the given context, there is no information about which specific model types do not allow explainability. The article discusses model schemas in general and uses a tabular classification model as an example, but does not mention anything about explainability limitations of different model types.","Based on the given context, there is no information about which specific model types do not allow explainability. The article discusses model schemas in general and provides an example for a tabular classification model, but does not go into details about explainability limitations of different model architectures.","Based on the given context, there is no information about which specific model types do not allow explainability. The article discusses model schemas in general and uses a tabular classification model as an example, but does not mention anything about explainability limitations of different model types.","Based on the given context, there is no information about which specific model types do not allow explainability. The article discusses model schemas in general and uses a tabular classification model as an example, but does not mention anything about explainability limitations of different model types."
+2,What enrichments are available for object detection models?,"Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/what-are-enrichments
+ Enrichments
+EnrichmentsEnrich your monitoring process with state-of-the-art techniquesSuggest EditsEnrichments are additional services that the Arthur platform provides for state-of-the-art proactive model monitoring.
+Enrichments in Arthur
+Anomaly Detection: monitor and alert on incoming changes to your data distribution (compared to the reference dataset) based on complex interactions between features
+Hotspots: automatically illuminate segments of underperformance within incoming inferences
+Explainability: understand why your model is making decisions, by computing the importance of individual features from your data on your model's outcomes
+Bias Mitigation: methods for model post-processing that improve the fairness of outcomes without re-deploying your model
+Once activated, these enrichments are automatically computed on Arthur's backend, with results viewable in the online UI dashboard and queryable from Arthur's API.
+Available Enrichments By Different Model Types
+Due to the specialized nature of enrichments, they are only available for certain model types.
+Model Type	Anomaly Detection	Bias Mitigation	Explainability	Hot Spots
+Tabular Classification	X	X	X	X
+Tabular Regression	X		X	
+Text Classification	X		X	
+Text Regression	X		X	
+Text Sequence Generation (LLM)	X (on inputs)			
+CV Classification	X		X	
+CV Regression	X		X	
+CV Object Detection	X			
+Viewing Enabled Enrichments in the UI
+You are also able to view the enrichments enabled for your specific model within the Arthur UI by clicking on the details sections of the model's overview page.
+Enrichment Workflows
+As enrichments are add-ons meant to enrich standard model monitoring, they run on their own workflows within Arthur.Updated 3 months ago Table of Contents
+Enrichments in Arthur
+Available Enrichments By Different Model Types
+Viewing Enabled Enrichments in the UI
+Enrichment Workflows",The enrichments available for object detection models are:\n\n- anomaly detection,"Enrichments available for object detection models in Arthur include Anomaly Detection, Bias Mitigation, and Explainability.","The enrichments available for object detection models are:
 1. Anomaly Detection
 2. Hot Spots
 3. Explainability
@@ -156,7 +240,35 @@ The context does not provide any example Python code, as the question is asking 
 3. Explainability: Arthur can provide explanations for the object detection model's predictions, helping users understand the model's decision-making process.
 
 The context does not provide any example Python code, as the question is asking about the available enrichments rather than specific implementation details.","Based on the provided context, there is no information about which specific enrichments are available for object detection models in Arthur. The context is a general FAQ about using the Arthur platform, but it does not go into details about supported enrichments for particular model types like object detection.","Based on the provided context, there is no information about which specific enrichments are available for object detection models in Arthur. The context is a general FAQ about using the Arthur platform, but does not go into details about supported enrichments for particular model types.","Based on the provided context, there is no information about which specific enrichments are available for object detection models in Arthur. The context is a general FAQ about using the Arthur platform, but does not go into details about supported enrichments for particular model types.","Based on the provided context, there is no information about which specific enrichments are available for object detection models in Arthur. The context is a general FAQ about using the Arthur platform, but does not go into details about supported enrichments for particular model types.","Based on the provided context, there is no information about which specific enrichments are available for object detection models in Arthur. The context is a general FAQ about using the Arthur platform, but does not go into details about supported enrichments for particular model types.","Based on the provided context, there is no information about which specific enrichments are available for object detection models in Arthur. The context is a general FAQ about using the Arthur platform, but does not go into details about supported enrichments for particular model types.","Based on the provided context, there is no information about which specific enrichments are available for object detection models in Arthur. The context is a general FAQ about using the Arthur platform, but does not go into details about supported enrichments for particular model types.","Based on the provided context, there is no information about which specific enrichments are available for object detection models in Arthur. The context is a general FAQ about using the Arthur platform, but does not go into details about supported enrichments for particular model types."
-3,What enrichments are available for tabular binary classification models?,The enrichments available for object detection models are:\n\n- anomaly detection\n- hotspots\n- explainability\n- bias mitigation,"The enrichments available for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","Anomaly Detection, Hot Spots, Explainability, Bias Mitigation","Anomaly Detection, Hot Spots, Explainability, Bias Mitigation","Anomaly Detection, Hot Spots, Explainability, Bias Mitigation","The enrichments available for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","For tabular binary classification models, the available enrichments are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","The enrichments available for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","Anomaly Detection, Hot Spots, Explainability, Bias Mitigation","The available enrichments for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","The available enrichments for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","The available enrichments for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","The available enrichments for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","The available enrichments for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","The available enrichments for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","The available enrichments for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","The available enrichments for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","Based on the provided context, the following enrichments are available for tabular multiclass classification models in Arthur:
+3,What enrichments are available for tabular binary classification models?,"Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/what-are-enrichments
+ Enrichments
+EnrichmentsEnrich your monitoring process with state-of-the-art techniquesSuggest EditsEnrichments are additional services that the Arthur platform provides for state-of-the-art proactive model monitoring.
+Enrichments in Arthur
+Anomaly Detection: monitor and alert on incoming changes to your data distribution (compared to the reference dataset) based on complex interactions between features
+Hotspots: automatically illuminate segments of underperformance within incoming inferences
+Explainability: understand why your model is making decisions, by computing the importance of individual features from your data on your model's outcomes
+Bias Mitigation: methods for model post-processing that improve the fairness of outcomes without re-deploying your model
+Once activated, these enrichments are automatically computed on Arthur's backend, with results viewable in the online UI dashboard and queryable from Arthur's API.
+Available Enrichments By Different Model Types
+Due to the specialized nature of enrichments, they are only available for certain model types.
+Model Type	Anomaly Detection	Bias Mitigation	Explainability	Hot Spots
+Tabular Classification	X	X	X	X
+Tabular Regression	X		X	
+Text Classification	X		X	
+Text Regression	X		X	
+Text Sequence Generation (LLM)	X (on inputs)			
+CV Classification	X		X	
+CV Regression	X		X	
+CV Object Detection	X			
+Viewing Enabled Enrichments in the UI
+You are also able to view the enrichments enabled for your specific model within the Arthur UI by clicking on the details sections of the model's overview page.
+Enrichment Workflows
+As enrichments are add-ons meant to enrich standard model monitoring, they run on their own workflows within Arthur.Updated 3 months ago Table of Contents
+Enrichments in Arthur
+Available Enrichments By Different Model Types
+Viewing Enabled Enrichments in the UI
+Enrichment Workflows",The enrichments available for object detection models are:\n\n- anomaly detection\n- hotspots\n- explainability\n- bias mitigation,"The enrichments available for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","Anomaly Detection, Hot Spots, Explainability, Bias Mitigation","Anomaly Detection, Hot Spots, Explainability, Bias Mitigation","Anomaly Detection, Hot Spots, Explainability, Bias Mitigation","The enrichments available for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","For tabular binary classification models, the available enrichments are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","The enrichments available for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","Anomaly Detection, Hot Spots, Explainability, Bias Mitigation","The available enrichments for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","The available enrichments for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","The available enrichments for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","The available enrichments for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","The available enrichments for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","The available enrichments for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","The available enrichments for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","The available enrichments for tabular binary classification models are Anomaly Detection, Hot Spots, Explainability, and Bias Mitigation.","Based on the provided context, the following enrichments are available for tabular multiclass classification models in Arthur:
 
 - Anomaly Detection
 - Hot Spots 
@@ -261,13 +373,119 @@ The context does not mention which enrichments are available specifically for ta
 - Explainability
 
 The context does not mention which enrichments are available specifically for tabular binary classification models."
-4,Can I restore a deleted Arthur model? ,"If you delete an Arthur model you cannot restore it. You can re-register a new model with the same schema, but the history of your model’s inferences are deleted and cannot be restored.","Yes, you can restore a deleted Arthur model by following the steps outlined in the platform documentation for backing up and restoring the Arthur platform.","Yes, you can restore a deleted Arthur model by following the steps to restore the Arthur platform components from existing backups. This involves restoring the database, installing the Arthur platform, restoring ClickHouse data, messaging infrastructure, enrichments, and running smoke tests for validation.","Yes, you can restore a deleted Arthur model by following the backup and restore process for the Arthur Platform. This process involves restoring the necessary components such as ClickHouse data, Kubernetes deployment state, enrichments infrastructure, workflows, and more. By following the steps outlined in the documentation, you can recover deleted models along with their associated data.","Yes, you can restore a deleted Arthur model by following the steps outlined in the platform documentation for backing up and restoring the Arthur platform.","Yes, you can restore a deleted Arthur model by following the steps outlined in the platform documentation for backing up and restoring the Arthur platform.","Unfortunately, once a model is deleted in Arthur, it cannot be restored. It is important to make sure you have backups or copies of your models to prevent data loss.","Yes, you can restore a deleted Arthur model by following the steps outlined in the platform documentation for backing up and restoring the Arthur platform.","Yes, you can restore a deleted Arthur model by following the steps outlined in the platform documentation for backing up and restoring the Arthur platform.",The provided context does not contain information about restoring deleted Arthur models.,The provided context does not contain information about restoring deleted Arthur models.,The provided document does not contain information regarding the restoration of deleted Arthur models.,The provided context does not contain information about restoring deleted Arthur models.,The provided context does not contain information about restoring deleted Arthur models.,The provided context does not contain information about restoring deleted Arthur models.,The provided context does not contain information about restoring deleted Arthur models.,The provided context does not contain information about restoring deleted Arthur models.,"Unfortunately, the provided context does not contain any information about restoring deleted Arthur models. The Arthur Scope FAQ document covers various topics related to using the Arthur platform, but does not mention anything about restoring deleted models. Without additional information or documentation on the Arthur platform's model management capabilities, I cannot provide a detailed answer to this question.","Unfortunately, the provided context does not contain any information about restoring deleted Arthur models. The Arthur Scope FAQ document covers various topics related to using the Arthur platform, but does not mention anything about restoring deleted models. Without additional information or documentation on the Arthur platform's model management capabilities, I cannot provide a definitive answer to this question.","Unfortunately, the provided context does not contain any information about restoring deleted Arthur models. The Arthur Scope FAQ covers topics such as using Arthur without the Python SDK, model access requirements, data security, handling missing ground truth labels, and troubleshooting SDK errors, but it does not mention anything about restoring deleted models. Without additional context or documentation on the Arthur platform's model management capabilities, I cannot provide a substantive answer to this question.","Unfortunately, the provided context does not contain any information about restoring deleted Arthur models. The Arthur Scope FAQ covers topics such as using the platform without the Python SDK, model access requirements, data security, handling missing ground truth labels, and troubleshooting SDK errors, but it does not mention anything about restoring deleted models. Without additional context or documentation on the Arthur platform's model management capabilities, I cannot provide a substantive answer to this question.","Unfortunately, the provided context does not contain any information about restoring deleted Arthur models. The Arthur Scope FAQ document covers various topics related to using the Arthur platform, but does not mention anything about restoring deleted models. Without additional information or documentation on the Arthur platform's model management capabilities, I cannot provide a definitive answer to this question.","Unfortunately, the provided context does not contain any information about restoring deleted Arthur models. The FAQ covers topics such as using Arthur without the Python SDK, model access requirements, data security and ground truth labels, SDK errors, authentication, and data drift metrics, but does not mention anything about restoring deleted models. Without additional context or documentation on the Arthur platform, I cannot provide a detailed answer to this question.","Unfortunately, the provided context does not contain any information about restoring deleted Arthur models. The FAQ covers topics such as using Arthur without the Python SDK, model access requirements, data security and ground truth labels, SDK errors, authentication, and data drift metrics, but does not mention anything about restoring deleted models. Without additional context or documentation on the Arthur platform, I cannot provide a detailed answer to this question.","Unfortunately, the provided context does not contain any information about restoring deleted Arthur models. The Arthur Scope FAQ covers topics such as using the platform without the Python SDK, model access requirements, data security, handling missing ground truth labels, and troubleshooting SDK errors, but it does not mention anything about restoring deleted models. Without additional context or documentation on the Arthur platform's model management capabilities, I cannot provide a substantive answer to this question.","Based on the provided context, there is no information about restoring deleted Arthur models. The FAQ covers topics like using Arthur without the Python SDK, data privacy, handling missing ground truth labels, SDK errors, and choosing drift metrics, but it does not mention anything about restoring deleted models.","Based on the provided context, there is no information about restoring deleted Arthur models. The FAQ covers topics like using Arthur without the Python SDK, data privacy, handling missing ground truth labels, SDK errors, and choosing drift metrics, but it does not mention anything about restoring deleted models.","Based on the provided context, there is no information about restoring deleted Arthur models. The FAQ covers topics like using Arthur without the Python SDK, data privacy, handling missing ground truth labels, SDK errors, and choosing drift metrics, but it does not mention anything about restoring deleted models.","Based on the provided context, there is no information about restoring deleted Arthur models. The FAQ covers topics like using Arthur without the Python SDK, data privacy, handling missing ground truth labels, SDK errors, and choosing drift metrics, but it does not mention anything about restoring deleted models.","Based on the provided context, there is no information about restoring deleted Arthur models. The FAQ covers topics like using Arthur without the Python SDK, data privacy, handling missing ground truth labels, SDK errors, and choosing drift metrics, but it does not mention anything about restoring deleted models.","Based on the provided context, there is no information about restoring deleted Arthur models. The FAQ covers topics like using Arthur without the Python SDK, data privacy, handling missing ground truth labels, SDK errors, and choosing drift metrics, but it does not mention anything about restoring deleted models.","Based on the provided context, there is no information about restoring deleted Arthur models. The FAQ covers topics like using Arthur without the Python SDK, data privacy, handling missing ground truth labels, SDK errors, and choosing drift metrics, but it does not mention anything about restoring deleted models.","Based on the provided context, there is no information about restoring deleted Arthur models. The FAQ covers topics like using Arthur without the Python SDK, data privacy, handling missing ground truth labels, SDK errors, and choosing drift metrics, but it does not mention anything about restoring deleted models."
-5,What are the two alert levels available in Arthur? ,The two levels of alerts available in Arthur are Warning and Critical.,"The two alert levels available in Arthur are:
+5,What are the two alert levels available in Arthur? ,"Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/creating-alerts
+ Alerting
+AlertingSuggest EditsAn alert is a message notifying you that something has occurred with your model. With alerts, Arthur Scope makes it easy to provide a continuous view of your model by highlighting important changes in model performance. When defining alerts in Arthur, there are a few things you need to consider:
+Alert Severity
+Two alert severities are available in Arthur; they are warning and critical.
+Teams can set their own severity for alerts. We typically recommend that teams set two different thresholds for the same value, marking the less severe as Warning and the more as Critical.
+Understanding Alert Rules
+An alert is triggered based on an alert rule, which you define using a metric and a threshold. So to create an alert in Arthur, you need to:
+Create a Metric in Arthur Scope
+A metric in Arthur is a function for evaluating model performance. These can be common functions that data scientists or ML teams are familiar with, such as accuracy or F1 Score. Or they can be functions specific to a model's use case, such as Fairness Metrics or User Defined Metrics. This means that any metric you can create in Arthur (including segmentations, filters, or logical functions) can be transformed into an alert.
+For the latter, following the proper steps to create the metric within Arthur for your specific model is important.
+This is because it must first be created for your model to alert on a metric.
+Define Threshold & Bound for Alert
+After creating your metric, it is time to decide what level of underperformance you would like to be alerted to. This numeric value is called the alert threshold. In Arthur, alert threshold values have to be manually set. Users must also define whether they want to be alerted when their function exceeds that numeric threshold. This is the upper or lower bound of the alert.
+Define Notification Timelines for Alert (For Streaming Models)
+For batch models, alerts are calculated per batch of data. However, teams that are running streaming models need to decide how often they would like alerts to be calculated and how much data. To make these decisions, they have to clarify two values:
+Lookback Period: How much data do they want to aggregate in their function? (Do they want to be alerted when the average of just one minute of data has passed the metric threshold, or do they only care if it's affected the average of a day or week).
+Alert Wait Time: How often do you want to be alerted that something is happening? This is how often they would like the alert to be calculated (and triggered if the function threshold is met).
+Creating Alerts
+Default Alerts
+Default data drift alerts for Feature and Prediction Drift are automatically created for every feature once reference and inference data are sent to Arthur. These alerts are created with dynamic threshold values specific to your reference dataset from the “data_drift” endpoint with “metric”: “Thresholds.”
+Defining Custom Alert Rules in the UI
+The UI provides a clickable walk-through guide for teams to make common performance, drift, and data-bound alerts. The common practice of alerting on segments (or filters) of your data when calculating the metric is also added as an optional step.
+See below an example of defining an accuracy alert rule for women in the UI to be alerted every hour for the last 24 hours of inferences.
+Defining Custom Alert Rules with the Python SDK
+Our predefined alerting structure is not the only way teams can create alerts. Alerts can be made for any customizable User Defined Metric teams create for their model in Arthur. Teams must first create the user-defined metric, and then they can easily set the alert from their Python SDK notebook.
+Alert Notifications
+The latest alerts in your organization are shown on the homepage of your Arthur organization. However, beyond being highlighted in the online Arthur UI, alerts can be delivered to teams via email and/or via integrations such as PagerDuty and Slack. You can learn more about setting up those integrations here.
+Alert Endpoint in the API
+The dedicated alerts endpoint is /models/{model_id}/alert_rules.Updated 3 months ago Table of Contents
+Alert Severity
+Understanding Alert Rules
+Create a Metric in Arthur Scope
+Define Threshold & Bound for Alert
+Define Notification Timelines for Alert (For Streaming Models)
+Creating Alerts
+Default Alerts
+Defining Custom Alert Rules in the UI
+Defining Custom Alert Rules with the Python SDK
+Alert Notifications
+Alert Endpoint in the API",The two levels of alerts available in Arthur are Warning and Critical.,"The two alert levels available in Arthur are:
 1. Critical Alerts
 2. Warning Alerts",The two alert levels available in Arthur are streaming and batch models.,The two alert levels available in Arthur are daily and weekly.,"The two alert levels available in Arthur are:
 1. Critical Alerts
 2. Warning Alerts",The two alert levels available in Arthur are Critical Alerts and Warning Alerts.,The two alert levels available in Arthur are Critical Alerts and Warning Alerts.,The two alert levels available in Arthur are Critical Alerts and Warning Alerts.,The two alert levels available in Arthur are Critical Alerts and Warning Alerts.,The document does not provide information on specific alert levels available in Arthur.,The document does not mention specific alert levels available in Arthur.,The document does not provide information on specific alert levels available in Arthur.,The document does not mention specific alert levels available in Arthur.,The document does not mention specific alert levels available in Arthur.,The document does not mention specific alert levels available in Arthur.,The document does not mention specific alert levels available in Arthur.,The document does not mention specific alert levels available in Arthur.,"Based on the provided context, the Arthur Scope FAQ does not mention anything about alert levels. The context focuses on general questions about using Arthur Scope, such as using the platform without the Python SDK, handling proprietary data, working with ground truth labels, and using the SDK. There is no information about the specific alert levels available in Arthur.","Based on the provided context, the Arthur Scope FAQ does not mention anything about alert levels. The FAQ covers topics such as using Arthur without the Python SDK, model access, data security, ground truth labels, SDK errors, credentials, and data drift metrics, but does not discuss alert levels. Therefore, I cannot provide a brief answer to the question ""What are the two alert levels available in Arthur?"" from the given context.","Based on the provided context, the Arthur Scope FAQ does not mention anything about alert levels. The FAQ covers topics such as using Arthur without the Python SDK, model access, data security, ground truth labels, SDK errors, credentials, and data drift metrics, but does not discuss alert levels. Therefore, I cannot provide a brief answer to the question ""What are the two alert levels available in Arthur?"" from the given context.","Based on the provided context, the Arthur Scope FAQ does not mention anything about alert levels. The FAQ covers topics such as using Arthur without the Python SDK, model access requirements, handling proprietary data, handling missing ground truth labels, troubleshooting SDK errors, authentication, and model types. There is no information about the available alert levels in Arthur.","Based on the provided context, the Arthur Scope FAQ does not mention anything about alert levels. The FAQ covers topics such as using Arthur without the Python SDK, model access requirements, data security and privacy, handling of ground truth labels, error handling, and data drift metrics. There is no information about the specific alert levels available in Arthur.","Based on the provided context, the Arthur Scope FAQ does not mention anything about alert levels. The FAQ covers topics such as using Arthur without the Python SDK, model access, data security, ground truth labels, SDK errors, credentials, and data drift metrics, but does not discuss alert levels. Therefore, I cannot provide a brief answer to the question ""What are the two alert levels available in Arthur?"".","Based on the provided context, the Arthur Scope FAQ does not mention anything about alert levels. The context focuses on general questions about using Arthur Scope, such as using the platform without the Python SDK, handling proprietary data, working with ground truth labels, and using the SDK. There is no information about the specific alert levels available in Arthur.","Based on the provided context, the Arthur Scope FAQ does not mention anything about alert levels. The FAQ covers topics such as using Arthur without the Python SDK, model access requirements, data security and privacy, handling of ground truth labels, error handling, and data drift metrics. There is no information about the specific alert levels available in Arthur.","Based on the provided context, there is no information about the specific alert levels available in Arthur. The FAQ does not cover details about the alerting system or alert levels.","Based on the provided context, there is no information about the specific alert levels available in Arthur. The FAQ does not cover details about the alerting system or alert levels.","Based on the provided context, there is no information about the specific alert levels available in Arthur. The FAQ does not cover details about the alerting system or alert levels.","Based on the provided context, there is no information about the specific alert levels available in Arthur. The FAQ does not cover details about the alerting system or alert levels.","Based on the provided context, there is no information about the specific alert levels available in Arthur. The FAQ does not cover details about the alerting system or alert levels.","Based on the provided context, there is no information about the specific alert levels available in Arthur. The FAQ does not cover details about the alerting system or alert levels.","Based on the provided context, there is no information about the specific alert levels available in Arthur. The FAQ does not cover details about the alerting system or alert levels.","Based on the provided context, there is no information about the specific alert levels available in Arthur. The FAQ does not cover details about the alerting system or alert levels."
-6,What are the additional requirements for on-prem deployment specific to the airgapped mode?,"The requirements for an airgapped on-prem deployment, in addition to the online on-prem deployment requirements, are:\n\n- An existing private container registry\n- Existing private Python registries (PyPI, Anaconda) when the model explanation feature is enabled\n- Access to your private container and Python registries","For on-prem deployment in airgapped mode, additional requirements include having all required files downloaded and available locally, as well as potentially needing to whitelist specific URLs for efficient install and upgrade experiences.","For on-prem deployment in airgapped mode, the additional requirements include downloading all artifacts required for installing the Arthur platform from a customer-specific password-protected portal accessible within the corporate network, ensuring the Kubernetes cluster has no internet access, and having access to a private/public container registry and Pypi/Conda registry for connectivity.","For on-prem deployment in airgapped mode, the additional requirements include:
+6,What are the additional requirements for on-prem deployment specific to the airgapped mode?,"Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/on-prem-deployment-requirements
+ On-Prem Deployment Requirements
+On-Prem Deployment RequirementsSuggest EditsGeneral
+A DNS hostname
+TLS private key & certificate
+SMTP server (StartTLS supported)
+The minimum compute resource requirements in this documentation is for running a few small models in a non-production environment. Your production deployment will likely use more compute resources to achieve higher availability, performance and scalability.
+Arthur’s horizontally elastic architecture allows high throughput processing in both streaming and batch. The platform's auto-scaler mechanism self-manages resource utilization in optimized and cost-effective fashion. It automatically scales up and down based on compute resource requests by the platform activities as well as the lag observed in the data pipeline queue within the limits of the allocated hardware. This works best in a cloud infrastructure with a managed Kubernetes service that enables Arthur to also auto-scale the provisioned hardware (e.g. AWS EKS, Azure ASK).
+Storage volumes used for Arthur deployment should be encrypted with a data key using industry-standard data encryption (e.g. AES-256). This applies to the mounted disk volumes as well as the externalized storage, such as the S3 object storage and the relational database if any.
+Kubernetes Install
+Kubectl-ing workstation: Linux or MacOS
+Kubernetes: 1.25 to 1.27
+Runtime: containerd or Docker
+Namespace
+Storage class
+Minimum Node Group Resource
+16 CPUs
+32 GB RAM
+Storage with at least 3000 IOPS (>100GB recommended)
+Permissions
+When Arthur platform is installed, Kubernetes RBAC resources are created to allow the Admin Console to manage the application.
+The kubectl-ing user who installs Arthur must have the wildcard privileges in the cluster.
+Refer to this documentation for the ClusterRole and ClusterRoleBinding that
+will be created for the Admin Console.
+Components
+Prometheus
+Ingress Controller (Nginx or Ambassador)
+Kubernetes Metrics Server
+Velero with Restic (Optional for managed backup and restore feature)
+For Airgapped installation only:
+An existing private container registry
+Existing private Python registries (PyPI, Anaconda) - only required for the model explanation feature
+VM Install
+Minimum Server Resource
+16 CPUs
+32 GB RAM
+Storage with at least 3000 IOPS (>100GB recommended)
+Supported Operating Systems
+The latest versions of the following Linux operating systems are supported.
+Ubuntu
+RHEL
+Please do the following before running the installer on your VM for a smoother deployment experience:
+If SELinux is enabled, set it to the permissive mode
+Make sure the VM doesn't have any container runtime pre-installed, such as Docker or containerd
+Firewall Configurations
+Ingress
+The TCP port 443 is the only entry point that Arthur exposes.
+Egress
+The platform requires access to any integrations (e.g. SMTP, IdP) as well as the components you externalize (e.g. Postgres, S3).
+For Airgap Installation
+Your private container and Python registries must be accessible.
+(requirements_for_online_installation)=
+For Online Installation
+Access to container images and deployment manifest files from the below public registries are required.
+HostExisting ClusterEmbedded ClusterDocker HubRequiredRequiredproxy.replicated.comRequiredRequiredreplicated.appRequiredRequiredk8s.kurl.shNot RequiredRequiredamazonaws.comNot RequiredRequiredUpdated about 2 months ago Table of Contents
+General
+Kubernetes Install
+Minimum Node Group Resource
+Permissions
+Components
+VM Install
+Minimum Server Resource
+Supported Operating Systems
+Firewall Configurations
+Ingress
+Egress","The requirements for an airgapped on-prem deployment, in addition to the online on-prem deployment requirements, are:\n\n- An existing private container registry\n- Existing private Python registries (PyPI, Anaconda) when the model explanation feature is enabled\n- Access to your private container and Python registries","For on-prem deployment in airgapped mode, additional requirements include having all required files downloaded and available locally, as well as potentially needing to whitelist specific URLs for efficient install and upgrade experiences.","For on-prem deployment in airgapped mode, the additional requirements include downloading all artifacts required for installing the Arthur platform from a customer-specific password-protected portal accessible within the corporate network, ensuring the Kubernetes cluster has no internet access, and having access to a private/public container registry and Pypi/Conda registry for connectivity.","For on-prem deployment in airgapped mode, the additional requirements include:
 1. An existing private container registry
 2. Existing private Python registries (PyPI, Anaconda) - only required for the model explanation feature
 3. Access to container images and deployment manifest files from specific public registries
@@ -308,7 +526,146 @@ For more detailed information, refer to the ""On-Prem Deployment Requirements"" 
 1. The Kubernetes cluster must have access to a local container registry and PyPI/Conda registry, as the cluster will not have internet access to pull images and packages from public registries.
 2. The SysAdmin performing the installation must have read/write access to the local container registry.
 3. All required artifacts for installing the Arthur platform, including the KOTS CLI installer, plugins, and updates, must be downloaded and made available locally, as the cluster will not have internet access.","Based on the provided context, there are no specific additional requirements mentioned for on-prem deployment in airgapped mode. The context only states that the Arthur platform can be installed without Internet access, once all the required files are downloaded and available locally.","Based on the provided context, there are no specific additional requirements mentioned for on-prem deployment in airgapped mode. The context only states that the Arthur platform can be installed without Internet access, once all the required files are downloaded and available locally.","Based on the provided context, there are no specific additional requirements mentioned for on-prem deployment in airgapped mode. The context only states that the Arthur platform can be installed without Internet access, once all the required files are downloaded and available locally.","Based on the provided context, there are no specific additional requirements mentioned for on-prem deployment in airgapped mode. The context only states that the Arthur platform can be installed without Internet access, once all the required files are downloaded and available locally.","Based on the provided context, there are no specific additional requirements mentioned for on-prem deployment in airgapped mode. The context only states that the Arthur platform can be installed without Internet access, once all the required files are downloaded and available locally.","Based on the provided context, there are no specific additional requirements mentioned for on-prem deployment in airgapped mode. The context only states that the Arthur platform can be installed without Internet access, once all the required files are downloaded and available locally.","Based on the provided context, there are no specific additional requirements mentioned for on-prem deployment in airgapped mode. The context only states that the Arthur platform can be installed without Internet access, once all the required files are downloaded and available locally.","Based on the provided context, there are no specific additional requirements mentioned for on-prem deployment in airgapped mode. The context only states that the Arthur platform can be installed without Internet access, once all the required files are downloaded and available locally."
-7,What artifacts do I need to enable explainability for my model? ,To enable explainability for your Arthur model you will need:\n\n- A python script that wraps your models predict function\n- your serialized model file\n- A requirements.txt with the dependencies to support the above,"To enable explainability for your model in Arthur, you will need to provide access to your model's predict function.","To enable explainability for your model in Arthur, you need to provide access to your model's predict function. This allows Arthur to capture the inputs to the model and the predictions it makes.","To enable explainability for your model in Arthur, you will need to provide access to your model's predict function. This can be done by creating a model schema that outlines the relationship between your dataset and the model, including information such as model inputs, outputs, data columns, and data access details. Additionally, you will need to provide the necessary artifacts for installing the Arthur platform, which are available on a customer-specific password-protected portal.","To enable explainability for your model in Arthur, you will need to provide access to your model's predict function. This means you will need to have the necessary assets required for explainability, which may include model attributes and any other relevant information needed for explaining the model's predictions.","To enable explainability for your model in Arthur, you will need to provide access to your model's predict function.","To enable explainability for your model, you will need to provide access to your model's predict function. This means you need to have the necessary assets required for explainability, as outlined in the Arthur documentation.","To enable explainability for your model in Arthur, you will need to provide access to your model's predict function.","To enable explainability for your model in Arthur, you will need to provide access to your model's predict function.","To enable explainability, you will need to provide access to your model's `predict` function.","To enable explainability, you will need to provide access to your model's `predict` function.","To enable explainability, you need to provide access to your model's `predict` function.","To enable explainability, you will need to provide access to your model's `predict` function.","To enable explainability, you need to provide access to your model's `predict` function.","To enable explainability, you need to provide access to your model's `predict` function.","To enable explainability, you will need to provide access to your model's `predict` function.","To enable explainability, you need to provide access to your model's `predict` function.","To enable explainability for your model in Arthur, you will need to provide access to your model's `predict` function. Specifically, you will need to provide the following assets:
+7,What artifacts do I need to enable explainability for my model? ,"Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/assets-required-for-explainability
+ Assets Required For Explainability
+Assets Required For ExplainabilitySuggest EditsArthur can automatically calculate explanations (feature importances) for every prediction your model makes. To make this possible, we package up your model in a way that allows us to call it's predict function, which allows us to calculate explanations. We require a few things from your end:
+A Python script that wraps your models predict function
+For Image models, a second function, load_image is also required (see CV Explainability).
+A directory containing the above file, along with any serialized model files, and other supporting code
+A requirements.txt with the dependencies to support the above
+This guide will set everything up and then use the SDK to enable explainability.
+Setting up Project Directory
+Project Structure
+Here is an example of what your project directory might look like.
+-- model_folder/
+
+-- data/
+
+
+-- training_data.csv
+
+
+-- testing_data.csv
+
+-- requirements.txt
+
+-- model_entrypoint.py
+
+-- utils.py
+
+-- serialized_model.pkl
+Requirements File
+Your project requirements and dependencies can be stored in any format you like, such as the typical requirements.txt file, or another form of dependency management.
+This should contain all packages your model and predict function need to run.
+📘You do not need to include the arthurai package in this requirements file. We supply that
+# example_requirements.txt
+pandas==0.24.2
+numpy==1.16.4
+scikit-learn==0.21.3
+torch==1.3.1
+torchvision==0.4.2
+It is advised to pin the specific versions your model requires. If no version is pinned, we will use the latest version. This can cause issues if the latest version is incompatible with the version used to build your model.
+Prediction Function
+We need to be able to send new inferences to your model to get predictions and generate explanations. For us to have access to your model, you need to create an entrypoint file that defines a predict() method.
+The exact name of the file isn't strict, so long as you specify the correct name when you enable explainability (see below). The only thing that does matter is that this file implements a predict() method. In most cases, if you have a previously trained model, this predict() method will likely just invoke the prediction from your trained model.
+Python# example_entrypoint.py
+sk_model = joblib.load(""./serialized_model.pkl"")
+def predict(x):
+return sk_model.predict_proba(x)
+This predict method can be as simple or complicated as you need, so long as you can go from raw input data to a model output prediction.
+Specifically, in the case of a binary classifier, we expect a 2-d array where the first column indicates probability_0 for each input, and the second column indicates probability_1 for each input. In the case of a multiclass classifier with n possible labels, we expect an n-d array where column i corresponds to the predicted probability that each input belongs to class i.
+Preprocessing for Prediction
+Commonly, a fair amount of feature processing and transformation will need to happen before invoking your actual model.predict(). This might include normalizations, rescaling, one-hot encoding, embedding, etc. Whatever those transformations are, you can make them a part of this predict() method. Alternatively, you can wrap all those transformations into a helper function.
+Python# example_entrypoint.py
+from utils import pipeline_transformations
+sk_model = joblib.load(""./serialized_model.pkl"")
+def predict(x):
+return sk_model.predict_proba(pipeline_transformations(x))
+Enabling Explainability
+Enabling explainability can be done using the SDK function arthur_model.enable_explainability, which takes as input a sample of your model's data (to train the explainer), and which takes as input the files that contain your model's predict function and necessary environment.
+Pythonarthur_model.enable_explainability(
+df=X_train.head(50),
+project_directory=""/path/to/model_folder/"",
+requirements_file=""requirements.txt"",
+user_predict_function_import_path=""model_entrypoint"",
+ignore_dirs=[""folder_to_ignore""] # optionally exclude directories within the project folder from being bundled with predict function
+)
+The above provides a simple example. For a list of all configuration options and details around them, see the explainability section in Enabling Enrichments.
+Notes about the above example:
+joblib is a Python library allowing you to reconstruct your model from a serialized pickle file.
+X_train is your trained model data frame.
+user_predict_function_import_path is the Python path to import the entry point file as if you imported it into the Python program running enable_explainability.
+Configuration Requirements
+When going from disabled to enabled, you will need to include the required configuration settings. Once the explainability enrichment has been enabled, you can update the non-required configuration settings without re-supplying the required fields.
+You must not pass in any config settings when disabling the explainability enrichment.
+Configuration
+SettingRequiredDescriptiondfXThe dataframe passed to the explainer. It should be similar to, or a subset of, the training data. Typically small, ~50-100 rows.project_directoryXThe path to the directory containing your predict function, requirements file, model file, and any other resources needed to support the predict function.user_predict_function_import_pathXThe name of the file containing the predict function. Do not include .py extension. Used to import the predict function.requirements_fileXThe name of the file containing pip requirements for the predict function.python_versionXThe Python version to use when executing the predict function. This is automatically set to the current Python version when usingmodel.enable_explainability().sdk_versionXThe arthurai version used to make the enable request. This is automatically set to the currently installed SDK version when using themodel.enable_explainability().explanation_algoThe explanation algorithm to use. Valid options are 'lime' or 'shap'. The default value of 'lime'.explanation_nsamplesThe number of perturbed samples used to generate the explanation. The result will be calculated more quickly for a smaller number of samples but may be less robust. It is recommended to use at least 100 samples. The default value of 2000.inference_consumer_score_percentThe number between 0.0 and 1.0 sets the percent of inferences for which to compute an explanation score. Only applicable when streaming_explainability_enabled is set to true. The default value of 1.0 (all inferences explained).streaming_explainability_enabledIf true, every inference will have an explanation generated for it. If false, explanations are available on-demand only.ignore_dirsList of paths to directories within project_directory that will not be bundled and included with the predict function. Use to prevent including irrelevant code or files in larger directories.
+CV Explainability
+📘Explainability is currently available as an enrichment for classification, multi-labeling, and regression CV models, but not object detection CV models.
+In your model_entrypoint.py for Multiclass Image models, in addition to the predict() function, there is a second function which is required: load_image(). This function should take in a string, which is a path to an image file. The function should return the image in a numpy array. Any image processing, such as converting to greyscale, should also happen in this function. This is because Lime (the explanation algorithm used behind the scenes) will create variations of this array to generate explanations. However, any transformation resulting in a non-numpy array should happen in the predict function, such as converting to a Tensor.
+No image resizing is required. As part of onboarding an image model, pixel_height and pixel_width are set as metadata on the model. When ingesting, Arthur will automatically resize the image to the configured size and pass this resized image path to the load_image function.
+Below is a full example file for an Image model, with both load_image and predict defined.
+Imports and class definitions are omitted for brevity.
+Python# example_entrypoint.py
+import ...
+class MedNet(nn.Module):
+...
+# load model using custom user defined class
+net = MedNet()
+path = pathlib.Path(__file__).parent.absolute()
+net.load_state_dict(torch.load(f'{path}/pretrained_model'))
+# helper function for transforming image
+def quantize(np_array):
+return np_array + (np.random.random(np_array.shape) / 256)
+def load_image(image_path):
+""""""Takes in single image path, and returns single image in format predict expects
+""""""
+return quantize(np.array(Image.open(image_path).convert('RGB')) / 256)
+def predict(images_in):
+""""""Takes in numpy array of images, and returns predictions in numpy array.
+Can handle both single image in `numpy` array, or multiple images.
+""""""
+batch_size, pixdim1, pixdim2, channels = images_in.shape
+raw_tensor = torch.from_numpy(images_in)
+processed_images = torch.reshape(raw_tensor, (batch_size, channels, pixdim1, pixdim2)).float()
+net.eval()
+with torch.no_grad():
+return net(processed_images).numpy()
+👍Note on Enabling Explainability for CV ModelsExplainability for CV, at least for CV models, should be configured with 4 CPUs and 4 GB RAM (default 1) to avoid long explanation times (which could break the UI). It’s done per model when enabling explainability in the notebook.
+This enabling explainability configuration can be seen here:
+Pythonarthur_model.enable_explainability(
+project_directory=project_dir,
+user_predict_function_import_path='entrypoint',
+streaming_explainability_enabled=False,
+requirements_file=""requirements.txt"",
+explanation_algo='lime',
+explanation_nsamples=2000,
+model_server_num_cpu=""4"",
+model_server_memory=""4Gi""
+)
+NLP Explainability
+Enabling explainability for NLP models follows the same process for Tabular models
+📘An important choice for NLP explainability is the text_demiliter parameter, since this delimiter determines how tokens will be perturbed when generating explanations.
+Here is an example entrypoint.py file which loads our NLP model and defines a predict function that the explainer will use:
+Pythonmodel_path = os.path.join(os.path.dirname(__file__), ""model.pkl"")
+model = joblib.load(model_path)
+def predict(fvs):
+# our model expects a list of strings, no nesting
+# if we receive nested lists, unnest them
+if not isinstance(fvs[0], str):
+fvs = [fv[0] for fv in fvs]
+return model.predict_proba(fvs)
+Updated 3 months ago Table of Contents
+Setting up Project Directory
+Project Structure
+Requirements File
+Prediction Function
+Preprocessing for Prediction
+Enabling Explainability
+Configuration Requirements
+CV Explainability
+NLP Explainability",To enable explainability for your Arthur model you will need:\n\n- A python script that wraps your models predict function\n- your serialized model file\n- A requirements.txt with the dependencies to support the above,"To enable explainability for your model in Arthur, you will need to provide access to your model's predict function.","To enable explainability for your model in Arthur, you need to provide access to your model's predict function. This allows Arthur to capture the inputs to the model and the predictions it makes.","To enable explainability for your model in Arthur, you will need to provide access to your model's predict function. This can be done by creating a model schema that outlines the relationship between your dataset and the model, including information such as model inputs, outputs, data columns, and data access details. Additionally, you will need to provide the necessary artifacts for installing the Arthur platform, which are available on a customer-specific password-protected portal.","To enable explainability for your model in Arthur, you will need to provide access to your model's predict function. This means you will need to have the necessary assets required for explainability, which may include model attributes and any other relevant information needed for explaining the model's predictions.","To enable explainability for your model in Arthur, you will need to provide access to your model's predict function.","To enable explainability for your model, you will need to provide access to your model's predict function. This means you need to have the necessary assets required for explainability, as outlined in the Arthur documentation.","To enable explainability for your model in Arthur, you will need to provide access to your model's predict function.","To enable explainability for your model in Arthur, you will need to provide access to your model's predict function.","To enable explainability, you will need to provide access to your model's `predict` function.","To enable explainability, you will need to provide access to your model's `predict` function.","To enable explainability, you need to provide access to your model's `predict` function.","To enable explainability, you will need to provide access to your model's `predict` function.","To enable explainability, you need to provide access to your model's `predict` function.","To enable explainability, you need to provide access to your model's `predict` function.","To enable explainability, you will need to provide access to your model's `predict` function.","To enable explainability, you need to provide access to your model's `predict` function.","To enable explainability for your model in Arthur, you will need to provide access to your model's `predict` function. Specifically, you will need to provide the following assets:
 
 1. The model's `predict` function - This allows Arthur to access the inner workings of your model and generate explanations for its predictions.
 2. Any necessary dependencies or libraries required by your model's `predict` function.
@@ -344,9 +701,325 @@ With these assets, Arthur can integrate with your model and provide explainabili
 2. Any necessary dependencies or libraries required by the model's `predict()` function.
 
 With these assets, Arthur can integrate with your model and provide explainability features, such as generating feature importance explanations for the model's predictions.","To enable explainability for your model in Arthur, you will need to provide access to your model's `predict()` function. Arthur requires this in order to generate explanations for the model's predictions. No other specific artifacts are needed to enable explainability, but you will need to integrate your model with the Arthur SDK and register it with the platform.","To enable explainability for your model in Arthur, you need to provide access to the model's predict function. Arthur generally does not need a copy of your actual model, but it does require access to the predict function in order to generate explanations for the model's predictions.","To enable explainability for your model in Arthur, you need to provide access to the model's predict function. Arthur generally does not need a copy of your actual model, but it does require access to the predict function in order to generate explanations for the model's predictions.","To enable explainability for your model in Arthur, you need to provide access to the model's predict function. Arthur generally does not need a copy of your actual model, but it does require access to the predict function in order to generate explanations for the model's predictions.","To enable explainability for your model in Arthur, you need to provide access to the model's predict function. Arthur generally does not need a copy of your actual model, but it does require access to the predict function in order to generate explanations for the model's predictions.","To enable explainability for your model in Arthur, you need to provide access to the model's predict function. Arthur generally does not need a copy of your actual model, but it does require access to the predict function in order to generate explanations for the model's predictions.","To enable explainability for your model in Arthur, you need to provide access to the model's predict function. Arthur generally does not need a copy of your actual model, but it does require access to the predict function in order to generate explanations for the model's predictions.","To enable explainability for your model in Arthur, you need to provide access to the model's predict function. Arthur generally does not need a copy of your actual model, but it does require access to the predict function in order to generate explanations for the model's predictions.","To enable explainability for your model in Arthur, you need to provide access to your model's predict function. Arthur generally does not need a copy of your actual model, but it does require access to the predict function in order to generate explanations for the model's predictions."
-8,Is KMS required for Arthur's backup and restore capability?,"No, but Arthur highly recommends that your EBS volumes are encrypted with KMS.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.",KMS is not explicitly mentioned as a requirement for Arthur's backup and restore capability in the provided context.,"Yes, KMS is recommended for encrypting data at rest when using Arthur's backup and restore capability.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","The provided context does not mention anything about KMS (Key Management Service) being required for Arthur's backup and restore capability. The document focuses on the steps to restore various components of the Arthur platform, such as the RDS Postgres database, ClickHouse data, messaging infrastructure, and enrichments, but does not discuss any KMS requirements.","Based on the provided context, there is no mention of KMS (Key Management Service) being required for Arthur's backup and restore capability. The document focuses on the steps to restore various components of the Arthur platform, such as the RDS Postgres database, ClickHouse data, messaging infrastructure, and enrichments, without any specific references to KMS.","Based on the provided context, there is no mention of KMS (Key Management Service) being required for Arthur's backup and restore capability. The document focuses on the steps to restore various components of the Arthur platform, such as the RDS Postgres database, ClickHouse data, messaging infrastructure, and enrichments, without any specific references to KMS.","Based on the provided context, there is no mention of KMS (Key Management Service) being required for Arthur's backup and restore capability. The document focuses on the steps to restore various components of the Arthur platform, such as the RDS Postgres database, ClickHouse data, messaging infrastructure, and enrichments, without any references to KMS.","Based on the provided context, there is no mention of KMS (Key Management Service) being required for Arthur's backup and restore capability. The document focuses on the steps to restore various components of the Arthur platform, such as the RDS Postgres database, ClickHouse data, messaging infrastructure, and enrichments, but does not discuss any KMS requirements.","Based on the provided context, there is no mention of KMS (Key Management Service) being required for Arthur's backup and restore capability. The document focuses on the steps to restore various components of the Arthur platform, such as the RDS Postgres database, ClickHouse data, messaging infrastructure, and enrichments, without any specific references to KMS.","The provided context does not mention anything about KMS (Key Management Service) being required for Arthur's backup and restore capability. The document focuses on the steps to restore various components of the Arthur platform, such as the RDS Postgres database, ClickHouse data, messaging infrastructure, and enrichments, but does not discuss any KMS requirements.","Based on the provided context, there is no mention of KMS (Key Management Service) being required for Arthur's backup and restore capability. The document focuses on the steps to restore various components of the Arthur platform, such as the RDS Postgres database, ClickHouse data, messaging infrastructure, and enrichments, without any specific references to KMS.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability based on the provided context. The document outlines the steps to restore various components like RDS Postgres, ClickHouse data, messaging infrastructure, and enrichments, but does not indicate that KMS is needed.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability based on the provided context. The document outlines the steps to restore various components like RDS Postgres, ClickHouse data, messaging infrastructure, and enrichments, but does not indicate that KMS is needed.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability based on the provided context. The document outlines the steps to restore various components like RDS Postgres, ClickHouse data, messaging infrastructure, and enrichments, but does not indicate that KMS is needed.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability based on the provided context. The document outlines the steps to restore various components like RDS Postgres, ClickHouse data, messaging infrastructure, and enrichments, but does not indicate that KMS is needed.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability based on the provided context. The document outlines the steps to restore various components like RDS Postgres, ClickHouse data, messaging infrastructure, and enrichments, but does not indicate that KMS is needed.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability based on the provided context. The document outlines the steps to restore various components like RDS Postgres, ClickHouse data, messaging infrastructure, and enrichments, but does not indicate that KMS is needed.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability based on the provided context. The document outlines the steps to restore various components like RDS Postgres, ClickHouse data, messaging infrastructure, and enrichments, but does not indicate that KMS is needed.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability based on the provided context. The document outlines the steps to restore various components like RDS Postgres, ClickHouse data, messaging infrastructure, and enrichments, but does not indicate that KMS is needed."
-9,What Bench scorers can I use for evaluating LLMs at writing summaries?,The Bench scorers that can evaluate LLMs at writing summaries are:\n\n- Summary Quality (summary_quality)\n- BERT Score (bert_score),"You can use Bench scorers such as BLEU, ROUGE, and METEOR for evaluating LLMs at writing summaries.",You can use the exact_match scorer with optional configurations like case_sensitive=False for evaluating LLMs at writing summaries.,"You can use the ""ExactMatch"" scorer from Bench to evaluate LLMs at writing summaries. This scorer allows you to compare candidate outputs with reference outputs and can be configured to ignore capitalization differences.","You can use Bench scorers such as BLEU, ROUGE, and METEOR for evaluating LLMs at writing summaries.","You can use Bench scorers such as BLEU, ROUGE, and METEOR for evaluating LLMs at writing summaries.","You can use Bench scorers such as BLEU, ROUGE, and METEOR for evaluating LLMs at writing summaries.","You can use Bench scorers such as BLEU, ROUGE, and METEOR for evaluating LLMs at writing summaries.","You can use Bench scorers such as BLEU, ROUGE, and METEOR for evaluating LLMs at writing summaries.",The document does not mention any specific Bench scorers for evaluating LLMs at writing summaries.,The document does not mention any specific Bench scorers for evaluating LLMs at writing summaries.,The document does not mention any specific Bench scorers for evaluating LLMs at writing summaries.,The document does not mention any specific Bench scorers for evaluating LLMs at writing summaries.,The document does not mention any specific Bench scorers for evaluating LLMs at writing summaries.,The document does not mention any specific Bench scorers for evaluating LLMs at writing summaries.,The document does not mention any specific Bench scorers for evaluating LLMs at writing summaries.,The document does not mention any specific Bench scorers for evaluating LLMs at writing summaries.,"Unfortunately, the provided context does not contain any information about benchmarking scorers for evaluating LLMs at writing summaries. The context is focused on explaining token likelihood, which is a metric for understanding the confidence of an LLM in its predicted tokens, but it does not mention any specific benchmarking tools or scorers for evaluating LLM performance on summarization tasks. Without additional context about LLM summarization evaluation, I cannot provide a meaningful answer to the question.","Unfortunately, the provided context does not contain any information about benchmarking scorers for evaluating LLMs at writing summaries. The context is focused on explaining token likelihood, which is a metric for understanding the confidence of an LLM in its predicted tokens, but it does not mention any specific benchmarking tools or scorers for evaluating LLM performance on summarization tasks. Without additional context about LLM summarization evaluation, I cannot provide a meaningful answer to the question.","Unfortunately, the provided context does not contain any information about benchmarking scorers for evaluating LLMs at writing summaries. The context is focused on explaining token likelihood, which is a metric for understanding the confidence of an LLM's predictions, but it does not mention any specific benchmarking tools or scorers for evaluating summarization capabilities. Without additional context about summarization benchmarks, I cannot provide a meaningful answer to your question.","Unfortunately, the provided context does not contain any information about benchmarking scorers for evaluating LLMs at writing summaries. The context is focused on explaining token likelihood, which is a metric for understanding the confidence of an LLM's predictions, but it does not mention any specific benchmarking tools or metrics for evaluating LLM performance on summarization tasks. Without additional context about LLM evaluation for summarization, I cannot provide a meaningful answer to the question.","Unfortunately, the provided context does not contain any information about benchmarking scorers for evaluating LLMs at writing summaries. The context is focused on explaining token likelihood, which is a metric for understanding the confidence of an LLM's predictions, but it does not mention any specific benchmarking tools or metrics for evaluating LLM performance on summarization tasks. Without additional context about LLM evaluation for summarization, I cannot provide a meaningful answer to the question.","Unfortunately, the provided context does not contain any information about benchmarking scorers for evaluating LLMs at writing summaries. The context is focused on explaining the concept of token likelihood and how it can be used to monitor the performance of LLM models in the Arthur platform. There is no mention of specific benchmarking tools or metrics for evaluating LLM summarization capabilities.","Unfortunately, the provided context does not contain any information about benchmarking scorers for evaluating LLMs at writing summaries. The context is focused on explaining token likelihood, which is a metric for understanding the confidence of an LLM's predictions, but it does not mention any specific benchmarking tools or metrics for evaluating LLM performance on summarization tasks. Without additional context about LLM evaluation for summarization, I cannot provide a meaningful answer to the question.","Unfortunately, the provided context does not contain any information about benchmarking scorers for evaluating LLMs at writing summaries. The context is focused on explaining token likelihood, which is a metric for understanding the confidence of an LLM's predictions, but it does not mention any specific benchmarking tools or metrics for evaluating LLM performance on summarization tasks. Without additional context about LLM summarization evaluation, I cannot provide a more detailed answer to your question.","I apologize, but the given context does not contain information about Bench scorers for evaluating LLM summary writing. The context discusses token likelihood for generative text models, but does not mention any specific evaluation metrics or scorers for summaries.","I apologize, but the given context does not contain information about Bench scorers for evaluating LLM summary writing. The context discusses token likelihood for generative text models, but does not mention any specific evaluation metrics or scorers for summaries.","I apologize, but the given context does not contain information about Bench scorers for evaluating LLM summary writing. The context discusses token likelihood for generative text models, but does not mention any specific evaluation metrics or scorers for summaries.","I apologize, but the given context does not contain information about Bench scorers for evaluating LLM summary writing. The context discusses token likelihood for generative text models, but does not mention any specific evaluation metrics or scorers for summaries.","I apologize, but the given context does not contain information about Bench scorers for evaluating LLM summary writing. The context discusses token likelihood for generative text models, but does not mention any specific evaluation metrics or scorers for summaries.","I apologize, but the given context does not contain information about Bench scorers for evaluating LLM summary writing. The context discusses token likelihood for generative text models, but does not mention any specific evaluation metrics or scorers for summaries.","I apologize, but the given context does not contain information about Bench scorers for evaluating LLM summary writing. The context discusses token likelihood for generative text models, but does not mention any specific evaluation metrics or scorers for summaries.","I apologize, but the given context does not contain information about Bench scorers for evaluating LLM summary writing. The context discusses token likelihood for generative text models, but does not mention any specific evaluation metrics or scorers for summaries."
-10,What Bench scorers can I use for evaluating LLMs at answering questions?,The Bench scorers that can evaluate LLMs at answering questions are:\n\n- Exact Match (exact_match)\n- QA Correctness (qa_correctness)\n- BERT Score (bert_score),"You can use Arthur Bench, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.",You can use the ExactMatch scorer from the Bench package to evaluate LLMs at answering questions. This scorer allows you to specify optional configurations such as case sensitivity.,You can use the ExactMatch scorer for evaluating LLMs at answering questions.,"You can use the Arthur Bench scoring workflow, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.","You can use the Arthur Bench scoring workflow, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.","You can use the Arthur Bench scoring workflow, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.","You can use the Arthur Bench scoring workflow, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.","You can use Arthur Bench, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.","You can use Arthur Bench, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models, which includes a scoring workflow for manually evaluating the LLM responses in datasets.",The document does not specify the names or types of Bench scorers available for evaluating LLMs at answering questions.,The document does not specify the names of Bench scorers for evaluating LLMs at answering questions.,"You can use Arthur Bench, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.","You can use the scoring workflow included in Arthur Bench, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.",The document does not specify the names or types of Bench scorers available for evaluating LLMs at answering questions.,"You can use Arthur Bench, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.",The document does not specify the names or types of Bench scorers available for evaluating LLMs at answering questions.,"Based on the context provided, Arthur will be including a scoring workflow in their open-source evaluation tool, Arthur Bench, to evaluate LLM responses to questions. The procedure they followed to manually evaluate the LLM responses in their dataset will be included as a scoring workflow in Arthur Bench, which can be used for comparing LLMs, prompts, and hyperparameters for generative text models.","Based on the context provided, Arthur will be including a scoring workflow in their open-source evaluation tool, Arthur Bench, to evaluate LLM responses to questions. The procedure they followed to manually evaluate the LLM responses in their dataset will be included as a scoring workflow in Arthur Bench, which can be used for comparing LLMs, prompts, and hyperparameters for generative text models.","Based on the context provided, Arthur will be including a scoring workflow in their open-source evaluation tool, Arthur Bench, to evaluate LLM responses to questions. The procedure they followed to manually evaluate the LLM responses in their dataset will be included as a scoring workflow in Arthur Bench, which can be used for comparing LLMs, prompts, and hyperparameters for generative text models.","Based on the context provided, the Arthur team mentions that the procedure they followed to manually evaluate the LLM responses in their dataset will be included as a scoring workflow in Arthur Bench, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models. Therefore, the Bench scorer you can use for evaluating LLMs at answering questions is the one that will be provided as part of the Arthur Bench tool.","Based on the context provided, Arthur will be including a scoring workflow in their open-source evaluation tool, Arthur Bench, to evaluate LLM responses to questions. The workflow they used to manually evaluate the LLM responses in their dataset will be included as a scorer in Arthur Bench. This scorer can be used to compare the performance of different LLMs, prompts, and hyperparameters on question-answering tasks.","Based on the context provided, the key information is:
+8,Is KMS required for Arthur's backup and restore capability?,"Content type: arthur_scope_docs
+Source: https://docs.arthur.ai/docs/deploying-on-amazon-aws-eks
+ Deploying on Amazon AWS EKS
+Deploying on Amazon AWS EKSSuggest EditsThis is a guide with additional steps to help you prepare your existing Amazon Elastic Kubernetes Service (Amazon EKS) cluster for installing the Arthur platform.
+Ensure the initial steps detailed Installing Arthur Pre-requisites have already been applied to the cluster.
+Configure EKS EBS CSI driver
+As of EKS 1.23, the Amazon Elastic Block Store (Amazon EBS) Container Storage Interface (CSI) driver needs to be installed explicitly. This driver allows EKS clusters to manage the lifecycle of EBS volumes for Persistent Volumes. For more information, see Amazon Docs.
+If you are deploying Arthur on EKS 1.23+, you must follow the instructions on this page.
+Verify that the Add-On is successfully installed by navigating to AWS Console → EKS → Cluster → Add-Ons or by running helm list -A, depending on your installation method.
+Optimizing the AWS EKS StorageClass
+Once the EKS EBS CSI driver is installed, you can take advantage of the gp3 StorageClass type. This StorageClass is more cost-effective and performant
+than the previous gp2 StorageClass. Apply the below YAML definition to your cluster:
+YAML{note}
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+annotations:
+storageclass.kubernetes.io/is-default-class: ""true""
+name: gp3
+parameters:
+type: gp3
+encrypted: ""true"" # parameter ensures created AWS EBS volumes are encrypted using AWS Managed KMS Key
+kmsKeyId: <KMS Key ARN> # optional parameter ensures created AWS EBS volumes are encrypted using Customer Managed KMS Key
+provisioner: ebs.csi.aws.com
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true
+Ensure there is **_only one_** default StorageClass on the cluster. This is controlled by the `storageclass.kubernetes.io/is-default-class` annotation.
+Supported AWS Service Authentication Mechanisms
+If using AWS services with Arthur, such as S3 or SES, you will need to configure Arthur to authenticate with AWS.
+Arthur currently supports 3 authentication mechanisms:
+AWS Access Keys
+Access Keys only work with S3.
+If you want to use Access Keys, you must provision an IAM user and a set of keys.
+Via AWS IAM, you will need to grant this user read/write access to the S3 storage bucket you plan to use with Arthur.
+Selecting the Access Keys option will expand the Blob Storage section of the config page, where you will be able to enter your Access key, Secret Access key ID, and the S3 bucket.
+IRSA
+We recommend using IRSA to authenticate Arthur with AWS as it is the most secure and the only mechanism supporting SES.
+Using this methodology will require some AWS platform work in preparation for Arthur.
+You can follow these AWS docs, which will show you how to do this setup via eksctl or the AWS CLI, or you can automate this via your internal Infrastructure as Code.
+The role you create will need S3 read/write privileges on the bucket you want to use with Arthur and permissions to send email via your SES entity.
+Example snippets are as below:
+Sample IAM policies
+We provide some sample IAM policy snippets so they can be referenced easily.
+Sample IAM policy for S3 access
+{
+""Statement"": [
+{
+""Action"": [
+""s3:PutObject"",
+""s3:GetObject"",
+...
+],
+""Effect"": ""Allow"",
+""Resource"": [
+""arn:aws:s3:::<insert-s3-bucket-name>/*"",
+""arn:aws:s3:::<insert-s3-bucket-name>""
+],
+....
+},
+Sample IAM policy for SES access
+""Action"": [
+""ses:SendTemplatedEmail"",
+""ses:SendEmail"",
+""ses:SendCustomVerificationEmail"",
+""ses:SendBulkTemplatedEmail"",
+""ses:SendBulkEmail"",
+""ses:SendBounce""
+],
+""Effect"": ""Allow"",
+""Resource"": ""*"",
+""Sid"": ""sesSendEmails""
+},
+This role will also need to have a trust relationship with the OIDC provider of your EKS cluster, specifying the Arthur service accounts.
+See the linked docs above for a further explanation.
+An example snippet of this is:
+{
+""Version"": ""2012-10-17"",
+""Statement"": [
+{
+""Sid"": """",
+""Effect"": ""Allow"",
+""Principal"": {
+""Federated"": ""arn:aws:iam::123456789012:oidc-provider/oidc.eks.us-east-2.amazonaws.com/id/ABDCEF......""
+},
+""Action"": ""sts:AssumeRoleWithWebIdentity"",
+""Condition"": {
+""StringEquals"": {
+""oidc.eks.us-east-2.amazonaws.com/id/ABDCEF:sub"": [
+""system:serviceaccount:<namespace>:arthurai-<namespace>"",
+""system:serviceaccount:<namespace>:arthurai-<namespace>-helm-hook""
+]
+}
+}
+}
+]
+}
+Once this is all set up, you can pass this role to Arthur via the config page.
+This sets the role in the Arthur Service Accounts specified above, which enables Arthur's pods to authenticate with AWS via the role, and the permissions you created.
+Be sure to use the exact formatting shown below:
+Proceed to the Blob Storage section of the Arthur config page to specify the S3 bucket
+SES
+To utilize AWS SES for Arthur-generated emails, you must configure IRSA as outlined in the above section.
+Once this is done, navigate to the email configuration section of Arthur's config page.
+Select AWS SES, then enter the region in which your SES entity is configured. As outlined above, the role associated with the cluster must have permissions on this SES entity.
+If the SES entity is in the same account as your cluster, and you do not need to utilize a different role, such as for cross-account permissions, do not enter a role in the second box.
+If your SES entity is in another Arthur, account, you must set up cross-account privileges between roles.
+In the account of your SES entity (Account A), you must create an IAM role (Role A) that has sent email permissions to SES, as depicted above.
+Role A will also need to have a trust relationship with either the account that your cluster is in (Account B), the OIDC provider on your cluster as depicted above, or the IRSA role associated with your cluster.
+Additionally, the IRSA role you created above in Account B, will also need to be granted STS assume role privileges on the role you are creating in Account A.
+Once all of this is set up, enter the role in the account that contains the SES entity (Account A) that the IRSA role should assume to send emails:
+Updated 3 months ago Table of Contents
+Configure EKS EBS CSI driver
+Optimizing the AWS EKS StorageClass
+Supported AWS Service Authentication Mechanisms
+AWS Access Keys
+IRSA
+Sample IAM policies
+SES","No, but Arthur highly recommends that your EBS volumes are encrypted with KMS.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.",KMS is not explicitly mentioned as a requirement for Arthur's backup and restore capability in the provided context.,"Yes, KMS is recommended for encrypting data at rest when using Arthur's backup and restore capability.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","No, KMS is not mentioned as a requirement for Arthur's backup and restore capability in the provided context.","The provided context does not mention anything about KMS (Key Management Service) being required for Arthur's backup and restore capability. The document focuses on the steps to restore various components of the Arthur platform, such as the RDS Postgres database, ClickHouse data, messaging infrastructure, and enrichments, but does not discuss any KMS requirements.","Based on the provided context, there is no mention of KMS (Key Management Service) being required for Arthur's backup and restore capability. The document focuses on the steps to restore various components of the Arthur platform, such as the RDS Postgres database, ClickHouse data, messaging infrastructure, and enrichments, without any specific references to KMS.","Based on the provided context, there is no mention of KMS (Key Management Service) being required for Arthur's backup and restore capability. The document focuses on the steps to restore various components of the Arthur platform, such as the RDS Postgres database, ClickHouse data, messaging infrastructure, and enrichments, without any specific references to KMS.","Based on the provided context, there is no mention of KMS (Key Management Service) being required for Arthur's backup and restore capability. The document focuses on the steps to restore various components of the Arthur platform, such as the RDS Postgres database, ClickHouse data, messaging infrastructure, and enrichments, without any references to KMS.","Based on the provided context, there is no mention of KMS (Key Management Service) being required for Arthur's backup and restore capability. The document focuses on the steps to restore various components of the Arthur platform, such as the RDS Postgres database, ClickHouse data, messaging infrastructure, and enrichments, but does not discuss any KMS requirements.","Based on the provided context, there is no mention of KMS (Key Management Service) being required for Arthur's backup and restore capability. The document focuses on the steps to restore various components of the Arthur platform, such as the RDS Postgres database, ClickHouse data, messaging infrastructure, and enrichments, without any specific references to KMS.","The provided context does not mention anything about KMS (Key Management Service) being required for Arthur's backup and restore capability. The document focuses on the steps to restore various components of the Arthur platform, such as the RDS Postgres database, ClickHouse data, messaging infrastructure, and enrichments, but does not discuss any KMS requirements.","Based on the provided context, there is no mention of KMS (Key Management Service) being required for Arthur's backup and restore capability. The document focuses on the steps to restore various components of the Arthur platform, such as the RDS Postgres database, ClickHouse data, messaging infrastructure, and enrichments, without any specific references to KMS.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability based on the provided context. The document outlines the steps to restore various components like RDS Postgres, ClickHouse data, messaging infrastructure, and enrichments, but does not indicate that KMS is needed.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability based on the provided context. The document outlines the steps to restore various components like RDS Postgres, ClickHouse data, messaging infrastructure, and enrichments, but does not indicate that KMS is needed.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability based on the provided context. The document outlines the steps to restore various components like RDS Postgres, ClickHouse data, messaging infrastructure, and enrichments, but does not indicate that KMS is needed.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability based on the provided context. The document outlines the steps to restore various components like RDS Postgres, ClickHouse data, messaging infrastructure, and enrichments, but does not indicate that KMS is needed.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability based on the provided context. The document outlines the steps to restore various components like RDS Postgres, ClickHouse data, messaging infrastructure, and enrichments, but does not indicate that KMS is needed.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability based on the provided context. The document outlines the steps to restore various components like RDS Postgres, ClickHouse data, messaging infrastructure, and enrichments, but does not indicate that KMS is needed.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability based on the provided context. The document outlines the steps to restore various components like RDS Postgres, ClickHouse data, messaging infrastructure, and enrichments, but does not indicate that KMS is needed.","No, KMS (Key Management Service) is not mentioned as a requirement for Arthur's backup and restore capability based on the provided context. The document outlines the steps to restore various components like RDS Postgres, ClickHouse data, messaging infrastructure, and enrichments, but does not indicate that KMS is needed."
+9,What Bench scorers can I use for evaluating LLMs at writing summaries?,"Content type: arthur_bench_docs
+Source: https://bench.readthedocs.io/en/latest/scoring.html
+ Scoring - bench documentation
+Scoring#
+A Scorer is the criteria used to quantitatively evaluate LLM outputs. When you test LLMs with Arthur Bench, you attach a Scorer to each test suite you create - this defines how performance will be measured consistently across that test suite.
+For a walkthrough on how to extend the Scorer class to create your own scorer specialized to your data and/or use-case to use with Arthur Bench, check out the custom scoring guide
+If you would like to contribute scorers to the open source Arthur Bench repo, check out our contributing guide
+Here is a list of all the scorers available by default in Arthur Bench (listed alphabetically):
+Scorer
+Tasks
+Type
+Requirements
+BERT Score (bertscore)
+any
+Embedding-Based
+Reference Output, Candidate Output
+Exact Match (exact_match)
+any
+Lexicon-Based
+Reference Output, Candidate Output
+Hallucination (hallucination)
+any
+Prompt-Based
+Candidate Output, Context
+Hedging Language (hedging_language)
+any
+Embedding-Based
+Candidate Output
+Python Unit Testing (python_unit_testing)
+Python Generation
+Code Evaluator
+Candidate Output, Unit Tests (see the code eval guide)
+QA Correctness (qa_correctness)
+Question-Answering
+Prompt-Based
+Input, Candidate Output, Context
+Readability (readability)
+any
+Lexicon-Based
+Candidate Output
+Specificity (specificity)
+any
+Lexicon-Based
+Candidate Output
+Summary Quality (summary_quality)
+Summarization
+Prompt-Based
+Input, Reference Output, Candidate Output
+Word Count Match (word_count_match)
+any
+Lexicon-Based
+Reference Output, Candidate Output
+For better understandability we have broken down the Scorers based on the type of procedure each Scorer uses.
+Prompt-Based Scorers#
+qa_correctness#
+The QA correctness scorer evaluates the correctness of an answer, given a question and context. This scorer does not require a reference output, but does require context. Each row of the Test Run will receive a binary 0, indicating an incorrect output, or 1, indicating a correct output.
+summary_quality#
+The Summary Quality scorer evaluates a summary against its source text and a reference summary for comparison. It evaluates summaries on dimensions including relevance and syntax. Each row of the test run will receive a binary 0, indicating that the reference output was scored higher than the candidate output, or 1, indicating that the candidate output was scored higher than the reference output.
+hallucination#
+The Hallucination scorer takes a response and a context (e.g. in a RAG setting where context is used to ground an LLM’s responses) and identifies when information in the response is not substantiated by the context . The scorer breaks down the response into a list of claims and checks the claims against the context for support. This binary score is 1 if all claims are supported, and 0 otherwise.
+Embedding-Based Scorers#
+bertscore#
+BERTScore is a quantitative metric to compare the similarity of two pieces of text. Using bertscore will score each row of the test run as the bert score between the reference output and the candidate output.
+hedging_language#
+The Hedging Language scorer evaluates whether a candidate response is similar to generic hedging language used by an LLM (“As an AI language model, I don’t have personal opinions, emotions, or beliefs”). Each row of the Test Run will receive a score between 0.0 and 1.0 indicating the extent to which hedging language is detected in the response (using BERTScore similarity to the target hedging phrase). A score above 0.5 typically suggests the model output contains hedging language.
+Lexicon-Based Scorers#
+exact_match#
+The Exact Match scorer evaluates whether the candidate output exactly matches the reference output. This is case sensitive. Each row of the Test Run will receive a binary 0, indicating a non-match, or 1, indicating an exact match.
+readability#
+The Readability scorer evaluates the reading ease of the candidate output according to the Flesch Reading Ease Score. The higher the score, the easier the candidate output is to read: scores of 90-100 correlate to a 5th grade reading level, while scores less than 10 are classified as being “extremely difficult to read, and best understood by university graduates.”
+specificity#
+The Specificity scorer outputs a score of 0 to 1, where smaller values correspond to candidate outputs with more vague language while higher values correspond to candidate outputs with more precise language. Specificity is calculated through 3 heuristic approaches: identifying the presence of predefined words that indicate vagueness, determing how rare the words used are according to word frequencies calculated by popular NLP corpora, and detecting the use of proper nouns and numbers.
+word_count_match#
+For scenarios where there is a preferred output length, word_count_match calculates a corresponding score on the scale of 0 to 1. Specifically, this scorers calculates how similar the number of words in the candidate output is to the number of words in the reference output, where a score of 1.0 indicates that there are the same number of words in the candidate output as in the reference output. Scores less than 1.0 are calculated as ((len_reference-delta)/len_reference) where delta is the absolute difference in word lengths between the candidate and reference outputs. All negative computed values are truncated to 0.
+Code Evaluators#
+python_unit_testing#
+The Python Unit Testing scorer evaluates candidate solutions to coding tasks against unit tests. This scorer wraps the code_eval evaluator interface from HuggingFace. It is important to note that this function requires that solution code uses standard python libraries only.
+Next
+Guides
+Previous
+Quickstart
+Copyright © 2023, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+Scoring
+Prompt-Based Scorers
+qa_correctness
+summary_quality
+hallucination
+Embedding-Based Scorers
+bertscore
+hedging_language
+Lexicon-Based Scorers
+exact_match
+readability
+specificity
+word_count_match
+Code Evaluators
+python_unit_testing",The Bench scorers that can evaluate LLMs at writing summaries are:\n\n- Summary Quality (summary_quality)\n- BERT Score (bert_score),"You can use Bench scorers such as BLEU, ROUGE, and METEOR for evaluating LLMs at writing summaries.",You can use the exact_match scorer with optional configurations like case_sensitive=False for evaluating LLMs at writing summaries.,"You can use the ""ExactMatch"" scorer from Bench to evaluate LLMs at writing summaries. This scorer allows you to compare candidate outputs with reference outputs and can be configured to ignore capitalization differences.","You can use Bench scorers such as BLEU, ROUGE, and METEOR for evaluating LLMs at writing summaries.","You can use Bench scorers such as BLEU, ROUGE, and METEOR for evaluating LLMs at writing summaries.","You can use Bench scorers such as BLEU, ROUGE, and METEOR for evaluating LLMs at writing summaries.","You can use Bench scorers such as BLEU, ROUGE, and METEOR for evaluating LLMs at writing summaries.","You can use Bench scorers such as BLEU, ROUGE, and METEOR for evaluating LLMs at writing summaries.",The document does not mention any specific Bench scorers for evaluating LLMs at writing summaries.,The document does not mention any specific Bench scorers for evaluating LLMs at writing summaries.,The document does not mention any specific Bench scorers for evaluating LLMs at writing summaries.,The document does not mention any specific Bench scorers for evaluating LLMs at writing summaries.,The document does not mention any specific Bench scorers for evaluating LLMs at writing summaries.,The document does not mention any specific Bench scorers for evaluating LLMs at writing summaries.,The document does not mention any specific Bench scorers for evaluating LLMs at writing summaries.,The document does not mention any specific Bench scorers for evaluating LLMs at writing summaries.,"Unfortunately, the provided context does not contain any information about benchmarking scorers for evaluating LLMs at writing summaries. The context is focused on explaining token likelihood, which is a metric for understanding the confidence of an LLM in its predicted tokens, but it does not mention any specific benchmarking tools or scorers for evaluating LLM performance on summarization tasks. Without additional context about LLM summarization evaluation, I cannot provide a meaningful answer to the question.","Unfortunately, the provided context does not contain any information about benchmarking scorers for evaluating LLMs at writing summaries. The context is focused on explaining token likelihood, which is a metric for understanding the confidence of an LLM in its predicted tokens, but it does not mention any specific benchmarking tools or scorers for evaluating LLM performance on summarization tasks. Without additional context about LLM summarization evaluation, I cannot provide a meaningful answer to the question.","Unfortunately, the provided context does not contain any information about benchmarking scorers for evaluating LLMs at writing summaries. The context is focused on explaining token likelihood, which is a metric for understanding the confidence of an LLM's predictions, but it does not mention any specific benchmarking tools or scorers for evaluating summarization capabilities. Without additional context about summarization benchmarks, I cannot provide a meaningful answer to your question.","Unfortunately, the provided context does not contain any information about benchmarking scorers for evaluating LLMs at writing summaries. The context is focused on explaining token likelihood, which is a metric for understanding the confidence of an LLM's predictions, but it does not mention any specific benchmarking tools or metrics for evaluating LLM performance on summarization tasks. Without additional context about LLM evaluation for summarization, I cannot provide a meaningful answer to the question.","Unfortunately, the provided context does not contain any information about benchmarking scorers for evaluating LLMs at writing summaries. The context is focused on explaining token likelihood, which is a metric for understanding the confidence of an LLM's predictions, but it does not mention any specific benchmarking tools or metrics for evaluating LLM performance on summarization tasks. Without additional context about LLM evaluation for summarization, I cannot provide a meaningful answer to the question.","Unfortunately, the provided context does not contain any information about benchmarking scorers for evaluating LLMs at writing summaries. The context is focused on explaining the concept of token likelihood and how it can be used to monitor the performance of LLM models in the Arthur platform. There is no mention of specific benchmarking tools or metrics for evaluating LLM summarization capabilities.","Unfortunately, the provided context does not contain any information about benchmarking scorers for evaluating LLMs at writing summaries. The context is focused on explaining token likelihood, which is a metric for understanding the confidence of an LLM's predictions, but it does not mention any specific benchmarking tools or metrics for evaluating LLM performance on summarization tasks. Without additional context about LLM evaluation for summarization, I cannot provide a meaningful answer to the question.","Unfortunately, the provided context does not contain any information about benchmarking scorers for evaluating LLMs at writing summaries. The context is focused on explaining token likelihood, which is a metric for understanding the confidence of an LLM's predictions, but it does not mention any specific benchmarking tools or metrics for evaluating LLM performance on summarization tasks. Without additional context about LLM summarization evaluation, I cannot provide a more detailed answer to your question.","I apologize, but the given context does not contain information about Bench scorers for evaluating LLM summary writing. The context discusses token likelihood for generative text models, but does not mention any specific evaluation metrics or scorers for summaries.","I apologize, but the given context does not contain information about Bench scorers for evaluating LLM summary writing. The context discusses token likelihood for generative text models, but does not mention any specific evaluation metrics or scorers for summaries.","I apologize, but the given context does not contain information about Bench scorers for evaluating LLM summary writing. The context discusses token likelihood for generative text models, but does not mention any specific evaluation metrics or scorers for summaries.","I apologize, but the given context does not contain information about Bench scorers for evaluating LLM summary writing. The context discusses token likelihood for generative text models, but does not mention any specific evaluation metrics or scorers for summaries.","I apologize, but the given context does not contain information about Bench scorers for evaluating LLM summary writing. The context discusses token likelihood for generative text models, but does not mention any specific evaluation metrics or scorers for summaries.","I apologize, but the given context does not contain information about Bench scorers for evaluating LLM summary writing. The context discusses token likelihood for generative text models, but does not mention any specific evaluation metrics or scorers for summaries.","I apologize, but the given context does not contain information about Bench scorers for evaluating LLM summary writing. The context discusses token likelihood for generative text models, but does not mention any specific evaluation metrics or scorers for summaries.","I apologize, but the given context does not contain information about Bench scorers for evaluating LLM summary writing. The context discusses token likelihood for generative text models, but does not mention any specific evaluation metrics or scorers for summaries."
+10,What Bench scorers can I use for evaluating LLMs at answering questions?,"Content type: arthur_bench_docs
+Source: https://bench.readthedocs.io/en/latest/scoring.html
+ Scoring - bench documentation
+Scoring#
+A Scorer is the criteria used to quantitatively evaluate LLM outputs. When you test LLMs with Arthur Bench, you attach a Scorer to each test suite you create - this defines how performance will be measured consistently across that test suite.
+For a walkthrough on how to extend the Scorer class to create your own scorer specialized to your data and/or use-case to use with Arthur Bench, check out the custom scoring guide
+If you would like to contribute scorers to the open source Arthur Bench repo, check out our contributing guide
+Here is a list of all the scorers available by default in Arthur Bench (listed alphabetically):
+Scorer
+Tasks
+Type
+Requirements
+BERT Score (bertscore)
+any
+Embedding-Based
+Reference Output, Candidate Output
+Exact Match (exact_match)
+any
+Lexicon-Based
+Reference Output, Candidate Output
+Hallucination (hallucination)
+any
+Prompt-Based
+Candidate Output, Context
+Hedging Language (hedging_language)
+any
+Embedding-Based
+Candidate Output
+Python Unit Testing (python_unit_testing)
+Python Generation
+Code Evaluator
+Candidate Output, Unit Tests (see the code eval guide)
+QA Correctness (qa_correctness)
+Question-Answering
+Prompt-Based
+Input, Candidate Output, Context
+Readability (readability)
+any
+Lexicon-Based
+Candidate Output
+Specificity (specificity)
+any
+Lexicon-Based
+Candidate Output
+Summary Quality (summary_quality)
+Summarization
+Prompt-Based
+Input, Reference Output, Candidate Output
+Word Count Match (word_count_match)
+any
+Lexicon-Based
+Reference Output, Candidate Output
+For better understandability we have broken down the Scorers based on the type of procedure each Scorer uses.
+Prompt-Based Scorers#
+qa_correctness#
+The QA correctness scorer evaluates the correctness of an answer, given a question and context. This scorer does not require a reference output, but does require context. Each row of the Test Run will receive a binary 0, indicating an incorrect output, or 1, indicating a correct output.
+summary_quality#
+The Summary Quality scorer evaluates a summary against its source text and a reference summary for comparison. It evaluates summaries on dimensions including relevance and syntax. Each row of the test run will receive a binary 0, indicating that the reference output was scored higher than the candidate output, or 1, indicating that the candidate output was scored higher than the reference output.
+hallucination#
+The Hallucination scorer takes a response and a context (e.g. in a RAG setting where context is used to ground an LLM’s responses) and identifies when information in the response is not substantiated by the context . The scorer breaks down the response into a list of claims and checks the claims against the context for support. This binary score is 1 if all claims are supported, and 0 otherwise.
+Embedding-Based Scorers#
+bertscore#
+BERTScore is a quantitative metric to compare the similarity of two pieces of text. Using bertscore will score each row of the test run as the bert score between the reference output and the candidate output.
+hedging_language#
+The Hedging Language scorer evaluates whether a candidate response is similar to generic hedging language used by an LLM (“As an AI language model, I don’t have personal opinions, emotions, or beliefs”). Each row of the Test Run will receive a score between 0.0 and 1.0 indicating the extent to which hedging language is detected in the response (using BERTScore similarity to the target hedging phrase). A score above 0.5 typically suggests the model output contains hedging language.
+Lexicon-Based Scorers#
+exact_match#
+The Exact Match scorer evaluates whether the candidate output exactly matches the reference output. This is case sensitive. Each row of the Test Run will receive a binary 0, indicating a non-match, or 1, indicating an exact match.
+readability#
+The Readability scorer evaluates the reading ease of the candidate output according to the Flesch Reading Ease Score. The higher the score, the easier the candidate output is to read: scores of 90-100 correlate to a 5th grade reading level, while scores less than 10 are classified as being “extremely difficult to read, and best understood by university graduates.”
+specificity#
+The Specificity scorer outputs a score of 0 to 1, where smaller values correspond to candidate outputs with more vague language while higher values correspond to candidate outputs with more precise language. Specificity is calculated through 3 heuristic approaches: identifying the presence of predefined words that indicate vagueness, determing how rare the words used are according to word frequencies calculated by popular NLP corpora, and detecting the use of proper nouns and numbers.
+word_count_match#
+For scenarios where there is a preferred output length, word_count_match calculates a corresponding score on the scale of 0 to 1. Specifically, this scorers calculates how similar the number of words in the candidate output is to the number of words in the reference output, where a score of 1.0 indicates that there are the same number of words in the candidate output as in the reference output. Scores less than 1.0 are calculated as ((len_reference-delta)/len_reference) where delta is the absolute difference in word lengths between the candidate and reference outputs. All negative computed values are truncated to 0.
+Code Evaluators#
+python_unit_testing#
+The Python Unit Testing scorer evaluates candidate solutions to coding tasks against unit tests. This scorer wraps the code_eval evaluator interface from HuggingFace. It is important to note that this function requires that solution code uses standard python libraries only.
+Next
+Guides
+Previous
+Quickstart
+Copyright © 2023, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+Scoring
+Prompt-Based Scorers
+qa_correctness
+summary_quality
+hallucination
+Embedding-Based Scorers
+bertscore
+hedging_language
+Lexicon-Based Scorers
+exact_match
+readability
+specificity
+word_count_match
+Code Evaluators
+python_unit_testing",The Bench scorers that can evaluate LLMs at answering questions are:\n\n- Exact Match (exact_match)\n- QA Correctness (qa_correctness)\n- BERT Score (bert_score),"You can use Arthur Bench, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.",You can use the ExactMatch scorer from the Bench package to evaluate LLMs at answering questions. This scorer allows you to specify optional configurations such as case sensitivity.,You can use the ExactMatch scorer for evaluating LLMs at answering questions.,"You can use the Arthur Bench scoring workflow, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.","You can use the Arthur Bench scoring workflow, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.","You can use the Arthur Bench scoring workflow, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.","You can use the Arthur Bench scoring workflow, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.","You can use Arthur Bench, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.","You can use Arthur Bench, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models, which includes a scoring workflow for manually evaluating the LLM responses in datasets.",The document does not specify the names or types of Bench scorers available for evaluating LLMs at answering questions.,The document does not specify the names of Bench scorers for evaluating LLMs at answering questions.,"You can use Arthur Bench, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.","You can use the scoring workflow included in Arthur Bench, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.",The document does not specify the names or types of Bench scorers available for evaluating LLMs at answering questions.,"You can use Arthur Bench, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.",The document does not specify the names or types of Bench scorers available for evaluating LLMs at answering questions.,"Based on the context provided, Arthur will be including a scoring workflow in their open-source evaluation tool, Arthur Bench, to evaluate LLM responses to questions. The procedure they followed to manually evaluate the LLM responses in their dataset will be included as a scoring workflow in Arthur Bench, which can be used for comparing LLMs, prompts, and hyperparameters for generative text models.","Based on the context provided, Arthur will be including a scoring workflow in their open-source evaluation tool, Arthur Bench, to evaluate LLM responses to questions. The procedure they followed to manually evaluate the LLM responses in their dataset will be included as a scoring workflow in Arthur Bench, which can be used for comparing LLMs, prompts, and hyperparameters for generative text models.","Based on the context provided, Arthur will be including a scoring workflow in their open-source evaluation tool, Arthur Bench, to evaluate LLM responses to questions. The procedure they followed to manually evaluate the LLM responses in their dataset will be included as a scoring workflow in Arthur Bench, which can be used for comparing LLMs, prompts, and hyperparameters for generative text models.","Based on the context provided, the Arthur team mentions that the procedure they followed to manually evaluate the LLM responses in their dataset will be included as a scoring workflow in Arthur Bench, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models. Therefore, the Bench scorer you can use for evaluating LLMs at answering questions is the one that will be provided as part of the Arthur Bench tool.","Based on the context provided, Arthur will be including a scoring workflow in their open-source evaluation tool, Arthur Bench, to evaluate LLM responses to questions. The workflow they used to manually evaluate the LLM responses in their dataset will be included as a scorer in Arthur Bench. This scorer can be used to compare the performance of different LLMs, prompts, and hyperparameters on question-answering tasks.","Based on the context provided, the key information is:
 
 The article mentions that the procedure used to manually evaluate the LLM responses in the dataset will be included as a scoring workflow in Arthur Bench, an open-source evaluation tool for comparing LLMs, prompts, and hyperparameters for generative text models.
 
@@ -367,7 +1040,106 @@ Therefore, the Bench scorer that can be used for evaluating LLMs at answering qu
 1. Correct answer
 2. Not attempting to answer the question 
 3. Containing a hallucination","Based on the context provided, Arthur Bench will include a scoring workflow for manually evaluating LLM responses to questions. The workflow used in this hallucination experiment, where LLM responses were categorized as either correct, avoiding answering, or containing a hallucination, will be included as a scoring workflow in Arthur Bench for comparing LLMs, prompts, and hyperparameters.","Based on the context provided, Arthur Bench will include a scoring workflow for manually evaluating LLM responses to questions. The workflow used in this hallucination experiment, where LLM responses were categorized as either correct, avoiding answering, or containing a hallucination, will be included as a scoring workflow in Arthur Bench for comparing LLMs, prompts, and hyperparameters."
-11,What Bench scorers can I use for evaluating LLMs at coding?,The Bench scorers that can evaluate LLMs at coding are:\n\n- Python Unit Testing (python_unit_testing),You can use the ExactMatch scorer from the Bench package for evaluating LLMs at coding.,"You can use the ""exact_match"" scorer from Bench for evaluating LLMs at coding. This scorer has optional configurations like case sensitivity that can be adjusted to match your use case.","You can use the custom scorer feature in Bench to evaluate LLM performance. One example is the TrigramRepetition scorer, which evaluates responses based on repeated trigrams. You can define custom scorers like TrigramRepetition to suit your specific evaluation needs.",You can use the ExactMatch scorer from the Bench package for evaluating LLMs at coding.,You can use the ExactMatch scorer from the Bench package for evaluating LLMs at coding.,You can use the ExactMatch scorer from the Bench package for evaluating LLMs at coding.,You can use the ExactMatch scorer from the Bench package for evaluating LLMs at coding.,You can use the ExactMatch scorer from the Bench package for evaluating LLMs at coding. This scorer allows you to configure options such as case sensitivity to match scorers with your specific use case.,The document does not list specific Bench scorers for evaluating LLMs at coding.,The document does not specify which Bench scorers can be used for evaluating LLMs at coding.,The document does not specify which Bench scorers can be used for evaluating LLMs at coding.,The document does not specify which Bench scorers can be used for evaluating LLMs at coding.,The document does not list specific Bench scorers for evaluating LLMs at coding.,The document does not list specific Bench scorers for evaluating LLMs at coding.,The document does not list specific Bench scorers for evaluating LLMs at coding.,The document does not specify which Bench scorers can be used for evaluating LLMs at coding.,"The Bench documentation does not explicitly mention scorers for evaluating LLMs at coding tasks. However, the Bench package provides the `ExactMatch` scorer, which can be used to compare the candidate output to a reference output. This scorer can be useful for evaluating the correctness of code generated by LLMs. 
+11,What Bench scorers can I use for evaluating LLMs at coding?,"Content type: arthur_bench_docs
+Source: https://bench.readthedocs.io/en/latest/scoring.html
+ Scoring - bench documentation
+Scoring#
+A Scorer is the criteria used to quantitatively evaluate LLM outputs. When you test LLMs with Arthur Bench, you attach a Scorer to each test suite you create - this defines how performance will be measured consistently across that test suite.
+For a walkthrough on how to extend the Scorer class to create your own scorer specialized to your data and/or use-case to use with Arthur Bench, check out the custom scoring guide
+If you would like to contribute scorers to the open source Arthur Bench repo, check out our contributing guide
+Here is a list of all the scorers available by default in Arthur Bench (listed alphabetically):
+Scorer
+Tasks
+Type
+Requirements
+BERT Score (bertscore)
+any
+Embedding-Based
+Reference Output, Candidate Output
+Exact Match (exact_match)
+any
+Lexicon-Based
+Reference Output, Candidate Output
+Hallucination (hallucination)
+any
+Prompt-Based
+Candidate Output, Context
+Hedging Language (hedging_language)
+any
+Embedding-Based
+Candidate Output
+Python Unit Testing (python_unit_testing)
+Python Generation
+Code Evaluator
+Candidate Output, Unit Tests (see the code eval guide)
+QA Correctness (qa_correctness)
+Question-Answering
+Prompt-Based
+Input, Candidate Output, Context
+Readability (readability)
+any
+Lexicon-Based
+Candidate Output
+Specificity (specificity)
+any
+Lexicon-Based
+Candidate Output
+Summary Quality (summary_quality)
+Summarization
+Prompt-Based
+Input, Reference Output, Candidate Output
+Word Count Match (word_count_match)
+any
+Lexicon-Based
+Reference Output, Candidate Output
+For better understandability we have broken down the Scorers based on the type of procedure each Scorer uses.
+Prompt-Based Scorers#
+qa_correctness#
+The QA correctness scorer evaluates the correctness of an answer, given a question and context. This scorer does not require a reference output, but does require context. Each row of the Test Run will receive a binary 0, indicating an incorrect output, or 1, indicating a correct output.
+summary_quality#
+The Summary Quality scorer evaluates a summary against its source text and a reference summary for comparison. It evaluates summaries on dimensions including relevance and syntax. Each row of the test run will receive a binary 0, indicating that the reference output was scored higher than the candidate output, or 1, indicating that the candidate output was scored higher than the reference output.
+hallucination#
+The Hallucination scorer takes a response and a context (e.g. in a RAG setting where context is used to ground an LLM’s responses) and identifies when information in the response is not substantiated by the context . The scorer breaks down the response into a list of claims and checks the claims against the context for support. This binary score is 1 if all claims are supported, and 0 otherwise.
+Embedding-Based Scorers#
+bertscore#
+BERTScore is a quantitative metric to compare the similarity of two pieces of text. Using bertscore will score each row of the test run as the bert score between the reference output and the candidate output.
+hedging_language#
+The Hedging Language scorer evaluates whether a candidate response is similar to generic hedging language used by an LLM (“As an AI language model, I don’t have personal opinions, emotions, or beliefs”). Each row of the Test Run will receive a score between 0.0 and 1.0 indicating the extent to which hedging language is detected in the response (using BERTScore similarity to the target hedging phrase). A score above 0.5 typically suggests the model output contains hedging language.
+Lexicon-Based Scorers#
+exact_match#
+The Exact Match scorer evaluates whether the candidate output exactly matches the reference output. This is case sensitive. Each row of the Test Run will receive a binary 0, indicating a non-match, or 1, indicating an exact match.
+readability#
+The Readability scorer evaluates the reading ease of the candidate output according to the Flesch Reading Ease Score. The higher the score, the easier the candidate output is to read: scores of 90-100 correlate to a 5th grade reading level, while scores less than 10 are classified as being “extremely difficult to read, and best understood by university graduates.”
+specificity#
+The Specificity scorer outputs a score of 0 to 1, where smaller values correspond to candidate outputs with more vague language while higher values correspond to candidate outputs with more precise language. Specificity is calculated through 3 heuristic approaches: identifying the presence of predefined words that indicate vagueness, determing how rare the words used are according to word frequencies calculated by popular NLP corpora, and detecting the use of proper nouns and numbers.
+word_count_match#
+For scenarios where there is a preferred output length, word_count_match calculates a corresponding score on the scale of 0 to 1. Specifically, this scorers calculates how similar the number of words in the candidate output is to the number of words in the reference output, where a score of 1.0 indicates that there are the same number of words in the candidate output as in the reference output. Scores less than 1.0 are calculated as ((len_reference-delta)/len_reference) where delta is the absolute difference in word lengths between the candidate and reference outputs. All negative computed values are truncated to 0.
+Code Evaluators#
+python_unit_testing#
+The Python Unit Testing scorer evaluates candidate solutions to coding tasks against unit tests. This scorer wraps the code_eval evaluator interface from HuggingFace. It is important to note that this function requires that solution code uses standard python libraries only.
+Next
+Guides
+Previous
+Quickstart
+Copyright © 2023, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+Scoring
+Prompt-Based Scorers
+qa_correctness
+summary_quality
+hallucination
+Embedding-Based Scorers
+bertscore
+hedging_language
+Lexicon-Based Scorers
+exact_match
+readability
+specificity
+word_count_match
+Code Evaluators
+python_unit_testing",The Bench scorers that can evaluate LLMs at coding are:\n\n- Python Unit Testing (python_unit_testing),You can use the ExactMatch scorer from the Bench package for evaluating LLMs at coding.,"You can use the ""exact_match"" scorer from Bench for evaluating LLMs at coding. This scorer has optional configurations like case sensitivity that can be adjusted to match your use case.","You can use the custom scorer feature in Bench to evaluate LLM performance. One example is the TrigramRepetition scorer, which evaluates responses based on repeated trigrams. You can define custom scorers like TrigramRepetition to suit your specific evaluation needs.",You can use the ExactMatch scorer from the Bench package for evaluating LLMs at coding.,You can use the ExactMatch scorer from the Bench package for evaluating LLMs at coding.,You can use the ExactMatch scorer from the Bench package for evaluating LLMs at coding.,You can use the ExactMatch scorer from the Bench package for evaluating LLMs at coding.,You can use the ExactMatch scorer from the Bench package for evaluating LLMs at coding. This scorer allows you to configure options such as case sensitivity to match scorers with your specific use case.,The document does not list specific Bench scorers for evaluating LLMs at coding.,The document does not specify which Bench scorers can be used for evaluating LLMs at coding.,The document does not specify which Bench scorers can be used for evaluating LLMs at coding.,The document does not specify which Bench scorers can be used for evaluating LLMs at coding.,The document does not list specific Bench scorers for evaluating LLMs at coding.,The document does not list specific Bench scorers for evaluating LLMs at coding.,The document does not list specific Bench scorers for evaluating LLMs at coding.,The document does not specify which Bench scorers can be used for evaluating LLMs at coding.,"The Bench documentation does not explicitly mention scorers for evaluating LLMs at coding tasks. However, the Bench package provides the `ExactMatch` scorer, which can be used to compare the candidate output to a reference output. This scorer can be useful for evaluating the correctness of code generated by LLMs. 
 
 Additionally, the documentation mentions that Bench supports creating custom scorers, which could be developed to evaluate the quality and correctness of code generated by LLMs. The ""Custom Scoring"" guide in the Bench documentation provides more information on how to create custom scorers.","The Bench documentation does not explicitly mention scorers for evaluating LLMs at coding tasks. However, the Bench package provides a few scorers that could be useful for this purpose:
 
@@ -394,7 +1166,53 @@ To use these scorers for evaluating LLMs on coding tasks, you would need to crea
 2. **Custom Scorers**: The Bench documentation mentions that you can create custom scorers to provide even more flexibility. This could allow you to implement specialized scoring metrics for evaluating LLM performance on coding tasks.
 
 To use these scorers for evaluating LLMs on coding tasks, you would need to create a test suite with the appropriate input text (coding prompts) and reference outputs (expected code solutions). You can then run the test suite and analyze the scores to assess the LLM's performance.","The Bench documentation does not explicitly mention scorers for evaluating LLMs at coding tasks. However, the Bench package provides the `ExactMatch` scorer, which can be used to compare the candidate output to a reference output. This scorer can be useful for evaluating the correctness of code generated by LLMs. Additionally, the documentation mentions that you can create custom scorers to provide more flexibility in evaluating LLM performance. To create a custom scorer for coding tasks, you would need to implement your own scoring logic, such as checking the syntax, functionality, or style of the generated code.","Based on the provided context, there is no information about specific Bench scorers that can be used for evaluating LLMs at coding tasks. The context discusses configuring the exact_match scorer to be case-insensitive, but does not mention any code evaluation scorers.","Based on the provided context, there is no information about specific Bench scorers that can be used for evaluating LLMs at coding tasks. The context discusses configuring the exact_match scorer to be case insensitive, but does not mention any code evaluation scorers.","Based on the provided context, there is no information about specific Bench scorers that can be used for evaluating LLMs at coding tasks. The context discusses configuring the exact_match scorer to be case insensitive, but does not mention any code evaluation scorers.","Based on the provided context, there is no information about specific Bench scorers that can be used for evaluating LLMs at coding tasks. The context discusses configuring the exact_match scorer to be case-insensitive, but does not mention any code evaluation scorers.","Based on the provided context, there is no information about specific Bench scorers that can be used for evaluating LLMs at coding tasks. The context discusses configuring the exact_match scorer to be case-insensitive, but does not mention any code evaluation scorers.","Based on the provided context, there is no information about specific Bench scorers that can be used for evaluating LLMs at coding tasks. The context discusses configuring the exact_match scorer to be case-insensitive, but does not mention any code evaluation scorers.","Based on the provided context, there is no information about specific Bench scorers that can be used for evaluating LLMs at coding tasks. The context discusses configuring the exact_match scorer to be case-insensitive, but does not mention any code evaluation scorers.","Based on the provided context, there is no information about specific Bench scorers that can be used for evaluating LLMs at coding tasks. The context discusses configuring the exact_match scorer to be case insensitive, but does not mention any code evaluation scorers."
-12,How do I view my Bench test results?,"To view your Bench test results in the local UI, run the command `bench` from the same local directory as your bench file directory","To view your Bench test results, you can launch the Bench UI locally by setting the BENCH_FILE_DIR environment variable to point to the location of your test runs and running the 'bench' command from the command line.","To view your Bench test results, you can launch the Bench UI locally by setting the BENCH_FILE_DIR environment variable to point to the location of your test suite data and running the ""bench"" command from the command line. This will provide you with a URL for a local server that you can copy and paste into your browser to navigate the UI.","To view your Bench test results, you can run the Bench UI locally by using the following command: `bench`. This will launch the local UI where you can explore and analyze your test results.","To view your Bench test results, you can launch the Bench UI locally by setting the BENCH_FILE_DIR environment variable to point to the location of your test runs and running the 'bench' command from the command line.","To view your Bench test results, you can run the bench UI locally by setting the BENCH_FILE_DIR environment variable to point to the location of your test runs and then running the 'bench' command from the command line. This will launch a local server that you can access via a URL in your browser.","To view your Bench test results, you can run the command ""bench"" from the command line after setting the BENCH_FILE_DIR environment variable to point to the location of your test runs. This will launch a local UI that you can access through a URL in your browser.","To view your Bench test results, you can launch the Bench UI locally by setting the BENCH_FILE_DIR environment variable to point to the location of your test suite data and running the 'bench' command from the command line.","To view your Bench test results, you can run the bench UI locally by setting the BENCH_FILE_DIR environment variable to point to the location of your test runs and then running the 'bench' command from the command line. This will launch a local server with a URL that you can copy and paste into your browser to navigate the UI.","To view your Bench test results locally, set the `BENCH_FILE_DIR` environment variable to point to the location of your new test runs and run `bench` from the command line.","To view your Bench test results locally, set the `BENCH_FILE_DIR` environment variable to point to the location of your new test runs and run `bench` from the command line. This will launch a local UI where you can view your test results.","To view your Bench test results locally, set the `BENCH_FILE_DIR` environment variable to point to the location of your new test runs and run `bench` from the command line.","To view your Bench test results locally, set the `BENCH_FILE_DIR` environment variable to point to the location of your new test runs and run `bench` from the command line. This will launch a local UI where you can navigate and view your test results.","To view your Bench test results locally, set the `BENCH_FILE_DIR` environment variable to point to the location of your new test runs and run `bench` from the command line.","To view your Bench test results locally, set the `BENCH_FILE_DIR` environment variable to point to the location of your new test runs and run `bench` from the command line.","To view your Bench test results locally, set the `BENCH_FILE_DIR` environment variable to point to the location of your test runs and execute the `bench` command from the command line. This will launch a local UI where you can view your test results.","To view your Bench test results locally, set the `BENCH_FILE_DIR` environment variable to point to the location of your new test runs and run `bench` from the command line.","To view your Bench test results, you have two options:
+12,How do I view my Bench test results?,"Content type: arthur_bench_docs
+Source: https://bench.readthedocs.io/en/latest/quickstart.html
+ Quickstart - bench documentation
+Quickstart#
+Make sure you have completed installation from the setup guide before moving on to this quickstart.
+Environment setup#
+The environment variable BENCH_FILE_DIR points to the local directory where your test data is saved and visualized by Arthur Bench.
+If you are running this quickstart right after completing the setup guide, then take a moment to reset BENCH_FILE_DIR to its default value, ""./bench_runs"". This will direct the bench UI to point to your new quickstart test suite instead of the examples from the setup.
+export BENCH_FILE_DIR=""./bench_runs""
+Creating your first test suite#
+Instantiate a test suite with a name, data, and scorer.
+This example creates a test suite from lists of strings directly with the exact_match scorer.
+from arthur_bench.run.testsuite import TestSuite
+suite = TestSuite(
+'bench_quickstart',
+'exact_match',
+input_text_list=[""What year was FDR elected?"", ""What is the opposite of down?""],
+reference_output_list=[""1932"", ""up""]
+)
+You can create test suites from a pandas DataFrame or from a path to a local CSV file. See the test suite creation guide to view all the ways you can create test suites.
+You can view all scorers available out of the box with bench here on our scoring page, as well as customize your own.
+Running your first test suite#
+To create a Test Run, you only need to specify the candidate responses. See the test suite creation guide to view all the ways you can run test suites.
+run = suite.run('quickstart_run', candidate_output_list=[""1932"", ""up is the opposite of down""])
+print(run)
+>>> [TestCaseOutput(output='1932', score=1.0), TestCaseOutput(output='up is the opposite of down', score=0.0)]
+You should now have logged test case results with scores of 1.0 and 0.0, respectively.
+View results in local UI#
+Now run bench from the command line to launch the local UI and explore the test results.
+bench
+Next steps#
+Now that you have set up and ran your first test suite, check out the rest of the scorers available in Arthur Bench out of the box.
+To learn more about the basic concepts around data and testing in Arthur Bench, visit our basic concepts guide.
+Next
+Scoring
+Previous
+Setup
+Copyright © 2023, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+Quickstart
+Environment setup
+Creating your first test suite
+Running your first test suite
+View results in local UI
+Next steps","To view your Bench test results in the local UI, run the command `bench` from the same local directory as your bench file directory","To view your Bench test results, you can launch the Bench UI locally by setting the BENCH_FILE_DIR environment variable to point to the location of your test runs and running the 'bench' command from the command line.","To view your Bench test results, you can launch the Bench UI locally by setting the BENCH_FILE_DIR environment variable to point to the location of your test suite data and running the ""bench"" command from the command line. This will provide you with a URL for a local server that you can copy and paste into your browser to navigate the UI.","To view your Bench test results, you can run the Bench UI locally by using the following command: `bench`. This will launch the local UI where you can explore and analyze your test results.","To view your Bench test results, you can launch the Bench UI locally by setting the BENCH_FILE_DIR environment variable to point to the location of your test runs and running the 'bench' command from the command line.","To view your Bench test results, you can run the bench UI locally by setting the BENCH_FILE_DIR environment variable to point to the location of your test runs and then running the 'bench' command from the command line. This will launch a local server that you can access via a URL in your browser.","To view your Bench test results, you can run the command ""bench"" from the command line after setting the BENCH_FILE_DIR environment variable to point to the location of your test runs. This will launch a local UI that you can access through a URL in your browser.","To view your Bench test results, you can launch the Bench UI locally by setting the BENCH_FILE_DIR environment variable to point to the location of your test suite data and running the 'bench' command from the command line.","To view your Bench test results, you can run the bench UI locally by setting the BENCH_FILE_DIR environment variable to point to the location of your test runs and then running the 'bench' command from the command line. This will launch a local server with a URL that you can copy and paste into your browser to navigate the UI.","To view your Bench test results locally, set the `BENCH_FILE_DIR` environment variable to point to the location of your new test runs and run `bench` from the command line.","To view your Bench test results locally, set the `BENCH_FILE_DIR` environment variable to point to the location of your new test runs and run `bench` from the command line. This will launch a local UI where you can view your test results.","To view your Bench test results locally, set the `BENCH_FILE_DIR` environment variable to point to the location of your new test runs and run `bench` from the command line.","To view your Bench test results locally, set the `BENCH_FILE_DIR` environment variable to point to the location of your new test runs and run `bench` from the command line. This will launch a local UI where you can navigate and view your test results.","To view your Bench test results locally, set the `BENCH_FILE_DIR` environment variable to point to the location of your new test runs and run `bench` from the command line.","To view your Bench test results locally, set the `BENCH_FILE_DIR` environment variable to point to the location of your new test runs and run `bench` from the command line.","To view your Bench test results locally, set the `BENCH_FILE_DIR` environment variable to point to the location of your test runs and execute the `bench` command from the command line. This will launch a local UI where you can view your test results.","To view your Bench test results locally, set the `BENCH_FILE_DIR` environment variable to point to the location of your new test runs and run `bench` from the command line.","To view your Bench test results, you have two options:
 
 1. Local setup:
    - Ensure the `BENCH_FILE_DIR` environment variable is set to the location of your test run data.
@@ -515,7 +1333,47 @@ The documentation provides examples for both the local and SaaS setup options to
 1. Local: Set the BENCH_FILE_DIR environment variable to point to the location of your test runs, then run `bench` from the command line to launch the local UI in your browser.
 
 2. SaaS (Coming Soon): Set the ARTHUR_BENCH_AUTOLOG, ARTHUR_API_URL, and ARTHUR_API_KEY environment variables to log results to the Arthur platform."
-13,What is the difference between Bench test suites and test runs?,A test suite stores the input & reference output data for your testing use case along with a scorer. A test run evaluates the candidate outputs provided in the run and assigns a score to each test case.,"Test suites in Bench are used to define the data and parameters for testing, while test runs actually execute the tests using the specified test suite configurations.","Test suites in Bench are the main touch point for creating and running tests, while test runs are the actual execution of those tests within a suite. Test suites define the data and parameters for the tests, while test runs execute those tests with specific inputs and outputs.","Test Suites store input & reference output data with a scorer, while Test Runs evaluate candidate outputs against the Test Suite's criteria and assign scores to each test case.","Test suites in Bench are the main touch point for creating and running tests, while test runs are the actual execution of those tests within the test suite. Test suites define the parameters and data for the tests, while test runs execute those tests with specific inputs and outputs.","Test suites in Bench are the main touch point for creating and running tests, while test runs are the actual execution of those tests within the test suite. Test suites define the data and parameters for the tests, while test runs execute those tests with specific inputs and outputs.","Test suites in Bench are the main touch point for creating and running tests, while test runs are the actual execution of those tests within the test suite. Test suites define the data and parameters for the tests, while test runs involve running those tests with specific inputs and outputs.","Test suites in Bench are the main touch point for creating and running tests, while test runs are the actual execution of those tests within the test suite.","Test suites in Bench are the main touch point for creating and running tests, while test runs are the actual execution of those tests within the test suite. Test suites define the data and parameters for the tests, while test runs execute those tests with specific inputs and outputs.","Test suites are created to define the data and evaluation metrics for testing, while test runs execute these test suites against specific model outputs to generate performance comparisons.","Test suites are created to define the data and evaluation metrics for testing, while test runs execute these test suites against specific model outputs to assess performance.","Test suites are created to define the data and evaluation criteria for testing, while test runs execute these test suites against specific model outputs to assess performance.","Test suites are created to define the data and evaluation metrics for testing, while test runs execute these test suites against specific model outputs to assess performance.","Test suites are created to define the data and evaluation metrics for testing, while test runs execute these test suites against specific model outputs to generate performance comparisons.","Test suites are created to define the data and evaluation metrics for testing, while test runs execute these test suites against specific model outputs to evaluate performance.","Bench test suites are created to define the data and evaluation metrics for testing, while test runs execute these test suites against specific model outputs to assess performance.","A Bench test suite is created to define the data and evaluation criteria for testing, while a test run is the execution of a test suite against a set of candidate outputs to evaluate performance.","The main difference between Bench test suites and test runs is:
+13,What is the difference between Bench test suites and test runs?,"Content type: arthur_bench_docs
+Source: https://bench.readthedocs.io/en/latest/concepts.html
+ Concepts - bench documentation
+Concepts#
+Data#
+Testing LLMs involves preparing the following data for your use case:
+Inputs to the LLM. Depending on the task at hand, these inputs are likely formatted to follow a prompt template.
+Reference Outputs: these are your baseline outputs, which are optional in Arthur Bench but recommended to get a comprehensive understanding of your model’s performance relative to its expected outputs. These reference outputs would likely be either ground truth responses to the inputs, or could be outputs from a baseline LLM that you are evaluating against.
+Candidate Outputs: these are the outputs from your candidate LLM that you are scoring.
+Context: contextual information used to produce the candidate output, e.g. for retrieval-augmented Question & Answering tasks.
+As an example, consider the task of Question & Answering about specific documents:
+Input: “What war was referred to in the Gettysburg Address?”
+Reference Output: American Civil War
+Candidate Output: The war referenced in the Gettysburg Address is the American Civil War
+Context: (Wikipedia) “The Gettysburg Address is a speech that U.S. President Abraham Lincoln delivered during the American Civil War at the dedication of the Soldiers’ National Cemetery, now known as Gettysburg National Cemetery, in Gettysburg, Pennsylvania on the afternoon of November 19, 1863, four and a half months after the Union armies defeated Confederate forces in the Battle of Gettysburg, the Civil War’s deadliest battle.”
+Testing#
+Test Suites#
+A Test Suite stores the input & reference output data for your testing use case along with a scorer.
+For example, for a summarization use case, your test suite could be created with:
+the documents to summarize
+baseline summaries as reference outputs to evaluate against
+the SummaryQuality scorer
+Test suites allow you to save and reuse your evaluation datasets over time with a consistent scorer to help you understand what drives changes in performance.
+To view how to create test suites from various data formats, view our creating test suites guide
+Test runs#
+When a test suite is run, its scorer evaluates the candidate outputs provided in the run and assigns a score to each test case.
+To run your test suite on candidate data, pass the data to the run() function of your test suite, along with any additional metadata you want to be logged for that run. To view the metadata you can save with your test runs, see the SDK docs
+To view how to create test runs from various data formats, visit our test suites guide
+Next
+Creating test suites
+Previous
+Guides
+Copyright © 2023, Arthur
+Made with Sphinx and @pradyunsg's
+Furo
+On this page
+Concepts
+Data
+Testing
+Test Suites
+Test runs",A test suite stores the input & reference output data for your testing use case along with a scorer. A test run evaluates the candidate outputs provided in the run and assigns a score to each test case.,"Test suites in Bench are used to define the data and parameters for testing, while test runs actually execute the tests using the specified test suite configurations.","Test suites in Bench are the main touch point for creating and running tests, while test runs are the actual execution of those tests within a suite. Test suites define the data and parameters for the tests, while test runs execute those tests with specific inputs and outputs.","Test Suites store input & reference output data with a scorer, while Test Runs evaluate candidate outputs against the Test Suite's criteria and assign scores to each test case.","Test suites in Bench are the main touch point for creating and running tests, while test runs are the actual execution of those tests within the test suite. Test suites define the parameters and data for the tests, while test runs execute those tests with specific inputs and outputs.","Test suites in Bench are the main touch point for creating and running tests, while test runs are the actual execution of those tests within the test suite. Test suites define the data and parameters for the tests, while test runs execute those tests with specific inputs and outputs.","Test suites in Bench are the main touch point for creating and running tests, while test runs are the actual execution of those tests within the test suite. Test suites define the data and parameters for the tests, while test runs involve running those tests with specific inputs and outputs.","Test suites in Bench are the main touch point for creating and running tests, while test runs are the actual execution of those tests within the test suite.","Test suites in Bench are the main touch point for creating and running tests, while test runs are the actual execution of those tests within the test suite. Test suites define the data and parameters for the tests, while test runs execute those tests with specific inputs and outputs.","Test suites are created to define the data and evaluation metrics for testing, while test runs execute these test suites against specific model outputs to generate performance comparisons.","Test suites are created to define the data and evaluation metrics for testing, while test runs execute these test suites against specific model outputs to assess performance.","Test suites are created to define the data and evaluation criteria for testing, while test runs execute these test suites against specific model outputs to assess performance.","Test suites are created to define the data and evaluation metrics for testing, while test runs execute these test suites against specific model outputs to assess performance.","Test suites are created to define the data and evaluation metrics for testing, while test runs execute these test suites against specific model outputs to generate performance comparisons.","Test suites are created to define the data and evaluation metrics for testing, while test runs execute these test suites against specific model outputs to evaluate performance.","Bench test suites are created to define the data and evaluation metrics for testing, while test runs execute these test suites against specific model outputs to assess performance.","A Bench test suite is created to define the data and evaluation criteria for testing, while a test run is the execution of a test suite against a set of candidate outputs to evaluate performance.","The main difference between Bench test suites and test runs is:
 
 1. Test Suites: A test suite is a collection of test cases that are designed to evaluate the performance and behavior of an AI model or application. It defines the input data, reference outputs, and the scoring metrics to be used.
 
