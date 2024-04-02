@@ -8,6 +8,8 @@ langchain-community
 langchain-core
 langchain-openai
 langchain-text-splitters
+ollama
 openai
 pandas
 sentence-transformers
+transformers
