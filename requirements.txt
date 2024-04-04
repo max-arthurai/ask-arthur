@@ -12,6 +12,6 @@ langchain-text-splitters
 ollama
 openai
 pandas
-rank_bm25
+rank-bm25
 sentence-transformers
 transformers
