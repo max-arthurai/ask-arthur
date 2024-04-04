@@ -161,11 +161,11 @@ def command_r_grounded_response(
     return generate(response_prompt, verbose=verbose)
 
 
-def command_r_respond(conversation: list[dict[str:str]], verbose=False) -> str:
-    """Responds to a conversation
+def run_conversation(conversation: list[dict[str,str]], verbose=False) -> str:
+    """Runs the command-r model via Ollama on a conversation
 
     Args:
-        conversation: list[dict[str:str]]
+        conversation: list[dict[str,str]]
         verbose: bool
     Returns:
         response: str
@@ -181,26 +181,24 @@ def command_r_respond(conversation: list[dict[str:str]], verbose=False) -> str:
         return command_r_grounded_response(conversation, documents, verbose=verbose)
 
 
-def run(prompt: str):
-    system_prompt = """The purpose of your job is to write search queries specifically for the AI company Arthur AI.
-Arthur AI is the AI performance company. Arthur offers four products (with integrations between the four):
-Arthur Scope is an API-first enterprise suite of tools for robust, efficient, and scalable metrics, monitoring, 
-dashboards, and alerting.
-Arthur Shield is an API for detecting problems in LLM pipelines - hallucinations, prompt injections, leaks of 
-personally identifiable or otherwise sensitive data, and toxic/malicious language and intent.
-Arthur Bench is an open source python package with built in UI for evaluating and comparing the components of LLM 
-pipelines - different foundation models, prompt templates, and configurations for retrieval-augmented generation (RAG).
-Arthur Chat is a chat application that makes it easy to securely use LLMs with business data."""
-    conversation = [{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}]
-    response = command_r_respond(conversation)
-    return response
+def run(prompt: str, verbose=False) -> str:
+    """Runs the command-r model via Ollama on a single prompt
+
+    Args:
+        prompt: str
+        verbose: bool
+    Returns:
+        response: str
+    """
+    return run_conversation([{"role": "user", "content": prompt}], verbose=verbose)
 
 
 def chat():
+    """Runs a chat session with command-r via Ollama"""
     running = True
     conversation = [{"role": "system", "content": "You are a helpful AI assistant."}]
     while running:
         user_input = input(">>>")
         conversation.append({"role": "user", "content": user_input})
-        response = command_r_respond(conversation, verbose=True)
-        conversation.append({"role": "chatbot", "content": response})
+        response = run_conversation(conversation, verbose=True)
+        conversation.append({"role": "assistant", "content": response})
