@@ -23,12 +23,12 @@ def get_langchain_ensemble_retriever(embedding, k=3, retrieval='chroma') -> Base
 
     TODO: rerank
     """
-    arthur_index = pd.read_csv("docs/arthur_index_315.csv").dropna()
+    arthur_index = pd.read_csv("../data/docs/arthur_index_315.csv").dropna()
     bm25_retriever = BM25Retriever.from_texts(arthur_index['text'])
     bm25_retriever.k = 1
     embedding = HuggingFaceEmbeddings(model_name=embedding, model_kwargs={'trust_remote_code': True})
     assert retrieval == 'chroma'  # todo allow other options
-    persistent_client = chromadb.PersistentClient()
+    persistent_client = chromadb.PersistentClient("data")
     langchain_chroma = Chroma(
         client=persistent_client,
         collection_name="arthur_index",

@@ -1,6 +1,7 @@
 import argparse
-from langchain_version import run as run_langchain
-from dspy_version import run as run_dspy
+from versions.langchain_version import run as run_langchain
+from versions.dspy_version import run as run_dspy
+from versions.ollama_version import run as run_ollama
 
 
 if __name__ == "__main__":
@@ -17,5 +18,7 @@ if __name__ == "__main__":
         print(run_langchain(args.prompt, args.llm, args.embedding))
     elif args.framework == 'dspy':
         run_dspy(args.prompt, args.llm, args.embedding)
+    elif args.framework == 'ollama':
+        run_ollama(args.prompt)
     else:
         raise ValueError(f"unrecognized framework: {str(args)}")

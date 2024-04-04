@@ -24,7 +24,7 @@ tools = [
   }
 ]
 
-chroma_client = chromadb.PersistentClient("chroma/chroma")
+chroma_client = chromadb.PersistentClient("data/chroma/chroma")
 arthur_index = chroma_client.get_collection("arthur_index")
 
 
