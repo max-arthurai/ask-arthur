@@ -1,8 +1,8 @@
 import os
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
-# from langchain_version import run
-from ollama_version import run
+from langchain_version import run
+# from ollama_version import run
 app = App(token=os.environ["SLACK_BOT_TOKEN"])
 
 

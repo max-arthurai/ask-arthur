@@ -74,11 +74,11 @@ Answer: """)
 
 def run(
     prompt: str,
-    rag_template: ChatPromptTemplate = default_rag_template,
     llm_name: str = "gpt-4-0125-preview",
+    embedding_name: str = "nomic-ai/nomic-embed-text-v1.5",
+    rag_template: ChatPromptTemplate = default_rag_template,
     temperature: float = 0.0,
     max_tokens: int = 250,
-    embedding_name: str = "nomic-ai/nomic-embed-text-v1.5",
     k: int = 5
 ):
     assert rag_template.input_variables == ['context', 'question']

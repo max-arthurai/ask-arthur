@@ -2,6 +2,7 @@ anthropic
 chromadb
 dsp
 dspy
+einops
 langchain
 langchain-anthropic
 langchain-community
@@ -11,5 +12,6 @@ langchain-text-splitters
 ollama
 openai
 pandas
+rank_bm25
 sentence-transformers
 transformers
