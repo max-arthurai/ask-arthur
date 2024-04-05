@@ -29,9 +29,7 @@ def generate(
     Returns:
         documents: list[{"title": ..., "text": ...}]
     """
-    if verbose:
-        print(" ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^")
-        print("   Prompt:\n", prompt)
+    if verbose: print(" ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^\nPrompt:\n", prompt)
     generator = ollama.generate(
         model=model,
         options={"temperature": temperature},
@@ -142,7 +140,7 @@ def command_r_grounded_response(
     documents: list[dict[str, str]],
     verbose=True
 ) -> str:
-    """Calls command-r with the tool-use prompt template
+    """Calls command-r with the grounded response prompt template for RAG with citations
 
     Args:
         conversation: list[dict[str:str]]
@@ -182,7 +180,7 @@ def run_conversation(conversation: list[dict[str,str]], verbose=False) -> str:
 
 
 def run(prompt: str, verbose=False) -> str:
-    """Runs the command-r model via Ollama on a single prompt
+    """Runs the command-r model via Ollama on a single user prompt
 
     Args:
         prompt: str
